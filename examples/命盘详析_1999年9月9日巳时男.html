@@ -1199,9 +1199,40 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 .chart-star.ping, .chart-star.li, .chart-star.de { background: var(--chart-ping-bg); color: var(--chart-quan); }
 .chart-star.xian, .chart-star.bu { background: var(--chart-xian-bg); color: var(--chart-ji); }
 
+[data-system="nishi"] .chart-star.miao,
+[data-system="nishi"] .chart-star.wang,
 [data-system="nishi"] .chart-star.ni-miao { background: var(--ni-miao-bg); color: var(--ni-miao-color); }
+[data-system="nishi"] .chart-star.ping,
+[data-system="nishi"] .chart-star.li,
+[data-system="nishi"] .chart-star.de,
 [data-system="nishi"] .chart-star.ni-ping { background: var(--ni-ping-bg); color: var(--ni-ping-color); }
+[data-system="nishi"] .chart-star.xian,
+[data-system="nishi"] .chart-star.bu,
 [data-system="nishi"] .chart-star.ni-xian { background: var(--ni-xian-bg); color: var(--ni-xian-color); }
+
+[data-system="combined"] .chart-star.miao,
+[data-system="combined"] .chart-star.wang,
+[data-system="combined"] .chart-star.ni-miao { background: var(--chart-miao-bg); color: var(--chart-lu); }
+[data-system="combined"] .chart-star.ping,
+[data-system="combined"] .chart-star.li,
+[data-system="combined"] .chart-star.de,
+[data-system="combined"] .chart-star.ni-ping { background: var(--chart-ping-bg); color: var(--chart-quan); }
+[data-system="combined"] .chart-star.xian,
+[data-system="combined"] .chart-star.bu,
+[data-system="combined"] .chart-star.ni-xian { background: var(--chart-xian-bg); color: var(--chart-ji); }
+
+.chart-brightness-label {
+  font-size: 9px;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+[data-system="iztro"] .ni-brightness { display: none; }
+[data-system="iztro"] .combined-brightness { display: none; }
+[data-system="nishi"] .iztro-brightness { display: none; }
+[data-system="nishi"] .combined-brightness { display: none; }
+[data-system="combined"] .iztro-brightness { display: none; }
+[data-system="combined"] .ni-brightness { display: none; }
 
 .chart-sihua {
   font-size: 9.5px;
@@ -1695,7 +1726,6 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
     document.documentElement.setAttribute('data-system', mode);
     localStorage.setItem('ziwei-system', mode);
     updateSystemUI(mode);
-    rerenderCharts();
   }
 
   function updateSystemUI(mode) {
@@ -2001,7 +2031,11 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
             var niBc = getNiBrightnessClass(s.brightness);
             html += '<span class="chart-star ' + bc + ' ' + niBc + '">' + esc(s.name);
             if (s.brightness) {
-              html += '<span class="chart-brightness-label" data-iztro="' + esc(s.brightness) + '" data-ni="' + esc(niBrightness(s.brightness)) + '">(' + formatBrightnessLabel(s.brightness) + ')</span>';
+              html += '<span class="chart-brightness-label">';
+              html += '<span class="iztro-brightness">' + esc(s.brightness) + '</span>';
+              html += '<span class="ni-brightness">' + esc(niBrightness(s.brightness)) + '</span>';
+              html += '<span class="combined-brightness">' + esc(s.brightness) + '(' + esc(niBrightness(s.brightness)) + ')</span>';
+              html += '</span>';
             }
             if (s.sihua) {
               var sc = getSihuaClass(s.sihua);
