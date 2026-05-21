@@ -151,7 +151,6 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `references/source-repos.md` | 源仓库文件映射 | ~40 |
 | `scripts/md2html.js` | MD转HTML脚本 | ~3385 |
 | `examples/` | 示例命盘 | - |
-| `evals/evals.json` | 评测用例 | - |
 
 ## ⚠️ 常见陷阱
 

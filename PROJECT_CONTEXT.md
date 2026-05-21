@@ -82,28 +82,28 @@ ziwei-astrology-skills/
 ├── README.md
 ├── LICENSE                            # MIT License
 ├── PROJECT_CONTEXT.md                 # 本文档
+├── evals/
+│   └── evals.json                     # 开发者评测用例（非Skill运行时部分）
 ├── ziwei-output/                     # 排盘输出目录（与skills同级）
 │   └── {日期}_{出生信息}/
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md                   # 核心指令文件（174行，精简版）
+        ├── SKILL.md                   # 核心指令文件（173行，精简版）
         ├── scripts/
         │   └── md2html.js             # MD转HTML脚本
         ├── examples/
         │   ├── 命盘详析_1999年9月9日巳时男.md
         │   └── 命盘详析_1999年9月9日巳时男.html
-        ├── evals/
-        │   └── evals.json             # 评测用例
         └── references/                # 渐进式披露参考文档
-            ├── time-mapping.md        # 时辰映射表
-            ├── star-rules.md          # 安星规则与亮度表
-            ├── sihua-rules.md         # 四化对照表与飞化规则
-            ├── patterns.md            # 格局识别规则
-            ├── palace-interpretation.md # 十二宫解读
-            ├── heming-knowledge.md    # 倪海厦合盘与夫妻宫断语
-            ├── report-template.md     # 报告模板+专项模板+输出规范
-            ├── shortcuts.md           # 快捷指令详细指引
-            └── source-repos.md        # 源仓库文件映射（按需查阅）
+            ├── time-mapping.md
+            ├── star-rules.md
+            ├── sihua-rules.md
+            ├── patterns.md
+            ├── palace-interpretation.md
+            ├── heming-knowledge.md
+            ├── report-template.md
+            ├── shortcuts.md
+            └── source-repos.md
 ```
 
 ---
