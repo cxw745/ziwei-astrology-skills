@@ -439,6 +439,8 @@ body {
   z-index: 200;
 }
 
+.mobile-toc-fab { display: none; }
+
 h1 {
   font-size: 36px;
   font-weight: 800;
@@ -1793,6 +1795,132 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
     display: flex;
     top: 6px;
     left: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+  }
+  .mobile-toc-fab {
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    z-index: 150;
+    transition: all var(--transition);
+  }
+  .mobile-toc-fab:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-xl);
+  }
+  .mobile-toc-fab svg { width: 20px; height: 20px; }
+  .mobile-toc-drawer {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 60vh;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    box-shadow: var(--shadow-xl);
+    z-index: 600;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-toc-drawer.open {
+    display: flex;
+    transform: translateY(0);
+  }
+  .mobile-toc-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+  }
+  .mobile-toc-drawer-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .mobile-toc-drawer-close {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius);
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+  }
+  .mobile-toc-drawer-close:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+  .mobile-toc-drawer-close svg { width: 14px; height: 14px; }
+  .mobile-toc-drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mobile-toc-drawer-body .toc-list {
+    list-style: none;
+    padding: 0 12px;
+  }
+  .mobile-toc-drawer-body .toc-item { margin-bottom: 1px; }
+  .mobile-toc-drawer-body .toc-link {
+    display: block;
+    padding: 10px 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: var(--radius);
+    transition: all var(--transition);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mobile-toc-drawer-body .toc-link:hover,
+  .mobile-toc-drawer-body .toc-link:active {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+  .mobile-toc-drawer-body .toc-link.active {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .mobile-toc-drawer-body .toc-h3 {
+    padding-left: 28px;
+    font-size: 13px;
+  }
+  .mobile-toc-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--bg-overlay);
+    z-index: 599;
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+  .mobile-toc-overlay.visible {
+    opacity: 1;
   }
   .main-content {
     margin-left: 0;
@@ -1923,6 +2051,10 @@ ${toc}
 ${bodyHtml}
 </main>
 
+<button class="mobile-toc-fab" onclick="toggleMobileToc()" aria-label="目录" title="目录">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+</button>
+
 <button class="chart-fab" onclick="toggleChart()" aria-label="排盘图" title="排盘图">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
 </button>
@@ -1973,6 +2105,17 @@ ${bodyHtml}
 
 <div class="chart-tooltip" id="chartTooltip"></div>
 
+<div class="mobile-toc-overlay" id="mobileTocOverlay" onclick="closeMobileToc()"></div>
+<div class="mobile-toc-drawer" id="mobileTocDrawer">
+  <div class="mobile-toc-drawer-header">
+    <span class="mobile-toc-drawer-title">目录</span>
+    <button class="mobile-toc-drawer-close" onclick="closeMobileToc()" aria-label="关闭">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-drawer-body" id="mobileTocBody"></div>
+</div>
+
 <div class="help-overlay" id="helpOverlay" onclick="closeHelp()"></div>
 
 <div class="help-panel" id="helpPanel">
@@ -2000,6 +2143,7 @@ ${bodyHtml}
       <li class="help-command-item"><span class="help-command-code">\\money</span><span class="help-command-desc">财运分析</span></li>
       <li class="help-command-item"><span class="help-command-code">\\health</span><span class="help-command-desc">健康分析</span></li>
       <li class="help-command-item"><span class="help-command-code">\\love</span><span class="help-command-desc">感情分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\\match</span><span class="help-command-desc">合盘分析（需提供另一半信息）</span></li>
       <li class="help-command-item"><span class="help-command-code">\\career</span><span class="help-command-desc">事业分析</span></li>
       <li class="help-command-item"><span class="help-command-code">\\year</span><span class="help-command-desc">流年运势</span></li>
     </ul>
@@ -2146,6 +2290,42 @@ ${bodyHtml}
   window.toggleTheme = toggleTheme;
   window.toggleSidebar = toggleSidebar;
   window.closeSidebar = closeSidebar;
+
+  /* ===== 移动端目录抽屉 ===== */
+  function toggleMobileToc() {
+    var drawer = document.getElementById('mobileTocDrawer');
+    var overlay = document.getElementById('mobileTocOverlay');
+    if (drawer.classList.contains('open')) {
+      closeMobileToc();
+    } else {
+      var tocList = document.getElementById('tocList');
+      var tocBody = document.getElementById('mobileTocBody');
+      if (tocList && tocBody) {
+        tocBody.innerHTML = tocList.innerHTML;
+      }
+      overlay.style.display = 'block';
+      requestAnimationFrame(function() {
+        overlay.classList.add('visible');
+        drawer.classList.add('open');
+      });
+      tocBody.querySelectorAll('.toc-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+          closeMobileToc();
+        });
+      });
+    }
+  }
+
+  function closeMobileToc() {
+    var drawer = document.getElementById('mobileTocDrawer');
+    var overlay = document.getElementById('mobileTocOverlay');
+    drawer.classList.remove('open');
+    overlay.classList.remove('visible');
+    setTimeout(function() { overlay.style.display = 'none'; }, 300);
+  }
+
+  window.toggleMobileToc = toggleMobileToc;
+  window.closeMobileToc = closeMobileToc;
 
   var saved = localStorage.getItem('ziwei-theme');
   if (saved) {

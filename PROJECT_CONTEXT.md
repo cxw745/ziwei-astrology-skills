@@ -155,7 +155,7 @@ ziwei-astrology-skills/
 - 键盘快捷键（T切换主题、1/2/3切换体系、?帮助、Esc关闭弹窗）
 - 章节折叠（状态保存）
 - 渐变色阅读进度条
-- 响应式布局（移动端折叠侧边栏）
+- 响应式布局（移动端折叠侧边栏+浮动目录按钮+底部目录抽屉）
 - 打印友好样式
 
 用法：`node scripts/md2html.js <input.md> [output.html]`
@@ -268,6 +268,17 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] md2html.js模块化拆分（parser/chart/theme/toc四个模块）
 - [x] 新增validate-report.js自动化验证脚本（16项自检清单自动检查）
 - [x] SKILL.md参考文件索引更新（12→14个references）
+
+### v2.2.0 新增
+
+- [x] `\match` 合盘分析快捷指令（基于倪师合盘五步法）
+- [x] 合盘报告模板（report-template.md，10章节完整结构）
+- [x] 合盘详细指引（shortcuts.md）
+- [x] SKILL.md 合盘功能模块说明
+- [x] 移动端浮动目录按钮（mobile-toc-fab）+ 底部目录抽屉（mobile-toc-drawer）
+- [x] 手机端HTML目录不可见问题修复
+- [x] md2html.js 帮助面板新增 `\match` 指令
+- [x] 完成后提示语模板更新（含 `\match`）
 
 ---
 
