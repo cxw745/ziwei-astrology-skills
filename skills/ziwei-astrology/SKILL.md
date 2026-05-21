@@ -24,7 +24,7 @@ description: >
 3. **实事求是，拒绝讨好**：凶象如实描述，不弱化化忌影响，不强行凑格局
 4. **三模式解读**：iztro标准 / 倪海厦天纪 / 综合（默认），冲突以倪师为准
 5. **双层输出**：专业解读 + 通俗解析
-6. **首次输出完整报告**：用户第一次提供信息时输出完整命盘报告
+6. **首次输出完整报告**：用户第一次提供信息时输出完整命盘报告，内容丰富度必须达到示例水平（1000行以上），不可省略任何章节或子节
 
 ## 星耀处理规范
 
@@ -119,6 +119,20 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 
 按 `references/report-template.md` 结构输出，根据解读模式生成对应风格。
 
+**内容丰富度硬性要求**：
+- 报告必须包含完整11章节，不可省略任何章节
+- 十二宫分论必须全部12宫，每宫7个子节（主星/辅星/杂耀/飞化表/三方四正/长生/总评）
+- 宫干飞四化总表必须完整（12宫×4化=48条）
+- 五行局推算过程必须列出8步
+- 命宫总论必须独立成章（6个子节）
+- 四化飞化详析必须包含飞忌汇入/飞禄汇入统计
+- 大限运势必须每个大限含表格+详细分析
+- 流年要点必须5~7年含四化分析
+- 综合建议必须7个子章节
+- 附录不可省略（术语解释+亮度对照+参考文献）
+- 倪师断语必须在每个关键宫位和四化处引用
+- 报告总行数应达到1000行以上
+
 ### Step 5：继续提问
 
 复用已排命盘数据，不重新排盘。婚期判断必须遵循三层法（本命→大限→流年），详见 `references/report-template.md`。
@@ -146,7 +160,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `references/patterns.md` | 格局识别规则 | ~117 |
 | `references/palace-interpretation.md` | 十二宫解读 | ~218 |
 | `references/heming-knowledge.md` | 倪师合盘断语 | ~141 |
-| `references/report-template.md` | 报告模板+专项模板+输出规范 | ~535 |
+| `references/report-template.md` | 报告模板+专项模板+输出规范 | ~763 |
 | `references/shortcuts.md` | 快捷指令详细指引 | ~88 |
 | `references/source-repos.md` | 源仓库文件映射 | ~54 |
 | `scripts/md2html.js` | MD转HTML脚本 | ~3400 |
@@ -170,3 +184,6 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - **完成后遗漏提示语**：必须附加文件位置和快捷指令
 - **流月缺少流年上下文**：不可孤立分析单月
 - **输出写入skills目录**：必须写入 ziwei-output/
+- **报告内容不足**：十二宫必须全部分析（12宫×7子节），宫干飞四化总表必须完整（48条），不可只写3~4个宫位就结束
+- **省略五行局推算**：必须列出8步推算过程
+- **省略命宫总论**：命宫必须独立成章，包含6个子节

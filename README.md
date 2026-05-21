@@ -116,7 +116,7 @@ ziwei-astrology-skills/
 │   └── {日期}_{出生信息}/
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md                  # 核心指令文件（172行）
+        ├── SKILL.md                  # 核心指令文件（189行）
         ├── scripts/
         │   └── md2html.js            # MD转HTML脚本
         ├── examples/

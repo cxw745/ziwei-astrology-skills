@@ -88,7 +88,7 @@ ziwei-astrology-skills/
 │   └── {日期}_{出生信息}/
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md                   # 核心指令文件（172行，精简版）
+        ├── SKILL.md                   # 核心指令文件（189行，含内容丰富度硬性要求）
         ├── scripts/
         │   └── md2html.js             # MD转HTML脚本
         ├── examples/
@@ -119,7 +119,7 @@ ziwei-astrology-skills/
 5. **功能模块**：4个模块+排盘可视化，每个含输入示例
 6. **工作流**：Step 1（收集输入）→ Step 2（排盘）→ Step 3（格局识别）→ Step 4（生成报告MD+HTML）→ Step 5（继续提问）→ Step 6（全面核查）
 7. **参考索引**：9个references按需加载+1个脚本工具
-8. **常见陷阱**：16条，每条附带why解释
+8. **常见陷阱**：19条，含内容丰富度硬性要求（12宫×7子节、宫干飞四化48条、1000行以上）
 
 ---
 
@@ -216,6 +216,9 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] 大限/流年/流月选择指引（\dash \flow \month，从出生到终老完整列表）
 - [x] 专项解读模板（财运/健康/感情/事业/大限/流年/流月，含HTML双格式输出）
 - [x] HTML交互优化（快捷指令帮助面板、键盘快捷键、渐变进度条、四化徽章、暗色主题对比度）
+- [x] report-template.md完全重写（匹配示例的完整11章结构，763行，含7子节宫位模板/宫干飞四化总表/命宫总论/四化飞化详析/附录）
+- [x] SKILL.md增加内容丰富度硬性要求（12宫×7子节、宫干飞四化48条、1000行以上、倪师断语必须引用）
+- [x] HTML移动端顶栏重叠修复（mode-btn-group脱离fixed定位、480px极窄屏适配）
 - [x] 推送到 GitHub 远程仓库
 
 ---
