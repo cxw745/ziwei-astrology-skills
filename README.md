@@ -116,7 +116,7 @@ ziwei-astrology-skills/
 │   └── {日期}_{出生信息}/
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md                  # 核心指令文件（173行）
+        ├── SKILL.md                  # 核心指令文件（172行）
         ├── scripts/
         │   └── md2html.js            # MD转HTML脚本
         ├── examples/
@@ -166,8 +166,8 @@ HTML界面中可通过工具栏按钮或键盘快捷键（1/2/3）实时切换�
 
 ## 示例输出
 
-- [命盘详析_1999年9月9日巳时男.md](./examples/命盘详析_1999年9月9日巳时男.md) — Markdown 完整报告
-- [命盘详析_1999年9月9日巳时男.html](./examples/命盘详析_1999年9月9日巳时男.html) — 交互式 HTML 版本
+- [命盘详析_1999年9月9日巳时男.md](./skills/ziwei-astrology/examples/命盘详析_1999年9月9日巳时男.md) — Markdown 完整报告
+- [命盘详析_1999年9月9日巳时男.html](./skills/ziwei-astrology/examples/命盘详析_1999年9月9日巳时男.html) — 交互式 HTML 版本
 
 ## HTML 转换工具
 

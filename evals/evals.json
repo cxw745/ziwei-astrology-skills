@@ -1,4 +1,5 @@
 {
+  "_comment": "开发者评测用例（非 Skill 运行时部分）— 供开发迭代时手动参考，不随 Skill 安装分发",
   "skill_name": "ziwei-astrology",
   "evals": [
     {

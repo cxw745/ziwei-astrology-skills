@@ -88,7 +88,7 @@ ziwei-astrology-skills/
 │   └── {日期}_{出生信息}/
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md                   # 核心指令文件（173行，精简版）
+        ├── SKILL.md                   # 核心指令文件（172行，精简版）
         ├── scripts/
         │   └── md2html.js             # MD转HTML脚本
         ├── examples/
@@ -117,8 +117,8 @@ ziwei-astrology-skills/
 3. **星耀处理规范**：空宫处理规范（借星规则、minorStars归属）
 4. **输出风格**：三模式（iztro/倪师/综合）+双层（专业+通俗），含完整示例
 5. **功能模块**：4个模块+排盘可视化，每个含输入示例
-6. **工作流**：Step 0（仓库检索）→ Step 1（收集输入）→ Step 2（排盘）→ Step 3（格局识别）→ Step 4（生成报告MD+HTML）→ Step 5（继续提问）→ Step 6（全面核查）
-7. **参考索引**：7个references按需加载+1个脚本工具
+6. **工作流**：Step 1（收集输入）→ Step 2（排盘）→ Step 3（格局识别）→ Step 4（生成报告MD+HTML）→ Step 5（继续提问）→ Step 6（全面核查）
+7. **参考索引**：9个references按需加载+1个脚本工具
 8. **常见陷阱**：16条，每条附带why解释
 
 ---
@@ -193,7 +193,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 
 - [x] 全面理解 iztro 和 ziwei-doushu 两个仓库
 - [x] 编写 SKILL.md 核心指令文件（按skill-creator方法论）
-- [x] 编写 7 个 references 参考文件
+- [x] 编写 9 个 references 参考文件
 - [x] 编写 README.md（支持 Claude Code/Trae/Cursor/Codex 安装）
 - [x] 创建 MIT LICENSE
 - [x] 创建 evals 测试用例（6个场景）
@@ -211,7 +211,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] 亮度映射修正（得→平，非庙旺）
 - [x] 紫府同宫格修正（限申宫）
 - [x] 快捷指令体系（\money \health \love \career \year \dash \flow \month \question \switch \help）
-- [x] 输出文件夹规范（output/{日期}_{出生信息}/分类存放，含大限/流年/流月子目录）
+- [x] 输出文件夹规范（ziwei-output/{日期}_{出生信息}/分类存放，含大限/流年/流月子目录）
 - [x] 完成后提示语模板（含文件位置和快捷指令说明）
 - [x] 大限/流年/流月选择指引（\dash \flow \month，从出生到终老完整列表）
 - [x] 专项解读模板（财运/健康/感情/事业/大限/流年/流月，含HTML双格式输出）

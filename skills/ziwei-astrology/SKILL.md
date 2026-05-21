@@ -143,13 +143,13 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `references/time-mapping.md` | 确认时辰索引 | ~34 |
 | `references/star-rules.md` | 安星规则与亮度表 | ~168 |
 | `references/sihua-rules.md` | 四化对照表 | ~72 |
-| `references/patterns.md` | 格局识别规则 | ~111 |
-| `references/palace-interpretation.md` | 十二宫解读 | ~216 |
-| `references/heming-knowledge.md` | 倪师合盘断语 | ~109 |
+| `references/patterns.md` | 格局识别规则 | ~117 |
+| `references/palace-interpretation.md` | 十二宫解读 | ~218 |
+| `references/heming-knowledge.md` | 倪师合盘断语 | ~141 |
 | `references/report-template.md` | 报告模板+专项模板+输出规范 | ~535 |
-| `references/shortcuts.md` | 快捷指令详细指引 | ~80 |
-| `references/source-repos.md` | 源仓库文件映射 | ~40 |
-| `scripts/md2html.js` | MD转HTML脚本 | ~3385 |
+| `references/shortcuts.md` | 快捷指令详细指引 | ~88 |
+| `references/source-repos.md` | 源仓库文件映射 | ~54 |
+| `scripts/md2html.js` | MD转HTML脚本 | ~3400 |
 | `examples/` | 示例命盘 | - |
 
 ## ⚠️ 常见陷阱
