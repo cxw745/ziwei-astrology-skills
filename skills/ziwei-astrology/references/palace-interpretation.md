@@ -83,7 +83,9 @@ ziwei-doushu 仓库的 algorithm.ts 中有 isEmpty 和 borrowedStars 字段可�
 
 ## 夫妻宫断语
 
-来源：`https://github.com/Renhuai123/ziwei-doushu` 的 `lib/ziwei/heming-knowledge.ts`
+来源：`https://github.com/Renhuai123/ziwei-doushu` 的 `lib/ziwei/heming-knowledge.ts` 中的 STAR_IN_FUQI_GU
+
+> 完整版详见 [heming-knowledge.md](heming-knowledge.md#十四主星在夫妻宫断语)
 
 ### 十四主星在夫妻宫
 
