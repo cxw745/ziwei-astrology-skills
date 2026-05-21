@@ -3062,23 +3062,39 @@ function parseMainStars(str) {
 }
 
 function markdownToHtml(md) {
+  var placeholders = [];
+  var placeholderIdx = 0;
+
+  function addPlaceholder(htmlContent) {
+    var token = 'SYSTOK' + (placeholderIdx++) + 'XEND';
+    placeholders.push({ token: token, html: htmlContent });
+    return token;
+  }
+
   md = md.replace(/:::iztro\n([\s\S]*?)\n:::/g, function(m, content) {
-    return '<div class="system-content system-iztro">' + markdownToHtmlInner(content) + '</div>';
+    return addPlaceholder('<div class="system-content system-iztro">' + markdownToHtmlInner(content) + '</div>');
   });
   md = md.replace(/:::nishi\n([\s\S]*?)\n:::/g, function(m, content) {
-    return '<div class="system-content system-nishi">' + markdownToHtmlInner(content) + '</div>';
+    return addPlaceholder('<div class="system-content system-nishi">' + markdownToHtmlInner(content) + '</div>');
   });
   md = md.replace(/:::combined\n([\s\S]*?)\n:::/g, function(m, content) {
-    return '<div class="system-content system-combined">' + markdownToHtmlInner(content) + '</div>';
+    return addPlaceholder('<div class="system-content system-combined">' + markdownToHtmlInner(content) + '</div>');
   });
   md = md.replace(/:::not-iztro\n([\s\S]*?)\n:::/g, function(m, content) {
-    return '<div class="system-content system-not-iztro">' + markdownToHtmlInner(content) + '</div>';
+    return addPlaceholder('<div class="system-content system-not-iztro">' + markdownToHtmlInner(content) + '</div>');
   });
   md = md.replace(/:::not-nishi\n([\s\S]*?)\n:::/g, function(m, content) {
-    return '<div class="system-content system-not-nishi">' + markdownToHtmlInner(content) + '</div>';
+    return addPlaceholder('<div class="system-content system-not-nishi">' + markdownToHtmlInner(content) + '</div>');
   });
 
-  return markdownToHtmlInner(md);
+  var html = markdownToHtmlInner(md);
+
+  placeholders.forEach(function(p) {
+    html = html.replace('<p>' + p.token + '</p>', p.html);
+    html = html.replace(p.token, p.html);
+  });
+
+  return html;
 }
 
 function markdownToHtmlInner(md) {
@@ -3093,6 +3109,7 @@ function markdownToHtmlInner(md) {
   var listType = '';
   var skipNext = false;
   var inSection = false;
+  var inInterpretation = false;
 
   for (var i = 0; i < lines.length; i++) {
     var line = lines[i];
@@ -3136,6 +3153,7 @@ function markdownToHtmlInner(md) {
     if (line.match(/^#{1,4}\s/)) {
       if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
       if (inTable) { html += buildTable(tableHeaders, tableRows); inTable = false; tableHeaders = []; tableRows = []; }
+      if (inInterpretation) { html += '</div><!-- /interp-block -->'; inInterpretation = false; }
       var match = line.match(/^(#{1,4})\s+(.+)/);
       if (match) {
         var level = match[1].length;
@@ -3213,12 +3231,31 @@ function markdownToHtmlInner(md) {
 
     if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
 
+    if (line.match(/^【专业解读】/)) {
+      if (inInterpretation) { html += '</div><!-- /interp-block -->'; }
+      html += '<div class="interpretation-block pro system-content system-not-nishi"><div class="interpretation-label">专业解读</div>';
+      inInterpretation = true;
+      var rest = line.replace(/^【专业解读】\s*/, '').trim();
+      if (rest) { html += '<p>' + inlineFormat(rest) + '</p>'; }
+      continue;
+    }
+
+    if (line.match(/^【通俗解析】/)) {
+      if (inInterpretation) { html += '</div><!-- /interp-block -->'; }
+      html += '<div class="interpretation-block lay system-content system-iztro"><div class="interpretation-label">通俗解析</div>';
+      inInterpretation = true;
+      var rest = line.replace(/^【通俗解析】\s*/, '').trim();
+      if (rest) { html += '<p>' + inlineFormat(rest) + '</p>'; }
+      continue;
+    }
+
     html += '<p>' + inlineFormat(line.trim()) + '</p>';
   }
 
   if (inTable) { html += buildTable(tableHeaders, tableRows); }
   if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; }
   if (inCodeBlock) { html += '<pre><code>' + escapeHtml(codeContent.trim()) + '</code></pre>'; }
+  if (inInterpretation) { html += '</div><!-- /interp-block -->'; }
   if (inSection) { html += '</div></div>'; }
 
   html = enhanceHtml(html);
@@ -3277,21 +3314,7 @@ function inlineFormat(text) {
 
 function enhanceHtml(html) {
   html = html.replace(
-    /【专业解读】([\s\S]*?)(?=【通俗解析】|<h[234]|$)/g,
-    function(match, content) {
-      return '<div class="interpretation-block pro system-content system-not-nishi"><div class="interpretation-label">专业解读</div>' + content.trim() + '</div>';
-    }
-  );
-
-  html = html.replace(
-    /【通俗解析】([\s\S]*?)(?=<h[234]|$)/g,
-    function(match, content) {
-      return '<div class="interpretation-block lay system-content system-iztro"><div class="interpretation-label">通俗解析</div>' + content.trim() + '</div>';
-    }
-  );
-
-  html = html.replace(
-    /(<div class="interpretation-block pro[\s\S]*?<\/div>)\s*(<div class="interpretation-block lay[\s\S]*?<\/div>)/g,
+    /(<div class="interpretation-block pro[^"]*">[\s\S]*?<!-- \/interp-block -->)\s*(<div class="interpretation-block lay[^"]*">[\s\S]*?<!-- \/interp-block -->)/g,
     function(match, pro, lay) {
       return '<div class="interpretation-pair"><div class="interpretation-connector"></div>' + pro + lay + '</div>';
     }
