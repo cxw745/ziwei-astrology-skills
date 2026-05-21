@@ -17,7 +17,7 @@ function generateHtml(mdContent, fileName) {
   const chartData = extractChartData(mdContent);
 
   return `<!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN" data-theme="light" data-system="combined">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,7 +77,27 @@ function generateHtml(mdContent, fileName) {
   --chart-laiyin-border: rgba(59,130,246,0.5);
   --chart-empty-border: #c0c0bc;
   --progress-bg: #ededec;
-  --progress-fill: var(--accent);
+  --progress-fill: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  --gold: #d4a017;
+  --gold-light: rgba(212,160,23,0.1);
+  --gold-medium: rgba(212,160,23,0.2);
+  --purple: #7c3aed;
+  --purple-light: rgba(124,58,237,0.08);
+  --purple-medium: rgba(124,58,237,0.14);
+  --system-iztro: #2563eb;
+  --system-nishi: #d4a017;
+  --system-combined: #7c3aed;
+  --ni-miao-color: #d4a017;
+  --ni-ping-color: #787774;
+  --ni-xian-color: #b91c1c;
+  --ni-miao-bg: rgba(212,160,23,0.12);
+  --ni-ping-bg: rgba(120,119,116,0.08);
+  --ni-xian-bg: rgba(185,28,28,0.1);
+  --chart-sanfang-line: rgba(37,99,235,0.55);
+  --chart-selected-bg: rgba(37,99,235,0.08);
+  --chart-selected-border: rgba(37,99,235,0.6);
+  --chart-dalimit-border: rgba(124,58,237,0.6);
+  --chart-dalimit-bg: rgba(124,58,237,0.06);
 }
 
 [data-theme="dark"] {
@@ -126,6 +146,26 @@ function generateHtml(mdContent, fileName) {
   --chart-laiyin-border: rgba(96,165,250,0.4);
   --chart-empty-border: #555;
   --progress-bg: #333;
+  --gold: #fbbf24;
+  --gold-light: rgba(251,191,36,0.1);
+  --gold-medium: rgba(251,191,36,0.2);
+  --purple: #a78bfa;
+  --purple-light: rgba(167,139,250,0.1);
+  --purple-medium: rgba(167,139,250,0.18);
+  --system-iztro: #60a5fa;
+  --system-nishi: #fbbf24;
+  --system-combined: #a78bfa;
+  --ni-miao-color: #fbbf24;
+  --ni-ping-color: #9b9b97;
+  --ni-xian-color: #f87171;
+  --ni-miao-bg: rgba(251,191,36,0.12);
+  --ni-ping-bg: rgba(155,155,151,0.1);
+  --ni-xian-bg: rgba(248,113,113,0.12);
+  --chart-sanfang-line: rgba(96,165,250,0.55);
+  --chart-selected-bg: rgba(96,165,250,0.1);
+  --chart-selected-border: rgba(96,165,250,0.6);
+  --chart-dalimit-border: rgba(167,139,250,0.5);
+  --chart-dalimit-bg: rgba(167,139,250,0.08);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -152,7 +192,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 3px;
+  height: 2px;
   z-index: 9999;
   background: var(--progress-bg);
 }
@@ -201,6 +241,35 @@ body {
 
 .sidebar-title svg { width: 18px; height: 18px; color: var(--accent); flex-shrink: 0; }
 
+.sidebar-system-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.sidebar-system-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+[data-system="iztro"] .sidebar-system-dot { background: var(--system-iztro); }
+[data-system="nishi"] .sidebar-system-dot { background: var(--system-nishi); }
+[data-system="combined"] .sidebar-system-dot { background: var(--system-combined); }
+
+.sidebar-system-name {
+  font-weight: 600;
+}
+
+[data-system="iztro"] .sidebar-system-name { color: var(--system-iztro); }
+[data-system="nishi"] .sidebar-system-name { color: var(--system-nishi); }
+[data-system="combined"] .sidebar-system-name { color: var(--system-combined); }
+
 .toc-list { list-style: none; padding: 0 6px; }
 
 .toc-item { margin-bottom: 1px; }
@@ -217,11 +286,24 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.5;
+  position: relative;
 }
 
 .toc-link:hover {
   background: var(--bg-hover);
   color: var(--text-primary);
+}
+
+.toc-link:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 .toc-link.active {
@@ -262,6 +344,7 @@ body {
   z-index: 200;
   display: flex;
   gap: 6px;
+  align-items: center;
 }
 
 .toolbar-btn {
@@ -288,6 +371,45 @@ body {
 
 .toolbar-btn svg { width: 16px; height: 16px; }
 
+.mode-btn-group {
+  display: flex;
+  gap: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.mode-btn {
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  border-right: 1px solid var(--border-color);
+}
+
+.mode-btn:last-child { border-right: none; }
+
+.mode-btn:hover { background: var(--bg-hover); }
+
+.mode-btn[data-mode="iztro"].active {
+  background: var(--system-iztro);
+  color: #fff;
+}
+.mode-btn[data-mode="nishi"].active {
+  background: var(--system-nishi);
+  color: #fff;
+}
+.mode-btn[data-mode="combined"].active {
+  background: var(--system-combined);
+  color: #fff;
+}
+
 .mobile-menu-btn {
   display: none;
   position: fixed;
@@ -303,6 +425,17 @@ h1 {
   color: var(--text-primary);
   letter-spacing: -0.03em;
   line-height: 1.3;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 3px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  border-radius: 2px;
 }
 
 h1 + blockquote { margin-bottom: 28px; }
@@ -321,6 +454,8 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-left: 12px;
+  border-left: 3px solid var(--gold);
 }
 
 h3 {
@@ -355,6 +490,11 @@ blockquote {
   font-size: 14px;
 }
 
+blockquote.nishi-quote {
+  background: var(--gold-light);
+  border-left-color: var(--gold);
+}
+
 blockquote strong { color: var(--text-primary); font-style: normal; }
 
 hr {
@@ -377,7 +517,17 @@ table {
   font-size: 14px;
 }
 
-thead { background: var(--bg-table-header); }
+thead { background: var(--bg-table-header); position: relative; }
+
+thead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+}
 
 th {
   padding: 10px 16px;
@@ -400,7 +550,11 @@ td {
 
 tbody tr:last-child td { border-bottom: none; }
 tbody tr:nth-child(even) { background: var(--bg-table-stripe); }
-tbody tr:hover { background: var(--bg-hover); }
+tbody tr:hover {
+  background: var(--bg-hover);
+  transform: translateY(-1px);
+  transition: transform 0.15s ease;
+}
 
 table caption {
   caption-side: top;
@@ -458,6 +612,10 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 .tag-warning { background: var(--warning-light); color: var(--warning); }
 .tag-info { background: var(--info-light); color: var(--info); }
 
+.tag-system-iztro { background: rgba(37,99,235,0.1); color: var(--system-iztro); }
+.tag-system-nishi { background: var(--gold-light); color: var(--system-nishi); }
+.tag-system-combined { background: var(--purple-light); color: var(--system-combined); }
+
 .star-badge {
   display: inline-flex;
   align-items: center;
@@ -473,15 +631,32 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 .star-badge.normal { background: var(--warning-light); color: var(--warning); }
 .star-badge.dim { background: var(--danger-light); color: var(--danger); }
 
-.star-badge.hua-lu { background: var(--success-light); color: var(--success); }
-.star-badge.hua-quan { background: var(--warning-light); color: var(--warning); }
-.star-badge.hua-ke { background: var(--info-light); color: var(--info); }
-.star-badge.hua-ji { background: var(--danger-light); color: var(--danger); }
+.star-badge.hua-lu {
+  background: var(--success-light);
+  color: var(--chart-lu);
+  box-shadow: 0 0 6px rgba(77,171,92,0.3);
+}
+.star-badge.hua-quan {
+  background: var(--info-light);
+  color: var(--chart-quan);
+  box-shadow: 0 0 6px rgba(59,130,246,0.3);
+}
+.star-badge.hua-ke {
+  background: var(--warning-light);
+  color: var(--chart-ke);
+  box-shadow: 0 0 6px rgba(232,145,45,0.3);
+}
+.star-badge.hua-ji {
+  background: var(--danger-light);
+  color: var(--chart-ji);
+  box-shadow: 0 0 6px rgba(235,87,87,0.3);
+}
 
 .interpretation-block {
   margin: 16px 0;
   padding: 18px 22px;
   border-radius: var(--radius-lg);
+  position: relative;
 }
 
 .interpretation-block.pro {
@@ -529,6 +704,76 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M9 18h6'/%3E%3Cpath d='M10 22h4'/%3E%3Cpath d='M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z'/%3E%3C/svg%3E") center/contain no-repeat;
   flex-shrink: 0;
 }
+
+.interpretation-pair {
+  position: relative;
+  margin: 16px 0;
+}
+
+.interpretation-pair .interpretation-block.pro {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0;
+}
+
+.interpretation-pair .interpretation-block.lay {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: 0;
+  border-top: 1px dashed var(--border-color);
+}
+
+.interpretation-connector {
+  position: absolute;
+  left: 14px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--success));
+  opacity: 0.3;
+}
+
+.pattern-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+  margin: 10px 0;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.pattern-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.pattern-card.excellent::before { background: var(--success); }
+.pattern-card.good::before { background: var(--info); }
+.pattern-card.neutral::before { background: var(--warning); }
+.pattern-card.caution::before { background: var(--danger); }
+
+.pattern-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.pattern-card-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.pattern-card.excellent .pattern-card-title { color: var(--success); }
+.pattern-card.good .pattern-card-title { color: var(--info); }
+.pattern-card.neutral .pattern-card-title { color: var(--warning); }
+.pattern-card.caution .pattern-card-title { color: var(--danger); }
 
 .section-wrapper {
   position: relative;
@@ -681,6 +926,18 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 
 .chart-panel-title svg { width: 16px; height: 16px; color: var(--accent); }
 
+.chart-panel-system-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 4px;
+}
+
+[data-system="iztro"] .chart-panel-system-badge { background: rgba(37,99,235,0.12); color: var(--system-iztro); }
+[data-system="nishi"] .chart-panel-system-badge { background: var(--gold-light); color: var(--system-nishi); }
+[data-system="combined"] .chart-panel-system-badge { background: var(--purple-light); color: var(--system-combined); }
+
 .chart-panel-actions {
   display: flex;
   align-items: center;
@@ -755,6 +1012,11 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   position: relative;
 }
 
+.chart-grid-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .chart-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -767,6 +1029,16 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   transition: transform 0.15s ease;
 }
 
+.chart-svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
 .chart-cell {
   border: 1.5px solid var(--border-color);
   border-radius: 3px;
@@ -777,7 +1049,7 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   overflow: hidden;
   transition: all var(--transition);
   background: var(--bg-primary);
-  cursor: default;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
 }
@@ -786,6 +1058,24 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent), var(--shadow-sm);
   z-index: 2;
+}
+
+.chart-cell.selected {
+  border-color: var(--chart-selected-border);
+  border-width: 2px;
+  background: var(--chart-selected-bg);
+  box-shadow: 0 0 0 1px var(--chart-selected-border);
+  z-index: 3;
+}
+
+.chart-cell.sanfang-related {
+  background: var(--chart-selected-bg);
+  border-color: rgba(37,99,235,0.35);
+}
+
+.chart-cell.dalimit-active {
+  border-left: 3px solid var(--chart-dalimit-border);
+  background: var(--chart-dalimit-bg);
 }
 
 .chart-cell.palace-ming {
@@ -818,17 +1108,43 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   font-size: 12px;
   color: var(--text-secondary);
   gap: 2px;
+  cursor: default;
+}
+
+.chart-cell.center-cell .center-taiji {
+  font-size: 32px;
+  opacity: 0.15;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .chart-cell.center-cell .center-title {
   font-size: 15px;
   font-weight: 700;
   color: var(--text-primary);
+  position: relative;
+  z-index: 1;
 }
 
 .chart-cell.center-cell .center-sub {
   font-size: 11px;
   color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+}
+
+.chart-cell.center-cell .center-dalimit-box {
+  margin-top: 4px;
+  padding: 2px 8px;
+  border: 1px solid var(--chart-dalimit-border);
+  border-radius: 4px;
+  font-size: 10px;
+  color: var(--purple);
+  background: var(--chart-dalimit-bg);
+  position: relative;
+  z-index: 1;
 }
 
 .chart-cell-header {
@@ -844,6 +1160,32 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   font-size: 11px;
   color: var(--accent);
   white-space: nowrap;
+}
+
+.chart-palace-marks {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.chart-ming-mark {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 0 3px;
+  border-radius: 2px;
+  background: rgba(212,160,23,0.15);
+  color: var(--gold);
+  line-height: 1.5;
+}
+
+.chart-shen-mark {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 0 3px;
+  border-radius: 2px;
+  background: var(--info-light);
+  color: var(--info);
+  line-height: 1.5;
 }
 
 .chart-ganzhi {
@@ -875,6 +1217,10 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 .chart-star.ping, .chart-star.li, .chart-star.de { background: var(--chart-ping-bg); color: var(--chart-quan); }
 .chart-star.xian, .chart-star.bu { background: var(--chart-xian-bg); color: var(--chart-ji); }
 
+[data-system="nishi"] .chart-star.ni-miao { background: var(--ni-miao-bg); color: var(--ni-miao-color); }
+[data-system="nishi"] .chart-star.ni-ping { background: var(--ni-ping-bg); color: var(--ni-ping-color); }
+[data-system="nishi"] .chart-star.ni-xian { background: var(--ni-xian-bg); color: var(--ni-xian-color); }
+
 .chart-sihua {
   font-size: 9.5px;
   font-weight: 700;
@@ -884,13 +1230,19 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 }
 
 .chart-sihua.lu { background: var(--success-light); color: var(--chart-lu); }
-.chart-sihua.quan { background: var(--warning-light); color: var(--chart-quan); }
-.chart-sihua.ke { background: var(--info-light); color: var(--chart-ke); }
+.chart-sihua.quan { background: var(--info-light); color: var(--chart-quan); }
+.chart-sihua.ke { background: var(--warning-light); color: var(--chart-ke); }
 .chart-sihua.ji { background: var(--danger-light); color: var(--chart-ji); }
 
 .chart-aux-stars {
   font-size: 10px;
-  color: var(--text-muted);
+  color: var(--info);
+  margin-top: 1px;
+}
+
+.chart-sha-stars {
+  font-size: 10px;
+  color: var(--danger);
   margin-top: 1px;
 }
 
@@ -898,26 +1250,56 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   font-size: 9.5px;
   color: var(--text-muted);
   position: absolute;
-  bottom: 3px;
-  right: 5px;
-}
-
-.chart-body-mark {
-  font-size: 9px;
-  color: var(--warning);
-  font-weight: 600;
-  position: absolute;
   top: 3px;
   right: 5px;
 }
 
-.chart-laiyin-mark {
-  font-size: 9px;
-  color: var(--accent);
-  font-weight: 600;
-  position: absolute;
-  top: 3px;
-  right: 5px;
+.chart-dalimit.current-dalimit {
+  color: var(--purple);
+  font-weight: 700;
+  background: var(--chart-dalimit-bg);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+.chart-empty-text {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 0 4px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chart-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.chart-legend-dot.lu { background: var(--chart-lu); }
+.chart-legend-dot.quan { background: var(--chart-quan); }
+.chart-legend-dot.ke { background: var(--chart-ke); }
+.chart-legend-dot.ji { background: var(--chart-ji); }
+
+.chart-hint {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 2px 0 0;
 }
 
 .chart-tooltip {
@@ -1122,11 +1504,17 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   .chart-zoom-controls {
     display: none;
   }
+  .mode-btn-group {
+    position: fixed;
+    top: 14px;
+    right: 70px;
+  }
 }
 
 @media print {
   .sidebar, .toolbar, .back-to-top, .chart-fab, .chart-panel, .chart-overlay,
-  .mobile-menu-btn, .progress-bar, .section-toggle, .inline-chart-expand { display: none !important; }
+  .mobile-menu-btn, .progress-bar, .section-toggle, .inline-chart-expand,
+  .mode-btn-group { display: none !important; }
   .main-content { margin-left: 0; padding: 0; max-width: 100%; }
   body { background: white; color: black; }
   .table-wrapper { border: 1px solid #ddd; }
@@ -1146,6 +1534,11 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 </button>
 
 <div class="toolbar">
+  <div class="mode-btn-group">
+    <button class="mode-btn" data-mode="iztro" onclick="switchSystem('iztro')">iztro</button>
+    <button class="mode-btn" data-mode="nishi" onclick="switchSystem('nishi')">倪师</button>
+    <button class="mode-btn" data-mode="combined" onclick="switchSystem('combined')">综合</button>
+  </div>
   <button class="toolbar-btn" onclick="toggleChart()" aria-label="排盘图" title="排盘图">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
   </button>
@@ -1160,6 +1553,10 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
       紫微斗数命盘
     </div>
+  </div>
+  <div class="sidebar-system-indicator">
+    <span class="sidebar-system-dot"></span>
+    <span class="sidebar-system-name" id="sidebarSystemName">综合模式</span>
   </div>
   <ul class="toc-list" id="tocList">
 ${toc}
@@ -1187,6 +1584,7 @@ ${bodyHtml}
     <div class="chart-panel-title">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
       命盘排盘图
+      <span class="chart-panel-system-badge" id="chartSystemBadge">综合</span>
     </div>
     <div class="chart-panel-actions">
       <div class="chart-zoom-controls">
@@ -1204,7 +1602,17 @@ ${bodyHtml}
     </div>
   </div>
   <div class="chart-panel-body" id="chartPanelBody">
-    <div class="chart-grid" id="chartGrid"></div>
+    <div class="chart-grid-wrapper" id="chartGridWrapper">
+      <div class="chart-grid" id="chartGrid"></div>
+      <svg class="chart-svg-overlay" id="chartSvgOverlay"></svg>
+    </div>
+    <div class="chart-legend">
+      <span class="chart-legend-item"><span class="chart-legend-dot lu"></span>化禄</span>
+      <span class="chart-legend-item"><span class="chart-legend-dot quan"></span>化权</span>
+      <span class="chart-legend-item"><span class="chart-legend-dot ke"></span>化科</span>
+      <span class="chart-legend-item"><span class="chart-legend-dot ji"></span>化忌</span>
+    </div>
+    <div class="chart-hint">点击宫位查看三方四正连线</div>
   </div>
   <div class="chart-panel-resize" id="chartResize"></div>
 </div>
@@ -1214,6 +1622,70 @@ ${bodyHtml}
 <script>
 (function() {
   var chartData = ${JSON.stringify(chartData)};
+
+  var systemLabels = {
+    iztro: 'iztro标准',
+    nishi: '倪师天纪',
+    combined: '综合模式'
+  };
+
+  var systemBadgeLabels = {
+    iztro: 'iztro',
+    nishi: '倪师',
+    combined: '综合'
+  };
+
+  function niBrightness(iztroLevel) {
+    if (!iztroLevel) return iztroLevel;
+    if (['庙','旺'].indexOf(iztroLevel) >= 0) return '庙旺';
+    if (['得','利','平'].indexOf(iztroLevel) >= 0) return '平';
+    if (['不','陷'].indexOf(iztroLevel) >= 0) return '陷';
+    return iztroLevel;
+  }
+
+  function getNiBrightnessClass(iztroLevel) {
+    var ni = niBrightness(iztroLevel);
+    if (ni === '庙旺') return 'ni-miao';
+    if (ni === '平') return 'ni-ping';
+    if (ni === '陷') return 'ni-xian';
+    return '';
+  }
+
+  function formatBrightnessLabel(iztroLevel) {
+    var system = document.documentElement.getAttribute('data-system') || 'combined';
+    if (!iztroLevel) return '';
+    if (system === 'iztro') return iztroLevel;
+    if (system === 'nishi') return niBrightness(iztroLevel);
+    return iztroLevel + '(' + niBrightness(iztroLevel) + ')';
+  }
+
+  /* ===== 体系切换 ===== */
+  function switchSystem(mode) {
+    document.documentElement.setAttribute('data-system', mode);
+    localStorage.setItem('ziwei-system', mode);
+    updateSystemUI(mode);
+    rerenderCharts();
+  }
+
+  function updateSystemUI(mode) {
+    document.querySelectorAll('.mode-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
+    });
+    var nameEl = document.getElementById('sidebarSystemName');
+    if (nameEl) nameEl.textContent = systemLabels[mode] || mode;
+    var badgeEl = document.getElementById('chartSystemBadge');
+    if (badgeEl) badgeEl.textContent = systemBadgeLabels[mode] || mode;
+  }
+
+  window.switchSystem = switchSystem;
+
+  var savedSystem = localStorage.getItem('ziwei-system');
+  if (savedSystem && ['iztro','nishi','combined'].indexOf(savedSystem) >= 0) {
+    document.documentElement.setAttribute('data-system', savedSystem);
+    updateSystemUI(savedSystem);
+  } else {
+    updateSystemUI('combined');
+  }
 
   /* ===== 主题切换 ===== */
   function toggleTheme() {
@@ -1259,7 +1731,6 @@ ${bodyHtml}
   window.toggleSidebar = toggleSidebar;
   window.closeSidebar = closeSidebar;
 
-  /* ===== 恢复主题 ===== */
   var saved = localStorage.getItem('ziwei-theme');
   if (saved) {
     document.documentElement.setAttribute('data-theme', saved);
@@ -1283,7 +1754,7 @@ ${bodyHtml}
 
   headings.forEach(function(h) { observer.observe(h); });
 
-  /* ===== 滚动处理：进度条 + 回到顶部 ===== */
+  /* ===== 滚动处理 ===== */
   var backToTop = document.getElementById('backToTop');
   var progressFill = document.getElementById('progressFill');
 
@@ -1295,7 +1766,6 @@ ${bodyHtml}
     backToTop.classList.toggle('visible', scrollTop > 400);
   });
 
-  /* ===== 目录点击关闭侧边栏 ===== */
   document.querySelectorAll('.toc-link').forEach(function(link) {
     link.addEventListener('click', function() {
       if (window.innerWidth <= 900) {
@@ -1362,7 +1832,6 @@ ${bodyHtml}
     11: { sanfang: [7, 3], sizheng: 5 }
   };
 
-  /* ===== 传统命盘4×4网格布局 ===== */
   var gridLayout = [
     { pos: 3, row: 1, col: 1 },
     { pos: 2, row: 1, col: 2 },
@@ -1397,6 +1866,7 @@ ${bodyHtml}
     panel.classList.remove('open');
     overlay.classList.remove('open');
     hideTooltip();
+    clearSanfangLines();
   }
 
   function minimizeChart() {
@@ -1435,8 +1905,19 @@ ${bodyHtml}
     return '';
   }
 
+  function isJiStar(name) {
+    var jiStars = ['左辅','右弼','文昌','文曲','天魁','天钺','禄存','天马'];
+    return jiStars.indexOf(name) >= 0;
+  }
+
+  function isShaStar(name) {
+    var shaStars = ['擎羊','陀罗','火星','铃星','地空','地劫','化忌'];
+    return shaStars.indexOf(name) >= 0;
+  }
+
   /* ===== 渲染排盘图 ===== */
   var tooltipData = {};
+  var selectedPosition = -1;
 
   function renderChartTo(container, isInline) {
     if (!chartData || !chartData.palaces || chartData.palaces.length === 0) {
@@ -1449,7 +1930,6 @@ ${bodyHtml}
 
     var html = '';
 
-    /* 渲染12个宫位 */
     gridLayout.forEach(function(item) {
       var palace = palaceMap[item.pos];
       var cellClass = 'chart-cell';
@@ -1460,6 +1940,7 @@ ${bodyHtml}
         if (palace.isBodyPalace) cellClass += ' palace-body';
         if (palace.isLaiyinPalace) cellClass += ' palace-laiyin';
         if (!palace.mainStars || palace.mainStars.length === 0) cellClass += ' palace-empty';
+        if (palace.dalimit && isCurrentDalimit(palace.dalimit)) cellClass += ' dalimit-active';
       } else {
         cellClass += ' palace-empty';
       }
@@ -1467,26 +1948,30 @@ ${bodyHtml}
       html += '<div class="' + cellClass + '" style="' + cellStyle + '" data-position="' + item.pos + '">';
 
       if (palace) {
-        /* 宫名与天干地支 */
         html += '<div class="chart-cell-header">';
         html += '<span class="chart-palace-name">' + esc(palace.name) + '</span>';
-        html += '<span class="chart-ganzhi">' + esc(palace.ganzhi || '') + '</span>';
+        html += '<div class="chart-palace-marks">';
+        if (item.pos === 5) html += '<span class="chart-ming-mark">命</span>';
+        if (palace.isBodyPalace) html += '<span class="chart-shen-mark">身</span>';
+        html += '</div>';
         html += '</div>';
 
-        /* 身宫/来因宫标记 */
-        if (palace.isBodyPalace) {
-          html += '<span class="chart-body-mark">身</span>';
-        } else if (palace.isLaiyinPalace) {
-          html += '<span class="chart-laiyin-mark">来因</span>';
+        html += '<div class="chart-ganzhi">' + esc(palace.ganzhi || '') + '</div>';
+
+        if (palace.dalimit) {
+          var dlClass = 'chart-dalimit' + (isCurrentDalimit(palace.dalimit) ? ' current-dalimit' : '');
+          html += '<div class="' + dlClass + '">' + esc(palace.dalimit) + '</div>';
         }
 
-        /* 主星 */
         if (palace.mainStars && palace.mainStars.length > 0) {
           html += '<div class="chart-main-stars">';
           palace.mainStars.forEach(function(s) {
             var bc = getBrightnessClass(s.brightness);
-            html += '<span class="chart-star ' + bc + '">' + esc(s.name);
-            if (s.brightness) html += '(' + esc(s.brightness) + ')';
+            var niBc = getNiBrightnessClass(s.brightness);
+            html += '<span class="chart-star ' + bc + ' ' + niBc + '">' + esc(s.name);
+            if (s.brightness) {
+              html += '<span class="chart-brightness-label" data-iztro="' + esc(s.brightness) + '" data-ni="' + esc(niBrightness(s.brightness)) + '">(' + formatBrightnessLabel(s.brightness) + ')</span>';
+            }
             if (s.sihua) {
               var sc = getSihuaClass(s.sihua);
               html += '<span class="chart-sihua ' + sc + '">' + esc(s.sihua) + '</span>';
@@ -1495,20 +1980,26 @@ ${bodyHtml}
           });
           html += '</div>';
         } else {
-          html += '<div class="chart-main-stars"><span style="font-size:10px;color:var(--text-muted);">空宫</span></div>';
+          html += '<div class="chart-main-stars"><span class="chart-empty-text">空宫</span></div>';
         }
 
-        /* 辅星 */
+        var jiStars = [];
+        var shaStars = [];
+        var otherAux = [];
         if (palace.auxStars && palace.auxStars.length > 0) {
-          html += '<div class="chart-aux-stars">' + esc(palace.auxStars.join(' ')) + '</div>';
+          palace.auxStars.forEach(function(s) {
+            if (isJiStar(s)) jiStars.push(s);
+            else if (isShaStar(s)) shaStars.push(s);
+            else otherAux.push(s);
+          });
+        }
+        if (jiStars.length > 0) {
+          html += '<div class="chart-aux-stars">' + esc(jiStars.join(' ')) + '</div>';
+        }
+        if (shaStars.length > 0) {
+          html += '<div class="chart-sha-stars">' + esc(shaStars.join(' ')) + '</div>';
         }
 
-        /* 大限 */
-        if (palace.dalimit) {
-          html += '<div class="chart-dalimit">' + esc(palace.dalimit) + '</div>';
-        }
-
-        /* 构建Tooltip数据 */
         var tt = '';
         tt += '<div class="chart-tooltip-title">' + esc(palace.name) + ' · ' + esc(palace.ganzhi || '') + ' (' + (palaceDizhi[item.pos] || '') + '宫)</div>';
         if (palace.mainStars && palace.mainStars.length > 0) {
@@ -1536,7 +2027,6 @@ ${bodyHtml}
         if (palace.note) {
           tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">备注</div>' + esc(palace.note) + '</div>';
         }
-        /* 三方四正信息 */
         var sf = sanfangMap[item.pos];
         if (sf) {
           var sfNames = sf.sanfang.map(function(p) { return palaceNames[p] || ''; });
@@ -1547,18 +2037,19 @@ ${bodyHtml}
       } else {
         html += '<div class="chart-cell-header">';
         html += '<span class="chart-palace-name">' + (palaceNames[item.pos] || '-') + '</span>';
-        html += '<span class="chart-ganzhi">' + (palaceDizhi[item.pos] || '') + '</span>';
         html += '</div>';
-        html += '<div class="chart-main-stars"><span style="font-size:10px;color:var(--text-muted);">空宫</span></div>';
+        html += '<div class="chart-ganzhi">' + (palaceDizhi[item.pos] || '') + '</div>';
+        html += '<div class="chart-main-stars"><span class="chart-empty-text">空宫</span></div>';
       }
 
       html += '</div>';
     });
 
-    /* 中心区域 */
     html += '<div class="chart-cell center-cell" style="grid-row:2/4;grid-column:2/4;">';
+    html += '<div class="center-taiji">☯</div>';
     if (chartData.info) {
-      html += '<div class="center-title">' + esc(chartData.info.name || '命盘') + '</div>';
+      html += '<div class="center-title">紫微斗数</div>';
+      html += '<div class="center-sub">' + esc(chartData.info.name || '命盘') + '</div>';
       html += '<div class="center-sub">' + esc(chartData.info.ganzhi || '') + '</div>';
       html += '<div class="center-sub">' + esc(chartData.info.wuxingju || '') + '</div>';
       if (chartData.info.gender) {
@@ -1570,30 +2061,164 @@ ${bodyHtml}
       if (chartData.info.shenzhu) {
         html += '<div class="center-sub">身主：' + esc(chartData.info.shenzhu) + '</div>';
       }
+      var currentDalimit = findCurrentDalimit();
+      if (currentDalimit) {
+        html += '<div class="center-dalimit-box">当前大限：' + esc(currentDalimit) + '</div>';
+      }
     }
     html += '</div>';
 
     container.innerHTML = html;
   }
 
+  function isCurrentDalimit(dalimitStr) {
+    if (!dalimitStr) return false;
+    var m = dalimitStr.match(/(\d+)[-~](\d+)/);
+    if (!m) return false;
+    var start = parseInt(m[1]);
+    var end = parseInt(m[2]);
+    var currentYear = new Date().getFullYear();
+    return currentYear >= start && currentYear <= end;
+  }
+
+  function findCurrentDalimit() {
+    if (!chartData || !chartData.palaces) return null;
+    for (var i = 0; i < chartData.palaces.length; i++) {
+      var p = chartData.palaces[i];
+      if (p.dalimit && isCurrentDalimit(p.dalimit)) {
+        return p.name + ' ' + p.dalimit;
+      }
+    }
+    return null;
+  }
+
   function renderChart() {
     var grid = document.getElementById('chartGrid');
     renderChartTo(grid, false);
-    bindChartTooltips(grid);
+    bindChartEvents(grid);
   }
 
   function renderInlineChart() {
     var container = document.getElementById('inlineChartGrid');
     if (!container) return;
     renderChartTo(container, true);
-    bindChartTooltips(container);
+    bindChartEvents(container);
   }
 
-  /* ===== Tooltip智能定位 ===== */
-  var chartTooltip = document.getElementById('chartTooltip');
-  var tooltipTimeout = null;
+  function rerenderCharts() {
+    var grid = document.getElementById('chartGrid');
+    if (grid && document.getElementById('chartPanel').classList.contains('open')) {
+      renderChart();
+    }
+    var inlineGrid = document.getElementById('inlineChartGrid');
+    if (inlineGrid) {
+      renderChartTo(inlineGrid, true);
+      bindChartEvents(inlineGrid);
+    }
+  }
 
-  function bindChartTooltips(container) {
+  /* ===== 三方四正SVG连线 ===== */
+  function drawSanfangLines(position) {
+    clearSanfangLines();
+    if (position < 0 || position > 11) return;
+
+    var svg = document.getElementById('chartSvgOverlay');
+    if (!svg) return;
+
+    var sf = sanfangMap[position];
+    if (!sf) return;
+
+    var relatedPositions = [position, sf.sanfang[0], sf.sanfang[1], sf.sizheng];
+
+    var gridEl = document.getElementById('chartGrid');
+    if (!gridEl) return;
+    var gridRect = gridEl.getBoundingClientRect();
+    var wrapperRect = svg.parentElement.getBoundingClientRect();
+
+    var centers = {};
+    gridLayout.forEach(function(item) {
+      var cellEl = gridEl.querySelector('[data-position="' + item.pos + '"]');
+      if (!cellEl) return;
+      var cellRect = cellEl.getBoundingClientRect();
+      centers[item.pos] = {
+        x: cellRect.left + cellRect.width / 2 - wrapperRect.left,
+        y: cellRect.top + cellRect.height / 2 - wrapperRect.top
+      };
+    });
+
+    svg.setAttribute('viewBox', '0 0 ' + wrapperRect.width + ' ' + wrapperRect.height);
+    svg.style.width = wrapperRect.width + 'px';
+    svg.style.height = wrapperRect.height + 'px';
+
+    var svgContent = '';
+
+    var c0 = centers[position];
+    var c1 = centers[sf.sanfang[0]];
+    var c2 = centers[sf.sanfang[1]];
+    var cOpp = centers[sf.sizheng];
+
+    if (c0 && cOpp) {
+      svgContent += '<line x1="' + c0.x + '" y1="' + c0.y + '" x2="' + cOpp.x + '" y2="' + cOpp.y + '" stroke="' + 'var(--chart-sanfang-line)' + '" stroke-width="2" stroke-dasharray="6,5" />';
+    }
+
+    if (c0 && c1 && c2) {
+      svgContent += '<polygon points="' + c0.x + ',' + c0.y + ' ' + c1.x + ',' + c1.y + ' ' + c2.x + ',' + c2.y + '" fill="none" stroke="' + 'var(--chart-sanfang-line)' + '" stroke-width="2" stroke-dasharray="6,5" />';
+    }
+
+    relatedPositions.forEach(function(pos) {
+      var c = centers[pos];
+      if (c) {
+        svgContent += '<circle cx="' + c.x + '" cy="' + c.y + '" r="5" fill="' + 'var(--chart-sanfang-line)' + '" />';
+      }
+    });
+
+    svg.innerHTML = svgContent;
+
+    var gridCells = gridEl.querySelectorAll('.chart-cell');
+    gridCells.forEach(function(cell) {
+      var pos = parseInt(cell.getAttribute('data-position'));
+      if (isNaN(pos)) return;
+      if (pos === position) {
+        cell.classList.add('selected');
+      } else if (relatedPositions.indexOf(pos) >= 0) {
+        cell.classList.add('sanfang-related');
+      }
+    });
+  }
+
+  function clearSanfangLines() {
+    var svg = document.getElementById('chartSvgOverlay');
+    if (svg) svg.innerHTML = '';
+    var grid = document.getElementById('chartGrid');
+    if (grid) {
+      grid.querySelectorAll('.chart-cell').forEach(function(cell) {
+        cell.classList.remove('selected', 'sanfang-related');
+      });
+    }
+    selectedPosition = -1;
+  }
+
+  /* ===== 宫位点击事件 ===== */
+  function bindChartEvents(container) {
+    container.addEventListener('click', function(e) {
+      var cell = e.target.closest('.chart-cell');
+      if (!cell || cell.classList.contains('center-cell')) {
+        if (!cell || cell.classList.contains('center-cell')) {
+          clearSanfangLines();
+        }
+        return;
+      }
+      var pos = parseInt(cell.getAttribute('data-position'));
+      if (isNaN(pos)) return;
+
+      if (selectedPosition === pos) {
+        clearSanfangLines();
+      } else {
+        selectedPosition = pos;
+        drawSanfangLines(pos);
+      }
+    });
+
     container.addEventListener('mouseenter', function(e) {
       var cell = e.target.closest('.chart-cell');
       if (!cell || cell.classList.contains('center-cell')) return;
@@ -1609,10 +2234,13 @@ ${bodyHtml}
     }, true);
   }
 
+  /* ===== Tooltip智能定位 ===== */
+  var chartTooltip = document.getElementById('chartTooltip');
+  var tooltipTimeout = null;
+
   function showTooltip(cell, content) {
     chartTooltip.innerHTML = content;
     chartTooltip.style.display = 'block';
-    /* 先显示以获取尺寸 */
     chartTooltip.style.left = '-9999px';
     chartTooltip.style.top = '-9999px';
 
@@ -1665,7 +2293,6 @@ ${bodyHtml}
   window.chartZoomOut = chartZoomOut;
   window.chartZoomReset = chartZoomReset;
 
-  /* Ctrl+滚轮缩放 */
   var chartPanelBody = document.getElementById('chartPanelBody');
   chartPanelBody.addEventListener('wheel', function(e) {
     if (e.ctrlKey || e.metaKey) {
@@ -1675,7 +2302,7 @@ ${bodyHtml}
     }
   }, { passive: false });
 
-  /* ===== 拖拽移动（支持鼠标和触摸） ===== */
+  /* ===== 拖拽移动 ===== */
   var isDragging = false;
   var dragOffsetX = 0;
   var dragOffsetY = 0;
@@ -1721,7 +2348,6 @@ ${bodyHtml}
 
   document.addEventListener('mouseup', endDrag);
 
-  /* 触摸拖拽 */
   panelHeader.addEventListener('touchstart', function(e) {
     if (e.target.closest('.chart-panel-btn') || e.target.closest('.chart-zoom-btn')) return;
     var touch = e.touches[0];
@@ -2096,7 +2722,11 @@ function markdownToHtml(md) {
       if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
       if (inTable) { html += buildTable(tableHeaders, tableRows); inTable = false; tableHeaders = []; tableRows = []; }
       var text = line.replace(/^>\s?/, '').trim();
-      html += '<blockquote>' + inlineFormat(text) + '</blockquote>';
+      var bqClass = 'blockquote';
+      if (text.indexOf('倪师') >= 0 || text.indexOf('天纪') >= 0) {
+        bqClass = 'blockquote nishi-quote';
+      }
+      html += '<' + bqClass + '>' + inlineFormat(text) + '</blockquote>';
       continue;
     }
 
@@ -2191,6 +2821,10 @@ function inlineFormat(text) {
   text = text.replace(/化科/g, '<span class="tag tag-info">化科</span>');
   text = text.replace(/化忌/g, '<span class="tag tag-danger">化忌</span>');
 
+  text = text.replace(/\[iztro\]/g, '<span class="tag tag-system-iztro">iztro</span>');
+  text = text.replace(/\[倪师\]/g, '<span class="tag tag-system-nishi">倪师</span>');
+  text = text.replace(/\[综合\]/g, '<span class="tag tag-system-combined">综合</span>');
+
   return text;
 }
 
@@ -2206,6 +2840,25 @@ function enhanceHtml(html) {
     /【通俗解析】([\s\S]*?)(?=<h[234]|$)/g,
     function(match, content) {
       return '<div class="interpretation-block lay"><div class="interpretation-label">通俗解析</div>' + content.trim() + '</div>';
+    }
+  );
+
+  html = html.replace(
+    /(<div class="interpretation-block pro">[\s\S]*?<\/div>)\s*(<div class="interpretation-block lay">[\s\S]*?<\/div>)/g,
+    function(match, pro, lay) {
+      return '<div class="interpretation-pair"><div class="interpretation-connector"></div>' + pro + lay + '</div>';
+    }
+  );
+
+  html = html.replace(
+    /【格局[：:]?\s*([^\】]+?)】([\s\S]*?)(?=【|$)/g,
+    function(match, title, content) {
+      var level = 'neutral';
+      var t = title.trim();
+      if (t.indexOf('极佳') >= 0 || t.indexOf('上上') >= 0 || t.indexOf('大吉') >= 0) level = 'excellent';
+      else if (t.indexOf('吉') >= 0 || t.indexOf('良') >= 0 || t.indexOf('优') >= 0) level = 'good';
+      else if (t.indexOf('凶') >= 0 || t.indexOf('险') >= 0 || t.indexOf('忌') >= 0 || t.indexOf('煞') >= 0) level = 'caution';
+      return '<div class="pattern-card ' + level + '"><div class="pattern-card-title">' + escapeHtml(t) + '</div>' + content.trim() + '</div>';
     }
   );
 
