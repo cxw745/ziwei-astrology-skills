@@ -11,20 +11,21 @@ description: >
 
 # 紫微斗数排盘与命盘详析
 
-基于两个开源仓库排盘与解读：
-- **iztro**（`https://github.com/SylarLong/iztro`）：排盘算法核心
-- **ziwei-doushu**（`https://github.com/Renhuai123/ziwei-doushu`）：倪海厦《天纪》体系知识库
+基于两个开源仓库排盘与解读（已作为 `sources/` 子目录包含在项目中）：
+- **iztro**（`sources/iztro/`）：排盘算法核心
+- **ziwei-doushu**（`sources/ziwei-doushu/`）：倪海厦《天纪》体系知识库
 
 冲突时以 ziwei-doushu（倪海厦体系）为准。
 
 ## 核心原则
 
 1. **排盘必须调用代码**：手动推算极易出错，所有计算必须通过 iztro 的 `bySolar` 方法
-2. **解读必须基于知识库**：所有断语必须来自 references 文件，不确定的标注"无法确定"
+2. **解读必须基于知识库**：所有断语必须来自 references 或 sources 文件，不确定的标注"无法确定"
 3. **实事求是，拒绝讨好**：凶象如实描述，不弱化化忌影响，不强行凑格局
 4. **三模式解读**：iztro标准 / 倪海厦天纪 / 综合（默认），冲突以倪师为准
 5. **双层输出**：专业解读 + 通俗解析
 6. **首次输出完整报告**：用户第一次提供信息时输出完整命盘报告，内容丰富度必须达到示例水平（1000行以上），不可省略任何章节或子节
+7. **来源标注**：每条事实性内容必须标注来源文件，格式 `[来源: 仓库名/文件路径]`，详见 `references/source-repos.md`
 
 ## 星耀处理规范
 
@@ -162,9 +163,11 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `references/heming-knowledge.md` | 倪师合盘断语 | ~141 |
 | `references/report-template.md` | 报告模板+专项模板+输出规范 | ~763 |
 | `references/shortcuts.md` | 快捷指令详细指引 | ~88 |
-| `references/source-repos.md` | 源仓库文件映射 | ~54 |
-| `scripts/md2html.js` | MD转HTML脚本 | ~3400 |
+| `references/source-repos.md` | 源仓库本地文件索引+引用标注格式 | ~168 |
+| `scripts/md2html.js` | MD转HTML脚本 | ~3420 |
 | `examples/` | 示例命盘 | - |
+| `sources/iztro/` | iztro排盘引擎源码（事实索引） | ~7300行 |
+| `sources/ziwei-doushu/` | 倪海厦知识库源码（事实索引） | ~12900行 |
 
 ## ⚠️ 常见陷阱
 
@@ -187,3 +190,5 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - **报告内容不足**：十二宫必须全部分析（12宫×7子节），宫干飞四化总表必须完整（48条），不可只写3~4个宫位就结束
 - **省略五行局推算**：必须列出8步推算过程
 - **省略命宫总论**：命宫必须独立成章，包含6个子节
+- **来源标注缺失**：每条事实性内容必须标注 `[来源: 仓库名/文件路径]`，无法追溯的标注"AI推断"
+- **虚构来源**：标注的来源文件必须在 sources/ 中实际存在，不可编造文件路径

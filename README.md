@@ -16,12 +16,14 @@
 
 ## 依赖仓库
 
-| 仓库 | 用途 | 地址 |
-|------|------|------|
-| iztro | 排盘算法核心 | https://github.com/SylarLong/iztro |
-| ziwei-doushu | 倪海厦《天纪》体系解读知识库 | https://github.com/Renhuai123/ziwei-doushu |
+| 仓库 | 用途 | 地址 | 本地路径 |
+|------|------|------|---------|
+| iztro | 排盘算法核心 | https://github.com/SylarLong/iztro | `sources/iztro/` |
+| ziwei-doushu | 倪海厦《天纪》体系解读知识库 | https://github.com/Renhuai123/ziwei-doushu | `sources/ziwei-doushu/` |
 
 **冲突规则**：两仓库内容有冲突时，以 ziwei-doushu（倪海厦体系）为准。
+
+**来源标注**：生成报告时，每条事实性内容均标注来源文件（如 `[来源: iztro/src/data/stars.ts]`），确保可追溯、不虚构。标注在 Markdown 源文件中可见，HTML 中自动隐藏。
 
 ## 快速开始
 
@@ -112,11 +114,14 @@ ziwei-astrology-skills/
 ├── PROJECT_CONTEXT.md
 ├── evals/                           # 开发者评测用例（非Skill运行时部分）
 │   └── evals.json
+├── sources/                         # 源仓库本地副本（事实索引数据库）
+│   ├── iztro/                       # iztro 排盘引擎源码
+│   └── ziwei-doushu/                # 倪海厦知识库源码
 ├── ziwei-output/                    # 排盘输出目录（与skills同级）
 │   └── {日期}_{出生信息}/
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md                  # 核心指令文件（189行）
+        ├── SKILL.md                  # 核心指令文件（194行）
         ├── scripts/
         │   └── md2html.js            # MD转HTML脚本
         ├── examples/
@@ -131,7 +136,7 @@ ziwei-astrology-skills/
             ├── heming-knowledge.md
             ├── report-template.md
             ├── shortcuts.md
-            └── source-repos.md
+            └── source-repos.md       # 源仓库文件索引+引用标注格式
 ```
 
 ## 三模式解读

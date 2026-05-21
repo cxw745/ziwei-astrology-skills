@@ -84,11 +84,14 @@ ziwei-astrology-skills/
 ├── PROJECT_CONTEXT.md                 # 本文档
 ├── evals/
 │   └── evals.json                     # 开发者评测用例（非Skill运行时部分）
+├── sources/                           # 源仓库本地副本（事实索引数据库）
+│   ├── iztro/                         # iztro 排盘引擎源码（~7300行）
+│   └── ziwei-doushu/                  # 倪海厦知识库源码（~12900行）
 ├── ziwei-output/                     # 排盘输出目录（与skills同级）
 │   └── {日期}_{出生信息}/
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md                   # 核心指令文件（189行，含内容丰富度硬性要求）
+        ├── SKILL.md                   # 核心指令文件（194行，含来源标注要求）
         ├── scripts/
         │   └── md2html.js             # MD转HTML脚本
         ├── examples/
@@ -103,7 +106,7 @@ ziwei-astrology-skills/
             ├── heming-knowledge.md
             ├── report-template.md
             ├── shortcuts.md
-            └── source-repos.md
+            └── source-repos.md        # 源仓库本地文件索引+引用标注格式
 ```
 
 ---
@@ -219,6 +222,12 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] report-template.md完全重写（匹配示例的完整11章结构，763行，含7子节宫位模板/宫干飞四化总表/命宫总论/四化飞化详析/附录）
 - [x] SKILL.md增加内容丰富度硬性要求（12宫×7子节、宫干飞四化48条、1000行以上、倪师断语必须引用）
 - [x] HTML移动端顶栏重叠修复（mode-btn-group脱离fixed定位、480px极窄屏适配）
+- [x] 源仓库本地化（sources/iztro + sources/ziwei-doushu，作为事实索引数据库）
+- [x] 来源标注体系（[来源: 仓库名/文件路径] 格式，MD可见/HTML隐藏）
+- [x] source-repos.md重写为本地文件索引（含引用标注格式规范）
+- [x] SKILL.md增加来源标注核心原则和常见陷阱
+- [x] report-template.md增加来源标注规范和示例
+- [x] md2html.js增加source-ref隐藏处理
 - [x] 推送到 GitHub 远程仓库
 
 ---

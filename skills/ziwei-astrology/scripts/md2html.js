@@ -1750,6 +1750,10 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   transition: opacity 0.25s ease, max-height 0.25s ease;
 }
 
+.source-ref {
+  display: none;
+}
+
 .system-content-fade-in {
   opacity: 1;
   max-height: 9999px;
@@ -3362,6 +3366,13 @@ function inlineFormat(text) {
 }
 
 function enhanceHtml(html) {
+  html = html.replace(
+    /\[来源:\s*([^\]]+)\]/g,
+    function(match, ref) {
+      return '<span class="source-ref" title="' + escapeHtml(ref) + '" data-source="' + escapeHtml(ref) + '"></span>';
+    }
+  );
+
   html = html.replace(
     /(<div class="interpretation-block pro[^"]*">[\s\S]*?<!-- \/interp-block -->)\s*(<div class="interpretation-block lay[^"]*">[\s\S]*?<!-- \/interp-block -->)/g,
     function(match, pro, lay) {
