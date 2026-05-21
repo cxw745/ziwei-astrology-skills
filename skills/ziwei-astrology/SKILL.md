@@ -225,10 +225,12 @@ description: >
 
 ### 文件夹结构
 
+**重要**：所有输出文件保存在用户当前工作目录下的 `ziwei-output/` 文件夹中，**不要**保存到 skills 目录内。skills 目录只包含技能定义文件，必须保持干净。
+
 每次排盘生成的文件按"日期-人名信息"分类存放：
 
 ```
-output/
+ziwei-output/                          # 位于用户当前工作目录下
 ├── 2026-05-21_1999年9月9日巳时男/
 │   ├── 命盘详析.md
 │   ├── 命盘详析.html
@@ -256,6 +258,7 @@ output/
 ```
 
 **命名规则**：
+- 输出根目录：`ziwei-output/`（在用户当前工作目录下自动创建）
 - 文件夹名格式：`{排盘日期}_{出生日期时辰性别}`
 - 排盘日期：YYYY-MM-DD格式（当天日期）
 - 出生日期时辰性别：如"1999年9月9日巳时男"、"2002年8月25日丑时女"
@@ -279,8 +282,8 @@ node scripts/md2html.js <input.md> [output.html]
 
 📋 **报告已生成**
 
-- 📄 Markdown: output/{文件夹名}/命盘详析.md
-- 🌐 HTML: output/{文件夹名}/命盘详析.html（可用浏览器打开，支持交互式排盘图和体系切换）
+- 📄 Markdown: ziwei-output/{文件夹名}/命盘详析.md
+- 🌐 HTML: ziwei-output/{文件夹名}/命盘详析.html（可用浏览器打开，支持交互式排盘图和体系切换）
 
 ⚡ **快捷指令**（基于已排命盘，无需重新排盘）：
 - `\money` — 财运详解    `\health` — 健康详解
@@ -299,8 +302,8 @@ node scripts/md2html.js <input.md> [output.html]
 
 📋 **{专项名称}已生成**
 
-- 📄 Markdown: output/{文件夹名}/{专项名称}.md
-- 🌐 HTML: output/{文件夹名}/{专项名称}.html
+- 📄 Markdown: ziwei-output/{文件夹名}/{专项名称}.md
+- 🌐 HTML: ziwei-output/{文件夹名}/{专项名称}.html
 
 ⚡ 继续探索：`\money` `\health` `\love` `\career` `\dash` `\flow` `\month` `\help`
 ```
@@ -311,8 +314,8 @@ node scripts/md2html.js <input.md> [output.html]
 
 📋 **{大限/流年/流月名称}详解已生成**
 
-- 📄 Markdown: output/{文件夹名}/{大限|流年|流月}/{文件名}.md
-- 🌐 HTML: output/{文件夹名}/{大限|流年|流月}/{文件名}.html
+- 📄 Markdown: ziwei-output/{文件夹名}/{大限|流年|流月}/{文件名}.md
+- 🌐 HTML: ziwei-output/{文件夹名}/{大限|流年|流月}/{文件名}.html
 
 ⚡ 继续探索：`\dash` `\flow` `\month` `\money` `\health` `\love` `\career` `\help`
 ```
@@ -473,11 +476,11 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 按 `references/report-template.md` 的结构输出完整命盘报告。
 根据当前解读模式生成对应风格的解读。
 
-**输出格式**：同时生成 Markdown 文件和 HTML 文件，存放到 `output/` 目录下对应的子文件夹中：
+**输出格式**：同时生成 Markdown 文件和 HTML 文件，存放到用户当前工作目录下的 `ziwei-output/` 目录中：
 1. Markdown 文件（.md）：作为文档存档，便于版本管理和编辑
 2. HTML 文件（.html）：使用 `scripts/md2html.js` 转换，提供美观的交互式阅读体验
 
-**输出路径**：`output/{排盘日期}_{出生日期时辰性别}/命盘详析.md` 和 `.html`
+**输出路径**：`ziwei-output/{排盘日期}_{出生日期时辰性别}/命盘详析.md` 和 `.html`
 
 HTML 转换命令：
 ```bash

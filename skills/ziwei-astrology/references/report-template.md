@@ -442,8 +442,10 @@ ALWAYS 使用此表格格式：
 
 ### 文件存放路径
 
+**重要**：所有输出文件保存在用户当前工作目录下的 `ziwei-output/` 文件夹中，**不要**保存到 skills 目录内。
+
 ```
-output/{排盘日期}_{出生日期时辰性别}/
+ziwei-output/{排盘日期}_{出生日期时辰性别}/
 ├── 命盘详析.md
 ├── 命盘详析.html
 ├── 财运详解.md
@@ -477,8 +479,8 @@ output/{排盘日期}_{出生日期时辰性别}/
 
 📋 **报告已生成**
 
-- 📄 Markdown: output/{文件夹名}/命盘详析.md
-- 🌐 HTML: output/{文件夹名}/命盘详析.html（可用浏览器打开，支持交互式排盘图和体系切换）
+- 📄 Markdown: ziwei-output/{文件夹名}/命盘详析.md
+- 🌐 HTML: ziwei-output/{文件夹名}/命盘详析.html（可用浏览器打开，支持交互式排盘图和体系切换）
 
 ⚡ **快捷指令**（基于已排命盘，无需重新排盘）：
 - `\money` — 财运详解    `\health` — 健康详解
@@ -497,8 +499,8 @@ output/{排盘日期}_{出生日期时辰性别}/
 
 📋 **{专项名称}已生成**
 
-- 📄 Markdown: output/{文件夹名}/{专项名称}.md
-- 🌐 HTML: output/{文件夹名}/{专项名称}.html
+- 📄 Markdown: ziwei-output/{文件夹名}/{专项名称}.md
+- 🌐 HTML: ziwei-output/{文件夹名}/{专项名称}.html
 
 ⚡ 继续探索：`\money` `\health` `\love` `\career` `\dash` `\flow` `\month` `\help`
 ```
@@ -509,8 +511,8 @@ output/{排盘日期}_{出生日期时辰性别}/
 
 📋 **{大限/流年/流月名称}详解已生成**
 
-- 📄 Markdown: output/{文件夹名}/{大限|流年|流月}/{文件名}.md
-- 🌐 HTML: output/{文件夹名}/{大限|流年|流月}/{文件名}.html
+- 📄 Markdown: ziwei-output/{文件夹名}/{大限|流年|流月}/{文件名}.md
+- 🌐 HTML: ziwei-output/{文件夹名}/{大限|流年|流月}/{文件名}.html
 
 ⚡ 继续探索：`\dash` `\flow` `\month` `\money` `\health` `\love` `\career` `\help`
 ```
