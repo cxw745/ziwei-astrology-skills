@@ -1495,6 +1495,51 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 
 .chart-overlay.open { display: block; }
 
+.system-content { transition: opacity 0.3s ease, max-height 0.3s ease; overflow: hidden; }
+
+[data-system="iztro"] .system-nishi { display: none; }
+[data-system="iztro"] .system-combined { display: none; }
+[data-system="iztro"] .system-not-iztro { display: none; }
+
+[data-system="nishi"] .system-iztro { display: none; }
+[data-system="nishi"] .system-combined { display: none; }
+[data-system="nishi"] .system-not-nishi { display: none; }
+
+[data-system="combined"] .system-iztro { display: none; }
+[data-system="combined"] .system-nishi { display: none; }
+
+[data-system="nishi"] .system-nishi-note::after {
+  content: '（倪师体系不使用）';
+  font-size: 11px;
+  color: var(--chart-ji);
+  margin-left: 4px;
+}
+
+[data-system="nishi"] .system-not-nishi-ref::after {
+  content: '（供参考，倪师体系不主张）';
+  font-size: 11px;
+  color: var(--chart-ke);
+  margin-left: 4px;
+}
+
+.system-content-fade-out {
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 0.25s ease, max-height 0.25s ease;
+}
+
+.system-content-fade-in {
+  opacity: 1;
+  max-height: 9999px;
+  transition: opacity 0.3s ease 0.05s, max-height 0.3s ease 0.05s;
+}
+
+@media print {
+  .system-content { display: block !important; }
+  .system-nishi-note::after,
+  .system-not-nishi-ref::after { display: none !important; }
+}
+
 @media (max-width: 900px) {
   .sidebar {
     transform: translateX(-100%);
@@ -1692,9 +1737,27 @@ ${bodyHtml}
 
   /* ===== 体系切换 ===== */
   function switchSystem(mode) {
-    document.documentElement.setAttribute('data-system', mode);
-    localStorage.setItem('ziwei-system', mode);
-    updateSystemUI(mode);
+    var allSystemContent = document.querySelectorAll('.system-content');
+    allSystemContent.forEach(function(el) {
+      el.classList.add('system-content-fade-out');
+    });
+
+    setTimeout(function() {
+      document.documentElement.setAttribute('data-system', mode);
+      localStorage.setItem('ziwei-system', mode);
+      updateSystemUI(mode);
+
+      allSystemContent.forEach(function(el) {
+        el.classList.remove('system-content-fade-out');
+        el.classList.add('system-content-fade-in');
+      });
+
+      setTimeout(function() {
+        allSystemContent.forEach(function(el) {
+          el.classList.remove('system-content-fade-in');
+        });
+      }, 350);
+    }, 250);
   }
 
   function updateSystemUI(mode) {
@@ -2669,6 +2732,26 @@ function parseMainStars(str) {
 }
 
 function markdownToHtml(md) {
+  md = md.replace(/:::iztro\n([\s\S]*?)\n:::/g, function(m, content) {
+    return '<div class="system-content system-iztro">' + markdownToHtmlInner(content) + '</div>';
+  });
+  md = md.replace(/:::nishi\n([\s\S]*?)\n:::/g, function(m, content) {
+    return '<div class="system-content system-nishi">' + markdownToHtmlInner(content) + '</div>';
+  });
+  md = md.replace(/:::combined\n([\s\S]*?)\n:::/g, function(m, content) {
+    return '<div class="system-content system-combined">' + markdownToHtmlInner(content) + '</div>';
+  });
+  md = md.replace(/:::not-iztro\n([\s\S]*?)\n:::/g, function(m, content) {
+    return '<div class="system-content system-not-iztro">' + markdownToHtmlInner(content) + '</div>';
+  });
+  md = md.replace(/:::not-nishi\n([\s\S]*?)\n:::/g, function(m, content) {
+    return '<div class="system-content system-not-nishi">' + markdownToHtmlInner(content) + '</div>';
+  });
+
+  return markdownToHtmlInner(md);
+}
+
+function markdownToHtmlInner(md) {
   var lines = md.split('\n');
   var html = '';
   var inTable = false;
@@ -2866,21 +2949,49 @@ function enhanceHtml(html) {
   html = html.replace(
     /【专业解读】([\s\S]*?)(?=【通俗解析】|<h[234]|$)/g,
     function(match, content) {
-      return '<div class="interpretation-block pro"><div class="interpretation-label">专业解读</div>' + content.trim() + '</div>';
+      return '<div class="interpretation-block pro system-content system-not-nishi"><div class="interpretation-label">专业解读</div>' + content.trim() + '</div>';
     }
   );
 
   html = html.replace(
     /【通俗解析】([\s\S]*?)(?=<h[234]|$)/g,
     function(match, content) {
-      return '<div class="interpretation-block lay"><div class="interpretation-label">通俗解析</div>' + content.trim() + '</div>';
+      return '<div class="interpretation-block lay system-content system-iztro"><div class="interpretation-label">通俗解析</div>' + content.trim() + '</div>';
     }
   );
 
   html = html.replace(
-    /(<div class="interpretation-block pro">[\s\S]*?<\/div>)\s*(<div class="interpretation-block lay">[\s\S]*?<\/div>)/g,
+    /(<div class="interpretation-block pro[\s\S]*?<\/div>)\s*(<div class="interpretation-block lay[\s\S]*?<\/div>)/g,
     function(match, pro, lay) {
       return '<div class="interpretation-pair"><div class="interpretation-connector"></div>' + pro + lay + '</div>';
+    }
+  );
+
+  html = html.replace(
+    /<blockquote class="blockquote nishi-quote">([\s\S]*?)<\/blockquote>/g,
+    function(match, content) {
+      return '<blockquote class="blockquote nishi-quote system-content system-not-iztro">' + content + '</blockquote>';
+    }
+  );
+
+  html = html.replace(
+    /(<blockquote class="blockquote">)([\s\S]*?)(倪师|倪海厦|天纪)([\s\S]*?)(<\/blockquote>)/g,
+    function(match, open, pre, keyword, post, close) {
+      return '<blockquote class="blockquote nishi-quote system-content system-not-iztro">' + pre + keyword + post + close;
+    }
+  );
+
+  html = html.replace(
+    /(<p>[\s\S]*?)(宫干飞化|自化)([\s\S]*?<\/p>)/g,
+    function(match, pre, keyword, post) {
+      return pre + '<span class="system-not-nishi-ref">' + keyword + '</span>' + post;
+    }
+  );
+
+  html = html.replace(
+    /(<p>[\s\S]*?)(大限四化)([\s\S]*?<\/p>)/g,
+    function(match, pre, keyword, post) {
+      return pre + '<span class="system-nishi-note">' + keyword + '</span>' + post;
     }
   );
 
