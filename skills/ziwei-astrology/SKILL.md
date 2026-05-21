@@ -97,6 +97,56 @@ node scripts/md2html.js <input.md> [output.html]
 
 合盘分析参照 `references/heming-knowledge.md`，核心：看婚姻必须同时看福德宫。
 
+## 知识准备与补充策略
+
+### Step 0：知识准备（按需加载）
+
+排盘前不强制读取任何文件。但在以下环节必须回源验证：
+- 格局判断 → 必须对照 `sources/ziwei-doushu/lib/ziwei/patterns.ts`
+- 倪师断语 → 必须对照 `sources/ziwei-doushu/lib/nihai/tianji.ts`
+- 古籍引用 → 必须对照 `sources/ziwei-doushu/lib/classics/data/`
+- 四化数据 → 必须对照 `sources/iztro/src/data/heavenlyStems.ts`
+- 亮度数据 → 必须对照 `sources/iztro/src/data/stars.ts`
+- 星曜宫位断语 → 速查 `references/star-palace-matrix.md`，验证回源 `sources/ziwei-doushu/lib/seo/knowledge.ts`
+
+### 网页搜索补充策略
+
+当 references/ 和 sources/ 中的知识不足以完整回答用户问题时，可使用网页搜索补充。
+
+**搜索原则**：
+1. **仓库优先**：两个仓库内容为主，搜索结果为辅
+2. **冲突处理**：搜索结果与仓库内容冲突时，以仓库为准
+3. **来源标注**：搜索补充的内容标注 `[来源: 网络搜索]`，不与仓库来源混淆
+4. **可信度筛选**：优先搜索学术文献、经典注疏、专业论坛，避开营销内容
+
+**搜索触发条件**：
+- 某颗星在特定宫位的详细断语，仓库中无对应条目
+- 用户追问的专业术语，仓库中未解释
+- 特定流年的重大天象或社会背景
+- 古籍原文的精确引用
+
+**禁止搜索的场景**：
+- 排盘计算（必须用 iztro 代码）
+- 四化对照表（仓库已有完整数据）
+- 格局判断规则（以仓库为准）
+- 亮度数据（以仓库为准）
+
+### 排盘失败降级方案
+
+若 iztro 代码执行失败：
+1. 尝试 `npm install iztro` 后重试
+2. 若仍失败，基于 references/ 中的安星规则手动推算
+3. 手动推算的报告必须标注"⚠️ 手动推算，未经代码验证，可能存在误差"
+4. 手动推算时必须对照 sources/iztro/ 逐步验证
+
+### 来源标注决策树
+
+1. 数据来自 iztro 排盘结果 → `[来源: iztro排盘]`
+2. 断语来自 references/ → 追溯到 sources/ 具体文件 → `[来源: 仓库名/文件路径]`
+3. 断语来自 sources/ 直接阅读 → `[来源: 仓库名/文件路径]`
+4. 断语来自网页搜索 → `[来源: 网络搜索]`
+5. 无法追溯来源 → 标注"AI推断"
+
 ## 工作流
 
 ### Step 1：收集输入
@@ -132,7 +182,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - 综合建议必须7个子章节
 - 附录不可省略（术语解释+亮度对照+参考文献）
 - 倪师断语必须在每个关键宫位和四化处引用
-- 报告总行数应达到1000行以上
+- 报告内容丰富度以示例（examples/）为标准，不可省略任何子节
 
 ### Step 5：继续提问
 
@@ -158,10 +208,13 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `references/time-mapping.md` | 确认时辰索引 | ~34 |
 | `references/star-rules.md` | 安星规则与亮度表 | ~168 |
 | `references/sihua-rules.md` | 四化对照表 | ~72 |
-| `references/patterns.md` | 格局识别规则 | ~117 |
+| `references/patterns.md` | 格局识别规则（46个格局） | ~350 |
 | `references/palace-interpretation.md` | 十二宫解读 | ~218 |
 | `references/heming-knowledge.md` | 倪师合盘断语 | ~141 |
-| `references/report-template.md` | 报告模板+专项模板+输出规范 | ~763 |
+| `references/nihai-quotes.md` | 倪师天纪断语（各宫位/四化/面相/堪舆） | ~120 |
+| `references/classics-excerpts.md` | 古籍关键段落摘录（骨髓赋等） | ~100 |
+| `references/star-palace-matrix.md` | 14主星×12宫速查表 | ~50 |
+| `references/report-template.md` | 报告模板+专项模板+输出规范 | ~800 |
 | `references/shortcuts.md` | 快捷指令详细指引 | ~88 |
 | `references/source-repos.md` | 源仓库本地文件索引+引用标注格式 | ~168 |
 | `scripts/md2html.js` | MD转HTML脚本 | ~3420 |

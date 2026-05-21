@@ -91,20 +91,23 @@ ziwei-astrology-skills/
 │   └── {日期}_{出生信息}/
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md                   # 核心指令文件（194行，含来源标注要求）
+        ├── SKILL.md                   # 核心指令文件（含来源标注+知识准备+网页搜索策略+降级方案）
         ├── scripts/
         │   └── md2html.js             # MD转HTML脚本
         ├── examples/
         │   ├── 命盘详析_1999年9月9日巳时男.md
         │   └── 命盘详析_1999年9月9日巳时男.html
-        └── references/                # 渐进式披露参考文档
+        └── references/                # 渐进式披露参考文档（12个）
             ├── time-mapping.md
             ├── star-rules.md
             ├── sihua-rules.md
-            ├── patterns.md
+            ├── patterns.md            # 格局识别规则（46个格局）
             ├── palace-interpretation.md
             ├── heming-knowledge.md
-            ├── report-template.md
+            ├── nihai-quotes.md        # 倪师天纪断语（各宫位/四化/面相/堪舆）
+            ├── classics-excerpts.md   # 古籍关键段落摘录（骨髓赋等）
+            ├── star-palace-matrix.md  # 14主星×12宫速查表
+            ├── report-template.md     # 含16项自检清单
             ├── shortcuts.md
             └── source-repos.md        # 源仓库本地文件索引+引用标注格式
 ```
@@ -120,9 +123,10 @@ ziwei-astrology-skills/
 3. **星耀处理规范**：空宫处理规范（借星规则、minorStars归属）
 4. **输出风格**：三模式（iztro/倪师/综合）+双层（专业+通俗），含完整示例
 5. **功能模块**：4个模块+排盘可视化，每个含输入示例
-6. **工作流**：Step 1（收集输入）→ Step 2（排盘）→ Step 3（格局识别）→ Step 4（生成报告MD+HTML）→ Step 5（继续提问）→ Step 6（全面核查）
-7. **参考索引**：9个references按需加载+1个脚本工具
-8. **常见陷阱**：19条，含内容丰富度硬性要求（12宫×7子节、宫干飞四化48条、1000行以上）
+6. **工作流**：Step 0（知识准备+按需回源验证）→ Step 1（收集输入）→ Step 2（排盘）→ Step 3（格局识别）→ Step 4（生成报告MD+HTML）→ Step 5（继续提问）→ Step 6（全面核查+自检清单）
+7. **参考索引**：12个references按需加载+1个脚本工具
+8. **常见陷阱**：19条，含内容丰富度硬性要求（12宫×7子节、宫干飞四化48条、内容以示例为标准）
+9. **知识补充**：网页搜索策略（仓库优先、冲突以仓库为准）、排盘失败降级方案、来源标注决策树
 
 ---
 
@@ -179,7 +183,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 
 ## 十、输出前核查步骤
 
-每次生成报告前，必须逐项核查以下8项：
+每次生成报告前，必须逐项核查以下8项，并填写 report-template.md 中的16项自检清单：
 
 1. **星耀位置**：所有主星/辅星宫位与iztro排盘数据一致
 2. **四化**：化禄/化权/化科/化忌所落宫位与天干对应正确
@@ -197,6 +201,18 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] 全面理解 iztro 和 ziwei-doushu 两个仓库
 - [x] 编写 SKILL.md 核心指令文件（按skill-creator方法论）
 - [x] 编写 9 个 references 参考文件
+- [x] 扩展 patterns.md（13格局→46格局，完整覆盖 patterns.ts）
+- [x] 新增 nihai-quotes.md（倪师天纪断语：各宫位/四化/面相/堪舆/课程要点）
+- [x] 新增 classics-excerpts.md（骨髓赋等古籍关键段落摘录）
+- [x] 新增 star-palace-matrix.md（14主星×12宫速查表）
+- [x] SKILL.md 增加 Step 0（知识准备+按需回源验证）
+- [x] SKILL.md 增加网页搜索补充策略（仓库优先、冲突以仓库为准）
+- [x] SKILL.md 增加排盘失败降级方案
+- [x] SKILL.md 增加来源标注决策树（5种来源的标注规则）
+- [x] report-template.md 增加16项结构化自检清单
+- [x] report-template.md 将"1000行以上"改为"内容丰富度以示例为标准"
+- [x] source-repos.md 更新索引（反映新增3个 references）
+- [x] SKILL.md 参考文件索引更新（9→12个 references）
 - [x] 编写 README.md（支持 Claude Code/Trae/Cursor/Codex 安装）
 - [x] 创建 MIT LICENSE
 - [x] 创建 evals 测试用例（6个场景）

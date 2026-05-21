@@ -68,7 +68,7 @@
 | 文件路径 | 内容 | 对应 references |
 |---------|------|----------------|
 | `sources/ziwei-doushu/lib/ziwei/algorithm.ts` | 排盘流程（基于iztro封装） | - |
-| `sources/ziwei-doushu/lib/ziwei/patterns.ts` | 格局识别规则（1118行） | patterns.md |
+| `sources/ziwei-doushu/lib/ziwei/patterns.ts` | 格局识别规则（1118行，46个格局） | patterns.md |
 | `sources/ziwei-doushu/lib/ziwei/sihua.ts` | 四化系统与宫干自化 | sihua-rules.md |
 | `sources/ziwei-doushu/lib/ziwei/constants.ts` | 常量与星耀描述 | star-rules.md |
 | `sources/ziwei-doushu/lib/ziwei/heming-knowledge.ts` | 倪海厦合盘与夫妻宫断语 | heming-knowledge.md |
@@ -77,7 +77,7 @@
 
 | 文件路径 | 内容 |
 |---------|------|
-| `sources/ziwei-doushu/lib/nihai/tianji.ts` | 天纪（紫微斗数/易经/堪舆/面相等，548行） |
+| `sources/ziwei-doushu/lib/nihai/tianji.ts` | 天纪（紫微斗数/易经/堪舆/面相等，548行） | nihai-quotes.md |
 | `sources/ziwei-doushu/lib/nihai/renji.ts` | 人纪（针灸/内经/本草/伤寒等，659行） |
 | `sources/ziwei-doushu/lib/nihai/diji.ts` | 地纪（地理志/风水与国运，183行） |
 
@@ -85,7 +85,7 @@
 
 | 文件路径 | 内容 |
 |---------|------|
-| `sources/ziwei-doushu/lib/classics/gusuifu.ts` | 骨髓赋（紫微斗数核心歌诀，218行） |
+| `sources/ziwei-doushu/lib/classics/gusuifu.ts` | 骨髓赋（紫微斗数核心歌诀，218行） | classics-excerpts.md |
 | `sources/ziwei-doushu/lib/classics/quanji.ts` | 紫微斗数全集（清代古本，195行） |
 | `sources/ziwei-doushu/lib/classics/quanshu.ts` | 紫微斗数全书（陈希夷传本，146行） |
 
@@ -93,7 +93,7 @@
 
 | 文件路径 | 内容 |
 |---------|------|
-| `sources/ziwei-doushu/lib/seo/knowledge.ts` | 14主星×12宫位结构化知识数据 |
+| `sources/ziwei-doushu/lib/seo/knowledge.ts` | 14主星×12宫位结构化知识数据 | star-palace-matrix.md |
 
 ---
 
@@ -140,6 +140,8 @@
    - 倪师断语
    - 古籍引用
    - 宫位解读规则
+   - 倪师天纪断语（引用 nihai-quotes.md 时仍标注 sources 路径）
+   - 古籍原文摘录（引用 classics-excerpts.md 时仍标注 sources 路径）
 6. **不需要标注的场景**：
    - 基本数学推算（如五行局推算过程）
    - AI综合分析（标注"AI综合分析"即可）
@@ -162,6 +164,6 @@
 ## 查阅原则
 
 1. **sources/ 为事实基准**：所有事实性内容必须可追溯到 sources/ 中的具体文件
-2. **references 为提炼版**：references 文件是从 sources/ 提炼的精简规则，优先使用
+2. **references 为提炼版**：references 文件是从 sources/ 提炼的精简规则，优先使用。当前共12个 references 文件
 3. **sources/ 用于验证**：对 references 内容有疑问时，查阅 sources/ 原文验证
 4. **标注即验证**：每条标注都是对内容事实性的背书，无法标注的内容需声明"AI推断"
