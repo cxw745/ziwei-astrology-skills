@@ -113,8 +113,8 @@ function generateHtml(mdContent, fileName) {
   --bg-blockquote: rgba(82,156,202,0.06);
   --bg-overlay: rgba(0,0,0,0.7);
   --text-primary: #e8e8e4;
-  --text-secondary: #9b9b97;
-  --text-muted: #6b6b67;
+  --text-secondary: #a5a5a1;
+  --text-muted: #7d7d79;
   --text-link: #529cca;
   --text-link-hover: #6db3d8;
   --border-color: #2f2f2f;
@@ -1387,6 +1387,7 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   overflow: hidden;
   background: var(--bg-card);
   box-shadow: var(--shadow-sm);
+  max-width: 100%;
 }
 
 .inline-chart-header {
@@ -1431,6 +1432,7 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 
 .inline-chart-body {
   padding: 12px;
+  position: relative;
 }
 
 .chart-grid-inline {
@@ -1495,7 +1497,7 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 
 .chart-overlay.open { display: block; }
 
-.system-content { transition: opacity 0.3s ease, max-height 0.3s ease; overflow: hidden; }
+.system-content { margin: 12px 0; transition: opacity 0.3s ease, max-height 0.3s ease; overflow: hidden; }
 
 [data-system="iztro"] .system-nishi { display: none; }
 [data-system="iztro"] .system-combined { display: none; }
@@ -2215,11 +2217,13 @@ ${bodyHtml}
   }
 
   /* ===== 三方四正SVG连线 ===== */
-  function drawSanfangLines(position) {
+  function drawSanfangLines(position, containerId) {
     clearSanfangLines();
     if (position < 0 || position > 11) return;
 
-    var svg = document.getElementById('chartSvgOverlay');
+    containerId = containerId || 'chartGrid';
+    var svgId = containerId === 'inlineChartGrid' ? 'inlineChartSvgOverlay' : 'chartSvgOverlay';
+    var svg = document.getElementById(svgId);
     if (!svg) return;
 
     var sf = sanfangMap[position];
@@ -2227,7 +2231,7 @@ ${bodyHtml}
 
     var relatedPositions = [position, sf.sanfang[0], sf.sanfang[1], sf.sizheng];
 
-    var gridEl = document.getElementById('chartGrid');
+    var gridEl = document.getElementById(containerId);
     if (!gridEl) return;
     var gridRect = gridEl.getBoundingClientRect();
     var wrapperRect = svg.parentElement.getBoundingClientRect();
@@ -2271,27 +2275,34 @@ ${bodyHtml}
 
     svg.innerHTML = svgContent;
 
-    var gridCells = gridEl.querySelectorAll('.chart-cell');
-    gridCells.forEach(function(cell) {
-      var pos = parseInt(cell.getAttribute('data-position'));
-      if (isNaN(pos)) return;
-      if (pos === position) {
-        cell.classList.add('selected');
-      } else if (relatedPositions.indexOf(pos) >= 0) {
-        cell.classList.add('sanfang-related');
-      }
+    ['chartGrid', 'inlineChartGrid'].forEach(function(gId) {
+      var grid = document.getElementById(gId);
+      if (!grid) return;
+      grid.querySelectorAll('.chart-cell').forEach(function(cell) {
+        var pos = parseInt(cell.getAttribute('data-position'));
+        if (isNaN(pos)) return;
+        if (pos === position) {
+          cell.classList.add('selected');
+        } else if (relatedPositions.indexOf(pos) >= 0) {
+          cell.classList.add('sanfang-related');
+        }
+      });
     });
   }
 
   function clearSanfangLines() {
-    var svg = document.getElementById('chartSvgOverlay');
-    if (svg) svg.innerHTML = '';
-    var grid = document.getElementById('chartGrid');
-    if (grid) {
-      grid.querySelectorAll('.chart-cell').forEach(function(cell) {
-        cell.classList.remove('selected', 'sanfang-related');
-      });
-    }
+    ['chartSvgOverlay', 'inlineChartSvgOverlay'].forEach(function(id) {
+      var svg = document.getElementById(id);
+      if (svg) svg.innerHTML = '';
+    });
+    ['chartGrid', 'inlineChartGrid'].forEach(function(gId) {
+      var grid = document.getElementById(gId);
+      if (grid) {
+        grid.querySelectorAll('.chart-cell').forEach(function(cell) {
+          cell.classList.remove('selected', 'sanfang-related');
+        });
+      }
+    });
     selectedPosition = -1;
   }
 
@@ -2312,7 +2323,7 @@ ${bodyHtml}
         clearSanfangLines();
       } else {
         selectedPosition = pos;
-        drawSanfangLines(pos);
+        drawSanfangLines(pos, container.id);
       }
     });
 
@@ -3015,7 +3026,10 @@ function enhanceHtml(html) {
     + '<button class="inline-chart-expand" onclick="toggleChart()">放大查看</button>'
     + '</div>'
     + '<div class="inline-chart-body">'
+    + '<div class="chart-grid-wrapper">'
     + '<div class="chart-grid chart-grid-inline" id="inlineChartGrid"></div>'
+    + '<svg class="chart-svg-overlay" id="inlineChartSvgOverlay"></svg>'
+    + '</div>'
     + '</div>'
     + '</div>';
 
