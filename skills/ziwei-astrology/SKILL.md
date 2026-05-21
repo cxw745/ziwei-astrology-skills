@@ -199,6 +199,23 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 按 `references/report-template.md` 的结构输出完整命盘报告。
 每个主题包含专业解读+通俗解析两层。
 
+**输出格式**：同时生成 Markdown 文件和 HTML 文件：
+1. Markdown 文件（.md）：作为文档存档，便于版本管理和编辑
+2. HTML 文件（.html）：使用 `scripts/md2html.js` 转换，提供美观的交互式阅读体验
+
+HTML 转换命令：
+```bash
+node scripts/md2html.js <input.md> [output.html]
+```
+
+HTML 特性：
+- 明亮/黑暗双主题切换（右上角按钮）
+- 侧边栏目录导航（自动高亮当前章节）
+- 四化标签彩色标注（化禄绿/化权橙/化科蓝/化忌红）
+- 星耀亮度彩色标签（庙旺绿/平橙/陷红）
+- 响应式布局（移动端自动折叠侧边栏）
+- 打印友好样式
+
 ### Step 5：继续提问
 
 用户基于已排命盘继续提问时：
@@ -227,9 +244,15 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `references/star-rules.md` | 安星规则与亮度表 | ~168 |
 | `references/sihua-rules.md` | 四化对照表与飞化规则 | ~72 |
 | `references/patterns.md` | 格局识别规则 | ~111 |
-| `references/palace-interpretation.md` | 十二宫解读规则 | ~104 |
+| `references/palace-interpretation.md` | 十二宫解读规则 | ~216 |
 | `references/heming-knowledge.md` | 倪海厦合盘与夫妻宫断语 | ~109 |
-| `references/report-template.md` | 完整报告输出模板 | ~92 |
+| `references/report-template.md` | 完整报告输出模板 | ~180 |
+
+**脚本工具**：
+
+| 脚本 | 用途 |
+|------|------|
+| `scripts/md2html.js` | 将命盘详析 MD 转换为交互式 HTML（明暗主题、侧边导航、四化彩色标注） |
 
 ## ⚠️ 常见陷阱
 

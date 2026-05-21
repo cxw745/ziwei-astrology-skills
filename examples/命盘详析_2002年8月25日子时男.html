@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>紫微斗数命盘详析</title>
+<style>
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-sidebar: #f1f3f5;
+  --bg-hover: #e9ecef;
+  --bg-code: #f1f3f5;
+  --bg-table-header: #f8f9fa;
+  --bg-table-stripe: #f8f9fa;
+  --bg-blockquote: #f0f7ff;
+  --bg-tag: #e3f2fd;
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --text-muted: #868e96;
+  --text-link: #1971c2;
+  --border-color: #dee2e6;
+  --border-light: #e9ecef;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+  --accent: #1971c2;
+  --accent-light: #d0ebff;
+  --danger: #e03131;
+  --danger-light: #ffe3e3;
+  --success: #2f9e44;
+  --success-light: #d3f9d8;
+  --warning: #e8590c;
+  --warning-light: #fff4e6;
+  --info: #1098ad;
+  --info-light: #c5f6fa;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --transition: 0.3s ease;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1b1e;
+  --bg-secondary: #25262b;
+  --bg-card: #2c2e33;
+  --bg-sidebar: #25262b;
+  --bg-hover: #373a40;
+  --bg-code: #373a40;
+  --bg-table-header: #373a40;
+  --bg-table-stripe: #25262b;
+  --bg-blockquote: #1b3a5c;
+  --bg-tag: #1b3a5c;
+  --text-primary: #e9ecef;
+  --text-secondary: #adb5bd;
+  --text-muted: #868e96;
+  --text-link: #74c0fc;
+  --border-color: #373a40;
+  --border-light: #373a40;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+  --accent: #74c0fc;
+  --accent-light: #1b3a5c;
+  --danger: #ff8787;
+  --danger-light: #3b1111;
+  --success: #69db7c;
+  --success-light: #1b3b1b;
+  --warning: #ffa94d;
+  --warning-light: #3b2a11;
+  --info: #66d9e8;
+  --info-light: #113b3b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.8;
+  transition: background var(--transition), color var(--transition);
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 280px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
+  transition: transform var(--transition), background var(--transition);
+  padding: 20px 0;
+}
+
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 12px;
+}
+
+.sidebar-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-title svg { width: 20px; height: 20px; }
+
+.toc-list { list-style: none; padding: 0 8px; }
+
+.toc-item {
+  margin-bottom: 2px;
+}
+
+.toc-link {
+  display: block;
+  padding: 6px 16px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  border-radius: 6px;
+  transition: all var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toc-link:hover {
+  background: var(--bg-hover);
+  color: var(--accent);
+}
+
+.toc-link.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.toc-h3 { padding-left: 32px; font-size: 12px; }
+
+.main-content {
+  flex: 1;
+  margin-left: 280px;
+  padding: 32px 48px;
+  max-width: 960px;
+}
+
+.toolbar {
+  position: fixed;
+  top: 16px;
+  right: 24px;
+  z-index: 200;
+  display: flex;
+  gap: 8px;
+}
+
+.toolbar-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.toolbar-btn:hover {
+  background: var(--bg-hover);
+  color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.toolbar-btn svg { width: 18px; height: 18px; }
+
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 200;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+h1 + blockquote {
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent);
+  color: var(--text-primary);
+  scroll-margin-top: 24px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  scroll-margin-top: 24px;
+}
+
+h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+p { margin-bottom: 12px; }
+
+blockquote {
+  background: var(--bg-blockquote);
+  border-left: 4px solid var(--accent);
+  padding: 12px 20px;
+  margin: 16px 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+blockquote strong { color: var(--text-primary); font-style: normal; }
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--border-color);
+  margin: 32px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 13.5px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+thead { background: var(--bg-table-header); }
+
+th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-color);
+  white-space: nowrap;
+}
+
+td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-secondary);
+}
+
+tbody tr:nth-child(even) { background: var(--bg-table-stripe); }
+tbody tr:hover { background: var(--bg-hover); }
+
+code {
+  background: var(--bg-code);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+}
+
+pre {
+  background: var(--bg-code);
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+pre code { background: none; padding: 0; }
+
+ul, ol { padding-left: 24px; margin-bottom: 12px; }
+li { margin-bottom: 4px; }
+
+strong { font-weight: 600; color: var(--text-primary); }
+
+em { color: var(--text-secondary); }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tag-danger { background: var(--danger-light); color: var(--danger); }
+.tag-success { background: var(--success-light); color: var(--success); }
+.tag-warning { background: var(--warning-light); color: var(--warning); }
+.tag-info { background: var(--info-light); color: var(--info); }
+
+.section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), background var(--transition);
+}
+
+.section-card:hover { box-shadow: var(--shadow-md); }
+
+.section-card h3,
+.section-card h4 { margin-top: 0; }
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.info-item {
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  border: 1px solid var(--border-light);
+}
+
+.info-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.info-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sihua-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.sihua-card {
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--border-light);
+}
+
+.sihua-card.lu { background: var(--success-light); }
+.sihua-card.quan { background: var(--warning-light); }
+.sihua-card.ke { background: var(--info-light); }
+.sihua-card.ji { background: var(--danger-light); }
+
+.sihua-label { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+.sihua-star { font-size: 18px; font-weight: 700; }
+.sihua-palace { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+.sihua-card.lu .sihua-label { color: var(--success); }
+.sihua-card.quan .sihua-label { color: var(--warning); }
+.sihua-card.ke .sihua-label { color: var(--info); }
+.sihua-card.ji .sihua-label { color: var(--danger); }
+.sihua-card.lu .sihua-star { color: var(--success); }
+.sihua-card.quan .sihua-star { color: var(--warning); }
+.sihua-card.ke .sihua-star { color: var(--info); }
+.sihua-card.ji .sihua-star { color: var(--danger); }
+
+.palace-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin: 24px 0;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+
+.palace-card:hover { box-shadow: var(--shadow-md); }
+
+.palace-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.palace-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.palace-stars {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.star-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.star-badge.bright { background: var(--success-light); color: var(--success); border-color: var(--success); }
+.star-badge.normal { background: var(--warning-light); color: var(--warning); border-color: var(--warning); }
+.star-badge.dim { background: var(--danger-light); color: var(--danger); border-color: var(--danger); }
+
+.star-badge.hua-lu { background: var(--success-light); color: var(--success); border-color: var(--success); }
+.star-badge.hua-quan { background: var(--warning-light); color: var(--warning); border-color: var(--warning); }
+.star-badge.hua-ke { background: var(--info-light); color: var(--info); border-color: var(--info); }
+.star-badge.hua-ji { background: var(--danger-light); color: var(--danger); border-color: var(--danger); }
+
+.interpretation-block {
+  margin: 16px 0;
+  padding: 16px 20px;
+  border-radius: var(--radius);
+}
+
+.interpretation-block.pro {
+  background: var(--bg-secondary);
+  border-left: 4px solid var(--accent);
+}
+
+.interpretation-block.lay {
+  background: var(--bg-blockquote);
+  border-left: 4px solid var(--success);
+}
+
+.interpretation-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.interpretation-block.pro .interpretation-label { color: var(--accent); }
+.interpretation-block.lay .interpretation-label { color: var(--success); }
+
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition);
+  z-index: 150;
+}
+
+.back-to-top:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.back-to-top.visible { display: flex; }
+.back-to-top svg { width: 20px; height: 20px; }
+
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .main-content { margin-left: 0; padding: 24px 16px; padding-top: 64px; }
+  .mobile-menu-btn { display: flex; }
+  .sihua-grid { grid-template-columns: repeat(2, 1fr); }
+  .info-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media print {
+  .sidebar, .toolbar, .back-to-top, .mobile-menu-btn { display: none !important; }
+  .main-content { margin-left: 0; padding: 0; }
+  body { background: white; color: black; }
+  .section-card, .palace-card { box-shadow: none; border: 1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+
+<button class="mobile-menu-btn toolbar-btn" onclick="toggleSidebar()" aria-label="Menu">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+</button>
+
+<div class="toolbar">
+  <button class="toolbar-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle theme">
+    <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+</div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+        紫微斗数命盘
+      </div>
+    </div>
+    <ul class="toc-list" id="tocList">
+<li class="toc-item"><a class="toc-link" href="#一-基本信息">一、基本信息</a></li>
+<li class="toc-item"><a class="toc-link" href="#二-十二宫排盘总表">二、十二宫排盘总表</a></li>
+<li class="toc-item"><a class="toc-link" href="#三-生年四化表">三、生年四化表</a></li>
+<li class="toc-item"><a class="toc-link" href="#四-各宫位详析">四、各宫位详析</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-1-命宫-申宫-戊干">4.1 命宫（申宫·戊干）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-2-兄弟宫-未宫-丁干">4.2 兄弟宫（未宫·丁干）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-3-夫妻宫-午宫-丙干">4.3 夫妻宫（午宫·丙干）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-4-子女宫-巳宫-乙干">4.4 子女宫（巳宫·乙干）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-5-财帛宫-辰宫-甲干">4.5 财帛宫（辰宫·甲干）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-6-疾厄宫-卯宫-癸干">4.6 疾厄宫（卯宫·癸干）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-7-迁移宫-寅宫-壬干-★来因宫">4.7 迁移宫（寅宫·壬干）★来因宫</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-8-仆役宫-丑宫-癸干">4.8 仆役宫（丑宫·癸干）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-9-官禄宫-子宫-壬干">4.9 官禄宫（子宫·壬干）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-10-田宅宫-亥宫-辛干">4.10 田宅宫（亥宫·辛干）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-11-福德宫-戌宫-庚干">4.11 福德宫（戌宫·庚干）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-12-父母宫-酉宫-己干">4.12 父母宫（酉宫·己干）</a></li>
+<li class="toc-item"><a class="toc-link" href="#五-格局分析">五、格局分析</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#5-1-廉贞天相格-印绶格局">5.1 廉贞天相格（印绶格局）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#5-2-杀破狼格局">5.2 杀破狼格局</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#5-3-紫府同宫在迁移-减力格局">5.3 紫府同宫在迁移（减力格局）</a></li>
+<li class="toc-item"><a class="toc-link" href="#六-大限运势详析">六、大限运势详析</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-1-第一大限-戊申-命宫-5~14岁">6.1 第一大限：戊申（命宫）5~14岁</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-2-第二大限-己酉-父母宫-15~24岁-★当前大限">6.2 第二大限：己酉（父母宫）15~24岁 ★当前大限</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-3-第三大限-庚戌-福德宫-25~34岁-★即将进入">6.3 第三大限：庚戌（福德宫）25~34岁 ★即将进入</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-4-第四大限-辛亥-田宅宫-35~44岁">6.4 第四大限：辛亥（田宅宫）35~44岁</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-5-第五大限-壬子-官禄宫-45~54岁">6.5 第五大限：壬子（官禄宫）45~54岁</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-6-第六大限-癸丑-仆役宫-55~64岁">6.6 第六大限：癸丑（仆役宫）55~64岁</a></li>
+<li class="toc-item"><a class="toc-link" href="#七-流年运势-2024-2030">七、流年运势（2024-2030）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2024年-甲辰-虚岁23">2024年 甲辰 虚岁23</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2025年-乙巳-虚岁24-★当前流年">2025年 乙巳 虚岁24 ★当前流年</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2026年-丙午-虚岁25">2026年 丙午 虚岁25</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2027年-丁未-虚岁26">2027年 丁未 虚岁26</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2028年-戊申-虚岁27">2028年 戊申 虚岁27</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2029年-己酉-虚岁28">2029年 己酉 虚岁28</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2030年-庚戌-虚岁29">2030年 庚戌 虚岁29</a></li>
+<li class="toc-item"><a class="toc-link" href="#八-六冲关系分析">八、六冲关系分析</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#8-1-申寅冲-命宫-vs-迁移宫">8.1 申寅冲：命宫 vs 迁移宫</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#8-2-酉卯冲-父母宫-vs-疾厄宫">8.2 酉卯冲：父母宫 vs 疾厄宫</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#8-3-戌辰冲-福德宫-vs-财帛宫">8.3 戌辰冲：福德宫 vs 财帛宫</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#8-4-亥巳冲-田宅宫-vs-子女宫">8.4 亥巳冲：田宅宫 vs 子女宫</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#8-5-子午冲-官禄宫-vs-夫妻宫">8.5 子午冲：官禄宫 vs 夫妻宫</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#8-6-丑未冲-仆役宫-vs-兄弟宫">8.6 丑未冲：仆役宫 vs 兄弟宫</a></li>
+<li class="toc-item"><a class="toc-link" href="#九-星耀亮度总览">九、星耀亮度总览</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#9-1-庙旺星曜-Bright">9.1 庙旺星曜（Bright）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#9-2-平星曜-Normal">9.2 平星曜（Normal）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#9-3-陷落星曜-Dim">9.3 陷落星曜（Dim）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#9-4-亮度分布总结">9.4 亮度分布总结</a></li>
+<li class="toc-item"><a class="toc-link" href="#十-健康总览">十、健康总览</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#10-1-疾厄宫主分析">10.1 疾厄宫主分析</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#10-2-五行与脏腑对应">10.2 五行与脏腑对应</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#10-3-重点健康警示">10.3 重点健康警示</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#10-4-养生建议">10.4 养生建议</a></li>
+<li class="toc-item"><a class="toc-link" href="#十一-综合人生建议">十一、综合人生建议</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#11-1-性格总评">11.1 性格总评</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#11-2-事业方向">11.2 事业方向</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#11-3-婚姻建议">11.3 婚姻建议</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#11-4-财运建议">11.4 财运建议</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#11-5-精神健康建议">11.5 精神健康建议</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#11-6-人生阶段规划">11.6 人生阶段规划</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#11-7-核心忠告">11.7 核心忠告</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-content" id="mainContent">
+<h1 id="紫微斗数命盘详析">紫微斗数命盘详析</h1><blockquote><strong>命主</strong>: 男命 | <strong>阳历</strong>: 2002年8月25日 | <strong>时辰</strong>: 早子时(00:00-01:00)</blockquote><blockquote><strong>体系</strong>: 倪海厦紫微斗数解读法</blockquote><hr></div><h2 id="一-基本信息">一、基本信息</h2><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>阳历</td><td>2002年8月25日</td></tr><tr><td>农历</td><td>二〇〇二年七月十七</td></tr><tr><td>干支</td><td>壬午年 戊申月 乙丑日 丙子时</td></tr><tr><td>性别</td><td>男（阳男顺行）</td></tr><tr><td>时辰</td><td>早子时（00:00-01:00）</td></tr><tr><td>命宫</td><td>申宫</td></tr><tr><td>身宫</td><td>申宫（命身同宫）</td></tr><tr><td>命主星</td><td>廉贞</td></tr><tr><td>身主星</td><td>火星</td></tr><tr><td>五行局</td><td>土五局</td></tr><tr><td>起运年龄</td><td>5岁</td></tr><tr><td>来因宫</td><td>寅（迁移宫）</td></tr><tr><td>当前大限</td><td>己酉（父母宫）15~24岁</td></tr><tr><td>当前流年</td><td>2025乙巳，虚岁24</td></tr></tbody></table></div></div><h3 id="五行局推算过程">五行局推算过程</h3><ol><li><strong>定命宫地支</strong>：由生月与生时推算，得命宫在申</li><li><strong>定命宫天干</strong>：壬年起寅宫天干为壬，依五虎遁顺数：寅壬→卯癸→辰甲→巳乙→午丙→未丁→<strong>申戊</strong></li><li><strong>命宫干支</strong>：戊申</li><li><strong>查纳音五行</strong>：戊申纳音属&quot;大驿土&quot;（《三命通会》：&quot;戊申己酉大驿土&quot;）</li><li><strong>定五行局</strong>：纳音属土 → 土局；土局有二局、五局、八局三种</li><li><strong>定局数</strong>：命宫干支戊申对应<strong>土五局</strong>（紫微斗数起局法查表确定）</li><li><strong>起运年龄</strong>：土五局 → <strong>5岁起运</strong>（局数即为起运年龄）</li><li><strong>大限方向</strong>：壬年阳男 → 顺行（申→酉→戌→亥→子→丑→寅→卯→辰→巳→午→未）</li></ol><hr></div><h2 id="二-十二宫排盘总表">二、十二宫排盘总表</h2><div style="overflow-x:auto"><table><thead><tr><th>宫位</th><th>地支</th><th>天干</th><th>主星</th><th>辅星</th><th>杂耀</th><th>生年四化</th><th>身宫</th><th>来因</th><th>大限</th><th>长生十二神</th></tr></thead><tbody><tr><td>命宫</td><td>申</td><td>戊</td><td>七杀(庙)+天马</td><td></td><td>旬空·孤辰</td><td></td><td>★身宫</td><td></td><td>5~14</td><td>长生</td></tr><tr><td>兄弟</td><td>未</td><td>丁</td><td>天梁(旺)</td><td></td><td>天姚·天贵·天空</td><td><span class="star-badge hua-lu">禄</span></td><td></td><td></td><td>115~124</td><td>养</td></tr><tr><td>夫妻</td><td>午</td><td>丙</td><td>廉贞(平)·天相(庙)</td><td></td><td>台辅·天福</td><td></td><td></td><td></td><td>105~114</td><td>胎</td></tr><tr><td>子女</td><td>巳</td><td>乙</td><td>巨门(旺)+天钺</td><td></td><td>破碎</td><td></td><td></td><td></td><td>95~104</td><td>绝</td></tr><tr><td>财帛</td><td>辰</td><td>甲</td><td>贪狼(庙)+右弼·文曲(得)</td><td></td><td>凤阁·寡宿·年解</td><td></td><td></td><td></td><td>85~94</td><td>墓</td></tr><tr><td>疾厄</td><td>卯</td><td>癸</td><td>太阴(陷)+天魁·铃星(利)</td><td></td><td>天喜·咸池·天德·空亡·天刑·天使</td><td></td><td></td><td></td><td>75~84</td><td>死</td></tr><tr><td>迁移</td><td>寅</td><td>壬</td><td>紫微(旺)<span class="star-badge hua-quan">权</span>·天府(庙)</td><td>解神·三台·天才·天寿·封诰·天巫·截路·蜚廉·阴煞</td><td></td><td>★来因</td><td></td><td>65~74</td><td>病</td></tr><tr><td>仆役</td><td>丑</td><td>癸</td><td>天机(陷)+火星(得)</td><td></td><td>恩光·天伤</td><td></td><td></td><td></td><td>55~64</td><td>衰</td></tr><tr><td>官禄</td><td>子</td><td>壬</td><td>破军(庙)+擎羊(陷)</td><td></td><td>八座·天哭·天虚</td><td></td><td></td><td></td><td>45~54</td><td>帝旺</td></tr><tr><td>田宅</td><td>亥</td><td>辛</td><td>太阳(陷)+禄存·地空·地劫</td><td></td><td>天月·月德</td><td></td><td></td><td></td><td>35~44</td><td>临官</td></tr><tr><td>福德</td><td>戌</td><td>庚</td><td>武曲(庙)<span class="star-badge hua-ji">忌</span>+左辅<span class="star-badge hua-ke">科</span>·文昌(陷)·陀罗(庙)</td><td></td><td>龙池·华盖·天官</td><td><span class="star-badge hua-ji">忌</span><span class="star-badge hua-ke">科</span></td><td></td><td></td><td>25~34</td><td>冠带</td></tr><tr><td>父母</td><td>酉</td><td>己</td><td>天同(平)</td><td></td><td>红鸾·天厨</td><td></td><td></td><td></td><td>15~24</td><td>沐浴</td></tr></tbody></table></div><hr></div><h2 id="三-生年四化表">三、生年四化表</h2><p><strong>年干壬</strong>四化：</p><div style="overflow-x:auto"><table><thead><tr><th>四化</th><th>星曜</th><th>所落宫位</th><th>宫位名称</th><th>含义</th></tr></thead><tbody><tr><td><span class="tag tag-success">化禄</span></td><td>天梁</td><td>未</td><td>兄弟宫</td><td>兄弟缘厚，年长贵人助力，逢凶化吉之力在兄弟朋友中显现</td></tr><tr><td><span class="tag tag-warning">化权</span></td><td>紫微</td><td>寅</td><td>迁移宫</td><td>外出有权威，在外得势，社会地位提升</td></tr><tr><td><span class="tag tag-info">化科</span></td><td>左辅</td><td>戌</td><td>福德宫</td><td>精神世界有贵人，名声清好，内心有修养</td></tr><tr><td><span class="tag tag-danger">化忌</span></td><td>武曲</td><td>戌</td><td>福德宫</td><td>精神执念重，财星<span class="tag tag-danger">化忌</span>在福德主精神为财所困，内心不宁</td></tr></tbody></table></div><blockquote><strong>倪师断语</strong>：武曲<span class="tag tag-danger">化忌</span>，为刑囚之星。<span class="tag tag-danger">化忌</span>在福德宫，直接影响精神世界，主精神压力大、内心纠葛、财帛之事困扰心神。左辅<span class="tag tag-info">化科</span>同在福德，科忌同宫，一贵一忌交战，精神世界贵人有但压力亦大。</blockquote><hr></div><p><strong>年干壬</strong>四化：</p><div style="overflow-x:auto"><table><thead><tr><th>四化</th><th>星曜</th><th>所落宫位</th><th>宫位名称</th><th>含义</th></tr></thead><tbody><tr><td><span class="tag tag-success">化禄</span></td><td>天梁</td><td>未</td><td>兄弟宫</td><td>兄弟缘厚，年长贵人助力，逢凶化吉之力在兄弟朋友中显现</td></tr><tr><td><span class="tag tag-warning">化权</span></td><td>紫微</td><td>寅</td><td>迁移宫</td><td>外出有权威，在外得势，社会地位提升</td></tr><tr><td><span class="tag tag-info">化科</span></td><td>左辅</td><td>戌</td><td>福德宫</td><td>精神世界有贵人，名声清好，内心有修养</td></tr><tr><td><span class="tag tag-danger">化忌</span></td><td>武曲</td><td>戌</td><td>福德宫</td><td>精神执念重，财星<span class="tag tag-danger">化忌</span>在福德主精神为财所困，内心不宁</td></tr></tbody></table></div><blockquote><strong>倪师断语</strong>：武曲<span class="tag tag-danger">化忌</span>，为刑囚之星。<span class="tag tag-danger">化忌</span>在福德宫，直接影响精神世界，主精神压力大、内心纠葛、财帛之事困扰心神。左辅<span class="tag tag-info">化科</span>同在福德，科忌同宫，一贵一忌交战，精神世界贵人有但压力亦大。</blockquote><hr></div><h2 id="四-各宫位详析">四、各宫位详析</h2></div><h3 id="4-1-命宫-申宫-戊干">4.1 命宫（申宫·戊干）</h3><h4>主星特质与亮度</h4><p><strong>七杀（庙旺）+ 天马</strong></p><p>七杀属火金，南斗第六星，为将星。庙旺于申宫，星曜力量充分发挥。</p><blockquote><strong>倪师断语</strong>：&quot;如果你娶个太太是七杀入命，那你差不多毁了一半了，很累啊，草木皆兵。&quot;此盘虽为男命七杀入命，但七杀的刚烈孤克特质同样体现在命主自身性格上——个性刚强、独断、不服输、行事果决、不喜受人约束。</blockquote><p>天马同宫，主奔波变动、离乡发展。七杀+天马，命主一生多动少静，适合开拓性、变动性工作。</p><h4>辅星影响</h4><p>命宫无左辅右弼、文昌文曲等辅星同宫，辅弼力量需看三方四正会照。</p><h4>杂耀影响</h4><ul><li><strong>旬空</strong>：申宫入旬空，命宫力量有所虚耗，做事易有&quot;差一步&quot;之感</li><li><strong>孤辰</strong>：孤克之星入命，性格孤傲，不善表达情感，人缘偏弱</li></ul><h4>命身同宫</h4><p>命宫身宫同在申宫，人生方向与精神追求高度一致。倪师强调：命身同宫者，一生目标明确，心口如一，不会自我矛盾。但七杀的刚烈加上命身同宫的执着，也意味着一旦认准方向便不易回头，灵活性不足。</p><h4>四化影响（宫干戊飞化）</h4><div style="overflow-x:auto"><table><thead><tr><th>飞化</th><th>星曜</th><th>落入宫位</th><th>解读</th></tr></thead><tbody><tr><td>飞禄</td><td>贪狼</td><td>辰（财帛宫）</td><td>命宫飞禄入财帛，命主对钱财有欲望，赚钱有方</td></tr><tr><td>飞权</td><td>太阴</td><td>卯（疾厄宫）</td><td>命宫飞权入疾厄，对自身健康管控欲强</td></tr><tr><td>飞科</td><td>右弼</td><td>辰（财帛宫）</td><td>命宫飞科入财帛，理财有贵人</td></tr><tr><td>飞忌</td><td>天机</td><td>丑（仆役宫）</td><td>命宫飞忌入仆役，与下属朋友易生纠葛</td></tr></tbody></table></div><h4>三方四正综合</h4><ul><li><strong>三方</strong>：申（命宫·七杀+天马）、子（官禄·破军+擎羊）、辰（财帛·贪狼+右弼+文曲）</li><li><strong>四正</strong>：加寅（迁移·紫微<span class="star-badge hua-quan">权</span>+天府）</li></ul><p>杀破狼三方齐聚！七杀守命、破军在官禄、贪狼在财帛，标准的<strong>杀破狼格局</strong>。三方会照紫微天府于迁移，帝座照命，格局提升。</p><h4>长生十二神暗示</h4><p>命宫坐<strong>长生</strong>，如日初升，生命力旺盛，有开创之机。但七杀坐长生，刚猛有余而柔韧不足。</p><hr></div><h3 id="4-2-兄弟宫-未宫-丁干">4.2 兄弟宫（未宫·丁干）</h3><h4>主星特质与亮度</h4><p><strong>天梁<span class="star-badge bright">旺</span></strong></p><p>天梁属土，南斗第三星，为荫星、老人星。旺于未宫，力量极强。</p><p>天梁<span class="tag tag-success">化禄</span>（生年禄）入兄弟宫，兄弟朋友中有贵人，天梁的逢凶化吉之力在兄弟宫发挥，主兄弟缘厚、得年长朋友助力。</p><h4>辅星影响</h4><p>无辅星同宫，力量集中。</p><h4>杂耀影响</h4><ul><li><strong>天姚</strong>：兄弟中有异性缘好之人，或兄弟关系带桃花色彩</li><li><strong>天贵</strong>：兄弟中有贵气</li><li><strong>天空</strong>：兄弟中有人思想超脱或与命主缘分较薄</li></ul><h4>四化影响（宫干丁飞化）</h4><div style="overflow-x:auto"><table><thead><tr><th>飞化</th><th>星曜</th><th>落入宫位</th><th>解读</th></tr></thead><tbody><tr><td>飞禄</td><td>太阴</td><td>卯（疾厄宫）</td><td>兄弟宫飞禄入疾厄，兄弟关心命主健康</td></tr><tr><td>飞权</td><td>天同</td><td>酉（父母宫）</td><td>兄弟宫飞权入父母，兄弟在父母事务上有话语权</td></tr><tr><td>飞科</td><td>天机</td><td>丑（仆役宫）</td><td>兄弟宫飞科入仆役，兄弟交友有贵人</td></tr><tr><td>飞忌</td><td>巨门</td><td>巳（子女宫）</td><td>兄弟宫飞忌入子女，兄弟与命主子女间有口舌</td></tr></tbody></table></div><h4>三方四正综合</h4><ul><li><strong>三方</strong>：未（兄弟·天梁旺<span class="star-badge hua-lu">禄</span>）、亥（田宅·太阳陷+禄存+地空+地劫）、卯（疾厄·太阴陷+天魁+铃星）</li><li><strong>四正</strong>：加丑（仆役·天机陷+火星得）</li></ul><p>天梁<span class="tag tag-success">化禄</span>为兄弟宫核心力量，但三方中太阳陷于田宅、太阴陷于疾厄，日月皆陷，暗藏隐患。</p><h4>长生十二神暗示</h4><p>兄弟宫坐<strong>养</strong>，如婴儿得养，兄弟关系有滋养之力，但养亦主柔弱，兄弟中有人体质偏弱。</p><hr></div><h3 id="4-3-夫妻宫-午宫-丙干">4.3 夫妻宫（午宫·丙干）</h3><h4>主星特质与亮度</h4><p><strong>廉贞<span class="star-badge normal">平</span>· 天相<span class="star-badge bright">庙</span></strong></p><p>廉贞属火，北斗第五星，为囚星、桃花星。平于午宫，力量中等。</p><p>天相属水，南斗第四星，为印星。庙于午宫，力量极强。</p><blockquote><strong>倪师断语</strong>：&quot;廉贞天相同宫，印绶格局，主秉公处事、清廉之名。&quot;&quot;怕见擎羊<span class="tag tag-danger">化忌</span>，则反主官非。&quot;</blockquote><p>此盘廉贞天相同宫在夫妻宫，构成<strong>印绶格局</strong>。天相庙旺为印，廉贞平则囚性未全显。印绶格局主配偶秉公处事、有清廉之名，婚姻中注重规范与秩序。</p><blockquote><strong>倪师规则</strong>：武曲/廉贞/七杀/破军在夫妻宫一律建议晚婚。此盘廉贞在夫妻宫，<strong>必须晚婚</strong>。</blockquote><h4>辅星影响</h4><p>无左辅右弼同宫，夫妻宫辅星力量弱。</p><h4>杂耀影响</h4><ul><li><strong>台辅</strong>：配偶有辅助之能</li><li><strong>天福</strong>：婚姻有福气，但需配合主星论</li></ul><h4>四化影响（宫干丙飞化）</h4><div style="overflow-x:auto"><table><thead><tr><th>飞化</th><th>星曜</th><th>落入宫位</th><th>解读</th></tr></thead><tbody><tr><td>飞禄</td><td>天同</td><td>酉（父母宫）</td><td>夫妻宫飞禄入父母，配偶与命主父母缘好</td></tr><tr><td>飞权</td><td>天机</td><td>丑（仆役宫）</td><td>夫妻宫飞权入仆役，配偶对下属朋友有掌控欲</td></tr><tr><td>飞科</td><td>文昌</td><td>戌（福德宫）</td><td>夫妻宫飞科入福德，配偶给命主精神带来文雅之气</td></tr><tr><td>飞忌</td><td>廉贞</td><td>午（夫妻宫）</td><td><strong>夫妻宫自<span class="tag tag-danger">化忌</span>！</strong> 配偶自我纠结，婚姻中易有自我困扰</td></tr></tbody></table></div><p><strong>夫妻宫自<span class="tag tag-danger">化忌</span></strong>是此盘婚姻的重要警示信号。廉贞自<span class="tag tag-danger">化忌</span>在夫妻宫，主婚姻中双方易有内心纠结、自我折磨的倾向，感情表达不畅。</p><h4>三方四正综合</h4><ul><li><strong>三方</strong>：午（夫妻·廉贞平+天相庙）、戌（福德·武曲庙<span class="star-badge hua-ji">忌</span>+左辅<span class="star-badge hua-ke">科</span>+文昌陷+陀罗庙）、寅（迁移·紫微旺<span class="star-badge hua-quan">权</span>+天府庙）</li><li><strong>四正</strong>：加子（官禄·破军庙+擎羊陷）</li></ul><p>三方四正中，福德宫武曲<span class="tag tag-danger">化忌</span>冲照夫妻宫，精神压力直接影响婚姻质量。迁移宫紫微<span class="tag tag-warning">化权</span>照入，配偶有贵气但亦强势。</p><blockquote><strong>倪师强调</strong>：看婚姻必须同时看福德宫。此盘福德宫武曲<span class="tag tag-danger">化忌</span>，精神执念重，内心为财所困，必然影响婚姻和谐。</blockquote><h4>长生十二神暗示</h4><p>夫妻宫坐<strong>胎</strong>，如种子初成，婚姻需要时间孕育成熟，暗示早婚不利、晚婚方成。</p><hr></div><h3 id="4-4-子女宫-巳宫-乙干">4.4 子女宫（巳宫·乙干）</h3><h4>主星特质与亮度</h4><p><strong>巨门<span class="star-badge bright">旺</span>+ 天钺</strong></p><p>巨门属水，北斗第二星，为暗星、口舌之星。旺于巳宫，力量极强。</p><p>天钺为贵人星，与巨门同宫，口才中有贵气，子女聪慧善辩。</p><h4>辅星影响</h4><p>天钺同宫，子女有贵人运。</p><h4>杂耀影响</h4><ul><li><strong>破碎</strong>：子女中有人身体小恙或做事有波折</li></ul><h4>四化影响（宫干乙飞化）</h4><div style="overflow-x:auto"><table><thead><tr><th>飞化</th><th>星曜</th><th>落入宫位</th><th>解读</th></tr></thead><tbody><tr><td>飞禄</td><td>天机</td><td>丑（仆役宫）</td><td>子女宫飞禄入仆役，子女与命主朋友缘好</td></tr><tr><td>飞权</td><td>天梁</td><td>未（兄弟宫）</td><td>子女宫飞权入兄弟，子女在兄弟中有权威</td></tr><tr><td>飞科</td><td>紫微</td><td>寅（迁移宫）</td><td>子女宫飞科入迁移，子女在外有名声</td></tr><tr><td>飞忌</td><td>太阴</td><td>卯（疾厄宫）</td><td>子女宫飞忌入疾厄，子女之事令命主操心伤身</td></tr></tbody></table></div><h4>三方四正综合</h4><ul><li><strong>三方</strong>：巳（子女·巨门旺+天钺）、酉（父母·天同平）、丑（仆役·天机陷+火星得）</li><li><strong>四正</strong>：加亥（田宅·太阳陷+禄存+地空+地劫）</li></ul><p>巨门旺守子女宫，子女口才佳但易有口舌之争。三方中太阳陷于田宅，家宅不安对子女有影响。</p><h4>长生十二神暗示</h4><p>子女宫坐<strong>绝</strong>，绝非无子，而是子女缘来得较迟或子女独立性强、与命主缘分需经营。</p><hr></div><h3 id="4-5-财帛宫-辰宫-甲干">4.5 财帛宫（辰宫·甲干）</h3><h4>主星特质与亮度</h4><p><strong>贪狼<span class="star-badge bright">庙</span>+ 右弼 · 文曲<span class="star-badge normal">得</span></strong></p><p>贪狼属木水，北斗第一星，为桃花星、欲望之星。庙于辰宫，力量极强。</p><p>右弼为辅星，文曲得于辰宫，文才与理财能力兼具。</p><p>贪狼庙旺守财帛，主财源广但来财多与交际、应酬、才艺有关。右弼文曲同宫，理财有贵人且手段文雅。</p><h4>辅星影响</h4><ul><li><strong>右弼</strong>：理财有助力，财路有贵人</li><li><strong>文曲(得)</strong>：以文才才艺生财</li></ul><h4>杂耀影响</h4><ul><li><strong>凤阁</strong>：理财有品位</li><li><strong>寡宿</strong>：财帛宫带寡宿，理财偏孤独，不宜合伙</li><li><strong>年解</strong>：逢凶有化解之力</li></ul><h4>四化影响（宫干甲飞化）</h4><div style="overflow-x:auto"><table><thead><tr><th>飞化</th><th>星曜</th><th>落入宫位</th><th>解读</th></tr></thead><tbody><tr><td>飞禄</td><td>廉贞</td><td>午（夫妻宫）</td><td>财帛宫飞禄入夫妻，用财养家，钱财与婚姻紧密关联</td></tr><tr><td>飞权</td><td>破军</td><td>子（官禄宫）</td><td>财帛宫飞权入官禄，以财壮事业</td></tr><tr><td>飞科</td><td>武曲</td><td>戌（福德宫）</td><td>财帛宫飞科入福德，理财有名声但武曲本<span class="tag tag-danger">化忌</span></td></tr><tr><td>飞忌</td><td>太阳</td><td>亥（田宅宫）</td><td>财帛宫飞忌入田宅，因房产家宅破财</td></tr></tbody></table></div><h4>三方四正综合</h4><ul><li><strong>三方</strong>：辰（财帛·贪狼庙+右弼+文曲得）、申（命宫·七杀庙+天马）、子（官禄·破军庙+擎羊陷）</li><li><strong>四正</strong>：加戌（福德·武曲庙<span class="star-badge hua-ji">忌</span>+左辅<span class="star-badge hua-ke">科</span>+文昌陷+陀罗庙）</li></ul><p>杀破狼三方中，贪狼庙旺守财帛为财源之基，但四正冲入福德武曲<span class="tag tag-danger">化忌</span>，精神为财所困。</p><h4>长生十二神暗示</h4><p>财帛宫坐<strong>墓</strong>，如财入库中，钱财有积蓄之象，但墓亦主守财不易流通，需注意理财灵活性。</p><hr></div><h3 id="4-6-疾厄宫-卯宫-癸干">4.6 疾厄宫（卯宫·癸干）</h3><h4>主星特质与亮度</h4><p><strong>太阴<span class="star-badge dim">陷</span>+ 天魁 · 铃星<span class="star-badge normal">利</span></strong></p><p>太阴属水，中天主星，为阴柔之星。陷于卯宫，力量极弱。</p><p>太阴陷守疾厄，主肾脏、膀胱、泌尿系统、内分泌系统先天偏弱。太阴主阴液，陷则阴虚之象。</p><p>天魁同宫，疾厄有贵人化解。铃星利，火性助阳，但铃星亦主暗耗。</p><h4>辅星影响</h4><ul><li><strong>天魁</strong>：疾病有贵人医助</li><li><strong>铃星(利)</strong>：暗火伤阴，注意阴虚火旺</li></ul><h4>杂耀影响</h4><ul><li><strong>天喜</strong>：疾厄带喜，小病无碍</li><li><strong>咸池</strong>：注意泌尿生殖系统</li><li><strong>天德</strong>：有德护身</li><li><strong>空亡</strong>：疾厄入空，病痛有虚象（检查不出大病但身体不适）</li><li><strong>天刑</strong>：注意手术外伤</li><li><strong>天使</strong>：天灾人祸需防</li></ul><h4>四化影响（宫干癸飞化）</h4><div style="overflow-x:auto"><table><thead><tr><th>飞化</th><th>星曜</th><th>落入宫位</th><th>解读</th></tr></thead><tbody><tr><td>飞禄</td><td>破军</td><td>子（官禄宫）</td><td>疾厄宫飞禄入官禄，身体好时事业顺</td></tr><tr><td>飞权</td><td>巨门</td><td>巳（子女宫）</td><td>疾厄宫飞权入子女，健康问题影响子女</td></tr><tr><td>飞科</td><td>太阴</td><td>卯（疾厄宫）</td><td><strong>疾厄宫自<span class="tag tag-info">化科</span></strong>，对自身健康有研究，善于调理</td></tr><tr><td>飞忌</td><td>贪狼</td><td>辰（财帛宫）</td><td>疾厄宫飞忌入财帛，因健康破财</td></tr></tbody></table></div><h4>三方四正综合</h4><ul><li><strong>三方</strong>：卯（疾厄·太阴陷+天魁+铃星利）、未（兄弟·天梁旺<span class="star-badge hua-lu">禄</span>）、亥（田宅·太阳陷+禄存+地空+地劫）</li><li><strong>四正</strong>：加酉（父母·天同平）</li></ul><p>太阴陷守疾厄，三方中天梁<span class="tag tag-success">化禄</span>照入，天梁为荫星有逢凶化吉之力，疾厄有贵人化解之象。但太阳亦陷于田宅，日月皆陷，阴阳失调。</p><h4>长生十二神暗示</h4><p>疾厄宫坐<strong>死</strong>，死非死亡，而是生命力在此宫最弱，需格外注意此宫所主之身体系统。</p><hr></div><h3 id="4-7-迁移宫-寅宫-壬干-★来因宫">4.7 迁移宫（寅宫·壬干）★来因宫</h3><h4>主星特质与亮度</h4><p><strong>紫微<span class="star-badge bright">旺</span><span class="star-badge hua-quan">权</span> · 天府<span class="star-badge bright">庙</span></strong></p><p>紫微属土，中天主星，为帝座。旺于寅宫，力量极强。生年<span class="tag tag-warning">化权</span>，权威加倍。</p><p>天府属土，南斗主星，为库星。庙于寅宫，力量极强。</p><p>紫府同宫在迁移，为极贵之组合。紫微<span class="tag tag-warning">化权</span>在外，主外出有权威、社会地位高。天府庙旺同守，外有积蓄守成之力。</p><blockquote><strong>来因宫</strong>：寅宫为来因宫，代表此生因缘的起源方向在&quot;外出&quot;与&quot;社会地位&quot;，命主一生与外在环境、社会舞台紧密关联。</blockquote><h4>辅星影响</h4><ul><li><strong>解神</strong>：在外逢凶化吉</li><li><strong>三台</strong>：在外有地位</li><li><strong>天才</strong>：在外有才华展现</li><li><strong>天寿</strong>：在外有长寿之兆</li><li><strong>封诰</strong>：在外有封赏</li><li><strong>天巫</strong>：在外有宗教玄学缘</li><li><strong>截路</strong>：在外有阻碍但可化解</li><li><strong>蜚廉</strong>：在外有口舌是非</li><li><strong>阴煞</strong>：暗中有小人</li></ul><h4>杂耀影响</h4><p>辅星众多，紫府坐迁移本已极贵，加上解神、三台、天才等，外出发展格局极高。</p><h4>四化影响（宫干壬飞化，同生年四化）</h4><div style="overflow-x:auto"><table><thead><tr><th>飞化</th><th>星曜</th><th>落入宫位</th><th>解读</th></tr></thead><tbody><tr><td>飞禄</td><td>天梁</td><td>未（兄弟宫）</td><td>迁移宫飞禄入兄弟，在外得兄弟朋友助力</td></tr><tr><td>飞权</td><td>紫微</td><td>寅（迁移宫）</td><td><strong>迁移宫自<span class="tag tag-warning">化权</span></strong>，在外权威自显</td></tr><tr><td>飞科</td><td>左辅</td><td>戌（福德宫）</td><td>迁移宫飞科入福德，在外名声影响精神</td></tr><tr><td>飞忌</td><td>武曲</td><td>戌（福德宫）</td><td>迁移宫飞忌入福德，在外之事困扰精神</td></tr></tbody></table></div><p>迁移宫壬干与生年干相同，飞化即生年四化。自<span class="tag tag-warning">化权</span>加强紫微权威，但飞忌入福德，外在事业压力传导至精神世界。</p><h4>三方四正综合</h4><ul><li><strong>三方</strong>：寅（迁移·紫微旺<span class="star-badge hua-quan">权</span>+天府庙）、午（夫妻·廉贞平+天相庙）、戌（福德·武曲庙<span class="star-badge hua-ji">忌</span>+左辅<span class="star-badge hua-ke">科</span>+文昌陷+陀罗庙）</li><li><strong>四正</strong>：加申（命宫·七杀庙+天马）</li></ul><p>紫府照命，帝座临迁移照入命宫，命主外出有帝王之气象。但三方中福德武曲<span class="tag tag-danger">化忌</span>，精神压力与外在成就并存。</p><h4>长生十二神暗示</h4><p>迁移宫坐<strong>病</strong>，外出发展有波折，非一帆风顺，需经历&quot;病&quot;之考验方能成就。</p><hr></div><h3 id="4-8-仆役宫-丑宫-癸干">4.8 仆役宫（丑宫·癸干）</h3><h4>主星特质与亮度</h4><p><strong>天机<span class="star-badge dim">陷</span>+ 火星<span class="star-badge normal">得</span></strong></p><p>天机属木，南斗第一星，为善星、智慧星。陷于丑宫，力量极弱。</p><p>火星属火，南斗助星，为煞星。得于丑宫，力量尚可。</p><p>天机陷守仆役，交友中智慧型朋友力量减弱，朋友多变动。火星同宫，朋友中有人急躁冲动。</p><h4>辅星影响</h4><p>无辅星同宫。</p><h4>杂耀影响</h4><ul><li><strong>恩光</strong>：朋友中有恩义之人</li><li><strong>天伤</strong>：朋友中有人令命主受伤</li></ul><h4>四化影响（宫干癸飞化）</h4><div style="overflow-x:auto"><table><thead><tr><th>飞化</th><th>星曜</th><th>落入宫位</th><th>解读</th></tr></thead><tbody><tr><td>飞禄</td><td>破军</td><td>子（官禄宫）</td><td>仆役宫飞禄入官禄，朋友助力事业</td></tr><tr><td>飞权</td><td>巨门</td><td>巳（子女宫）</td><td>仆役宫飞权入子女，朋友对命主子女有影响</td></tr><tr><td>飞科</td><td>太阴</td><td>卯（疾厄宫）</td><td>仆役宫飞科入疾厄，朋友关心命主健康</td></tr><tr><td>飞忌</td><td>贪狼</td><td>辰（财帛宫）</td><td>仆役宫飞忌入财帛，因朋友破财</td></tr></tbody></table></div><h4>三方四正综合</h4><ul><li><strong>三方</strong>：丑（仆役·天机陷+火星得）、巳（子女·巨门旺+天钺）、酉（父母·天同平）</li><li><strong>四正</strong>：加未（兄弟·天梁旺<span class="star-badge hua-lu">禄</span>）</li></ul><p>天梁<span class="tag tag-success">化禄</span>照入仆役，兄弟朋友中有贵人化解天机陷之不利。</p><h4>长生十二神暗示</h4><p>仆役宫坐<strong>衰</strong>，朋友运渐衰，交友需谨慎，不宜深交。</p><hr></div><h3 id="4-9-官禄宫-子宫-壬干">4.9 官禄宫（子宫·壬干）</h3><h4>主星特质与亮度</h4><p><strong>破军<span class="star-badge bright">庙</span>+ 擎羊<span class="star-badge dim">陷</span></strong></p><p>破军属水，北斗第七星，为耗星、先锋星。庙于子宫，力量极强。</p><p>擎羊属火金，为六煞之一。陷于子宫，煞气虽弱但仍有伤害。</p><p>破军庙旺守官禄，主事业有开创之力，敢冲敢闯，适合变动性、开创性事业。擎羊陷同宫，事业中有竞争、冲突，但庙旺破军可压制陷擎羊。</p><p>杀破狼格局中，破军在官禄为正位，主事业多变但有大破大立之机。</p><h4>辅星影响</h4><p>无辅星同宫。</p><h4>杂耀影响</h4><ul><li><strong>八座</strong>：事业有地位</li><li><strong>天哭</strong>：事业中有悲伤事</li><li><strong>天虚</strong>：事业中有虚象，需防表面风光内里空虚</li></ul><h4>四化影响（宫干壬飞化，同生年四化）</h4><div style="overflow-x:auto"><table><thead><tr><th>飞化</th><th>星曜</th><th>落入宫位</th><th>解读</th></tr></thead><tbody><tr><td>飞禄</td><td>天梁</td><td>未（兄弟宫）</td><td>官禄宫飞禄入兄弟，事业得兄弟朋友助力</td></tr><tr><td>飞权</td><td>紫微</td><td>寅（迁移宫）</td><td>官禄宫飞权入迁移，事业在外有权威</td></tr><tr><td>飞科</td><td>左辅</td><td>戌（福德宫）</td><td>官禄宫飞科入福德，事业名声影响精神</td></tr><tr><td>飞忌</td><td>武曲</td><td>戌（福德宫）</td><td>官禄宫飞忌入福德，事业压力困扰精神</td></tr></tbody></table></div><p>官禄宫壬干飞化与迁移宫壬干相同，两宫同飞忌入福德，武曲<span class="tag tag-danger">化忌</span>在福德宫承受双重压力。</p><h4>三方四正综合</h4><ul><li><strong>三方</strong>：子（官禄·破军庙+擎羊陷）、辰（财帛·贪狼庙+右弼+文曲得）、申（命宫·七杀庙+天马）</li><li><strong>四正</strong>：加午（夫妻·廉贞平+天相庙）</li></ul><p>杀破狼三方齐聚，事业格局为开创型。四正冲入夫妻宫，事业与婚姻互相影响。</p><h4>长生十二神暗示</h4><p>官禄宫坐<strong>帝旺</strong>，如日中天，事业有巅峰之象。破军庙旺坐帝旺，事业可至高峰，但帝旺之后即衰，需知进退。</p><hr></div><h3 id="4-10-田宅宫-亥宫-辛干">4.10 田宅宫（亥宫·辛干）</h3><h4>主星特质与亮度</h4><p><strong>太阳<span class="star-badge dim">陷</span>+ 禄存 · 地空 · 地劫</strong></p><p>太阳属火，中天主星，为父星、官禄主。陷于亥宫，力量极弱——日落亥宫，太阳无光。</p><p>禄存同宫，有财入库，但太阳陷则家宅阴暗。地空地劫双煞同宫，家宅有虚耗之象。</p><p>太阳陷守田宅，主家宅不安、与父亲缘分薄、房产运弱。禄存虽在但被地空地劫夹击，财入库又被劫出，房产方面有得有失。</p><h4>辅星影响</h4><ul><li><strong>禄存</strong>：房产有积蓄之力</li><li><strong>地空</strong>：家宅有虚耗</li><li><strong>地劫</strong>：家宅有劫失</li></ul><p>禄存遇地空地劫，为&quot;禄逢空劫&quot;，钱财难守。</p><h4>杂耀影响</h4><ul><li><strong>天月</strong>：家宅有疾病之象</li><li><strong>月德</strong>：有阴德护宅</li></ul><h4>四化影响（宫干辛飞化）</h4><div style="overflow-x:auto"><table><thead><tr><th>飞化</th><th>星曜</th><th>落入宫位</th><th>解读</th></tr></thead><tbody><tr><td>飞禄</td><td>巨门</td><td>巳（子女宫）</td><td>田宅宫飞禄入子女，家宅利益惠及子女</td></tr><tr><td>飞权</td><td>太阳</td><td>亥（田宅宫）</td><td><strong>田宅宫自<span class="tag tag-warning">化权</span></strong>，命主对家宅有掌控欲</td></tr><tr><td>飞科</td><td>文曲</td><td>辰（财帛宫）</td><td>田宅宫飞科入财帛，房产理财有名声</td></tr><tr><td>飞忌</td><td>文昌</td><td>戌（福德宫）</td><td>田宅宫飞忌入福德，家宅之事困扰精神</td></tr></tbody></table></div><h4>三方四正综合</h4><ul><li><strong>三方</strong>：亥（田宅·太阳陷+禄存+地空+地劫）、卯（疾厄·太阴陷+天魁+铃星利）、未（兄弟·天梁旺<span class="star-badge hua-lu">禄</span>）</li><li><strong>四正</strong>：加巳（子女·巨门旺+天钺）</li></ul><p>日月皆陷（太阳陷田宅、太阴陷疾厄），阴阳失调，家宅与健康互相影响。天梁<span class="tag tag-success">化禄</span>照入，有贵人化解。</p><h4>长生十二神暗示</h4><p>田宅宫坐<strong>临官</strong>，临官主出仕为官，家宅有进阶之象，但太阳陷则临官之象打折。</p><hr></div><h3 id="4-11-福德宫-戌宫-庚干">4.11 福德宫（戌宫·庚干）</h3><h4>主星特质与亮度</h4><p><strong>武曲<span class="star-badge bright">庙</span><span class="star-badge hua-ji">忌</span> + 左辅<span class="star-badge hua-ke">科</span> · 文昌<span class="star-badge dim">陷</span> · 陀罗<span class="star-badge bright">庙</span></strong></p><p>武曲属金，北斗第六星，为财星。庙于戌宫，星曜力量极强。但生年<span class="tag tag-danger">化忌</span>，财星<span class="tag tag-danger">化忌</span>主为财所困、精神执念重。</p><p>左辅<span class="tag tag-info">化科</span>同宫，精神世界有贵人，名声清好。</p><p>文昌陷于戌宫，文才发挥受限，精神世界有文雅之气但表达不畅。</p><p>陀罗庙旺同宫，内心纠结、钻牛角尖。</p><blockquote><strong>倪师断语</strong>：武曲<span class="tag tag-danger">化忌</span>，为刑囚之星。<span class="tag tag-danger">化忌</span>在福德宫，直接影响精神世界。</blockquote><p>此盘福德宫为全盘最重之宫位——武曲<span class="tag tag-danger">化忌</span>+左辅<span class="tag tag-info">化科</span>+文昌陷+陀罗庙，科忌同宫交战，陀罗加剧纠结，文昌陷则精神表达不畅。</p><h4>辅星影响</h4><ul><li><strong>左辅<span class="star-badge hua-ke">科</span></strong>：精神有贵人，内心有修养</li><li><strong>文昌(陷)</strong>：文思不畅，精神表达受限</li><li><strong>陀罗(庙)</strong>：内心纠结，反复思量</li></ul><h4>杂耀影响</h4><ul><li><strong>龙池</strong>：精神有艺术气质</li><li><strong>华盖</strong>：精神超脱，有宗教玄学缘</li><li><strong>天官</strong>：精神有官贵之气</li></ul><h4>四化影响（宫干庚飞化）</h4><div style="overflow-x:auto"><table><thead><tr><th>飞化</th><th>星曜</th><th>落入宫位</th><th>解读</th></tr></thead><tbody><tr><td>飞禄</td><td>太阳</td><td>亥（田宅宫）</td><td>福德宫飞禄入田宅，精神寄托在家宅</td></tr><tr><td>飞权</td><td>武曲</td><td>戌（福德宫）</td><td><strong>福德宫自<span class="tag tag-warning">化权</span></strong>，精神世界掌控欲强</td></tr><tr><td>飞科</td><td>太阴</td><td>卯（疾厄宫）</td><td>福德宫飞科入疾厄，注重养生调理</td></tr><tr><td>飞忌</td><td>天同</td><td>酉（父母宫）</td><td>福德宫飞忌入父母，精神压力影响与父母关系</td></tr></tbody></table></div><h4>飞忌汇入统计</h4><p>福德宫不仅自身有武曲<span class="tag tag-danger">化忌</span>（生年忌），还接收以下宫位飞忌：</p><div style="overflow-x:auto"><table><thead><tr><th>来源宫位</th><th>宫干</th><th>飞忌星曜</th><th>说明</th></tr></thead><tbody><tr><td>迁移宫</td><td>壬</td><td>武曲<span class="tag tag-danger">化忌</span></td><td>同生年忌，外在事业压力传导</td></tr><tr><td>官禄宫</td><td>壬</td><td>武曲<span class="tag tag-danger">化忌</span></td><td>同生年忌，事业压力传导</td></tr><tr><td>田宅宫</td><td>辛</td><td>文昌<span class="tag tag-danger">化忌</span></td><td>家宅之事困扰精神</td></tr></tbody></table></div><p>福德宫承受<strong>武曲<span class="tag tag-danger">化忌</span>（生年忌+迁移飞忌+官禄飞忌）+ 文昌<span class="tag tag-danger">化忌</span>（田宅飞忌）</strong>，忌星极重，精神世界压力为全盘之最。</p><h4>三方四正综合</h4><ul><li><strong>三方</strong>：戌（福德·武曲庙<span class="star-badge hua-ji">忌</span>+左辅<span class="star-badge hua-ke">科</span>+文昌陷+陀罗庙）、寅（迁移·紫微旺<span class="star-badge hua-quan">权</span>+天府庙）、午（夫妻·廉贞平+天相庙）</li><li><strong>四正</strong>：加辰（财帛·贪狼庙+右弼+文曲得）</li></ul><p>紫府照入福德，帝座化解部分忌星压力，但武曲<span class="tag tag-danger">化忌</span>+陀罗的力量仍然极重。</p><h4>长生十二神暗示</h4><p>福德宫坐<strong>冠带</strong>，如人加冠，精神世界有成长之象，但冠带亦主初入社会之不安。</p><hr></div><h3 id="4-12-父母宫-酉宫-己干">4.12 父母宫（酉宫·己干）</h3><h4>主星特质与亮度</h4><p><strong>天同<span class="star-badge normal">平</span></strong></p><p>天同属水，南斗第四星，为福星。平于酉宫，力量中等。</p><p>天同平守父母，与父母缘分尚可，但天同主安逸，父母对命主较溺爱或父母本身性格温和。</p><h4>辅星影响</h4><p>无辅星同宫。</p><h4>杂耀影响</h4><ul><li><strong>红鸾</strong>：父母宫带桃花，父母感情好或命主与异性长辈缘好</li><li><strong>天厨</strong>：父母宫带厨艺，父母善于持家</li></ul><h4>四化影响（宫干己飞化）</h4><div style="overflow-x:auto"><table><thead><tr><th>飞化</th><th>星曜</th><th>落入宫位</th><th>解读</th></tr></thead><tbody><tr><td>飞禄</td><td>武曲</td><td>戌（福德宫）</td><td>父母宫飞禄入福德，父母关心命主精神世界</td></tr><tr><td>飞权</td><td>贪狼</td><td>辰（财帛宫）</td><td>父母宫飞权入财帛，父母对命主理财有掌控欲</td></tr><tr><td>飞科</td><td>天梁</td><td>未（兄弟宫）</td><td>父母宫飞科入兄弟，父母与命主兄弟关系好</td></tr><tr><td>飞忌</td><td>文曲</td><td>辰（财帛宫）</td><td>父母宫飞忌入财帛，因父母破财</td></tr></tbody></table></div><h4>三方四正综合</h4><ul><li><strong>三方</strong>：酉（父母·天同平）、丑（仆役·天机陷+火星得）、巳（子女·巨门旺+天钺）</li><li><strong>四正</strong>：加卯（疾厄·太阴陷+天魁+铃星利）</li></ul><p>天同平守父母，三方中太阴陷于疾厄冲照，母亲健康需注意（太阴为母星）。</p><h4>长生十二神暗示</h4><p>父母宫坐<strong>沐浴</strong>，沐浴主桃花、洗礼，与父母关系有磨合之象。</p><hr></div><h2 id="五-格局分析">五、格局分析</h2></div><h3 id="5-1-廉贞天相格-印绶格局">5.1 廉贞天相格（印绶格局）</h3><div style="overflow-x:auto"><table><thead><tr><th>层次</th><th>条件</th><th>判定</th></tr></thead><tbody><tr><td><strong>必须条件</strong></td><td>廉贞天相同宫</td><td>✅ 成立（午宫夫妻宫）</td></tr><tr><td><strong>加分条件</strong></td><td>见禄存或廉贞<span class="tag tag-success">化禄</span></td><td>❌ 不见（禄存在亥宫田宅）</td></tr><tr><td><strong>破格条件</strong></td><td>廉相宫坐擎羊</td><td>❌ 不见擎羊</td></tr><tr><td><strong>破格条件</strong></td><td>廉贞<span class="tag tag-danger">化忌</span></td><td>❌ 不见<span class="tag tag-danger">化忌</span>（但夫妻宫自<span class="tag tag-danger">化忌</span>需注意）</td></tr></tbody></table></div><p><strong>格局等级</strong>：<strong>成立（Good）</strong></p><blockquote>古籍出处：《紫微斗数全书》：&quot;廉贞天相同宫，为印绶之格，主人秉公处事，有清廉之名。&quot;</blockquote><p>此盘廉贞天相在夫妻宫构成印绶格局，主配偶秉公处事、有清廉之名。加分条件不见禄存，格局力量中等。破格条件均不成立，格局未被破坏。但需注意夫妻宫丙干自<span class="tag tag-danger">化忌</span>（廉贞自<span class="tag tag-danger">化忌</span>），虽非生年<span class="tag tag-danger">化忌</span>破格，但自<span class="tag tag-danger">化忌</span>仍为婚姻隐忧。</p></div><h3 id="5-2-杀破狼格局">5.2 杀破狼格局</h3><div style="overflow-x:auto"><table><thead><tr><th>层次</th><th>条件</th><th>判定</th></tr></thead><tbody><tr><td><strong>必须条件</strong></td><td>七杀守命</td><td>✅ 成立（申宫命宫）</td></tr><tr><td><strong>必须条件</strong></td><td>破军在官禄</td><td>✅ 成立（子宫官禄）</td></tr><tr><td><strong>必须条件</strong></td><td>贪狼在财帛</td><td>✅ 成立（辰宫财帛）</td></tr><tr><td><strong>加分条件</strong></td><td>三方会照紫微</td><td>✅ 成立（紫微在寅照入）</td></tr><tr><td><strong>加分条件</strong></td><td>破军庙旺</td><td>✅ 成立（破军庙于子）</td></tr><tr><td><strong>加分条件</strong></td><td>贪狼庙旺</td><td>✅ 成立（贪狼庙于辰）</td></tr><tr><td><strong>破格条件</strong></td><td>杀破狼逢空亡</td><td>⚠️ 部分成立（命宫旬空）</td></tr></tbody></table></div><p><strong>格局等级</strong>：<strong>成立且力量强（Strong）</strong></p><blockquote>古籍出处：《紫微斗数全书》：&quot;七杀守命，破军居官禄，贪狼居财帛，三方齐聚，主大破大立，一生波折但终有成就。&quot;</blockquote><p>杀破狼三方齐聚，且破军庙旺、贪狼庙旺、七杀庙旺，三星皆庙旺，格局力量极强。紫微照入更增贵气。但命宫旬空为减力因素，做事易有&quot;差一步&quot;之感。</p><p>杀破狼主变动、开创、波折。命主一生不会平淡，必有大起大落，但庙旺三星皆有力，终能化险为夷。</p></div><h3 id="5-3-紫府同宫在迁移-减力格局">5.3 紫府同宫在迁移（减力格局）</h3><div style="overflow-x:auto"><table><thead><tr><th>层次</th><th>条件</th><th>判定</th></tr></thead><tbody><tr><td><strong>必须条件</strong></td><td>紫微天府同宫</td><td>✅ 成立（寅宫迁移）</td></tr><tr><td><strong>加分条件</strong></td><td>在命宫</td><td>❌ 不在命宫（在迁移宫）</td></tr><tr><td><strong>加分条件</strong></td><td>见禄存</td><td>❌ 不见（禄存在亥宫）</td></tr></tbody></table></div><p><strong>格局等级</strong>：<strong>成立但减力（Weak）</strong></p><p>紫府同宫为极贵组合，但在迁移宫而非命宫，会照减力。紫微<span class="tag tag-warning">化权</span>在外，主外出有权威，但非命宫本位，贵气需外出方能显现。</p><blockquote>古籍出处：《紫微斗数全书》：&quot;紫府同宫，如在命宫为极贵之格，如在迁移则主外出得贵，减力一等。&quot;</blockquote><hr></div><h2 id="六-大限运势详析">六、大限运势详析</h2><blockquote><strong>倪师体系规则</strong>：大限四化不使用，四化星永远固定不动。以下分析仅以星曜及生年四化论大限。</blockquote></div><h3 id="6-1-第一大限-戊申-命宫-5~14岁">6.1 第一大限：戊申（命宫）5~14岁</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>大限命宫</td><td>申（原命宫）</td></tr><tr><td>主星</td><td>七杀(庙)+天马</td></tr><tr><td>大限特征</td><td>七杀坐命，少年即显刚烈性格</td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>七杀庙旺坐命，少年时期性格刚强，不服管教。天马同宫，幼年即有奔波变动之象，可能转学、搬家或与父母聚少离多。旬空孤辰，童年有孤独感。</p><p>命身同宫，少年时期即目标明确，但七杀的刚烈在幼年表现为叛逆、倔强。</p></div><h3 id="6-2-第二大限-己酉-父母宫-15~24岁-★当前大限">6.2 第二大限：己酉（父母宫）15~24岁 ★当前大限</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>大限命宫</td><td>酉（原父母宫）</td></tr><tr><td>主星</td><td>天同(平)</td></tr><tr><td>大限特征</td><td>天同坐大限命宫，求学阶段较安逸但缺乏冲劲</td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>天同平守大限命宫，此十年为求学阶段，天同主安逸，学业压力不大但亦缺乏拼搏之心。红鸾天厨同宫，校园生活有桃花之象，亦享受生活。</p><p>此大限为过渡期，天同的安逸与命主七杀的刚烈形成内在矛盾——内心想冲但环境安逸，或外在安逸但内心不安。</p><p><strong>关键年份</strong>：</p><ul><li>2025（乙巳，虚岁24）：大限最后一年，即将转入庚戌大限，人生转折期</li></ul></div><h3 id="6-3-第三大限-庚戌-福德宫-25~34岁-★即将进入">6.3 第三大限：庚戌（福德宫）25~34岁 ★即将进入</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>大限命宫</td><td>戌（原福德宫）</td></tr><tr><td>主星</td><td>武曲(庙)<span class="star-badge hua-ji">忌</span>+左辅<span class="star-badge hua-ke">科</span>+文昌(陷)+陀罗(庙)</td></tr><tr><td>大限特征</td><td>武曲<span class="tag tag-danger">化忌</span>坐大限命宫，此十年精神压力极大</td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>此大限为命主人生关键期。武曲<span class="tag tag-danger">化忌</span>坐大限命宫，财星<span class="tag tag-danger">化忌</span>主为财所困、精神执念重。左辅<span class="tag tag-info">化科</span>同宫，精神有贵人但科忌交战。陀罗庙旺加剧内心纠结。文昌陷则表达不畅、文才受限。</p><blockquote><strong>倪师断语</strong>：武曲<span class="tag tag-danger">化忌</span>，为刑囚之星。此十年需特别注意精神健康，不可钻牛角尖。</blockquote><p>此大限三方四正：</p><ul><li>三方：戌（福德·武曲忌+左辅科+文昌陷+陀罗庙）、寅（迁移·紫微权+天府庙）、午（夫妻·廉贞平+天相庙）</li><li>四正：辰（财帛·贪狼庙+右弼+文曲得）</li></ul><p>紫府照入为化解之力，帝座化解部分忌星压力。但武曲<span class="tag tag-danger">化忌</span>+陀罗的力量仍然极重。</p><p><strong>婚姻提示</strong>：此大限午宫（夫妻宫）在三方中，婚姻问题将浮出水面。廉贞天相在夫妻宫，倪师建议晚婚，此大限25~34岁正适婚年龄，但需谨慎选择。</p></div><h3 id="6-4-第四大限-辛亥-田宅宫-35~44岁">6.4 第四大限：辛亥（田宅宫）35~44岁</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>大限命宫</td><td>亥（原田宅宫）</td></tr><tr><td>主星</td><td>太阳(陷)+禄存+地空+地劫</td></tr><tr><td>大限特征</td><td>太阳陷守大限命宫，此十年家宅不安</td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>太阳陷于亥宫，日落西山之象。此十年事业可能进入瓶颈期，或家宅不宁。禄存同宫有财入库，但地空地劫劫财，钱财难守。</p><p>太阳为父星、官禄主，陷于亥宫，此十年与上级、长辈关系需注意，事业方向可能需要调整。</p><p>天梁<span class="tag tag-success">化禄</span>在未宫照入三方，有贵人化解。</p></div><h3 id="6-5-第五大限-壬子-官禄宫-45~54岁">6.5 第五大限：壬子（官禄宫）45~54岁</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>大限命宫</td><td>子（原官禄宫）</td></tr><tr><td>主星</td><td>破军(庙)+擎羊(陷)</td></tr><tr><td>大限特征</td><td>破军庙旺坐大限命宫，此十年事业有大破大立之机</td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>破军庙旺坐大限命宫，中年时期事业有重大变动，可能是转行、创业或事业重组。擎羊陷同宫，变动中有冲突竞争，但庙旺破军可压制。</p><p>帝旺坐大限命宫，事业可至巅峰。但帝旺之后即衰，需知进退。</p></div><h3 id="6-6-第六大限-癸丑-仆役宫-55~64岁">6.6 第六大限：癸丑（仆役宫）55~64岁</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>大限命宫</td><td>丑（原仆役宫）</td></tr><tr><td>主星</td><td>天机(陷)+火星(得)</td></tr><tr><td>大限特征</td><td>天机陷守大限命宫，此十年思虑多但决断力弱</td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>天机陷守大限命宫，晚年思虑过多但智慧发挥受限。火星同宫，脾气急躁。衰坐大限命宫，精力渐衰。</p><p>此十年宜退不宜进，守成为主。</p><hr></div><h2 id="七-流年运势-2024-2030">七、流年运势（2024-2030）</h2></div><h3 id="2024年-甲辰-虚岁23">2024年 甲辰 虚岁23</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年命宫</td><td>辰（财帛宫）</td></tr><tr><td>流年四化</td><td>廉贞<span class="tag tag-success">化禄</span>·破军<span class="tag tag-warning">化权</span>·武曲<span class="tag tag-info">化科</span>·太阳<span class="tag tag-danger">化忌</span></td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>流年命宫在辰，贪狼庙旺+右弼+文曲得，财帛宫为流年命宫，此年与钱财密切相关。</p><ul><li><strong>廉贞<span class="tag tag-success">化禄</span></strong>入午（夫妻宫）：感情有桃花之象，但廉贞在夫妻宫<span class="tag tag-success">化禄</span>，感情运有起色</li><li><strong>破军<span class="tag tag-warning">化权</span></strong>入子（官禄宫）：事业有变动但掌握主动权</li><li><strong>武曲<span class="tag tag-info">化科</span></strong>入戌（福德宫）：武曲本<span class="tag tag-danger">化忌</span>，流年<span class="tag tag-info">化科</span>暂时缓解精神压力</li><li><strong>太阳<span class="tag tag-danger">化忌</span></strong>入亥（田宅宫）：家宅不安，与父亲或上级有冲突</li></ul></div><h3 id="2025年-乙巳-虚岁24-★当前流年">2025年 乙巳 虚岁24 ★当前流年</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年命宫</td><td>巳（子女宫）</td></tr><tr><td>流年四化</td><td>天机<span class="tag tag-success">化禄</span>·天梁<span class="tag tag-warning">化权</span>·紫微<span class="tag tag-info">化科</span>·太阴<span class="tag tag-danger">化忌</span></td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>流年命宫在巳，巨门旺+天钺，此年口才发挥、有贵人。</p><ul><li><strong>天机<span class="tag tag-success">化禄</span></strong>入丑（仆役宫）：朋友运好，交友有收获</li><li><strong>天梁<span class="tag tag-warning">化权</span></strong>入未（兄弟宫）：兄弟中有权威人物助力</li><li><strong>紫微<span class="tag tag-info">化科</span></strong>入寅（迁移宫）：在外有名声，社会地位提升</li><li><strong>太阴<span class="tag tag-danger">化忌</span></strong>入卯（疾厄宫）：<strong>健康警示！</strong> 太阴陷于疾厄宫再逢<span class="tag tag-danger">化忌</span>，肾脏、泌尿系统、内分泌需特别注意</li></ul><p>此年为大限己酉最后一年，即将转入庚戌大限，人生转折期。太阴<span class="tag tag-danger">化忌</span>入疾厄，身体健康为首要关注。</p></div><h3 id="2026年-丙午-虚岁25">2026年 丙午 虚岁25</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年命宫</td><td>午（夫妻宫）</td></tr><tr><td>流年四化</td><td>天同<span class="tag tag-success">化禄</span>·天机<span class="tag tag-warning">化权</span>·文昌<span class="tag tag-info">化科</span>·廉贞<span class="tag tag-danger">化忌</span></td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>流年命宫在午，廉贞平+天相庙，此年流年命宫恰在夫妻宫，感情婚姻为年度主题。</p><ul><li><strong>天同<span class="tag tag-success">化禄</span></strong>入酉（父母宫）：与父母关系好，父母有喜事</li><li><strong>天机<span class="tag tag-warning">化权</span></strong>入丑（仆役宫）：朋友中有权威人物</li><li><strong>文昌<span class="tag tag-info">化科</span></strong>入戌（福德宫）：精神世界有文雅之气，学业或文才有进展</li><li><strong>廉贞<span class="tag tag-danger">化忌</span></strong>入午（夫妻宫）：<strong>感情警示！</strong> 廉贞在夫妻宫<span class="tag tag-danger">化忌</span>，此年感情易有重大波折</li></ul><blockquote><strong>倪师规则</strong>：廉贞在夫妻宫<span class="tag tag-danger">化忌</span>，感情必生变。此年若未婚则感情受挫，若已婚则婚姻危机。</blockquote><p>此年亦为庚戌大限第一年（25岁入限），大限命宫武曲<span class="tag tag-danger">化忌</span>，流年廉贞<span class="tag tag-danger">化忌</span>入夫妻宫，双重忌星冲击感情与精神。</p></div><h3 id="2027年-丁未-虚岁26">2027年 丁未 虚岁26</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年命宫</td><td>未（兄弟宫）</td></tr><tr><td>流年四化</td><td>太阴<span class="tag tag-success">化禄</span>·天同<span class="tag tag-warning">化权</span>·天机<span class="tag tag-info">化科</span>·巨门<span class="tag tag-danger">化忌</span></td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>流年命宫在未，天梁旺<span class="star-badge hua-lu">禄</span>，此年兄弟朋友运好。</p><ul><li><strong>太阴<span class="tag tag-success">化禄</span></strong>入卯（疾厄宫）：健康好转，太阴陷逢禄有缓解</li><li><strong>天同<span class="tag tag-warning">化权</span></strong>入酉（父母宫）：父母有权威或掌控力增强</li><li><strong>天机<span class="tag tag-info">化科</span></strong>入丑（仆役宫）：朋友中有贵人</li><li><strong>巨门<span class="tag tag-danger">化忌</span></strong>入巳（子女宫）：与子女或下属有口舌之争</li></ul></div><h3 id="2028年-戊申-虚岁27">2028年 戊申 虚岁27</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年命宫</td><td>申（命宫）</td></tr><tr><td>流年四化</td><td>贪狼<span class="tag tag-success">化禄</span>·太阴<span class="tag tag-warning">化权</span>·右弼<span class="tag tag-info">化科</span>·天机<span class="tag tag-danger">化忌</span></td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>流年命宫回到本命命宫！七杀庙旺+天马，此年人生方向感极强，行动力十足。</p><ul><li><strong>贪狼<span class="tag tag-success">化禄</span></strong>入辰（财帛宫）：<strong>财运大好！</strong> 贪狼庙旺逢禄，财源广进</li><li><strong>太阴<span class="tag tag-warning">化权</span></strong>入卯（疾厄宫）：健康管控力增强</li><li><strong>右弼<span class="tag tag-info">化科</span></strong>入辰（财帛宫）：理财有贵人</li><li><strong>天机<span class="tag tag-danger">化忌</span></strong>入丑（仆役宫）：与朋友下属有纠葛</li></ul><p>此年流年命宫与本命命宫重合，为&quot;太岁入命&quot;之年，人生重要节点。</p></div><h3 id="2029年-己酉-虚岁28">2029年 己酉 虚岁28</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年命宫</td><td>酉（父母宫）</td></tr><tr><td>流年四化</td><td>武曲<span class="tag tag-success">化禄</span>·贪狼<span class="tag tag-warning">化权</span>·天梁<span class="tag tag-info">化科</span>·文曲<span class="tag tag-danger">化忌</span></td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>流年命宫在酉，天同平，此年与父母关系为年度主题。</p><ul><li><strong>武曲<span class="tag tag-success">化禄</span></strong>入戌（福德宫）：<strong>精神压力缓解！</strong> 武曲本<span class="tag tag-danger">化忌</span>，流年<span class="tag tag-success">化禄</span>暂时化解精神困扰</li><li><strong>贪狼<span class="tag tag-warning">化权</span></strong>入辰（财帛宫）：财运有掌控力</li><li><strong>天梁<span class="tag tag-info">化科</span></strong>入未（兄弟宫）：兄弟中有贵人</li><li><strong>文曲<span class="tag tag-danger">化忌</span></strong>入辰（财帛宫）：理财文书有误，注意合同细节</li></ul></div><h3 id="2030年-庚戌-虚岁29">2030年 庚戌 虚岁29</h3><div style="overflow-x:auto"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年命宫</td><td>戌（福德宫）</td></tr><tr><td>流年四化</td><td>太阳<span class="tag tag-success">化禄</span>·武曲<span class="tag tag-warning">化权</span>·太阴<span class="tag tag-info">化科</span>·天同<span class="tag tag-danger">化忌</span></td></tr></tbody></table></div><p><strong>运势分析</strong>：</p><p>流年命宫在戌，武曲庙<span class="star-badge hua-ji">忌</span>+左辅<span class="star-badge hua-ke">科</span>+文昌陷+陀罗庙，此年精神世界为年度主题。</p><ul><li><strong>太阳<span class="tag tag-success">化禄</span></strong>入亥（田宅宫）：家宅有起色，与父亲关系好转</li><li><strong>武曲<span class="tag tag-warning">化权</span></strong>入戌（福德宫）：<strong>精神掌控力增强</strong>，武曲<span class="tag tag-warning">化权</span>在福德宫，内心变得坚定</li><li><strong>太阴<span class="tag tag-info">化科</span></strong>入卯（疾厄宫）：健康有贵人，善于调理</li><li><strong>天同<span class="tag tag-danger">化忌</span></strong>入酉（父母宫）：与父母有矛盾或父母健康需注意</li></ul><hr></div><h2 id="八-六冲关系分析">八、六冲关系分析</h2><p>六冲为地支对冲关系，冲则动、则散、则变。以下分析各对冲宫位的影响：</p></div><h3 id="8-1-申寅冲-命宫-vs-迁移宫">8.1 申寅冲：命宫 vs 迁移宫</h3><div style="overflow-x:auto"><table><thead><tr><th>宫位</th><th>主星</th><th>冲击分析</th></tr></thead><tbody><tr><td>申（命宫）</td><td>七杀(庙)+天马</td><td>内在刚烈、独立</td></tr><tr><td>寅（迁移）</td><td>紫微(旺)<span class="star-badge hua-quan">权</span>+天府(庙)</td><td>外在权威、贵气</td></tr></tbody></table></div><p><strong>解读</strong>：命宫七杀与迁移紫府对冲，内在刚烈与外在权威形成张力。命主内心独立不羁，但外在环境要求权威规范，内外拉扯。紫府照命为贵，但冲则动，命主一生多在外奔波，不安于室。</p></div><h3 id="8-2-酉卯冲-父母宫-vs-疾厄宫">8.2 酉卯冲：父母宫 vs 疾厄宫</h3><div style="overflow-x:auto"><table><thead><tr><th>宫位</th><th>主星</th><th>冲击分析</th></tr></thead><tbody><tr><td>酉（父母）</td><td>天同(平)</td><td>父母温和</td></tr><tr><td>卯（疾厄）</td><td>太阴(陷)+天魁+铃星</td><td>健康偏弱</td></tr></tbody></table></div><p><strong>解读</strong>：天同平与太阴陷对冲，父母宫的安逸与疾厄宫的虚弱互相影响。太阴为母星，陷于疾厄冲父母，母亲健康需关注。天同<span class="tag tag-success">化禄</span>（流年）可缓解此冲。</p></div><h3 id="8-3-戌辰冲-福德宫-vs-财帛宫">8.3 戌辰冲：福德宫 vs 财帛宫</h3><div style="overflow-x:auto"><table><thead><tr><th>宫位</th><th>主星</th><th>冲击分析</th></tr></thead><tbody><tr><td>戌（福德）</td><td>武曲(庙)<span class="star-badge hua-ji">忌</span>+左辅<span class="star-badge hua-ke">科</span>+文昌(陷)+陀罗(庙)</td><td>精神为财所困</td></tr><tr><td>辰（财帛）</td><td>贪狼(庙)+右弼+文曲(得)</td><td>财源广但欲望重</td></tr></tbody></table></div><p><strong>解读</strong>：此为全盘最关键的六冲！武曲<span class="tag tag-danger">化忌</span>在福德冲贪狼庙旺在财帛，精神执念与物质欲望对冲。赚得越多，精神越不安；钱财越多，内心越纠结。陀罗加剧纠结，贪狼加剧欲望，此冲为命主一生核心矛盾。</p></div><h3 id="8-4-亥巳冲-田宅宫-vs-子女宫">8.4 亥巳冲：田宅宫 vs 子女宫</h3><div style="overflow-x:auto"><table><thead><tr><th>宫位</th><th>主星</th><th>冲击分析</th></tr></thead><tbody><tr><td>亥（田宅）</td><td>太阳(陷)+禄存+地空+地劫</td><td>家宅不安</td></tr><tr><td>巳（子女）</td><td>巨门(旺)+天钺</td><td>子女善辩</td></tr></tbody></table></div><p><strong>解读</strong>：太阳陷于田宅冲巨门旺于子女，家宅阴暗与子女口舌对冲。家宅不安影响子女，子女口舌亦影响家宅和谐。</p></div><h3 id="8-5-子午冲-官禄宫-vs-夫妻宫">8.5 子午冲：官禄宫 vs 夫妻宫</h3><div style="overflow-x:auto"><table><thead><tr><th>宫位</th><th>主星</th><th>冲击分析</th></tr></thead><tbody><tr><td>子（官禄）</td><td>破军(庙)+擎羊(陷)</td><td>事业多变</td></tr><tr><td>午（夫妻）</td><td>廉贞(平)+天相(庙)</td><td>婚姻重规范</td></tr></tbody></table></div><p><strong>解读</strong>：破军冲廉贞天相，事业变动冲击婚姻稳定。破军的大破大立与廉贞天相的印绶规范形成矛盾——事业需要变动，婚姻需要稳定，二者难以兼顾。</p></div><h3 id="8-6-丑未冲-仆役宫-vs-兄弟宫">8.6 丑未冲：仆役宫 vs 兄弟宫</h3><div style="overflow-x:auto"><table><thead><tr><th>宫位</th><th>主星</th><th>冲击分析</th></tr></thead><tbody><tr><td>丑（仆役）</td><td>天机(陷)+火星(得)</td><td>朋友多变急躁</td></tr><tr><td>未（兄弟）</td><td>天梁(旺)<span class="star-badge hua-lu">禄</span></td><td>兄弟有贵人</td></tr></tbody></table></div><p><strong>解读</strong>：天梁<span class="tag tag-success">化禄</span>在兄弟冲天机陷在仆役，兄弟贵人化解朋友之不利。天机陷+火星的急躁多变，被天梁<span class="tag tag-success">化禄</span>的逢凶化吉之力对冲化解。</p><hr></div><h2 id="九-星耀亮度总览">九、星耀亮度总览</h2></div><h3 id="9-1-庙旺星曜-Bright">9.1 庙旺星曜（Bright）</h3><div style="overflow-x:auto"><table><thead><tr><th>星曜</th><th>亮度</th><th>所在宫位</th><th>力量评价</th></tr></thead><tbody><tr><td>七杀</td><td>庙</td><td>申（命宫）</td><td>刚烈之力充分发挥</td></tr><tr><td>紫微</td><td>旺</td><td>寅（迁移）</td><td>帝座之力极强</td></tr><tr><td>天府</td><td>庙</td><td>寅（迁移）</td><td>库星之力极强</td></tr><tr><td>天梁</td><td>旺</td><td>未（兄弟）</td><td>荫星之力极强</td></tr><tr><td>天相</td><td>庙</td><td>午（夫妻）</td><td>印星之力极强</td></tr><tr><td>贪狼</td><td>庙</td><td>辰（财帛）</td><td>欲望之星力量极强</td></tr><tr><td>巨门</td><td>旺</td><td>巳（子女）</td><td>暗星口才力量极强</td></tr><tr><td>破军</td><td>庙</td><td>子（官禄）</td><td>耗星开创力极强</td></tr><tr><td>武曲</td><td>庙</td><td>戌（福德）</td><td>财星力量极强（但<span class="tag tag-danger">化忌</span>减力）</td></tr><tr><td>陀罗</td><td>庙</td><td>戌（福德）</td><td>煞星力量极强（增加纠结）</td></tr></tbody></table></div></div><h3 id="9-2-平星曜-Normal">9.2 平星曜（Normal）</h3><div style="overflow-x:auto"><table><thead><tr><th>星曜</th><th>亮度</th><th>所在宫位</th><th>力量评价</th></tr></thead><tbody><tr><td>廉贞</td><td>平</td><td>午（夫妻）</td><td>囚星力量中等</td></tr><tr><td>天同</td><td>平</td><td>酉（父母）</td><td>福星力量中等</td></tr></tbody></table></div></div><h3 id="9-3-陷落星曜-Dim">9.3 陷落星曜（Dim）</h3><div style="overflow-x:auto"><table><thead><tr><th>星曜</th><th>亮度</th><th>所在宫位</th><th>力量评价</th></tr></thead><tbody><tr><td>太阴</td><td>陷</td><td>卯（疾厄）</td><td>阴柔之星力量极弱，肾、泌尿系统偏弱</td></tr><tr><td>太阳</td><td>陷</td><td>亥（田宅）</td><td>阳刚之星力量极弱，家宅、父缘偏弱</td></tr><tr><td>文昌</td><td>陷</td><td>戌（福德）</td><td>文才之星力量极弱，精神表达不畅</td></tr><tr><td>天机</td><td>陷</td><td>丑（仆役）</td><td>智慧之星力量极弱，朋友中智慧型助力弱</td></tr><tr><td>擎羊</td><td>陷</td><td>子（官禄）</td><td>煞星力量减弱（好事，煞星陷则煞气减）</td></tr></tbody></table></div></div><h3 id="9-4-亮度分布总结">9.4 亮度分布总结</h3><ul><li><strong>庙旺星曜</strong>：10颗，力量充沛</li><li><strong>平星曜</strong>：2颗，力量中等</li><li><strong>陷落星曜</strong>：5颗，力量不足</li></ul><p><strong>关键观察</strong>：日月皆陷（太阳陷田宅、太阴陷疾厄），阴阳失调为此盘核心问题之一。命宫七杀庙旺、迁移紫府庙旺、官禄破军庙旺、财帛贪狼庙旺，四正力量极强，但精神世界（福德宫）忌星重重，形成&quot;外在强、内在弱&quot;的格局。</p><hr></div><h2 id="十-健康总览">十、健康总览</h2></div><h3 id="10-1-疾厄宫主分析">10.1 疾厄宫主分析</h3><p><strong>太阴<span class="star-badge dim">陷</span>+ 天魁 + 铃星<span class="star-badge normal">利</span></strong> 于卯宫</p><p>太阴主水，对应人体：</p><ul><li><strong>肾脏</strong>：太阴陷，肾气先天不足</li><li><strong>膀胱</strong>：泌尿系统偏弱</li><li><strong>内分泌系统</strong>：荷尔蒙分泌需关注</li><li><strong>生殖系统</strong>：咸池同宫，注意生殖健康</li></ul><p>铃星暗火伤阴，加重阴虚火旺之象。天魁化解，有贵人医助。</p></div><h3 id="10-2-五行与脏腑对应">10.2 五行与脏腑对应</h3><div style="overflow-x:auto"><table><thead><tr><th>五行</th><th>对应脏腑</th><th>盘中状态</th><th>健康提示</th></tr></thead><tbody><tr><td>金</td><td>肺、大肠</td><td>武曲(金星)<span class="tag tag-danger">化忌</span>在福德</td><td>肺部需注意，精神压力影响呼吸系统</td></tr><tr><td>木</td><td>肝、胆</td><td>天机(木星)陷在仆役</td><td>肝气不舒，情绪郁结</td></tr><tr><td>水</td><td>肾、膀胱</td><td>太阴(水星)陷在疾厄</td><td>肾气不足，泌尿系统偏弱</td></tr><tr><td>火</td><td>心、小肠</td><td>廉贞(火星)平在夫妻、七杀带火</td><td>心火偏旺，需清心</td></tr><tr><td>土</td><td>脾、胃</td><td>天府(土星)庙在迁移</td><td>脾胃尚可</td></tr></tbody></table></div></div><h3 id="10-3-重点健康警示">10.3 重点健康警示</h3><ol><li><strong>肾脏/泌尿系统</strong>（太阴陷+铃星）：最需关注，先天偏弱，中年以后需定期检查</li><li><strong>精神健康</strong>（武曲<span class="tag tag-danger">化忌</span>+陀罗在福德）：精神压力大，易焦虑、失眠、钻牛角尖</li><li><strong>肝气不舒</strong>（天机陷）：情绪郁结，需疏肝理气</li><li><strong>内分泌系统</strong>（太阴陷+咸池）：荷尔蒙相关需关注</li></ol></div><h3 id="10-4-养生建议">10.4 养生建议</h3><ul><li>早睡养肾，避免熬夜伤阴</li><li>适度运动疏肝，不宜剧烈运动（七杀命宫易过度）</li><li>冥想静心，化解福德宫忌星压力</li><li>定期体检，重点关注肾、泌尿、内分泌</li></ul><hr></div><h2 id="十一-综合人生建议">十一、综合人生建议</h2></div><h3 id="11-1-性格总评">11.1 性格总评</h3><p>七杀入命，命身同宫，性格刚烈孤克、目标明确、行动力强。杀破狼格局主大破大立，一生不会平淡。但命宫旬空孤辰，内心有孤独感，不善表达情感。</p><blockquote><strong>倪师断语</strong>：七杀入命之人，&quot;草木皆兵&quot;，警觉性高但亦多疑。命身同宫则方向坚定，不轻易改变。</blockquote></div><h3 id="11-2-事业方向">11.2 事业方向</h3><p>杀破狼格局+紫府照命，适合：</p><ul><li><strong>开创性事业</strong>：创业、开拓新市场</li><li><strong>军警法</strong>：七杀将星，适合纪律性强的行业</li><li><strong>技术领域</strong>：破军主变革，适合技术创新</li><li><strong>外向型工作</strong>：紫府在迁移，外出发展优于留守</li></ul><p>不宜：</p><ul><li>安逸稳定的工作（七杀不安于室）</li><li>合伙经营（贪狼在财帛带寡宿，不宜合伙）</li><li>需要高度人际协调的工作（孤辰+七杀，人际协调非强项）</li></ul></div><h3 id="11-3-婚姻建议">11.3 婚姻建议</h3><blockquote><strong>倪师规则</strong>：廉贞在夫妻宫一律建议晚婚。</blockquote><ul><li><strong>晚婚为宜</strong>：28岁以后考虑婚姻为佳</li><li><strong>配偶特质</strong>：廉贞天相印绶格局，配偶秉公处事、有清廉之名，性格规范有序</li><li><strong>婚姻隐忧</strong>：夫妻宫自<span class="tag tag-danger">化忌</span>（廉贞自<span class="tag tag-danger">化忌</span>），婚姻中双方易自我纠结；福德宫武曲<span class="tag tag-danger">化忌</span>冲照夫妻宫，精神压力影响婚姻</li><li><strong>2026年丙午</strong>：廉贞<span class="tag tag-danger">化忌</span>入夫妻宫，此年感情必生变，不宜做重大感情决定</li><li><strong>婚后经营</strong>：需刻意经营沟通，避免各自纠结</li></ul></div><h3 id="11-4-财运建议">11.4 财运建议</h3><ul><li>贪狼庙旺守财帛，财源广但与交际应酬相关</li><li>命宫飞禄入财帛，赚钱有方</li><li>但财帛宫被多忌飞入（疾厄飞忌、仆役飞忌、父母飞忌），因健康、朋友、父母破财</li><li>田宅宫太阳陷+地空地劫，房产投资需谨慎</li><li><strong>理财原则</strong>：赚得多但守不住，需建立强制储蓄机制</li></ul></div><h3 id="11-5-精神健康建议">11.5 精神健康建议</h3><p>福德宫为全盘最重之宫位，武曲<span class="tag tag-danger">化忌</span>+陀罗+文昌陷，精神压力极大：</p><ul><li><strong>不可钻牛角尖</strong>：陀罗主纠结，遇事需学会放下</li><li><strong>寻求专业帮助</strong>：精神压力大时不可硬扛，左辅<span class="tag tag-info">化科</span>在福德，贵人中可能有心理咨询师</li><li><strong>培养精神爱好</strong>：华盖在福德，有宗教玄学缘，可通过冥想、修行缓解压力</li><li><strong>避免为财所困</strong>：武曲<span class="tag tag-danger">化忌</span>在福德，精神执念多与钱财有关，需建立正确的财富观</li></ul></div><h3 id="11-6-人生阶段规划">11.6 人生阶段规划</h3><div style="overflow-x:auto"><table><thead><tr><th>年龄段</th><th>大限</th><th>核心主题</th><th>建议</th></tr></thead><tbody><tr><td>5~14</td><td>戊申</td><td>性格形成</td><td>培养柔韧性，不可一味刚强</td></tr><tr><td>15~24</td><td>己酉</td><td>求学成长</td><td>天同安逸，需自我加压</td></tr><tr><td><strong>25~34</strong></td><td><strong>庚戌</strong></td><td><strong>精神考验</strong></td><td><strong>武曲<span class="tag tag-danger">化忌</span>坐大限命宫，精神压力最大十年，需特别注意心理健康与婚姻选择</strong></td></tr><tr><td>35~44</td><td>辛亥</td><td>家宅经营</td><td>太阳陷，家宅不安，需稳守</td></tr><tr><td>45~54</td><td>壬子</td><td>事业巅峰</td><td>破军庙旺，大破大立，可放手一搏</td></tr><tr><td>55~64</td><td>癸丑</td><td>守成退隐</td><td>天机陷，宜退不宜进</td></tr></tbody></table></div></div><h3 id="11-7-核心忠告">11.7 核心忠告</h3><ol><li><strong>刚柔并济</strong>：七杀刚烈，需修柔韧。命宫旬空，做事易差一步，需多一分耐心</li><li><strong>晚婚为上</strong>：廉贞在夫妻宫+自<span class="tag tag-danger">化忌</span>，早婚必波折，28岁后为宜</li><li><strong>精神为重</strong>：福德宫忌星极重，精神健康比物质成就更重要</li><li><strong>外出发展</strong>：紫府在迁移，帝座照命，外出优于留守</li><li><strong>守财为要</strong>：杀破狼格局赚得多但花得多，田宅地空地劫，需建立长期储蓄</li><li><strong>健康先行</strong>：太阴陷疾厄，肾脏泌尿系统需长期关注，不可忽视</li></ol><hr><blockquote><strong>声明</strong>：本命盘分析基于倪海厦紫微斗数体系，大限四化不使用，四化星永远固定不动。格局识别采用三层结构（必须/加分/破格）。星耀亮度采用三级制（庙旺/平/陷）。所有断语均基于传统紫微斗数理论与倪师授课内容，仅供参考，不构成任何决策依据。</blockquote><hr><p><em>排盘数据来源：iztro 紫微斗数排盘引擎</em></p><p><em>分析体系：倪海厦紫微斗数解读法</em></p><p><em>生成日期：2026年5月21日</em></p>
+  </main>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('ziwei-theme', next);
+  updateThemeIcon(next);
+}
+
+function updateThemeIcon(theme) {
+  const icon = document.getElementById('themeIcon');
+  if (theme === 'dark') {
+    icon.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+  } else {
+    icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  }
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+const saved = localStorage.getItem('ziwei-theme');
+if (saved) {
+  document.documentElement.setAttribute('data-theme', saved);
+  updateThemeIcon(saved);
+}
+
+const headings = document.querySelectorAll('h2, h3');
+const tocLinks = document.querySelectorAll('.toc-link');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const id = entry.target.id;
+      const link = document.querySelector('.toc-link[href="#' + id + '"]');
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-80px 0px -70% 0px', threshold: 0.1 });
+
+headings.forEach(h => observer.observe(h));
+
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 400);
+});
+
+document.querySelectorAll('.toc-link').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 900) {
+      document.getElementById('sidebar').classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>
