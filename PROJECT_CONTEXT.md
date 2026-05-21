@@ -87,11 +87,15 @@ ziwei-astrology-skills/
 ├── examples/
 │   ├── 命盘详析_1999年9月9日巳时男.md   # 示例命盘（MD格式）
 │   └── 命盘详析_1999年9月9日巳时男.html # 交互式HTML（排盘可视化+体系切换）
+├── output/                            # 排盘输出目录（按日期_出生信息分类）
+│   └── {日期}_{出生信息}/
+│       ├── 命盘详析.md / .html
+│       └── {专项解读}.md
 ├── scripts/
-│   └── md2html.js                     # MD转HTML脚本（明暗主题/侧边导航/四化彩色标注/排盘图/体系切换）
+│   └── md2html.js                     # MD转HTML脚本（含快捷指令面板/键盘快捷键/渐变进度条）
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md                   # 核心指令文件（376行）
+        ├── SKILL.md                   # 核心指令文件（含快捷指令/输出规范/提示语模板）
         └── references/                # 渐进式披露参考文档
             ├── time-mapping.md        # 时辰映射表
             ├── star-rules.md          # 安星规则与亮度表
@@ -99,7 +103,7 @@ ziwei-astrology-skills/
             ├── patterns.md            # 格局识别规则（含补充格局）
             ├── palace-interpretation.md # 十二宫解读+官禄/财帛/疾厄/四化断语
             ├── heming-knowledge.md    # 倪海厦合盘与夫妻宫断语
-            └── report-template.md     # 完整报告输出模板
+            └── report-template.md     # 完整报告输出模板（含输出文件规范）
 ```
 
 ---
@@ -131,9 +135,11 @@ ziwei-astrology-skills/
   - 排盘图亮度标签实时切换
   - `:::not-iztro`/`:::not-nishi`/`:::nishi`/`:::iztro` 块标记控制正文显隐
   - 切换有淡入淡出动画过渡
-- 交互式排盘图（12宫格、三方四正SVG连线、可拖拽/缩放、悬停详情）
+- 交互式排盘图（12宫格、三方四正SVG连线、可拖拽/缩放、悬停详情+四化徽章）
+- 快捷指令帮助面板（❓按钮或键盘 ? 触发）
+- 键盘快捷键（T切换主题、1/2/3切换体系、?帮助、Esc关闭弹窗）
 - 章节折叠（状态保存）
-- 阅读进度条
+- 渐变色阅读进度条
 - 响应式布局（移动端折叠侧边栏）
 - 打印友好样式
 
@@ -204,6 +210,10 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] 体系切换操作说明（HTML界面+文本交互）
 - [x] 亮度映射修正（得→平，非庙旺）
 - [x] 紫府同宫格修正（限申宫）
+- [x] 快捷指令体系（\money \health \love \career \year \question \switch \help）
+- [x] 输出文件夹规范（output/{日期}_{出生信息}/分类存放）
+- [x] 完成后提示语模板（含文件位置和快捷指令说明）
+- [x] HTML交互优化（快捷指令帮助面板、键盘快捷键、渐变进度条、四化徽章、暗色主题对比度）
 - [x] 推送到 GitHub 远程仓库
 
 ---

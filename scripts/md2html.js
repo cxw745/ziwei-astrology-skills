@@ -110,15 +110,15 @@ function generateHtml(mdContent, fileName) {
   --bg-code: #2a2a2a;
   --bg-table-header: #2a2a2a;
   --bg-table-stripe: rgba(255,255,255,0.02);
-  --bg-blockquote: rgba(82,156,202,0.06);
+  --bg-blockquote: rgba(82,156,202,0.08);
   --bg-overlay: rgba(0,0,0,0.7);
-  --text-primary: #e8e8e4;
-  --text-secondary: #a5a5a1;
-  --text-muted: #7d7d79;
+  --text-primary: #ecece8;
+  --text-secondary: #b0b0ac;
+  --text-muted: #8a8a86;
   --text-link: #529cca;
   --text-link-hover: #6db3d8;
-  --border-color: #2f2f2f;
-  --border-light: #333333;
+  --border-color: #383838;
+  --border-light: #3a3a3a;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
   --shadow-md: 0 4px 14px rgba(0,0,0,0.3);
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
@@ -168,6 +168,17 @@ function generateHtml(mdContent, fileName) {
   --chart-dalimit-bg: rgba(167,139,250,0.08);
 }
 
+[data-theme="dark"] table { border-color: var(--border-color); }
+[data-theme="dark"] .table-wrapper { border-color: var(--border-color); }
+[data-theme="dark"] td { border-bottom-color: #3a3a3a; color: #b8b8b4; }
+[data-theme="dark"] th { color: #b8b8b4; border-bottom-color: #444; }
+[data-theme="dark"] blockquote { color: #b0b0ac; border-left-color: var(--accent); background: rgba(82,156,202,0.08); }
+[data-theme="dark"] blockquote strong { color: #ecece8; }
+[data-theme="dark"] pre { border-color: #3a3a3a; background: #222; }
+[data-theme="dark"] code { background: #2e2e2e; color: #d8d8d4; }
+[data-theme="dark"] pre code { background: none; color: #d8d8d4; }
+[data-theme="dark"] hr { background: #3a3a3a; }
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
@@ -192,16 +203,26 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 3px;
   z-index: 9999;
   background: var(--progress-bg);
+  overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  background: var(--progress-fill);
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 200% 100%;
+  animation: progressShimmer 3s ease infinite;
   width: 0%;
   transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(139,92,246,0.4);
+}
+
+@keyframes progressShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 .sidebar {
@@ -1380,6 +1401,205 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   color: var(--text-muted);
 }
 
+.help-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  max-width: 94vw;
+  max-height: 85vh;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  z-index: 600;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.help-panel.open {
+  display: flex;
+  animation: chartPanelIn 0.2s ease;
+}
+
+.help-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.help-panel-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.help-panel-title svg { width: 18px; height: 18px; color: var(--accent); }
+
+.help-panel-close {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.help-panel-close:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.help-panel-close svg { width: 14px; height: 14px; }
+
+.help-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.help-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  margin-top: 16px;
+}
+
+.help-section-title:first-child { margin-top: 0; }
+
+.help-shortcut-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.help-shortcut-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  margin-bottom: 2px;
+  transition: background var(--transition);
+}
+
+.help-shortcut-item:hover {
+  background: var(--bg-hover);
+}
+
+.help-shortcut-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.help-shortcut-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.help-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 5px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 0 var(--border-color);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.help-command-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.help-command-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  margin-bottom: 2px;
+  transition: background var(--transition);
+}
+
+.help-command-item:hover {
+  background: var(--bg-hover);
+}
+
+.help-command-code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 80px;
+}
+
+.help-command-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.help-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 599;
+}
+
+.help-overlay.open { display: block; }
+
+.tooltip-sihua-badges {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.tooltip-sihua-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.tooltip-sihua-badge.lu { background: var(--success-light); color: var(--chart-lu); }
+.tooltip-sihua-badge.quan { background: var(--warning-light); color: var(--chart-quan); }
+.tooltip-sihua-badge.ke { background: var(--info-light); color: var(--chart-ke); }
+.tooltip-sihua-badge.ji { background: var(--danger-light); color: var(--chart-ji); }
+
 .inline-chart-container {
   margin: 24px 0;
   border: 1px solid var(--border-color);
@@ -1623,6 +1843,9 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   <button class="toolbar-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle theme">
     <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
   </button>
+  <button class="toolbar-btn" onclick="toggleHelp()" aria-label="帮助" title="快捷指令帮助">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  </button>
 </div>
 
 <nav class="sidebar" id="sidebar">
@@ -1651,7 +1874,7 @@ ${bodyHtml}
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
 </button>
 
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+<button class="back-to-top" id="backToTop" onclick="document.documentElement.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
 
@@ -1696,6 +1919,42 @@ ${bodyHtml}
 </div>
 
 <div class="chart-tooltip" id="chartTooltip"></div>
+
+<div class="help-overlay" id="helpOverlay" onclick="closeHelp()"></div>
+
+<div class="help-panel" id="helpPanel">
+  <div class="help-panel-header">
+    <div class="help-panel-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      快捷指令帮助
+    </div>
+    <button class="help-panel-close" onclick="closeHelp()" title="关闭">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="help-panel-body">
+    <div class="help-section-title">键盘快捷键</div>
+    <ul class="help-shortcut-list">
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">切换明/暗主题</span><span class="help-shortcut-key"><span class="help-kbd">T</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">切换到 iztro 模式</span><span class="help-shortcut-key"><span class="help-kbd">1</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">切换到倪师模式</span><span class="help-shortcut-key"><span class="help-kbd">2</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">切换到综合模式</span><span class="help-shortcut-key"><span class="help-kbd">3</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">显示/隐藏帮助面板</span><span class="help-shortcut-key"><span class="help-kbd">?</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">关闭所有弹窗</span><span class="help-shortcut-key"><span class="help-kbd">Esc</span></span></li>
+    </ul>
+    <div class="help-section-title">对话指令</div>
+    <ul class="help-command-list">
+      <li class="help-command-item"><span class="help-command-code">\\money</span><span class="help-command-desc">财运分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\\health</span><span class="help-command-desc">健康分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\\love</span><span class="help-command-desc">感情分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\\career</span><span class="help-command-desc">事业分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\\year</span><span class="help-command-desc">流年运势</span></li>
+      <li class="help-command-item"><span class="help-command-code">\\question</span><span class="help-command-desc">提问解答</span></li>
+      <li class="help-command-item"><span class="help-command-code">\\switch</span><span class="help-command-desc">切换解读体系</span></li>
+      <li class="help-command-item"><span class="help-command-code">\\help</span><span class="help-command-desc">显示指令帮助</span></li>
+    </ul>
+  </div>
+</div>
 
 <script>
 (function() {
@@ -2110,6 +2369,15 @@ ${bodyHtml}
             tt += ' ';
           });
           tt += '</div>';
+          var sihuaStars = palace.mainStars.filter(function(s) { return s.sihua; });
+          if (sihuaStars.length > 0) {
+            tt += '<div class="tooltip-sihua-badges">';
+            sihuaStars.forEach(function(s) {
+              var sc = getSihuaClass(s.sihua);
+              tt += '<span class="tooltip-sihua-badge ' + sc + '">' + esc(s.name) + ' ' + esc(s.sihua) + '</span>';
+            });
+            tt += '</div>';
+          }
         }
         if (palace.auxStars && palace.auxStars.length > 0) {
           tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">辅星</div>' + esc(palace.auxStars.join('、')) + '</div>';
@@ -2503,8 +2771,50 @@ ${bodyHtml}
 
   /* ===== ESC关闭 ===== */
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeChart();
+    if (e.key === 'Escape') {
+      closeChart();
+      closeHelp();
+    }
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+    if (e.key === 't' || e.key === 'T') {
+      e.preventDefault();
+      toggleTheme();
+    } else if (e.key === '1') {
+      e.preventDefault();
+      switchSystem('iztro');
+    } else if (e.key === '2') {
+      e.preventDefault();
+      switchSystem('nishi');
+    } else if (e.key === '3') {
+      e.preventDefault();
+      switchSystem('combined');
+    } else if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+      e.preventDefault();
+      toggleHelp();
+    }
   });
+
+  /* ===== 帮助面板 ===== */
+  function toggleHelp() {
+    var panel = document.getElementById('helpPanel');
+    var overlay = document.getElementById('helpOverlay');
+    if (panel.classList.contains('open')) {
+      closeHelp();
+    } else {
+      panel.classList.add('open');
+      overlay.classList.add('open');
+    }
+  }
+
+  function closeHelp() {
+    var panel = document.getElementById('helpPanel');
+    var overlay = document.getElementById('helpOverlay');
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  window.toggleHelp = toggleHelp;
+  window.closeHelp = closeHelp;
 
   /* ===== 工具函数 ===== */
   function esc(s) {
