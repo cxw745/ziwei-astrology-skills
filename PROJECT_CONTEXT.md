@@ -82,29 +82,28 @@ ziwei-astrology-skills/
 ├── README.md
 ├── LICENSE                            # MIT License
 ├── PROJECT_CONTEXT.md                 # 本文档
-├── evals/
-│   └── evals.json                     # 6个测试用例（覆盖4模块+边界+继续提问）
-├── examples/
-│   ├── 命盘详析_1999年9月9日巳时男.md   # 示例命盘（MD格式）
-│   └── 命盘详析_1999年9月9日巳时男.html # 交互式HTML（排盘可视化+体系切换）
-├── ziwei-output/                     # 排盘输出目录（与skills同级，不影响技能定义）
+├── ziwei-output/                     # 排盘输出目录（与skills同级）
 │   └── {日期}_{出生信息}/
-│       ├── 命盘详析.md / .html
-│       ├── {专项解读}.md / .html
-│       ├── 大限/流年/流月 子目录
-├── scripts/
-│   └── md2html.js                     # MD转HTML脚本（含快捷指令面板/键盘快捷键/渐变进度条）
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md                   # 核心指令文件（含快捷指令/输出规范/提示语模板）
+        ├── SKILL.md                   # 核心指令文件（174行，精简版）
+        ├── scripts/
+        │   └── md2html.js             # MD转HTML脚本
+        ├── examples/
+        │   ├── 命盘详析_1999年9月9日巳时男.md
+        │   └── 命盘详析_1999年9月9日巳时男.html
+        ├── evals/
+        │   └── evals.json             # 评测用例
         └── references/                # 渐进式披露参考文档
             ├── time-mapping.md        # 时辰映射表
             ├── star-rules.md          # 安星规则与亮度表
             ├── sihua-rules.md         # 四化对照表与飞化规则
-            ├── patterns.md            # 格局识别规则（含补充格局）
-            ├── palace-interpretation.md # 十二宫解读+官禄/财帛/疾厄/四化断语
+            ├── patterns.md            # 格局识别规则
+            ├── palace-interpretation.md # 十二宫解读
             ├── heming-knowledge.md    # 倪海厦合盘与夫妻宫断语
-            └── report-template.md     # 完整报告输出模板（含输出文件规范）
+            ├── report-template.md     # 报告模板+专项模板+输出规范
+            ├── shortcuts.md           # 快捷指令详细指引
+            └── source-repos.md        # 源仓库文件映射（按需查阅）
 ```
 
 ---

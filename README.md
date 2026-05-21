@@ -110,23 +110,18 @@ ziwei-astrology-skills/
 ├── README.md
 ├── LICENSE
 ├── PROJECT_CONTEXT.md
-├── evals/
-│   └── evals.json
-├── examples/
-│   ├── 命盘详析_1999年9月9日巳时男.md
-│   └── 命盘详析_1999年9月9日巳时男.html
-├── ziwei-output/                    # 排盘输出目录（与skills同级，不影响技能定义）
+├── ziwei-output/                    # 排盘输出目录（与skills同级）
 │   └── {日期}_{出生信息}/
-│       ├── 命盘详析.md / .html
-│       ├── {专项解读}.md / .html
-│       ├── 大限/第N大限_{年龄}.md / .html
-│       ├── 流年/{YYYY}年{干支}.md / .html
-│       └── 流月/{YYYY}年{MM}月.md / .html
-├── scripts/
-│   └── md2html.js
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md
+        ├── SKILL.md                  # 核心指令文件（174行）
+        ├── scripts/
+        │   └── md2html.js            # MD转HTML脚本
+        ├── examples/
+        │   ├── 命盘详析_1999年9月9日巳时男.md
+        │   └── 命盘详析_1999年9月9日巳时男.html
+        ├── evals/
+        │   └── evals.json            # 评测用例
         └── references/
             ├── time-mapping.md
             ├── star-rules.md
@@ -134,7 +129,9 @@ ziwei-astrology-skills/
             ├── patterns.md
             ├── palace-interpretation.md
             ├── heming-knowledge.md
-            └── report-template.md
+            ├── report-template.md
+            ├── shortcuts.md           # 快捷指令详细指引
+            └── source-repos.md        # 源仓库文件映射
 ```
 
 ## 三模式解读
@@ -177,7 +174,7 @@ HTML界面中可通过工具栏按钮或键盘快捷键（1/2/3）实时切换�
 将命盘详析 Markdown 文件转换为交互式 HTML：
 
 ```bash
-node scripts/md2html.js <input.md> [output.html]
+node skills/ziwei-astrology/scripts/md2html.js <input.md> [output.html]
 ```
 
 HTML 特性：
