@@ -121,9 +121,15 @@ ziwei-astrology-skills/
 │   └── {日期}_{出生信息}/
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md                  # 核心指令文件（194行）
+        ├── SKILL.md                  # 核心指令文件
         ├── scripts/
-        │   └── md2html.js            # MD转HTML脚本
+        │   ├── md2html.js            # MD转HTML脚本
+        │   ├── validate-report.js    # 报告结构验证脚本
+        │   └── lib/                  # 模块化拆分
+        │       ├── parser.js
+        │       ├── chart.js
+        │       ├── theme.js
+        │       └── toc.js
         ├── examples/
         │   ├── 命盘详析_1999年9月9日巳时男.md
         │   └── 命盘详析_1999年9月9日巳时男.html
@@ -134,9 +140,14 @@ ziwei-astrology-skills/
             ├── patterns.md
             ├── palace-interpretation.md
             ├── heming-knowledge.md
+            ├── nihai-quotes.md
+            ├── nihai-medicine.md      # 倪师健康断语
+            ├── fallback-guide.md     # 独立使用降级策略
+            ├── classics-excerpts.md
+            ├── star-palace-matrix.md
             ├── report-template.md
             ├── shortcuts.md
-            └── source-repos.md       # 源仓库文件索引+引用标注格式
+            └── source-repos.md
 ```
 
 ## 三模式解读
@@ -195,6 +206,8 @@ HTML 特性：
 - 响应式布局（移动端自动折叠侧边栏）
 - 打印友好样式
 - 键盘快捷键（T/1/2/3/?/Esc）
+- 报告结构自动验证（`node scripts/validate-report.js <report.md>`）
+- 模块化架构（parser/chart/theme/toc四个模块，便于维护）
 
 ## 输出文件
 

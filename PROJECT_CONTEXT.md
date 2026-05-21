@@ -93,21 +93,29 @@ ziwei-astrology-skills/
     └── ziwei-astrology/
         ├── SKILL.md                   # 核心指令文件（含来源标注+知识准备+网页搜索策略+降级方案）
         ├── scripts/
-        │   └── md2html.js             # MD转HTML脚本
+        │   ├── md2html.js             # MD转HTML脚本（主入口）
+        │   ├── validate-report.js     # 报告结构验证脚本
+        │   └── lib/                   # md2html模块化拆分
+        │       ├── parser.js          # Markdown解析逻辑
+        │       ├── chart.js           # 排盘图渲染逻辑
+        │       ├── theme.js           # 主题和样式定义
+        │       └── toc.js             # 目录生成逻辑
         ├── examples/
         │   ├── 命盘详析_1999年9月9日巳时男.md
         │   └── 命盘详析_1999年9月9日巳时男.html
-        └── references/                # 渐进式披露参考文档（12个）
+        └── references/                # 渐进式披露参考文档（14个）
             ├── time-mapping.md
             ├── star-rules.md
             ├── sihua-rules.md
             ├── patterns.md            # 格局识别规则（46个格局）
             ├── palace-interpretation.md
             ├── heming-knowledge.md
-            ├── nihai-quotes.md        # 倪师天纪断语（各宫位/四化/面相/堪舆）
-            ├── classics-excerpts.md   # 古籍关键段落摘录（骨髓赋等）
-            ├── star-palace-matrix.md  # 14主星×12宫速查表
-            ├── report-template.md     # 含16项自检清单
+            ├── nihai-quotes.md        # 倪师天纪断语（三维结构：星曜×宫位×四化）
+            ├── classics-excerpts.md   # 古典完整原文（骨髓赋/全集/全书）
+            ├── star-palace-matrix.md  # 14主星×12宫深度断语（含庙旺/四化/煞星三维）
+            ├── nihai-medicine.md      # 倪师人纪地纪健康断语（疾厄宫联动）
+            ├── fallback-guide.md      # Skill独立使用降级策略
+            ├── report-template.md     # 含16项自检清单+分级制
             ├── shortcuts.md
             └── source-repos.md        # 源仓库本地文件索引+引用标注格式
 ```
@@ -124,8 +132,8 @@ ziwei-astrology-skills/
 4. **输出风格**：三模式（iztro/倪师/综合）+双层（专业+通俗），含完整示例
 5. **功能模块**：4个模块+排盘可视化，每个含输入示例
 6. **工作流**：Step 0（知识准备+按需回源验证）→ Step 1（收集输入）→ Step 2（排盘）→ Step 3（格局识别）→ Step 4（生成报告MD+HTML）→ Step 5（继续提问）→ Step 6（全面核查+自检清单）
-7. **参考索引**：12个references按需加载+1个脚本工具
-8. **常见陷阱**：19条，含内容丰富度硬性要求（12宫×7子节、宫干飞四化48条、内容以示例为标准）
+7. **参考索引**：14个references按需加载+2个脚本工具
+8. **常见陷阱**：19条+正反对比示例，含内容丰富度分级制要求（重点宫7子节/普通宫5子节/轻量宫3子节、宫干飞四化48条、内容以示例为标准）
 9. **知识补充**：网页搜索策略（仓库优先、冲突以仓库为准）、排盘失败降级方案、来源标注决策树
 
 ---
@@ -151,6 +159,9 @@ ziwei-astrology-skills/
 - 打印友好样式
 
 用法：`node scripts/md2html.js <input.md> [output.html]`
+
+- 报告结构自动验证（`node scripts/validate-report.js <report.md>`，16项自检清单自动化）
+- md2html.js模块化拆分（parser/chart/theme/toc四个模块，主入口组合调用）
 
 ---
 
@@ -245,6 +256,18 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] report-template.md增加来源标注规范和示例
 - [x] md2html.js增加source-ref隐藏处理
 - [x] 推送到 GitHub 远程仓库
+- [x] 知识库深度扩充：classics-excerpts.md补全骨髓赋/全集/全书完整原文
+- [x] 知识库深度扩充：nihai-quotes.md从120行扩充至827行（三维结构：星曜×宫位×四化）
+- [x] 知识库深度扩充：star-palace-matrix.md从一句话断语扩充为三维深度断语（庙旺/四化/煞星）
+- [x] 新增nihai-medicine.md（倪师人纪地纪健康断语，疾厄宫联动）
+- [x] 新增fallback-guide.md（Skill独立使用降级策略）
+- [x] SKILL.md增加正反对比示例（讨好倾向vs实事求是、格局判断vs凑格局、来源标注vs虚构来源、体系混用vs体系标注）
+- [x] SKILL.md增加时辰模糊处理策略（相邻时辰对比）
+- [x] SKILL.md细化网页搜索策略（推荐站点、关键词模板、可信度排序）
+- [x] report-template.md改为分级制（重点宫/普通宫/轻量宫三级展开深度）
+- [x] md2html.js模块化拆分（parser/chart/theme/toc四个模块）
+- [x] 新增validate-report.js自动化验证脚本（16项自检清单自动检查）
+- [x] SKILL.md参考文件索引更新（12→14个references）
 
 ---
 
@@ -252,6 +275,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 
 - [ ] 实际 AI 工具中测试 Skill 效果
 - [ ] 根据测试反馈迭代优化
+- [ ] 知识库持续扩充（更多古籍注疏、倪师课程逐字稿细化）
 
 ---
 
