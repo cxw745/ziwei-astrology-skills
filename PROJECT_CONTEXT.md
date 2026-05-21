@@ -210,9 +210,11 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] 体系切换操作说明（HTML界面+文本交互）
 - [x] 亮度映射修正（得→平，非庙旺）
 - [x] 紫府同宫格修正（限申宫）
-- [x] 快捷指令体系（\money \health \love \career \year \question \switch \help）
-- [x] 输出文件夹规范（output/{日期}_{出生信息}/分类存放）
+- [x] 快捷指令体系（\money \health \love \career \year \dash \flow \month \question \switch \help）
+- [x] 输出文件夹规范（output/{日期}_{出生信息}/分类存放，含大限/流年/流月子目录）
 - [x] 完成后提示语模板（含文件位置和快捷指令说明）
+- [x] 大限/流年/流月选择指引（\dash \flow \month，从出生到终老完整列表）
+- [x] 专项解读模板（财运/健康/感情/事业/大限/流年/流月，含HTML双格式输出）
 - [x] HTML交互优化（快捷指令帮助面板、键盘快捷键、渐变进度条、四化徽章、暗色主题对比度）
 - [x] 推送到 GitHub 远程仓库
 

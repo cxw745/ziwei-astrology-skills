@@ -1942,13 +1942,22 @@ ${bodyHtml}
       <li class="help-shortcut-item"><span class="help-shortcut-desc">显示/隐藏帮助面板</span><span class="help-shortcut-key"><span class="help-kbd">?</span></span></li>
       <li class="help-shortcut-item"><span class="help-shortcut-desc">关闭所有弹窗</span><span class="help-shortcut-key"><span class="help-kbd">Esc</span></span></li>
     </ul>
-    <div class="help-section-title">对话指令</div>
+    <div class="help-section-title">专项解读</div>
     <ul class="help-command-list">
       <li class="help-command-item"><span class="help-command-code">\\money</span><span class="help-command-desc">财运分析</span></li>
       <li class="help-command-item"><span class="help-command-code">\\health</span><span class="help-command-desc">健康分析</span></li>
       <li class="help-command-item"><span class="help-command-code">\\love</span><span class="help-command-desc">感情分析</span></li>
       <li class="help-command-item"><span class="help-command-code">\\career</span><span class="help-command-desc">事业分析</span></li>
       <li class="help-command-item"><span class="help-command-code">\\year</span><span class="help-command-desc">流年运势</span></li>
+    </ul>
+    <div class="help-section-title">时运选择</div>
+    <ul class="help-command-list">
+      <li class="help-command-item"><span class="help-command-code">\\dash</span><span class="help-command-desc">大限选择（列出所有大限，选择后详解）</span></li>
+      <li class="help-command-item"><span class="help-command-code">\\flow</span><span class="help-command-desc">流年选择（列出流年，选择后详解）</span></li>
+      <li class="help-command-item"><span class="help-command-code">\\month</span><span class="help-command-desc">流月选择（列出12月，选择后详解）</span></li>
+    </ul>
+    <div class="help-section-title">辅助工具</div>
+    <ul class="help-command-list">
       <li class="help-command-item"><span class="help-command-code">\\question</span><span class="help-command-desc">提问解答</span></li>
       <li class="help-command-item"><span class="help-command-code">\\switch</span><span class="help-command-desc">切换解读体系</span></li>
       <li class="help-command-item"><span class="help-command-code">\\help</span><span class="help-command-desc">显示指令帮助</span></li>
