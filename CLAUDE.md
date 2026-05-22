@@ -34,6 +34,7 @@ skills/ziwei-astrology/SKILL.md
 3. **实事求是**：凶象如实描述，不讨好不弱化，格局不成立就不成格
 4. **倪师体系为准**：冲突以 ziwei-doushu 为准，大限四化不使用
 5. **所有输出必须写文件**：报告/专项/问答记录全部保存为 .md + .html
+6. **输出隔离**：ziwei-output/是只写目录，禁止读取旧报告用于分析，只读chart-data.json
 
 ## 工作流概要
 
