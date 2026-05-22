@@ -6,15 +6,133 @@ const path = require('path');
 function convertMdToHtml(mdFilePath, outputFilePath) {
   const mdContent = fs.readFileSync(mdFilePath, 'utf-8');
   const fileName = path.basename(mdFilePath, '.md');
-  const htmlContent = generateHtml(mdContent, fileName);
+  const mdDir = path.dirname(mdFilePath);
+  var externalChartData = null;
+  var chartJsonPath = path.join(mdDir, 'chart-data.json');
+  if (fs.existsSync(chartJsonPath)) {
+    try {
+      externalChartData = JSON.parse(fs.readFileSync(chartJsonPath, 'utf-8'));
+    } catch(e) {}
+  }
+  if (!externalChartData) {
+    var mainReportFiles = fs.readdirSync(mdDir).filter(function(f) {
+      return f.startsWith('命盘详析') && f.endsWith('.md');
+    });
+    if (mainReportFiles.length > 0) {
+      try {
+        var mainMd = fs.readFileSync(path.join(mdDir, mainReportFiles[0]), 'utf-8');
+        externalChartData = extractChartData(mainMd);
+      } catch(e) {}
+    }
+  }
+  const htmlContent = generateHtml(mdContent, fileName, externalChartData);
   fs.writeFileSync(outputFilePath, htmlContent, 'utf-8');
   console.log('Generated: ' + outputFilePath);
 }
 
-function generateHtml(mdContent, fileName) {
+function normalizeChartData(data) {
+  if (!data || !data.palaces || data.palaces.length === 0) return data;
+  if (data.palaces[0].position !== undefined) return data;
+  if (data.palaces[0].index === undefined) return data;
+
+  var palacePositions = {
+    '命宫': 5, '兄弟': 6, '兄弟宫': 6, '夫妻': 7, '夫妻宫': 7,
+    '子女': 8, '子女宫': 8, '财帛': 9, '财帛宫': 9,
+    '疾厄': 10, '疾厄宫': 10, '迁移': 11, '迁移宫': 11,
+    '仆役': 0, '仆役宫': 0, '交友': 0, '交友宫': 0,
+    '官禄': 1, '官禄宫': 1, '事业': 1, '事业宫': 1,
+    '田宅': 2, '田宅宫': 2, '福德': 3, '福德宫': 3,
+    '父母': 4, '父母宫': 4
+  };
+
+  var result = { palaces: [], info: {} };
+
+  if (data.basicInfo) {
+    var bi = data.basicInfo;
+    result.info.name = bi.gender || '';
+    result.info.ganzhi = bi.chineseDate || '';
+    result.info.wuxingju = bi.fiveElementsClass || '';
+    result.info.gender = bi.gender || '';
+    result.info.minggong = bi.soulPalace ? bi.soulPalace + '宫' : '';
+    result.info.mingzhu = bi.soul || '';
+    result.info.shenzhu = bi.body || '';
+  }
+
+  var mutagenMap = {};
+  if (data.birthMutagens) {
+    data.birthMutagens.forEach(function(m) {
+      mutagenMap[m.palaceIndex + '_' + m.star] = '化' + m.mutagen;
+    });
+  }
+
+  data.palaces.forEach(function(p) {
+    var position = palacePositions[p.name];
+    if (position === undefined) return;
+
+    var ganzhi = (p.heavenlyStem || '') + (p.earthlyBranch || '');
+
+    var mainStars = [];
+    if (p.majorStars) {
+      p.majorStars.forEach(function(s) {
+        var sihua = '';
+        if (s.mutagen) {
+          sihua = '化' + s.mutagen;
+        } else {
+          var key = p.index + '_' + s.name;
+          if (mutagenMap[key]) sihua = mutagenMap[key];
+        }
+        mainStars.push({ name: s.name, brightness: s.brightness || '', sihua: sihua });
+      });
+    }
+
+    var auxStars = [];
+    var miscStars = [];
+    if (p.minorStars) {
+      p.minorStars.forEach(function(s) {
+        var sihua = '';
+        if (s.mutagen) sihua = '【' + s.mutagen + '】';
+        auxStars.push(s.name + sihua);
+      });
+    }
+    if (p.adjectiveStars) {
+      p.adjectiveStars.forEach(function(s) {
+        miscStars.push(s.name);
+      });
+    }
+
+    var dalimit = '';
+    if (p.decadal && p.decadal.range) {
+      dalimit = p.decadal.range[0] + '-' + p.decadal.range[1] + '岁';
+    }
+
+    var note = '';
+    if (p.isOriginalPalace) note = '★来因宫';
+
+    result.palaces.push({
+      name: p.name,
+      ganzhi: ganzhi,
+      position: position,
+      mainStars: mainStars,
+      auxStars: auxStars,
+      miscStars: miscStars,
+      changsheng: p.changsheng12 || '',
+      dalimit: dalimit,
+      note: note,
+      isBodyPalace: p.isBodyPalace || false,
+      isLaiyinPalace: p.isOriginalPalace || false
+    });
+  });
+
+  return result;
+}
+
+function generateHtml(mdContent, fileName, externalChartData) {
   const bodyHtml = markdownToHtml(mdContent);
   const toc = generateToc(mdContent);
-  const chartData = extractChartData(mdContent);
+  var chartData = extractChartData(mdContent);
+  if ((!chartData || !chartData.palaces || chartData.palaces.length === 0) && externalChartData) {
+    chartData = normalizeChartData(externalChartData);
+  }
 
   return `<!DOCTYPE html>
 <html lang="zh-CN" data-theme="light" data-system="combined">
