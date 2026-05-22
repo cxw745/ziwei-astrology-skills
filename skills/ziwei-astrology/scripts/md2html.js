@@ -3420,11 +3420,23 @@ function markdownToHtmlInner(md) {
       if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
       if (inTable) { html += buildTable(tableHeaders, tableRows); inTable = false; tableHeaders = []; tableRows = []; }
       var text = line.replace(/^>\s?/, '').trim();
-      var bqClass = 'blockquote';
+      var bqClass = ' class="blockquote"';
       if (text.indexOf('倪师') >= 0 || text.indexOf('天纪') >= 0) {
-        bqClass = 'blockquote nishi-quote';
+        bqClass = ' class="blockquote nishi-quote"';
       }
-      html += '<' + bqClass + '>' + inlineFormat(text) + '</blockquote>';
+      html += '<blockquote' + bqClass + '>' + inlineFormat(text) + '</blockquote>';
+      continue;
+    }
+
+    if (line.match(/^&gt;\s?/)) {
+      if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
+      if (inTable) { html += buildTable(tableHeaders, tableRows); inTable = false; tableHeaders = []; tableRows = []; }
+      var text = line.replace(/^&gt;\s?/, '').trim();
+      var bqClass = ' class="blockquote"';
+      if (text.indexOf('倪师') >= 0 || text.indexOf('天纪') >= 0) {
+        bqClass = ' class="blockquote nishi-quote"';
+      }
+      html += '<blockquote' + bqClass + '>' + inlineFormat(text) + '</blockquote>';
       continue;
     }
 
