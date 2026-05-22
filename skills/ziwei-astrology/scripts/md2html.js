@@ -1304,8 +1304,8 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   font-size: 9.5px;
   color: var(--text-muted);
   position: absolute;
-  top: 3px;
-  right: 5px;
+  bottom: 3px;
+  left: 5px;
 }
 
 .chart-dalimit.current-dalimit {
@@ -1348,6 +1348,87 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 .chart-legend-dot.quan { background: var(--chart-quan); }
 .chart-legend-dot.ke { background: var(--chart-ke); }
 .chart-legend-dot.ji { background: var(--chart-ji); }
+
+.chart-aux-star-item { margin-right: 2px; }
+.chart-aux-star-item.has-sihua { font-weight: 600; }
+.chart-sha-star-item { margin-right: 2px; }
+.chart-misc-stars {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: 1px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.chart-changsheng {
+  font-size: 8.5px;
+  color: var(--text-muted);
+  opacity: 0.7;
+  margin-top: auto;
+  text-align: right;
+}
+.chart-dalimit-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+.dalimit-bar-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--purple);
+  white-space: nowrap;
+  margin-right: 4px;
+}
+.dalimit-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+.dalimit-bar-item:hover {
+  border-color: var(--purple);
+  background: var(--chart-dalimit-bg);
+}
+.dalimit-bar-item.current {
+  border-color: var(--chart-dalimit-border);
+  background: var(--chart-dalimit-bg);
+}
+.dalimit-bar-item.active {
+  border-color: var(--chart-dalimit-border);
+  background: var(--chart-dalimit-bg);
+  box-shadow: 0 0 0 1px var(--chart-dalimit-border);
+}
+.dalimit-item-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.dalimit-item-range {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+.chart-cell.dalimit-selected {
+  border-color: var(--chart-dalimit-border) !important;
+  border-width: 2.5px !important;
+  background: var(--chart-dalimit-bg) !important;
+  box-shadow: 0 0 0 1px var(--chart-dalimit-border), 0 0 8px rgba(124,58,237,0.15);
+}
 
 .chart-hint {
   text-align: center;
@@ -2088,6 +2169,7 @@ ${bodyHtml}
     </div>
   </div>
   <div class="chart-panel-body" id="chartPanelBody">
+    <div class="chart-dalimit-bar" id="chartDalimitBar"></div>
     <div class="chart-grid-wrapper" id="chartGridWrapper">
       <div class="chart-grid" id="chartGrid"></div>
       <svg class="chart-svg-overlay" id="chartSvgOverlay"></svg>
@@ -2511,6 +2593,11 @@ ${bodyHtml}
     return shaStars.indexOf(name) >= 0;
   }
 
+  function extractAuxSihua(starStr) {
+    var m = starStr.match(/[\[【](禄|权|科|忌)[\]】]/);
+    return m ? m[1] : '';
+  }
+
   /* ===== 渲染排盘图 ===== */
   var tooltipData = {};
   var selectedPosition = -1;
@@ -2588,16 +2675,37 @@ ${bodyHtml}
         var otherAux = [];
         if (palace.auxStars && palace.auxStars.length > 0) {
           palace.auxStars.forEach(function(s) {
-            if (isJiStar(s)) jiStars.push(s);
-            else if (isShaStar(s)) shaStars.push(s);
+            var cleanS = s.replace(/[\[【](禄|权|科|忌)[\]】]/g, '');
+            if (isJiStar(cleanS)) jiStars.push(s);
+            else if (isShaStar(cleanS)) shaStars.push(s);
             else otherAux.push(s);
           });
         }
         if (jiStars.length > 0) {
-          html += '<div class="chart-aux-stars">' + esc(jiStars.join(' ')) + '</div>';
+          html += '<div class="chart-aux-stars">';
+          jiStars.forEach(function(s) {
+            var sihua = extractAuxSihua(s);
+            html += '<span class="chart-aux-star-item' + (sihua ? ' has-sihua' : '') + '">' + esc(s.replace(/[\[【]禄[\]】]|[\[【]权[\]】]|[\[【]科[\]】]|[\[【]忌[\]】]/g, ''));
+            if (sihua) {
+              var sc = getSihuaClass('化' + sihua);
+              html += '<span class="chart-sihua ' + sc + '">化' + sihua + '</span>';
+            }
+            html += '</span>';
+          });
+          html += '</div>';
         }
         if (shaStars.length > 0) {
-          html += '<div class="chart-sha-stars">' + esc(shaStars.join(' ')) + '</div>';
+          html += '<div class="chart-sha-stars">';
+          shaStars.forEach(function(s) {
+            html += '<span class="chart-sha-star-item">' + esc(s) + '</span>';
+          });
+          html += '</div>';
+        }
+        if (palace.miscStars && palace.miscStars.length > 0) {
+          html += '<div class="chart-misc-stars">' + esc(palace.miscStars.join('·')) + '</div>';
+        }
+        if (palace.changsheng) {
+          html += '<div class="chart-changsheng">' + esc(palace.changsheng) + '</div>';
         }
 
         var tt = '';
@@ -2678,6 +2786,74 @@ ${bodyHtml}
     html += '</div>';
 
     container.innerHTML = html;
+    renderDalimitBar(container);
+  }
+
+  function renderDalimitBar(chartContainer) {
+    var bar = chartContainer.closest('.chart-panel-body')
+      ? document.getElementById('chartDalimitBar')
+      : document.getElementById('inlineChartDalimitBar');
+    if (!bar || !chartData || !chartData.palaces) return;
+
+    var dalimits = [];
+    chartData.palaces.forEach(function(p) {
+      if (p.dalimit) {
+        dalimits.push({ name: p.name, dalimit: p.dalimit, position: p.position });
+      }
+    });
+
+    if (dalimits.length === 0) { bar.style.display = 'none'; return; }
+
+    dalimits.sort(function(a, b) {
+      var ma = a.dalimit.match(/(\d+)/);
+      var mb = b.dalimit.match(/(\d+)/);
+      return (ma ? parseInt(ma[1]) : 0) - (mb ? parseInt(mb[1]) : 0);
+    });
+
+    var barHtml = '<span class="dalimit-bar-label">大限</span>';
+    dalimits.forEach(function(d, idx) {
+      var isCurrent = isCurrentDalimit(d.dalimit);
+      var cls = 'dalimit-bar-item' + (isCurrent ? ' current' : '');
+      barHtml += '<button class="' + cls + '" data-dalimit-pos="' + d.position + '" data-dalimit-idx="' + idx + '">';
+      barHtml += '<span class="dalimit-item-name">' + esc(d.name) + '</span>';
+      barHtml += '<span class="dalimit-item-range">' + esc(d.dalimit) + '</span>';
+      barHtml += '</button>';
+    });
+    bar.innerHTML = barHtml;
+
+    bar.querySelectorAll('.dalimit-bar-item').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var pos = parseInt(this.getAttribute('data-dalimit-pos'));
+        selectDalimit(pos, chartContainer);
+      });
+    });
+  }
+
+  function selectDalimit(position, chartContainer) {
+    var grid = chartContainer.querySelector('.chart-grid') || document.getElementById('chartGrid');
+    if (!grid) return;
+
+    grid.querySelectorAll('.chart-cell').forEach(function(cell) {
+      cell.classList.remove('dalimit-selected');
+    });
+
+    var targetCell = grid.querySelector('[data-position="' + position + '"]');
+    if (targetCell) {
+      targetCell.classList.add('dalimit-selected');
+    }
+
+    drawSanfangLines(position, grid.id);
+
+    var bar = chartContainer.closest('.chart-panel-body')
+      ? document.getElementById('chartDalimitBar')
+      : document.getElementById('inlineChartDalimitBar');
+    if (bar) {
+      bar.querySelectorAll('.dalimit-bar-item').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+      var activeBtn = bar.querySelector('[data-dalimit-pos="' + position + '"]');
+      if (activeBtn) activeBtn.classList.add('active');
+    }
   }
 
   function isCurrentDalimit(dalimitStr) {
@@ -3620,6 +3796,7 @@ function enhanceHtml(html) {
     + '<button class="inline-chart-expand" onclick="toggleChart()">放大查看</button>'
     + '</div>'
     + '<div class="inline-chart-body">'
+    + '<div class="chart-dalimit-bar" id="inlineChartDalimitBar"></div>'
     + '<div class="chart-grid-wrapper">'
     + '<div class="chart-grid chart-grid-inline" id="inlineChartGrid"></div>'
     + '<svg class="chart-svg-overlay" id="inlineChartSvgOverlay"></svg>'
