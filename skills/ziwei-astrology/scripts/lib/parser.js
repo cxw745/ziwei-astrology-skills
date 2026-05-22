@@ -1,7 +1,5 @@
 // parser.js — Markdown到HTML的转换逻辑，包含标题、表格、列表、引用、代码块、四化标签、亮度标签、来源标注等
 
-var { generateChartHtml } = require('./chart');
-
 function slugify(text) {
   return text
     .replace(/^[#\s]+/, '')
@@ -150,11 +148,23 @@ function markdownToHtmlInner(md) {
       if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
       if (inTable) { html += buildTable(tableHeaders, tableRows); inTable = false; tableHeaders = []; tableRows = []; }
       var text = line.replace(/^>\s?/, '').trim();
-      var bqClass = 'blockquote';
+      var bqClass = ' class="blockquote"';
       if (text.indexOf('倪师') >= 0 || text.indexOf('天纪') >= 0) {
-        bqClass = 'blockquote nishi-quote';
+        bqClass = ' class="blockquote nishi-quote"';
       }
-      html += '<' + bqClass + '>' + inlineFormat(text) + '</blockquote>';
+      html += '<blockquote' + bqClass + '>' + inlineFormat(text) + '</blockquote>';
+      continue;
+    }
+
+    if (line.match(/^&gt;\s?/)) {
+      if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
+      if (inTable) { html += buildTable(tableHeaders, tableRows); inTable = false; tableHeaders = []; tableRows = []; }
+      var text = line.replace(/^&gt;\s?/, '').trim();
+      var bqClass = ' class="blockquote"';
+      if (text.indexOf('倪师') >= 0 || text.indexOf('天纪') >= 0) {
+        bqClass = ' class="blockquote nishi-quote"';
+      }
+      html += '<blockquote' + bqClass + '>' + inlineFormat(text) + '</blockquote>';
       continue;
     }
 
@@ -221,7 +231,6 @@ function markdownToHtmlInner(md) {
   if (inInterpretation) { html += '</div><!-- /interp-block -->'; }
   if (inSection) { html += '</div></div>'; }
 
-  html = enhanceHtml(html);
   return html;
 }
 
@@ -273,78 +282,6 @@ function inlineFormat(text) {
   text = text.replace(/\[综合\]/g, '<span class="tag tag-system-combined">综合</span>');
 
   return text;
-}
-
-function enhanceHtml(html) {
-  html = html.replace(
-    /\[来源:\s*([^\]]+)\]/g,
-    function(match, ref) {
-      return '<span class="source-ref" title="' + escapeHtml(ref) + '" data-source="' + escapeHtml(ref) + '"></span>';
-    }
-  );
-
-  html = html.replace(
-    /(<div class="interpretation-block pro[^"]*">[\s\S]*?<!-- \/interp-block -->)\s*(<div class="interpretation-block lay[^"]*">[\s\S]*?<!-- \/interp-block -->)/g,
-    function(match, pro, lay) {
-      return '<div class="interpretation-pair"><div class="interpretation-connector"></div>' + pro + lay + '</div>';
-    }
-  );
-
-  html = html.replace(
-    /<blockquote class="blockquote nishi-quote">([\s\S]*?)<\/blockquote>/g,
-    function(match, content) {
-      return '<blockquote class="blockquote nishi-quote system-content system-not-iztro">' + content + '</blockquote>';
-    }
-  );
-
-  html = html.replace(
-    /(<blockquote class="blockquote">)([\s\S]*?)(倪师|倪海厦|天纪)([\s\S]*?)(<\/blockquote>)/g,
-    function(match, open, pre, keyword, post, close) {
-      return '<blockquote class="blockquote nishi-quote system-content system-not-iztro">' + pre + keyword + post + close;
-    }
-  );
-
-  html = html.replace(
-    /(<p>[\s\S]*?)(宫干飞化|自化)([\s\S]*?<\/p>)/g,
-    function(match, pre, keyword, post) {
-      return pre + '<span class="system-not-nishi-ref">' + keyword + '</span>' + post;
-    }
-  );
-
-  html = html.replace(
-    /(<p>[\s\S]*?)(大限四化)([\s\S]*?<\/p>)/g,
-    function(match, pre, keyword, post) {
-      return pre + '<span class="system-nishi-note">' + keyword + '</span>' + post;
-    }
-  );
-
-  html = html.replace(
-    /【格局[：:]?\s*([^\】]+?)】([\s\S]*?)(?=【|$)/g,
-    function(match, title, content) {
-      var level = 'neutral';
-      var t = title.trim();
-      if (t.indexOf('极佳') >= 0 || t.indexOf('上上') >= 0 || t.indexOf('大吉') >= 0) level = 'excellent';
-      else if (t.indexOf('吉') >= 0 || t.indexOf('良') >= 0 || t.indexOf('优') >= 0) level = 'good';
-      else if (t.indexOf('凶') >= 0 || t.indexOf('险') >= 0 || t.indexOf('忌') >= 0 || t.indexOf('煞') >= 0) level = 'caution';
-      return '<div class="pattern-card ' + level + '"><div class="pattern-card-title">' + escapeHtml(t) + '</div>' + content.trim() + '</div>';
-    }
-  );
-
-  var inlineChartHtml = generateChartHtml(null);
-
-  html = html.replace(
-    /(<div class="section-wrapper" data-section-id="[^"]*十二宫[^"]*">)/,
-    inlineChartHtml + '$1'
-  );
-
-  if (html.indexOf('inlineChartContainer') < 0) {
-    html = html.replace(
-      /(<h2[^>]*>[^<]*十二宫排盘总表[^<]*<\/h2>)/,
-      inlineChartHtml + '$1'
-    );
-  }
-
-  return html;
 }
 
 module.exports = { markdownToHtml, extractTitle, escapeHtml, slugify };

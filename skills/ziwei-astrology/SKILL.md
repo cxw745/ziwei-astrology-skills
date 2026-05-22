@@ -11,6 +11,16 @@ description: >
 
 # 紫微斗数排盘与命盘详析
 
+## ⚡ 铁律速查卡（每个Step开始前必须回顾）
+
+> 长对话中上下文漂移会导致规则遗忘。以下5条是最高频违反的铁律，每个Step开始前强制回顾。
+
+1. **排盘必须代码，解读必须知识库** — 手动排盘几乎必然出错；断语不编造，不确定标注"无法确定"
+2. **凶象如实，不讨好不弱化** — 化忌就是课题，格局不成立就不成格，禁止"不必担心""只要努力"
+3. **分析只看排盘数据** — 禁止反向推导（用户经历→盘面含义），禁止信号冲突取平均
+4. **倪师体系为准** — 大限四化不使用，宫干自化不主张，冲突标注"以倪师为准"
+5. **每Step前重读chart-data.json** — 不凭对话记忆分析，强制文件回调确保精确
+
 基于两个开源仓库排盘与解读：
 - **iztro**：排盘算法核心
 - **ziwei-doushu**：倪海厦《天纪》体系知识库
@@ -218,6 +228,8 @@ node scripts/md2html.js <input.md> [output.html]
 
 ### Step 1：收集输入
 
+> 🔍 **内嵌检查点**：回顾铁律#1（排盘必须代码）
+
 提取：阳历日期、时辰（→索引）、性别、功能类型、解读模式。
 
 时辰映射见 `references/time-mapping.md`。用户只给日期没给时辰时必须提示补充。
@@ -228,6 +240,8 @@ node scripts/md2html.js <input.md> [output.html]
 - 若相邻时辰导致命宫位置变化，必须明确告知用户"XX时与XX时命宫不同，请确认准确出生时间"
 
 ### Step 2：执行排盘
+
+> 🔍 **内嵌检查点**：回顾铁律#1（排盘必须代码）+ #5（重读chart-data.json）
 
 ```bash
 node scripts/astro.js "YYYY-M-D" hourIndex gender [outputDir]
@@ -253,6 +267,8 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 
 ### Step 2.5：验前事校验
 
+> 🔍 **内嵌检查点**：回顾铁律#3（分析只看排盘数据）+ #5（重读chart-data.json）
+
 > 灵感来源：vedic-astro-skills 的验前事机制（past-validation），排盘后、报告前的可信度守门员。
 
 排盘成功后、格局识别前，从排盘数据推导3-5条可证伪的事实性预测，请用户逐条确认"准/不准/部分准"，校准命盘可信度。
@@ -273,9 +289,13 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 
 ### Step 3：格局识别
 
+> 🔍 **内嵌检查点**：回顾铁律#2（格局不成立就不成格）+ #4（倪师体系为准）
+
 参照 `references/patterns.md`，每个格局判断三层：必须条件（缺一不可）、加分项、破格条件。
 
 ### Step 4：生成报告
+
+> 🔍 **内嵌检查点**：回顾铁律#2（凶象如实不讨好）+ #3（分析只看排盘数据）+ #5（重读chart-data.json）
 
 按 `references/report-template.md` 结构输出，根据解读模式生成对应风格。
 
@@ -295,6 +315,8 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 
 ### Step 5：继续提问
 
+> 🔍 **内嵌检查点**：回顾铁律#3（分析只看排盘数据，禁止反向推导）+ #5（重读chart-data.json）
+
 复用已排命盘数据，不重新排盘。婚期判断必须遵循三层法（本命→大限→流年），详见 `references/report-template.md`。
 
 ### Step 6：核查与验证（输出前必须完成）
@@ -310,7 +332,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 7. 来因宫正确
 8. 无讨好倾向
 
-**脚本验证（4项，必须全部执行且通过）**：
+**脚本验证（6项，必须全部执行且通过）**：
 
 9. **排盘准确性校验（必须）**：运行 `node scripts/verify-astro.js <chart-data.json> <report.md>` 对比排盘数据与报告内容，确保星曜位置、四化、空宫、身宫、来因宫、五行局、命宫位置均一致。**未通过则必须修正报告后重新验证**
 10. **报告结构验证（必须）**：运行 `node scripts/validate-report.js <report.md>` 检查24项结构完整性。**未通过则必须补全缺失章节后重新验证**
@@ -322,6 +344,8 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
     - HTML包含闭合标签`</body></html>`
     - MD中的自检清单、页脚声明在HTML中也存在
     - **若验证失败，必须重新运行md2html.js生成HTML后再次验证**
+13. **验证反馈闭环（推荐）**：运行 `node scripts/validate-and-fix.js <chart-data.json> <report.md> [--json]` 整合所有验证结果并生成结构化修正建议。`--json` 输出可程序化解析的JSON，便于自动修正
+14. **章节级验证（推荐）**：对关键章节运行 `node scripts/section-validator.js <section-type> <section-content>` 验证单个章节质量，支持 basic-info / palace-table / sihua / palace-detail / pattern / minggong / dashan / liunian / advice / appendix 等类型
 
 ## 参考文件索引
 
@@ -350,11 +374,15 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `references/index.json` | 结构化索引（星曜/宫位/格局/四化/古籍） | ~500 |
 | `references/web-cache/` | 网页搜索缓存目录 | - |
 | `scripts/astro.js` | 排盘脚本（封装iztro bySolar） | ~200 |
-| `scripts/md2html.js` | MD转HTML脚本 | ~3420 |
+| `scripts/md2html.js` | MD转HTML脚本（模块化：lib/styles.js+lib/interaction.js+lib/parser.js+lib/chart.js+lib/toc.js） | ~420 |
 | `scripts/validate-html.js` | HTML完整性验证脚本 | ~180 |
 | `scripts/validate-report.js` | 报告结构验证脚本（24项检查） | ~150 |
 | `scripts/verify-astro.js` | 排盘准确性校验脚本 | ~200 |
 | `scripts/lint-md.js` | MD格式规范检查脚本（10项检查） | ~150 |
+| `scripts/validate-and-fix.js` | 验证反馈闭环脚本（整合3个验证+修正建议） | ~300 |
+| `scripts/section-validator.js` | 章节级验证器（10种章节类型） | ~300 |
+| `scripts/generate-section.js` | 分段生成辅助器（数据切片+模板片段） | ~200 |
+| `scripts/preview.js` | 本地预览服务器（支持--watch自动刷新） | ~150 |
 | `scripts/run-evals.js` | 自动化评测脚本 | ~200 |
 | `examples/` | 示例命盘 | - |
 | `sources/iztro/` | iztro排盘引擎源码（事实索引） | ~7300行 |

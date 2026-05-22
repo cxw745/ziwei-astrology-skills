@@ -104,25 +104,30 @@ ziwei-astrology-skills/
 │       └── {专项解读}.md / .html
 └── skills/
     └── ziwei-astrology/
-        ├── SKILL.md                   # 核心指令文件（含来源标注+知识准备+网页搜索策略+降级方案）
+        ├── SKILL.md                   # 核心指令文件（含铁律速查卡+内嵌检查点+来源标注+知识准备+网页搜索策略+降级方案）
         ├── scripts/
         │   ├── astro.js              # 排盘脚本（封装iztro bySolar）
-        │   ├── md2html.js             # MD转HTML脚本（主入口）
+        │   ├── md2html.js             # MD转HTML脚本（模块化薄编排层，~420行）
         │   ├── validate-report.js     # 报告结构验证脚本（24项检查）
         │   ├── validate-html.js       # HTML完整性验证脚本
         │   ├── verify-astro.js        # 排盘准确性校验脚本
         │   ├── lint-md.js             # MD格式规范检查脚本（10项检查）
+        │   ├── validate-and-fix.js    # 验证反馈闭环脚本（整合3个验证+修正建议）
+        │   ├── section-validator.js   # 章节级验证器（10种章节类型）
+        │   ├── generate-section.js    # 分段生成辅助器（数据切片+模板片段）
+        │   ├── preview.js             # 本地预览服务器（支持--watch自动刷新）
         │   ├── run-evals.js           # 自动化评测脚本
         │   └── lib/                   # md2html模块化拆分
         │       ├── parser.js          # Markdown解析逻辑
         │       ├── chart.js           # 排盘图渲染逻辑
-        │       ├── theme.js           # 主题和样式定义
+        │       ├── styles.js          # CSS样式定义（含明暗主题+排盘图+响应式+打印）
+        │       ├── interaction.js     # 客户端交互JS（排盘图渲染+体系切换+拖拽缩放等）
         │       └── toc.js             # 目录生成逻辑
         ├── examples/
         │   ├── 命盘详析_1999年9月9日巳时男.md
         │   └── 命盘详析_1999年9月9日巳时男.html
         └── references/                # 渐进式披露参考文档（18个+索引+缓存）
-            ├── index.json             # 结构化索引（星曜/宫位/格局/四化/古籍）
+            ├── index.json             # 结构化索引（14主星×12宫×46格局×十天干四化）
             ├── time-mapping.md
             ├── star-rules.md
             ├── sihua-rules.md
@@ -155,25 +160,29 @@ ziwei-astrology-skills/
 3. **星耀处理规范**：空宫处理规范（借星规则、minorStars归属）
 4. **输出风格**：三模式（iztro/倪师/综合）+双层（专业+通俗），含完整示例
 5. **功能模块**：4个模块+排盘可视化，每个含输入示例
-6. **工作流**：Step 0（知识准备+按需回源验证）→ Step 1（收集输入）→ Step 2（排盘）→ Step 2.5（验前事校验）→ Step 3（格局识别）→ Step 4（生成报告MD+HTML）→ Step 5（继续提问，正反双审）→ Step 6（全面核查+自检清单）
-7. **参考索引**：18个references按需加载+2个脚本工具
-8. **常见陷阱**：25条+正反对比示例，含内容丰富度分级制要求（重点宫7子节/普通宫5子节/轻量宫3子节、宫干飞四化48条、内容以示例为标准）
+6. **工作流**：Step 0（知识准备+按需回源验证）→ Step 1（收集输入）→ Step 2（排盘）→ Step 2.5（验前事校验）→ Step 3（格局识别）→ Step 4（生成报告MD+HTML）→ Step 5（继续提问，正反双审）→ Step 6（全面核查+自检清单+验证反馈闭环）
+7. **参考索引**：18个references按需加载+8个脚本工具
+8. **常见陷阱**：25条+正反对比示例，含内容丰富度分级制要求（重点宫7子节/普通宫5子节/轻量宫3子节、宫干飞四化48条、内容以示例为标准、差异化指引防公式化）
 9. **知识补充**：网页搜索策略（仓库优先、冲突以仓库为准）、排盘失败降级方案、来源标注决策树
 
 ---
 
 ## 七、HTML 转换脚本特性
 
-`scripts/md2html.js` — 纯 Node.js 实现，无外部依赖：
+`scripts/md2html.js` — 纯 Node.js 实现，无外部依赖，模块化架构（主文件~420行 + lib/模块）：
 
+- **lib/styles.js**（~2066行）：完整CSS样式（明暗主题+排盘图+响应式+打印）
+- **lib/interaction.js**（~1004行）：客户端交互JS（排盘图渲染+三方四正SVG连线+体系切换+拖拽缩放）
+- **lib/parser.js**（~287行）：Markdown→HTML转换逻辑
+- **lib/chart.js**（~198行）：排盘图数据提取和SVG渲染
+- **lib/toc.js**（~42行）：目录生成
+
+功能特性：
 - 明亮/黑暗双主题切换（localStorage记忆偏好）
 - 侧边栏目录导航（IntersectionObserver自动高亮）
 - 四化标签彩色标注（化禄绿/化权橙/化科蓝/化忌红）
 - 星耀亮度彩色标签（庙旺绿/平橙/陷红）
 - 三体系切换（iztro/倪师/综合，正文内容实时变化）
-  - 排盘图亮度标签实时切换
-  - `:::not-iztro`/`:::not-nishi`/`:::nishi`/`:::iztro` 块标记控制正文显隐
-  - 切换有淡入淡出动画过渡
 - 交互式排盘图（12宫格、三方四正SVG连线、可拖拽/缩放、悬停详情+四化徽章）
 - 快捷指令帮助面板（❓按钮或键盘 ? 触发）
 - 键盘快捷键（T切换主题、1/2/3切换体系、?帮助、Esc关闭弹窗）
@@ -184,8 +193,14 @@ ziwei-astrology-skills/
 
 用法：`node scripts/md2html.js <input.md> [output.html]`
 
-- 报告结构自动验证（`node scripts/validate-report.js <report.md>`，16项自检清单自动化）
-- md2html.js模块化拆分（parser/chart/theme/toc四个模块，主入口组合调用）
+验证工具链：
+- 报告结构验证：`node scripts/validate-report.js <report.md>`（24项检查）
+- 排盘准确性校验：`node scripts/verify-astro.js <chart-data.json> <report.md>`（7项校验）
+- MD格式检查：`node scripts/lint-md.js <report.md>`（10项检查）
+- 验证反馈闭环：`node scripts/validate-and-fix.js <chart-data.json> <report.md> [--json]`（整合3个验证+修正建议）
+- 章节级验证：`node scripts/section-validator.js <section-type> <content>`（10种章节类型）
+- 分段生成辅助：`node scripts/generate-section.js <chart-data.json> <section-type>`（数据切片+模板片段）
+- 本地预览：`node scripts/preview.js [--port PORT] [--file PATH] [--watch]`
 
 ---
 
@@ -332,6 +347,21 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] 数据隔离声明（SKILL.md工作流新增，分析阶段只看排盘数据）
 - [x] 常见陷阱新增6条（反向推导/信号冲突取平均/大限凶象美化/验前事辩解/Q&A只列单边/格局未验证激活）
 - [x] CHANGELOG.md / PROJECT_CONTEXT.md / README.md 同步更新
+
+### v2.5.0 新增（工程化优化与验证闭环）
+
+- [x] md2html.js模块化重构：3955行→420行薄编排层，拆出lib/styles.js(2066行)+lib/interaction.js(1004行)
+- [x] 删除空壳lib/theme.js，功能由lib/styles.js替代
+- [x] SKILL.md增加铁律速查卡（5条最高频违反铁律，每个Step前强制回顾）
+- [x] SKILL.md增加内嵌检查点（Step 1~5每个Step前增加🔍检查点提示）
+- [x] SKILL.md Step 6脚本验证从4项扩展为6项（新增validate-and-fix.js+section-validator.js）
+- [x] 验证反馈闭环脚本 validate-and-fix.js（整合3个验证+结构化JSON修正建议）
+- [x] 章节级验证器 section-validator.js（10种章节类型，输出fixSuggestions）
+- [x] 分段生成辅助器 generate-section.js（数据切片+模板片段+验证命令）
+- [x] 本地预览服务器 preview.js（静态文件服务+--watch自动刷新+路径安全检查）
+- [x] Web Cache预填充14主星核心断语（从sources/ziwei-doushu仓库实际提取）
+- [x] report-template.md增加内容差异化指引（6条差异化原则+跨宫去重检查）
+- [x] PROJECT_CONTEXT.md / README.md / package.json 同步更新
 
 ---
 

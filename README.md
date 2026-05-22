@@ -126,13 +126,18 @@ ziwei-astrology-skills/
     └── ziwei-astrology/
         ├── SKILL.md                  # 核心指令文件
         ├── scripts/
-        │   ├── md2html.js            # MD转HTML脚本
-        │   ├── validate-report.js    # 报告结构验证脚本
+        │   ├── md2html.js            # MD转HTML脚本（模块化薄编排层）
+        │   ├── validate-report.js    # 报告结构验证脚本（24项检查）
+        │   ├── validate-and-fix.js   # 验证反馈闭环脚本（整合3个验证+修正建议）
+        │   ├── section-validator.js  # 章节级验证器（10种章节类型）
+        │   ├── generate-section.js   # 分段生成辅助器（数据切片+模板片段）
+        │   ├── preview.js            # 本地预览服务器（支持--watch自动刷新）
         │   └── lib/                  # 模块化拆分
-        │       ├── parser.js
-        │       ├── chart.js
-        │       ├── theme.js
-        │       └── toc.js
+        │       ├── parser.js         # Markdown解析
+        │       ├── chart.js          # 排盘图渲染
+        │       ├── styles.js         # CSS样式（明暗主题+排盘图+响应式+打印）
+        │       ├── interaction.js    # 客户端交互JS（体系切换+拖拽缩放等）
+        │       └── toc.js            # 目录生成
         ├── examples/
         │   ├── 命盘详析_1999年9月9日巳时男.md
         │   └── 命盘详析_1999年9月9日巳时男.html
@@ -213,8 +218,12 @@ HTML 特性：
 - 响应式布局（移动端自动折叠侧边栏）
 - 打印友好样式
 - 键盘快捷键（T/1/2/3/?/Esc）
-- 报告结构自动验证（`node scripts/validate-report.js <report.md>`）
-- 模块化架构（parser/chart/theme/toc四个模块，便于维护）
+- 报告结构自动验证（`node scripts/validate-report.js <report.md>`，24项检查）
+- 验证反馈闭环（`node scripts/validate-and-fix.js <chart-data.json> <report.md> --json`，整合3个验证+修正建议）
+- 章节级验证（`node scripts/section-validator.js <section-type> <content>`，10种章节类型）
+- 分段生成辅助（`node scripts/generate-section.js <chart-data.json> <section-type>`，数据切片+模板片段）
+- 本地预览服务器（`node scripts/preview.js [--watch]`，支持文件监听自动刷新）
+- 模块化架构（parser/chart/styles/interaction/toc五个模块，便于维护）
 
 ## 输出文件
 
