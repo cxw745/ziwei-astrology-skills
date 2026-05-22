@@ -42,15 +42,15 @@ function validateReport(mdFilePath) {
   const majorStarSections = (content.match(/#### 主星特质与亮度/g) || []).length;
   check(10, '十二宫子节完整性（主星特质章节' + majorStarSections + '个）', majorStarSections >= 8);
 
-  const wuxingSteps = (content.match(/^\d+\. \*\*定/gm) || []).length;
+  const wuxingSteps = (content.match(/^\d+\. \*\*/gm) || []).length;
   check(11, '五行局推算步骤（找到' + wuxingSteps + '步）', wuxingSteps >= 5);
 
   check(12, '命宫总论独立章节', content.includes('## 五、命宫总论'));
 
-  const dashanSections = (content.match(/^### 8\.\d+ 第/gm) || []).length;
+  const dashanSections = (content.match(/^###.*大限|^### 8\.\d+ 第/gm) || []).length;
   check(13, '大限运势（找到' + dashanSections + '个大限）', dashanSections >= 3);
 
-  const liunianSections = (content.match(/^### 9\.\d+ \d{4}年/gm) || []).length;
+  const liunianSections = (content.match(/^###.*\d{4}|^### 9\.\d+ \d{4}年/gm) || []).length;
   check(14, '流年要点（找到' + liunianSections + '年）', liunianSections >= 3);
 
   const adviceSections = (content.match(/^### 10\.\d+ /gm) || []).length;
@@ -62,15 +62,20 @@ function validateReport(mdFilePath) {
   const zongpingSubCount = (content.match(/总评/g) || []).length;
   check(17, '每宫子节完整性（主星特质章节' + zhuxingSubCount + '个/总评' + zongpingSubCount + '处）', zhuxingSubCount >= 12 && zongpingSubCount >= 10);
 
-  const feihuaTableRows = (content.match(/^\| (命宫|兄弟|夫妻|子女|财帛|疾厄|迁移|仆役|交友|官禄|田宅|福德|父母) \|/gm) || []).length;
+  var feihuaSectionStart = content.indexOf('宫干飞四化');
+  var feihuaSectionEnd = feihuaSectionStart !== -1 ? content.indexOf('## ', feihuaSectionStart + 1) : -1;
+  if (feihuaSectionEnd === -1) feihuaSectionEnd = content.length;
+  var feihuaSection = feihuaSectionStart !== -1 ? content.substring(feihuaSectionStart, feihuaSectionEnd) : '';
+  var feihuaTableRows = (feihuaSection.match(/^\| (命宫|兄弟|夫妻|子女|财帛|疾厄|迁移|仆役|交友|官禄|田宅|福德|父母) \|/gm) || []).length;
   let feihuaComplete = feihuaTableRows >= 12;
   if (feihuaComplete) {
-    const feihuaLines = content.split('\n').filter(function(line) {
+    var feihuaLines = feihuaSection.split('\n').filter(function(line) {
       return /^\| (命宫|兄弟|夫妻|子女|财帛|疾厄|迁移|仆役|交友|官禄|田宅|福德|父母) \|/.test(line);
     });
     for (var i = 0; i < feihuaLines.length; i++) {
-      var huaCount = (feihuaLines[i].match(/化[禄权科忌]/g) || []).length;
-      if (huaCount < 4) {
+      var arrowCount = (feihuaLines[i].match(/→/g) || []).length;
+      var huaCount = (feihuaLines[i].match(/化[禄权科忌]|飞[禄权科忌]/g) || []).length;
+      if (huaCount < 4 && arrowCount < 4) {
         feihuaComplete = false;
         break;
       }

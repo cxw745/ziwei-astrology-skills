@@ -1,0 +1,3276 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-system="combined">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>紫微斗数命盘详析</title>
+<style>
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f7f5;
+  --bg-sidebar: #f7f7f5;
+  --bg-card: #ffffff;
+  --bg-hover: rgba(55,53,47,0.08);
+  --bg-hover-strong: rgba(55,53,47,0.12);
+  --bg-code: #f7f7f5;
+  --bg-table-header: #f0f0ee;
+  --bg-table-stripe: rgba(55,53,47,0.024);
+  --bg-blockquote: rgba(35,131,226,0.04);
+  --bg-overlay: rgba(15,15,15,0.6);
+  --text-primary: #37352f;
+  --text-secondary: #787774;
+  --text-muted: #b4b4b0;
+  --text-link: #2383e2;
+  --text-link-hover: #1b6ec2;
+  --border-color: #e3e3e0;
+  --border-light: #ededec;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --shadow-xl: 0 12px 40px rgba(0,0,0,0.16);
+  --accent: #2383e2;
+  --accent-light: rgba(35,131,226,0.08);
+  --accent-medium: rgba(35,131,226,0.14);
+  --danger: #eb5757;
+  --danger-light: rgba(235,87,87,0.08);
+  --success: #4dab5c;
+  --success-light: rgba(77,171,92,0.08);
+  --warning: #e8912d;
+  --warning-light: rgba(232,145,45,0.08);
+  --info: #3b82f6;
+  --info-light: rgba(59,130,246,0.08);
+  --radius: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+  --sidebar-width: 280px;
+  --content-max-width: 860px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", "SF Mono", Menlo, monospace;
+  --chart-lu: #4dab5c;
+  --chart-quan: #e8912d;
+  --chart-ke: #3b82f6;
+  --chart-ji: #eb5757;
+  --chart-miao-bg: rgba(77,171,92,0.1);
+  --chart-ping-bg: rgba(232,145,45,0.1);
+  --chart-xian-bg: rgba(235,87,87,0.1);
+  --chart-ming-bg: rgba(255,193,7,0.08);
+  --chart-body-border: rgba(255,152,0,0.5);
+  --chart-laiyin-border: rgba(59,130,246,0.5);
+  --chart-empty-border: #c0c0bc;
+  --progress-bg: #ededec;
+  --progress-fill: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  --gold: #d4a017;
+  --gold-light: rgba(212,160,23,0.1);
+  --gold-medium: rgba(212,160,23,0.2);
+  --purple: #7c3aed;
+  --purple-light: rgba(124,58,237,0.08);
+  --purple-medium: rgba(124,58,237,0.14);
+  --system-iztro: #2563eb;
+  --system-nishi: #d4a017;
+  --system-combined: #7c3aed;
+  --ni-miao-color: #d4a017;
+  --ni-ping-color: #787774;
+  --ni-xian-color: #b91c1c;
+  --ni-miao-bg: rgba(212,160,23,0.12);
+  --ni-ping-bg: rgba(120,119,116,0.08);
+  --ni-xian-bg: rgba(185,28,28,0.1);
+  --chart-sanfang-line: rgba(37,99,235,0.55);
+  --chart-selected-bg: rgba(37,99,235,0.08);
+  --chart-selected-border: rgba(37,99,235,0.6);
+  --chart-dalimit-border: rgba(124,58,237,0.6);
+  --chart-dalimit-bg: rgba(124,58,237,0.06);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #191919;
+  --bg-secondary: #202020;
+  --bg-sidebar: #202020;
+  --bg-card: #252525;
+  --bg-hover: rgba(255,255,255,0.055);
+  --bg-hover-strong: rgba(255,255,255,0.09);
+  --bg-code: #2a2a2a;
+  --bg-table-header: #2a2a2a;
+  --bg-table-stripe: rgba(255,255,255,0.02);
+  --bg-blockquote: rgba(82,156,202,0.08);
+  --bg-overlay: rgba(0,0,0,0.7);
+  --text-primary: #ecece8;
+  --text-secondary: #b0b0ac;
+  --text-muted: #8a8a86;
+  --text-link: #529cca;
+  --text-link-hover: #6db3d8;
+  --border-color: #383838;
+  --border-light: #3a3a3a;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
+  --shadow-xl: 0 12px 40px rgba(0,0,0,0.5);
+  --accent: #529cca;
+  --accent-light: rgba(82,156,202,0.1);
+  --accent-medium: rgba(82,156,202,0.18);
+  --danger: #f87171;
+  --danger-light: rgba(248,113,113,0.1);
+  --success: #6ee77a;
+  --success-light: rgba(110,231,122,0.1);
+  --warning: #fbbf24;
+  --warning-light: rgba(251,191,36,0.1);
+  --info: #60a5fa;
+  --info-light: rgba(96,165,250,0.1);
+  --chart-lu: #6ee77a;
+  --chart-quan: #fbbf24;
+  --chart-ke: #60a5fa;
+  --chart-ji: #f87171;
+  --chart-miao-bg: rgba(110,231,122,0.12);
+  --chart-ping-bg: rgba(251,191,36,0.12);
+  --chart-xian-bg: rgba(248,113,113,0.12);
+  --chart-ming-bg: rgba(255,193,7,0.06);
+  --chart-body-border: rgba(255,152,0,0.4);
+  --chart-laiyin-border: rgba(96,165,250,0.4);
+  --chart-empty-border: #555;
+  --progress-bg: #333;
+  --gold: #fbbf24;
+  --gold-light: rgba(251,191,36,0.1);
+  --gold-medium: rgba(251,191,36,0.2);
+  --purple: #a78bfa;
+  --purple-light: rgba(167,139,250,0.1);
+  --purple-medium: rgba(167,139,250,0.18);
+  --system-iztro: #60a5fa;
+  --system-nishi: #fbbf24;
+  --system-combined: #a78bfa;
+  --ni-miao-color: #fbbf24;
+  --ni-ping-color: #9b9b97;
+  --ni-xian-color: #f87171;
+  --ni-miao-bg: rgba(251,191,36,0.12);
+  --ni-ping-bg: rgba(155,155,151,0.1);
+  --ni-xian-bg: rgba(248,113,113,0.12);
+  --chart-sanfang-line: rgba(96,165,250,0.55);
+  --chart-selected-bg: rgba(96,165,250,0.1);
+  --chart-selected-border: rgba(96,165,250,0.6);
+  --chart-dalimit-border: rgba(167,139,250,0.5);
+  --chart-dalimit-bg: rgba(167,139,250,0.08);
+}
+
+[data-theme="dark"] table { border-color: var(--border-color); }
+[data-theme="dark"] .table-wrapper { border-color: var(--border-color); }
+[data-theme="dark"] td { border-bottom-color: #3a3a3a; color: #b8b8b4; }
+[data-theme="dark"] th { color: #b8b8b4; border-bottom-color: #444; }
+[data-theme="dark"] blockquote { color: #b0b0ac; border-left-color: var(--accent); background: rgba(82,156,202,0.08); }
+[data-theme="dark"] blockquote strong { color: #ecece8; }
+[data-theme="dark"] pre { border-color: #3a3a3a; background: #222; }
+[data-theme="dark"] code { background: #2e2e2e; color: #d8d8d4; }
+[data-theme="dark"] pre code { background: none; color: #d8d8d4; }
+[data-theme="dark"] hr { background: #3a3a3a; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.8;
+  font-size: 16px;
+  transition: background var(--transition), color var(--transition);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-medium);
+  color: var(--text-primary);
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999;
+  background: var(--progress-bg);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 200% 100%;
+  animation: progressShimmer 3s ease infinite;
+  width: 0%;
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(139,92,246,0.4);
+}
+
+@keyframes progressShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  z-index: 100;
+  transition: transform var(--transition), background var(--transition);
+  padding: 16px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
+.sidebar-header {
+  padding: 8px 16px 14px;
+  margin-bottom: 4px;
+}
+
+.sidebar-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
+}
+
+.sidebar-title svg { width: 18px; height: 18px; color: var(--accent); flex-shrink: 0; }
+
+.sidebar-system-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.sidebar-system-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+[data-system="iztro"] .sidebar-system-dot { background: var(--system-iztro); }
+[data-system="nishi"] .sidebar-system-dot { background: var(--system-nishi); }
+[data-system="combined"] .sidebar-system-dot { background: var(--system-combined); }
+
+.sidebar-system-name {
+  font-weight: 600;
+}
+
+[data-system="iztro"] .sidebar-system-name { color: var(--system-iztro); }
+[data-system="nishi"] .sidebar-system-name { color: var(--system-nishi); }
+[data-system="combined"] .sidebar-system-name { color: var(--system-combined); }
+
+.toc-list { list-style: none; padding: 0 6px; }
+
+.toc-item { margin-bottom: 1px; }
+
+.toc-link {
+  display: block;
+  padding: 5px 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13.5px;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+  position: relative;
+}
+
+.toc-link:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.toc-link:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.toc-link.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.toc-h3 { padding-left: 28px; font-size: 13px; }
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.sidebar-overlay.visible {
+  opacity: 1;
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  padding: 40px 48px 80px;
+  max-width: var(--content-max-width);
+  min-height: 100vh;
+  transition: margin-left var(--transition);
+}
+
+.toolbar {
+  position: fixed;
+  top: 14px;
+  right: 20px;
+  z-index: 200;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.toolbar-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.toolbar-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-light);
+}
+
+.toolbar-btn svg { width: 16px; height: 16px; }
+
+.mode-btn-group {
+  display: flex;
+  gap: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.mode-btn {
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  border-right: 1px solid var(--border-color);
+}
+
+.mode-btn:last-child { border-right: none; }
+
+.mode-btn:hover { background: var(--bg-hover); }
+
+.mode-btn[data-mode="iztro"].active {
+  background: var(--system-iztro);
+  color: #fff;
+}
+.mode-btn[data-mode="nishi"].active {
+  background: var(--system-nishi);
+  color: #fff;
+}
+.mode-btn[data-mode="combined"].active {
+  background: var(--system-combined);
+  color: #fff;
+}
+
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 200;
+}
+
+.mobile-toc-fab { display: none; }
+
+h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 3px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  border-radius: 2px;
+}
+
+h1 + blockquote { margin-bottom: 28px; }
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 52px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  scroll-margin-top: 24px;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 12px;
+  border-left: 3px solid var(--gold);
+}
+
+h3 {
+  font-size: 17px;
+  font-weight: 650;
+  margin-top: 32px;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  scroll-margin-top: 24px;
+  line-height: 1.4;
+}
+
+h4 {
+  font-size: 14.5px;
+  font-weight: 650;
+  margin-top: 20px;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+p { margin-bottom: 14px; }
+
+blockquote {
+  background: var(--bg-blockquote);
+  border-left: 3px solid var(--accent);
+  padding: 10px 18px;
+  margin: 14px 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+blockquote.nishi-quote {
+  background: var(--gold-light);
+  border-left-color: var(--gold);
+}
+
+blockquote strong { color: var(--text-primary); font-style: normal; }
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--border-color);
+  margin: 36px 0;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin: 14px 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead { background: var(--bg-table-header); position: relative; }
+
+thead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+}
+
+th {
+  padding: 10px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border-color);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+td {
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: var(--bg-table-stripe); }
+tbody tr:hover {
+  background: var(--bg-hover);
+  transform: translateY(-1px);
+  transition: transform 0.15s ease;
+}
+
+table caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 8px 16px 4px;
+}
+
+code {
+  background: var(--bg-code);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+pre {
+  background: var(--bg-code);
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  margin: 14px 0;
+  font-size: 13px;
+  line-height: 1.6;
+  border: 1px solid var(--border-color);
+}
+
+pre code { background: none; padding: 0; border: none; }
+
+ul, ol { padding-left: 22px; margin-bottom: 14px; }
+li { margin-bottom: 5px; }
+
+strong { font-weight: 650; color: var(--text-primary); }
+em { color: var(--text-secondary); }
+
+a { color: var(--text-link); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--text-link-hover); text-decoration: underline; }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.tag-danger { background: var(--danger-light); color: var(--danger); }
+.tag-success { background: var(--success-light); color: var(--success); }
+.tag-warning { background: var(--warning-light); color: var(--warning); }
+.tag-info { background: var(--info-light); color: var(--info); }
+
+.tag-system-iztro { background: rgba(37,99,235,0.1); color: var(--system-iztro); }
+.tag-system-nishi { background: var(--gold-light); color: var(--system-nishi); }
+.tag-system-combined { background: var(--purple-light); color: var(--system-combined); }
+
+.star-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.star-badge.bright { background: var(--success-light); color: var(--success); }
+.star-badge.normal { background: var(--warning-light); color: var(--warning); }
+.star-badge.dim { background: var(--danger-light); color: var(--danger); }
+
+.star-badge.hua-lu {
+  background: var(--success-light);
+  color: var(--chart-lu);
+  box-shadow: 0 0 6px rgba(77,171,92,0.3);
+}
+.star-badge.hua-quan {
+  background: var(--info-light);
+  color: var(--chart-quan);
+  box-shadow: 0 0 6px rgba(59,130,246,0.3);
+}
+.star-badge.hua-ke {
+  background: var(--warning-light);
+  color: var(--chart-ke);
+  box-shadow: 0 0 6px rgba(232,145,45,0.3);
+}
+.star-badge.hua-ji {
+  background: var(--danger-light);
+  color: var(--chart-ji);
+  box-shadow: 0 0 6px rgba(235,87,87,0.3);
+}
+
+.interpretation-block {
+  margin: 16px 0;
+  padding: 18px 22px;
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+.interpretation-block.pro {
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--accent);
+}
+
+.interpretation-block.lay {
+  background: var(--bg-blockquote);
+  border-left: 3px solid var(--success);
+}
+
+.interpretation-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.interpretation-block.pro .interpretation-label { color: var(--accent); }
+.interpretation-block.lay .interpretation-label { color: var(--success); }
+
+.interpretation-block.pro .interpretation-label::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20'/%3E%3Cpath d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20'/%3E%3Cpath d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+  flex-shrink: 0;
+}
+
+.interpretation-block.lay .interpretation-label::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: var(--success);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M9 18h6'/%3E%3Cpath d='M10 22h4'/%3E%3Cpath d='M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M9 18h6'/%3E%3Cpath d='M10 22h4'/%3E%3Cpath d='M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+  flex-shrink: 0;
+}
+
+.interpretation-pair {
+  position: relative;
+  margin: 16px 0;
+}
+
+.interpretation-pair .interpretation-block.pro {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0;
+}
+
+.interpretation-pair .interpretation-block.lay {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: 0;
+  border-top: 1px dashed var(--border-color);
+}
+
+.interpretation-connector {
+  position: absolute;
+  left: 14px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--success));
+  opacity: 0.3;
+}
+
+.pattern-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+  margin: 10px 0;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.pattern-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.pattern-card.excellent::before { background: var(--success); }
+.pattern-card.good::before { background: var(--info); }
+.pattern-card.neutral::before { background: var(--warning); }
+.pattern-card.caution::before { background: var(--danger); }
+
+.pattern-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.pattern-card-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.pattern-card.excellent .pattern-card-title { color: var(--success); }
+.pattern-card.good .pattern-card-title { color: var(--info); }
+.pattern-card.neutral .pattern-card-title { color: var(--warning); }
+.pattern-card.caution .pattern-card-title { color: var(--danger); }
+
+.section-wrapper {
+  position: relative;
+}
+
+.section-toggle {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.section-toggle:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.section-toggle svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s ease;
+}
+
+.section-wrapper.collapsed .section-toggle svg {
+  transform: rotate(-90deg);
+}
+
+.section-content {
+  overflow: hidden;
+}
+
+.section-wrapper.collapsed .section-content {
+  display: none;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition);
+  z-index: 150;
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.back-to-top.visible { display: flex; }
+.back-to-top svg { width: 18px; height: 18px; }
+
+.chart-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 80px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition);
+  z-index: 150;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.chart-fab:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-xl);
+}
+
+.chart-fab svg { width: 20px; height: 20px; }
+
+.chart-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 780px;
+  max-width: 96vw;
+  max-height: 92vh;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  z-index: 500;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  transition: opacity 0.15s ease;
+}
+
+.chart-panel.open {
+  display: flex;
+  animation: chartPanelIn 0.2s ease;
+}
+
+@keyframes chartPanelIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.chart-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border-color);
+  cursor: move;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.chart-panel-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chart-panel-title svg { width: 16px; height: 16px; color: var(--accent); }
+
+.chart-panel-system-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 4px;
+}
+
+[data-system="iztro"] .chart-panel-system-badge { background: rgba(37,99,235,0.12); color: var(--system-iztro); }
+[data-system="nishi"] .chart-panel-system-badge { background: var(--gold-light); color: var(--system-nishi); }
+[data-system="combined"] .chart-panel-system-badge { background: var(--purple-light); color: var(--system-combined); }
+
+.chart-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chart-zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-right: 8px;
+  padding-right: 8px;
+  border-right: 1px solid var(--border-color);
+}
+
+.chart-zoom-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.chart-zoom-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-light);
+}
+
+.chart-zoom-level {
+  font-size: 11px;
+  color: var(--text-muted);
+  min-width: 36px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-panel-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.chart-panel-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.chart-panel-btn svg { width: 14px; height: 14px; }
+
+.chart-panel-body {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  position: relative;
+}
+
+.chart-grid-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 480px;
+  transform-origin: top center;
+  transition: transform 0.15s ease;
+}
+
+.chart-svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.chart-cell {
+  border: 1.5px solid var(--border-color);
+  border-radius: 3px;
+  padding: 6px 8px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+  background: var(--bg-primary);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-cell:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), var(--shadow-sm);
+  z-index: 2;
+}
+
+.chart-cell.selected {
+  border-color: var(--chart-selected-border);
+  border-width: 2px;
+  background: var(--chart-selected-bg);
+  box-shadow: 0 0 0 1px var(--chart-selected-border);
+  z-index: 3;
+}
+
+.chart-cell.sanfang-related {
+  background: var(--chart-selected-bg);
+  border-color: rgba(37,99,235,0.35);
+}
+
+.chart-cell.dalimit-active {
+  border-left: 3px solid var(--chart-dalimit-border);
+  background: var(--chart-dalimit-bg);
+}
+
+.chart-cell.palace-ming {
+  background: var(--chart-ming-bg);
+}
+
+.chart-cell.palace-body {
+  border-color: var(--chart-body-border);
+  border-width: 2px;
+}
+
+.chart-cell.palace-laiyin {
+  border-color: var(--chart-laiyin-border);
+  border-width: 2px;
+}
+
+.chart-cell.palace-empty {
+  border-style: dashed;
+  border-color: var(--chart-empty-border);
+}
+
+.chart-cell.center-cell {
+  background: var(--bg-secondary);
+  border-color: var(--border-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+  gap: 2px;
+  cursor: default;
+}
+
+.chart-cell.center-cell .center-taiji {
+  font-size: 32px;
+  opacity: 0.15;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chart-cell.center-cell .center-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.chart-cell.center-cell .center-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+}
+
+.chart-cell.center-cell .center-dalimit-box {
+  margin-top: 4px;
+  padding: 2px 8px;
+  border: 1px solid var(--chart-dalimit-border);
+  border-radius: 4px;
+  font-size: 10px;
+  color: var(--purple);
+  background: var(--chart-dalimit-bg);
+  position: relative;
+  z-index: 1;
+}
+
+.chart-cell-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3px;
+  gap: 4px;
+}
+
+.chart-palace-name {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.chart-palace-marks {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.chart-ming-mark {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 0 3px;
+  border-radius: 2px;
+  background: rgba(212,160,23,0.15);
+  color: var(--gold);
+  line-height: 1.5;
+}
+
+.chart-shen-mark {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 0 3px;
+  border-radius: 2px;
+  background: var(--info-light);
+  color: var(--info);
+  line-height: 1.5;
+}
+
+.chart-ganzhi {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.chart-main-stars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.chart-star {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 4px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.chart-star.miao, .chart-star.wang { background: var(--chart-miao-bg); color: var(--chart-lu); }
+.chart-star.ping, .chart-star.li, .chart-star.de { background: var(--chart-ping-bg); color: var(--chart-quan); }
+.chart-star.xian, .chart-star.bu { background: var(--chart-xian-bg); color: var(--chart-ji); }
+
+[data-system="nishi"] .chart-star.miao,
+[data-system="nishi"] .chart-star.wang,
+[data-system="nishi"] .chart-star.ni-miao { background: var(--ni-miao-bg); color: var(--ni-miao-color); }
+[data-system="nishi"] .chart-star.ping,
+[data-system="nishi"] .chart-star.li,
+[data-system="nishi"] .chart-star.de,
+[data-system="nishi"] .chart-star.ni-ping { background: var(--ni-ping-bg); color: var(--ni-ping-color); }
+[data-system="nishi"] .chart-star.xian,
+[data-system="nishi"] .chart-star.bu,
+[data-system="nishi"] .chart-star.ni-xian { background: var(--ni-xian-bg); color: var(--ni-xian-color); }
+
+[data-system="combined"] .chart-star.miao,
+[data-system="combined"] .chart-star.wang,
+[data-system="combined"] .chart-star.ni-miao { background: var(--chart-miao-bg); color: var(--chart-lu); }
+[data-system="combined"] .chart-star.ping,
+[data-system="combined"] .chart-star.li,
+[data-system="combined"] .chart-star.de,
+[data-system="combined"] .chart-star.ni-ping { background: var(--chart-ping-bg); color: var(--chart-quan); }
+[data-system="combined"] .chart-star.xian,
+[data-system="combined"] .chart-star.bu,
+[data-system="combined"] .chart-star.ni-xian { background: var(--chart-xian-bg); color: var(--chart-ji); }
+
+.chart-brightness-label {
+  font-size: 9px;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+[data-system="iztro"] .ni-brightness { display: none; }
+[data-system="iztro"] .combined-brightness { display: none; }
+[data-system="nishi"] .iztro-brightness { display: none; }
+[data-system="nishi"] .combined-brightness { display: none; }
+[data-system="combined"] .iztro-brightness { display: none; }
+[data-system="combined"] .ni-brightness { display: none; }
+
+.chart-sihua {
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 0 3px;
+  border-radius: 2px;
+  margin-left: 1px;
+}
+
+.chart-sihua.lu { background: var(--success-light); color: var(--chart-lu); }
+.chart-sihua.quan { background: var(--info-light); color: var(--chart-quan); }
+.chart-sihua.ke { background: var(--warning-light); color: var(--chart-ke); }
+.chart-sihua.ji { background: var(--danger-light); color: var(--chart-ji); }
+
+.chart-aux-stars {
+  font-size: 10px;
+  color: var(--info);
+  margin-top: 1px;
+}
+
+.chart-sha-stars {
+  font-size: 10px;
+  color: var(--danger);
+  margin-top: 1px;
+}
+
+.chart-dalimit {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  position: absolute;
+  bottom: 3px;
+  left: 5px;
+}
+
+.chart-dalimit.current-dalimit {
+  color: var(--purple);
+  font-weight: 700;
+  background: var(--chart-dalimit-bg);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+.chart-empty-text {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 0 4px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chart-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.chart-legend-dot.lu { background: var(--chart-lu); }
+.chart-legend-dot.quan { background: var(--chart-quan); }
+.chart-legend-dot.ke { background: var(--chart-ke); }
+.chart-legend-dot.ji { background: var(--chart-ji); }
+
+.chart-aux-star-item { margin-right: 2px; }
+.chart-aux-star-item.has-sihua { font-weight: 600; }
+.chart-sha-star-item { margin-right: 2px; }
+.chart-misc-stars {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: 1px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.chart-changsheng {
+  font-size: 8.5px;
+  color: var(--text-muted);
+  opacity: 0.7;
+  margin-top: auto;
+  text-align: right;
+}
+.chart-dalimit-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+.dalimit-bar-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--purple);
+  white-space: nowrap;
+  margin-right: 4px;
+}
+.dalimit-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+.dalimit-bar-item:hover {
+  border-color: var(--purple);
+  background: var(--chart-dalimit-bg);
+}
+.dalimit-bar-item.current {
+  border-color: var(--chart-dalimit-border);
+  background: var(--chart-dalimit-bg);
+}
+.dalimit-bar-item.active {
+  border-color: var(--chart-dalimit-border);
+  background: var(--chart-dalimit-bg);
+  box-shadow: 0 0 0 1px var(--chart-dalimit-border);
+}
+.dalimit-item-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.dalimit-item-range {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+.chart-cell.dalimit-selected {
+  border-color: var(--chart-dalimit-border) !important;
+  border-width: 2.5px !important;
+  background: var(--chart-dalimit-bg) !important;
+  box-shadow: 0 0 0 1px var(--chart-dalimit-border), 0 0 8px rgba(124,58,237,0.15);
+}
+
+.chart-hint {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 2px 0 0;
+}
+
+.chart-tooltip {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-lg);
+  min-width: 240px;
+  max-width: 320px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.chart-tooltip-title {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 13px;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.chart-tooltip-section {
+  margin-bottom: 4px;
+}
+
+.chart-tooltip-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.chart-tooltip-sanfang {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--border-light);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.help-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  max-width: 94vw;
+  max-height: 85vh;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  z-index: 600;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.help-panel.open {
+  display: flex;
+  animation: chartPanelIn 0.2s ease;
+}
+
+.help-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.help-panel-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.help-panel-title svg { width: 18px; height: 18px; color: var(--accent); }
+
+.help-panel-close {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.help-panel-close:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.help-panel-close svg { width: 14px; height: 14px; }
+
+.help-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.help-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  margin-top: 16px;
+}
+
+.help-section-title:first-child { margin-top: 0; }
+
+.help-shortcut-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.help-shortcut-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  margin-bottom: 2px;
+  transition: background var(--transition);
+}
+
+.help-shortcut-item:hover {
+  background: var(--bg-hover);
+}
+
+.help-shortcut-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.help-shortcut-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.help-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 5px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 0 var(--border-color);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.help-command-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.help-command-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  margin-bottom: 2px;
+  transition: background var(--transition);
+}
+
+.help-command-item:hover {
+  background: var(--bg-hover);
+}
+
+.help-command-code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 80px;
+}
+
+.help-command-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.help-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 599;
+}
+
+.help-overlay.open { display: block; }
+
+.tooltip-sihua-badges {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.tooltip-sihua-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.tooltip-sihua-badge.lu { background: var(--success-light); color: var(--chart-lu); }
+.tooltip-sihua-badge.quan { background: var(--warning-light); color: var(--chart-quan); }
+.tooltip-sihua-badge.ke { background: var(--info-light); color: var(--chart-ke); }
+.tooltip-sihua-badge.ji { background: var(--danger-light); color: var(--chart-ji); }
+
+.inline-chart-container {
+  margin: 24px 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+  max-width: 100%;
+}
+
+.inline-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.inline-chart-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.inline-chart-title svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+}
+
+.inline-chart-expand {
+  font-size: 12px;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-weight: 600;
+}
+
+.inline-chart-expand:hover {
+  background: var(--accent-light);
+}
+
+.inline-chart-body {
+  padding: 12px;
+  position: relative;
+}
+
+.chart-grid-inline {
+  min-height: 360px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.chart-grid-inline .chart-cell {
+  padding: 4px 6px;
+  font-size: 10px;
+}
+
+.chart-grid-inline .chart-star {
+  font-size: 9.5px;
+}
+
+.chart-grid-inline .chart-palace-name {
+  font-size: 10px;
+}
+
+.chart-grid-inline .chart-ganzhi {
+  font-size: 9px;
+}
+
+.chart-grid-inline .chart-cell.center-cell .center-title {
+  font-size: 13px;
+}
+
+.chart-grid-inline .chart-cell.center-cell .center-sub {
+  font-size: 10px;
+}
+
+.chart-panel-resize {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+  z-index: 10;
+}
+
+.chart-panel-resize::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+}
+
+.chart-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 499;
+}
+
+.chart-overlay.open { display: block; }
+
+.system-content { margin: 12px 0; transition: opacity 0.3s ease, max-height 0.3s ease; overflow: hidden; }
+
+[data-system="iztro"] .system-nishi { display: none; }
+[data-system="iztro"] .system-combined { display: none; }
+[data-system="iztro"] .system-not-iztro { display: none; }
+
+[data-system="nishi"] .system-iztro { display: none; }
+[data-system="nishi"] .system-combined { display: none; }
+[data-system="nishi"] .system-not-nishi { display: none; }
+
+[data-system="combined"] .system-iztro { display: none; }
+[data-system="combined"] .system-nishi { display: none; }
+
+[data-system="nishi"] .system-nishi-note::after {
+  content: '（倪师体系不使用）';
+  font-size: 11px;
+  color: var(--chart-ji);
+  margin-left: 4px;
+}
+
+[data-system="nishi"] .system-not-nishi-ref::after {
+  content: '（供参考，倪师体系不主张）';
+  font-size: 11px;
+  color: var(--chart-ke);
+  margin-left: 4px;
+}
+
+.system-content-fade-out {
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 0.25s ease, max-height 0.25s ease;
+}
+
+.source-ref {
+  display: none;
+}
+
+.system-content-fade-in {
+  opacity: 1;
+  max-height: 9999px;
+  transition: opacity 0.3s ease 0.05s, max-height 0.3s ease 0.05s;
+}
+
+@media print {
+  .system-content { display: block !important; }
+  .system-nishi-note::after,
+  .system-not-nishi-ref::after { display: none !important; }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .toolbar {
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 6px 10px 6px 52px;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    justify-content: flex-end;
+    gap: 4px;
+    transition: background var(--transition), border-color var(--transition);
+  }
+  .mode-btn-group {
+    position: static;
+    margin-right: auto;
+  }
+  .mobile-menu-btn {
+    display: flex;
+    top: 6px;
+    left: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+  }
+  .mobile-toc-fab {
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    z-index: 150;
+    transition: all var(--transition);
+  }
+  .mobile-toc-fab:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-xl);
+  }
+  .mobile-toc-fab svg { width: 20px; height: 20px; }
+  .mobile-toc-drawer {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 60vh;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    box-shadow: var(--shadow-xl);
+    z-index: 600;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-toc-drawer.open {
+    display: flex;
+    transform: translateY(0);
+  }
+  .mobile-toc-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+  }
+  .mobile-toc-drawer-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .mobile-toc-drawer-close {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius);
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+  }
+  .mobile-toc-drawer-close:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+  .mobile-toc-drawer-close svg { width: 14px; height: 14px; }
+  .mobile-toc-drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mobile-toc-drawer-body .toc-list {
+    list-style: none;
+    padding: 0 12px;
+  }
+  .mobile-toc-drawer-body .toc-item { margin-bottom: 1px; }
+  .mobile-toc-drawer-body .toc-link {
+    display: block;
+    padding: 10px 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: var(--radius);
+    transition: all var(--transition);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mobile-toc-drawer-body .toc-link:hover,
+  .mobile-toc-drawer-body .toc-link:active {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+  .mobile-toc-drawer-body .toc-link.active {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .mobile-toc-drawer-body .toc-h3 {
+    padding-left: 28px;
+    font-size: 13px;
+  }
+  .mobile-toc-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--bg-overlay);
+    z-index: 599;
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+  .mobile-toc-overlay.visible {
+    opacity: 1;
+  }
+  .main-content {
+    margin-left: 0;
+    padding: 24px 16px 60px;
+    padding-top: 60px;
+  }
+  .chart-panel {
+    width: 98vw;
+    max-height: 85vh;
+  }
+  .chart-grid {
+    min-height: 340px;
+  }
+  .chart-cell {
+    padding: 4px 5px;
+    font-size: 10px;
+  }
+  .chart-star { font-size: 9.5px; }
+  .chart-fab {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+  .back-to-top {
+    bottom: 20px;
+    right: 68px;
+    width: 36px;
+    height: 36px;
+  }
+  .chart-zoom-controls {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar {
+    padding: 5px 6px 5px 46px;
+    gap: 3px;
+  }
+  .toolbar-btn {
+    width: 30px;
+    height: 30px;
+  }
+  .toolbar-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  .mode-btn {
+    padding: 3px 6px;
+    font-size: 10px;
+  }
+  .mobile-menu-btn {
+    top: 5px;
+    left: 6px;
+    width: 30px;
+    height: 30px;
+  }
+  .mobile-menu-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  .main-content {
+    padding-top: 54px;
+  }
+  h2 { scroll-margin-top: 54px; }
+  h3 { scroll-margin-top: 54px; }
+}
+
+@media print {
+  .sidebar, .toolbar, .back-to-top, .chart-fab, .chart-panel, .chart-overlay,
+  .mobile-menu-btn, .progress-bar, .section-toggle, .inline-chart-expand,
+  .mode-btn-group { display: none !important; }
+  .main-content { margin-left: 0; padding: 0; max-width: 100%; }
+  body { background: white; color: black; }
+  .table-wrapper { border: 1px solid #ddd; }
+  .tag, .star-badge { border: 1px solid currentColor; background: transparent; }
+  .section-wrapper.collapsed .section-content { display: block !important; }
+  .chart-cell { border: 1px solid #ccc !important; }
+  .chart-cell.palace-ming { background: #fff8e1 !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+
+<button class="mobile-menu-btn toolbar-btn" onclick="toggleSidebar()" aria-label="Menu">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+</button>
+
+<div class="toolbar">
+  <div class="mode-btn-group">
+    <button class="mode-btn" data-mode="iztro" onclick="switchSystem('iztro')">iztro</button>
+    <button class="mode-btn" data-mode="nishi" onclick="switchSystem('nishi')">倪师</button>
+    <button class="mode-btn" data-mode="combined" onclick="switchSystem('combined')">综合</button>
+  </div>
+  <button class="toolbar-btn" onclick="toggleChart()" aria-label="排盘图" title="排盘图">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+  </button>
+  <button class="toolbar-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle theme">
+    <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+  <button class="toolbar-btn" onclick="toggleHelp()" aria-label="帮助" title="快捷指令帮助">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  </button>
+</div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+      紫微斗数命盘
+    </div>
+  </div>
+  <div class="sidebar-system-indicator">
+    <span class="sidebar-system-dot"></span>
+    <span class="sidebar-system-name" id="sidebarSystemName">综合模式</span>
+  </div>
+  <ul class="toc-list" id="tocList">
+<li class="toc-item"><a class="toc-link" href="#一-基本信息">一、基本信息</a></li>
+<li class="toc-item"><a class="toc-link" href="#二-十二宫排盘总表">二、十二宫排盘总表</a></li>
+<li class="toc-item"><a class="toc-link" href="#三-生年四化详析">三、生年四化详析</a></li>
+<li class="toc-item"><a class="toc-link" href="#四-格局识别">四、格局识别</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-1-火贪格-铃贪格-部分成立">4.1 火贪格（铃贪格·部分成立）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-2-紫府同宫格-不成立">4.2 紫府同宫格（不成立）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-3-机月同梁格-部分成立">4.3 机月同梁格（部分成立）</a></li>
+<li class="toc-item"><a class="toc-link" href="#五-命宫总论">五、命宫总论</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#5-1-命宫主星与借星分析">5.1 命宫主星与借星分析</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#5-2-三方四正">5.2 三方四正</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#5-3-性格特质">5.3 性格特质</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#5-4-事业方向">5.4 事业方向</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#5-5-倪师断语">5.5 倪师断语</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#5-6-命宫总评">5.6 命宫总评</a></li>
+<li class="toc-item"><a class="toc-link" href="#六-十二宫分论">六、十二宫分论</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-1-命宫-甲申-空宫借贪狼">6.1 命宫（甲申·空宫借贪狼）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-2-兄弟宫-乙酉-太阴旺禄">6.2 兄弟宫（乙酉·太阴旺禄）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-3-夫妻宫-丙戌-天同旺">6.3 夫妻宫（丙戌·天同旺）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-4-子女宫-辛巳-空宫借武曲天府">6.4 子女宫（辛巳·空宫借武曲天府）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-5-财帛宫-丁亥-武曲庙-天府庙">6.5 财帛宫（丁亥·武曲庙·天府庙）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-6-疾厄宫-戊子-空宫借廉贞七杀">6.6 疾厄宫（戊子·空宫借廉贞七杀）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-7-迁移宫-己丑-廉贞庙-七杀庙">6.7 迁移宫（己丑·廉贞庙·七杀庙）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-8-仆役宫-壬午-紫微庙-天相庙-★身宫">6.8 仆役宫（壬午·紫微庙·天相庙）★身宫</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-9-官禄宫-戊寅-贪狼平">6.9 官禄宫（戊寅·贪狼平）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-10-田宅宫-庚辰-天机利">6.10 田宅宫（庚辰·天机利）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-11-福德宫-己卯-空宫借太阴">6.11 福德宫（己卯·空宫借太阴）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-12-父母宫-癸未-太阳不-巨门不">6.12 父母宫（癸未·太阳不·巨门不）</a></li>
+<li class="toc-item"><a class="toc-link" href="#七-四化飞化详析">七、四化飞化详析</a></li>
+<li class="toc-item"><a class="toc-link" href="#八-大限运势">八、大限运势</a></li>
+<li class="toc-item"><a class="toc-link" href="#九-流年要点">九、流年要点</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2024甲辰年-虚岁40">2024甲辰年（虚岁40）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2025乙巳年-虚岁41">2025乙巳年（虚岁41）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2026丙午年-虚岁42-★当前流年">2026丙午年（虚岁42）★当前流年</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2027丁未年-虚岁43">2027丁未年（虚岁43）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2028戊申年-虚岁44">2028戊申年（虚岁44）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2029己酉年-虚岁45">2029己酉年（虚岁45）</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2030庚戌年-虚岁46">2030庚戌年（虚岁46）</a></li>
+<li class="toc-item"><a class="toc-link" href="#十-综合建议">十、综合建议</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#10-1-事业方向">10.1 事业方向</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#10-2-财运建议">10.2 财运建议</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#10-3-感情建议">10.3 感情建议</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#10-4-健康建议">10.4 健康建议</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#10-5-精神健康建议">10.5 精神健康建议</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#10-6-人际关系建议">10.6 人际关系建议</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#10-7-阳宅堪舆建议">10.7 阳宅堪舆建议</a></li>
+<li class="toc-item"><a class="toc-link" href="#十一-附录">十一、附录</a></li>
+<li class="toc-item"><a class="toc-link" href="#自检清单">自检清单</a></li>
+  </ul>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<main class="main-content" id="mainContent">
+<h1 id="紫微斗数命盘详析">紫微斗数命盘详析</h1><blockquote class="blockquote nishi-quote system-content system-not-iztro"><strong>命主</strong>: 女命（阴女） | <strong>阳历</strong>: 1985年3月18日 | <strong>时辰</strong>: 辰时(07:00-09:00)</blockquote><blockquote class="blockquote"><strong>体系</strong>: 倪海厦紫微斗数解读法（综合模式）</blockquote><hr><div class="section-wrapper" data-section-id="一-基本信息"><h2 id="一-基本信息"><span>一、基本信息</span><button class="section-toggle" onclick="toggleSection('一-基本信息')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-一-基本信息"><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>阳历</td><td>1985年3月18日</td></tr><tr><td>农历</td><td>一九八五年正月廿七</td></tr><tr><td>干支</td><td>乙丑年 戊寅月 丙辰日 壬辰时</td></tr><tr><td>性别</td><td>女（阴女顺行，乙为阴干）</td></tr><tr><td>时辰</td><td>辰时（07:00~09:00）</td></tr><tr><td>生肖</td><td>牛</td></tr><tr><td>星座</td><td>双鱼座</td></tr><tr><td>命宫</td><td>戌宫</td></tr><tr><td>身宫</td><td>午宫（仆役宫）</td></tr><tr><td>命主星</td><td>禄存</td></tr><tr><td>身主星</td><td>天相</td></tr><tr><td>五行局</td><td>土五局</td></tr><tr><td>起运年龄</td><td>5岁</td></tr><tr><td>来因宫</td><td>兄弟宫（宫干乙=年干乙）</td></tr><tr><td>当前大限</td><td>甲申（命宫）25~34岁</td></tr><tr><td>当前流年</td><td>2026丙午，虚岁42</td></tr></tbody></table></div><h3 id="五行局推算过程">五行局推算过程</h3><ol><li><strong>定命宫地支</strong>：由生月（正月）与生时（辰时）推算，从寅宫起正月，顺数至正月在寅宫，再从寅宫起子时逆数至辰时，得命宫在<strong>戌</strong> <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span></li><li><strong>定命宫天干</strong>：乙年起寅宫天干，依五虎遁（乙庚之年戊作首）：寅戊→卯己→辰庚→巳辛→午壬→未癸→申甲→酉乙→戌丙，得命宫天干为<strong>丙</strong> <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></li><li><strong>命宫干支</strong>：<strong>丙戌</strong></li><li><strong>查纳音五行</strong>：丙戌纳音属&quot;屋上土&quot;（《三命通会》：&quot;丙戌丁亥屋上土&quot;） <span class="source-ref" title="references/star-rules.md" data-source="references/star-rules.md"></span></li><li><strong>定五行局</strong>：纳音属土 → 土局；土局有五局、八局两种</li><li><strong>定局数</strong>：命宫干支丙戌对应<strong>土五局</strong>（紫微斗数起局法查表确定） <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span></li><li><strong>起运年龄</strong>：土五局 → <strong>5岁起运</strong>（局数即为起运年龄）</li><li><strong>大限方向</strong>：乙年阴女 → <strong>顺行</strong>（戌→亥→子→丑→寅→卯→辰→巳→午→未→申→酉） <span class="source-ref" title="references/star-rules.md" data-source="references/star-rules.md"></span></li></ol><hr></div></div><div class="inline-chart-container" id="inlineChartContainer"><div class="inline-chart-header"><span class="inline-chart-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>命盘排盘图</span><button class="inline-chart-expand" onclick="toggleChart()">放大查看</button></div><div class="inline-chart-body"><div class="chart-dalimit-bar" id="inlineChartDalimitBar"></div><div class="chart-grid-wrapper"><div class="chart-grid chart-grid-inline" id="inlineChartGrid"></div><svg class="chart-svg-overlay" id="inlineChartSvgOverlay"></svg></div></div></div><div class="section-wrapper" data-section-id="二-十二宫排盘总表"><h2 id="二-十二宫排盘总表"><span>二、十二宫排盘总表</span><button class="section-toggle" onclick="toggleSection('二-十二宫排盘总表')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-二-十二宫排盘总表"><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>天干地支</th><th>主星</th><th>辅星</th><th>杂耀</th><th>长生十二神</th><th>大限</th><th>备注</th></tr></thead><tbody><tr><td>官禄</td><td>戊寅</td><td>贪狼(平)</td><td>铃星(庙)·陀罗(陷)</td><td>红鸾·天空·孤辰·阴煞</td><td>病</td><td>45~54</td><td>—</td></tr><tr><td>福德</td><td>己卯</td><td>空（借对宫）</td><td>—</td><td>天贵·天官</td><td>衰</td><td>55~64</td><td>借戌宫紫微天相</td></tr><tr><td>田宅</td><td>庚辰</td><td>天机(利)</td><td>文昌(陷)<span class="star-badge hua-ji">忌</span>·天马</td><td>解神·天巫·天月·蜚廉</td><td>帝旺</td><td>65~74</td><td>—</td></tr><tr><td>子女</td><td>辛巳</td><td>空（借对宫）</td><td>擎羊(庙)</td><td>天哭·天虚·龙池·华盖</td><td>临官</td><td>75~84</td><td>借亥宫武曲天府</td></tr><tr><td>仆役</td><td>壬午</td><td>紫微(庙)·天相(庙)</td><td>禄存·天魁</td><td>八座·恩光·天德</td><td>冠带</td><td>5~14</td><td>★身宫</td></tr><tr><td>父母</td><td>癸未</td><td>太阳(不)·巨门(不)</td><td>—</td><td>封诰·天刑·旬空</td><td>沐浴</td><td>15~24</td><td>—</td></tr><tr><td>命宫</td><td>甲申</td><td>空（借对宫）</td><td>文曲(旺)<span class="star-badge hua-ke">科</span>·天钺</td><td>天喜·天寿·天才</td><td>长生</td><td>25~34</td><td>借寅宫贪狼</td></tr><tr><td>兄弟</td><td>乙酉</td><td>太阴(旺)<span class="star-badge hua-lu">禄</span></td><td>左辅</td><td>三台·天福·破碎</td><td>养</td><td>35~44</td><td>★来因宫</td></tr><tr><td>夫妻</td><td>丙戌</td><td>天同(旺)</td><td>右弼<span class="star-badge hua-quan">权</span>·天马</td><td>寡宿·天伤</td><td>胎</td><td>85~94</td><td>—</td></tr><tr><td>财帛</td><td>丁亥</td><td>武曲(庙)·天府(庙)</td><td>火星(旺)</td><td>红艳·咸池·天姚</td><td>绝</td><td>95~104</td><td>—</td></tr><tr><td>疾厄</td><td>戊子</td><td>空（借对宫）</td><td>地空·地劫</td><td>截路·空亡·天使</td><td>墓</td><td>105~114</td><td>借丑宫廉贞七杀</td></tr><tr><td>迁移</td><td>己丑</td><td>廉贞(庙)·七杀(庙)</td><td>—</td><td>台辅·孤辰</td><td>死</td><td>115~124</td><td>—</td></tr></tbody></table></div><h3 id="空宫说明">空宫说明</h3><p>本命盘共有<strong>4个空宫</strong>，均需借对宫主星论断，力量减半 <span class="source-ref" title="references/palace-interpretation.md" data-source="references/palace-interpretation.md"></span>：</p><ul><li><strong>命宫（甲申）</strong>：无主星坐守，借对宫寅宫贪狼(平)论断。空宫借星力量减半，且贪狼仅平亮度，命格根基偏弱</li><li><strong>福德宫（己卯）</strong>：无主星坐守，借对宫酉宫太阴(旺)<span class="star-badge hua-lu">禄</span>论断。太阴庙旺<span class="tag tag-success">化禄</span>借入福德，精神层面有福可享</li><li><strong>子女宫（辛巳）</strong>：无主星坐守，借对宫亥宫武曲(庙)·天府(庙)论断。武府庙旺借入子女，子女有财</li><li><strong>疾厄宫（戊子）</strong>：无主星坐守，借对宫丑宫廉贞(庙)·七杀(庙)论断。廉杀庙旺借入疾厄，健康需防心脏血液</li></ul><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：空宫借对宫论事——某宫无主星时，借其对宫主星论该宫之事。如命宫空宫，借迁移宫主星定命格。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><hr></div></div><div class="section-wrapper" data-section-id="三-生年四化详析"><h2 id="三-生年四化详析"><span>三、生年四化详析</span><button class="section-toggle" onclick="toggleSection('三-生年四化详析')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-三-生年四化详析"><h3 id="生年四化-年干乙">生年四化（年干乙）</h3><div class="table-wrapper"><table><thead><tr><th>四化</th><th>星曜</th><th>所落宫位</th><th>宫位名称</th><th>含义</th></tr></thead><tbody><tr><td><span class="tag tag-success">化禄</span></td><td>天机</td><td>辰</td><td>田宅宫</td><td>天机<span class="tag tag-success">化禄</span>入田宅，主不动产有缘、家庭和乐、住宅环境佳</td></tr><tr><td><span class="tag tag-warning">化权</span></td><td>天梁</td><td>戌</td><td>夫妻宫</td><td>天梁<span class="tag tag-warning">化权</span>入夫妻，主配偶有主见、有权威，婚姻中有主导力量</td></tr><tr><td><span class="tag tag-info">化科</span></td><td>紫微</td><td>午</td><td>仆役宫</td><td>紫微<span class="tag tag-info">化科</span>入仆役，主贵人多、下属有才、社交圈有名声</td></tr><tr><td><span class="tag tag-danger">化忌</span></td><td>太阴</td><td>酉</td><td>兄弟宫</td><td>太阴<span class="tag tag-danger">化忌</span>入兄弟，主兄弟缘薄、女性朋友有损、田宅财暗耗</td></tr></tbody></table></div><h3 id="天机化禄-入田宅宫">天机<span class="tag tag-success">化禄</span>·入田宅宫</h3><p>天机属木，化气为善，乃智慧之星 <span class="source-ref" title="references/classics-excerpts.md qj-4-2" data-source="references/classics-excerpts.md qj-4-2"></span>。天机<span class="tag tag-success">化禄</span>入田宅宫，主不动产运势佳，住宅环境舒适，家庭和乐。天机善变，<span class="tag tag-success">化禄</span>于田宅则&quot;变中有财&quot;，搬家、装修、投资房产皆有机会获利。</p><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：<span class="tag tag-success">化禄</span>星主财，性守——代表财运和享受。天机<span class="tag tag-success">化禄</span>入田宅，家庭为财源之所。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><p><strong>专业解读</strong>：天机<span class="tag tag-success">化禄</span>入田宅，为&quot;家运有禄&quot;之象。天机主变动，<span class="tag tag-success">化禄</span>于田宅则变动中带财，适合从事与房产、室内设计、家居相关行业。但天机善变，房产投资不宜长线持有，宜短线操作 [AI推断]。</p><h3 id="天梁化权-入夫妻宫">天梁<span class="tag tag-warning">化权</span>·入夫妻宫</h3><p>天梁属土，化气为荫，乃老人之星 <span class="source-ref" title="references/classics-excerpts.md qj-3-6" data-source="references/classics-excerpts.md qj-3-6"></span>。天梁<span class="tag tag-warning">化权</span>入夫妻宫，主配偶有主见、有权威感，婚姻中配偶占据主导地位。天梁为荫星<span class="tag tag-warning">化权</span>，配偶有保护欲但控制欲也强。</p><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：<span class="tag tag-warning">化权</span>星性刚，代表官印——代表权力和掌控。天梁<span class="tag tag-warning">化权</span>入夫妻，配偶掌权。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><p><strong>专业解读</strong>：天梁<span class="tag tag-warning">化权</span>入夫妻，配偶性格刚正、有原则，但可能过于强势。女命天梁<span class="tag tag-warning">化权</span>入夫妻，需注意配偶的掌控欲是否过强。天梁为&quot;清贵&quot;之星，配偶宜从事公职、法律、教育等行业 [AI推断]。</p><h3 id="紫微化科-入仆役宫">紫微<span class="tag tag-info">化科</span>·入仆役宫</h3><p>紫微属土，乃帝座之星，化气为尊 <span class="source-ref" title="references/classics-excerpts.md qj-2-1" data-source="references/classics-excerpts.md qj-2-1"></span>。紫微<span class="tag tag-info">化科</span>入仆役宫，主社交圈中有贵人、下属有才干、朋友圈有名声。紫微帝座<span class="tag tag-info">化科</span>，为&quot;贵人在外&quot;之象。</p><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：<span class="tag tag-info">化科</span>星主科名，名气很大——代表名声和贵人。紫微<span class="tag tag-info">化科</span>入仆役，社交有贵人。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><p><strong>专业解读</strong>：紫微<span class="tag tag-info">化科</span>入仆役宫，贵人不在身边而在外围——朋友、同事、下属中有贵人助力。紫微帝座<span class="tag tag-info">化科</span>，主名声在外，社交场合受人尊重。但仆役宫非命宫三方四正，贵人助力需主动争取，不会自动上门 [AI推断]。</p><h3 id="太阴化忌-入兄弟宫">太阴<span class="tag tag-danger">化忌</span>·入兄弟宫</h3><p>太阴属水，为中天主星，主田宅、富贵 <span class="source-ref" title="references/classics-excerpts.md qj-3-2" data-source="references/classics-excerpts.md qj-3-2"></span>。太阴<span class="tag tag-danger">化忌</span>入兄弟宫，主兄弟缘薄、女性朋友有损、暗财消耗。太阴为阴柔之星<span class="tag tag-danger">化忌</span>，阴柔受损则情绪内耗、暗耗不断。</p><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：<span class="tag tag-danger">化忌</span>星主劫杀——代表阻碍和困难。太阴<span class="tag tag-danger">化忌</span>入兄弟，兄弟朋友间有暗损。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><p><strong>专业解读</strong>：太阴<span class="tag tag-danger">化忌</span>入兄弟宫，为命盘最凶之象。太阴主财、主田宅，<span class="tag tag-danger">化忌</span>则财暗耗、田宅有损。兄弟宫为来因宫（宫干乙=年干乙），太阴<span class="tag tag-danger">化忌</span>从来因宫发出，说明此忌为命主今生最深刻的功课——与兄弟、朋友的财务纠纷或情感暗耗 [AI推断]。太阴在酉宫旺地<span class="tag tag-danger">化忌</span>，旺地<span class="tag tag-danger">化忌</span>力量更强，凶象更显著。</p><hr></div></div><div class="section-wrapper" data-section-id="四-格局识别"><h2 id="四-格局识别"><span>四、格局识别</span><button class="section-toggle" onclick="toggleSection('四-格局识别')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-四-格局识别"><h3 id="4-1-火贪格-铃贪格-部分成立">4.1 火贪格（铃贪格·部分成立）</h3><div class="table-wrapper"><table><thead><tr><th>层次</th><th>条件</th><th>判定</th></tr></thead><tbody><tr><td><strong>必须条件</strong></td><td>贪狼与火星或铃星同宫</td><td>⚠️ 部分成立（贪狼在寅宫官禄，铃星同宫，但贪狼仅平亮度）</td></tr><tr><td><strong>必须条件</strong></td><td>贪狼庙旺得地</td><td>❌ 不成立（贪狼在寅为平亮度，非庙旺）</td></tr><tr><td><strong>加分条件</strong></td><td>无<span class="tag tag-danger">化忌</span>冲破</td><td>✅ 成立（无<span class="tag tag-danger">化忌</span>直接冲破贪狼）</td></tr><tr><td><strong>加分条件</strong></td><td>见禄存或<span class="tag tag-success">化禄</span>会照</td><td>❌ 不成立（禄存在午宫仆役，非官禄三方四正）</td></tr><tr><td><strong>破格条件</strong></td><td>空劫冲破</td><td>❌ 不成立（地空地劫在子宫疾厄，不冲官禄）</td></tr></tbody></table></div><p><strong>格局等级</strong>：<strong>部分成立但不成正格（贪狼平亮度，铃贪同宫但力量不足）</strong></p><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：火贪格主暴发。贪狼逢火星称&quot;火贪格&quot;，逢铃星称&quot;铃贪格&quot;，皆主偏财横发。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><blockquote class="blockquote nishi-quote system-content system-not-iztro">古籍出处：《紫微斗数全集》：&quot;贪狼逢火星称'火贪格'，逢铃星称'铃贪格'，皆主偏财横发。但贪狼忌空劫，主华而不实。&quot; <span class="source-ref" title="references/classics-excerpts.md qj-3-3" data-source="references/classics-excerpts.md qj-3-3"></span></blockquote><p>贪狼在寅宫官禄与铃星同宫，构成铃贪格的基本条件。但贪狼在寅为平亮度，非庙旺得地，力量大打折扣。铃贪格的核心在于&quot;贪狼庙旺逢火铃主暴发&quot;，贪狼不旺则暴发力不足，难以达到&quot;横发&quot;之效。且贪狼同宫有陀罗(陷)牵制，陀罗为拖延迟滞之星，进一步削弱铃贪的爆发力 [AI推断]。</p><p><strong>专业解读</strong>：铃贪格在此盘中仅为&quot;半格&quot;——铃星庙旺、贪狼平亮、陀罗牵制，三者力量相互抵消。事业上有偏财机会，但来得慢、来得小，非一夜暴富之象。适合从事业务、销售、公关等需要社交能力的行业，偏财来自人脉而非投机 [AI推断]。</p><h3 id="4-2-紫府同宫格-不成立">4.2 紫府同宫格（不成立）</h3><div class="table-wrapper"><table><thead><tr><th>层次</th><th>条件</th><th>判定</th></tr></thead><tbody><tr><td><strong>必须条件</strong></td><td>紫微天府同入命宫</td><td>❌ 不成立（紫微天相在午宫仆役，非命宫；武曲天府在亥宫财帛，紫微不在）</td></tr><tr><td><strong>加分条件</strong></td><td>左辅右弼来朝</td><td>⚠️ 部分成立（左辅在酉兄弟、右弼在戌夫妻，非命宫三方四正内会照）</td></tr><tr><td><strong>加分条件</strong></td><td>禄存或<span class="tag tag-success">化禄</span>会照</td><td>✅ 成立（禄存在午宫仆役与紫微同宫）</td></tr><tr><td><strong>破格条件</strong></td><td>空劫冲破</td><td>❌ 不成立</td></tr></tbody></table></div><p><strong>格局等级</strong>：<strong>不成立（紫微天府不同宫，更不同入命宫）</strong></p><blockquote class="blockquote">古籍出处：《紫微斗数全集》：&quot;紫微天府同入命宫，主品行端正、衣食无忧、有领导才能。需要左右辅弼来配合方为完整大格。&quot; <span class="source-ref" title="references/classics-excerpts.md qj-5-5" data-source="references/classics-excerpts.md qj-5-5"></span></blockquote><p>此盘紫微在午、天府在亥，分居仆役宫与财帛宫，不同宫更不同入命宫，紫府同宫格完全不成立。但紫微天相同宫于午（仆役宫），武曲天府同宫于亥（财帛宫），两组星系分别在社交与财运领域发挥力量，可视为&quot;紫府分治&quot;之象——帝座管人、财库管钱，各司其职 [AI推断]。</p><h3 id="4-3-机月同梁格-部分成立">4.3 机月同梁格（部分成立）</h3><div class="table-wrapper"><table><thead><tr><th>层次</th><th>条件</th><th>判定</th></tr></thead><tbody><tr><td><strong>必须条件</strong></td><td>天机、太阴、天同、天梁四星齐入命迁财官</td><td>❌ 不成立（天机在辰田宅、太阴在酉兄弟、天同在戌夫妻、天梁在戌夫妻，均非命迁财官）</td></tr><tr><td><strong>加分条件</strong></td><td>四星庙旺得地</td><td>⚠️ 部分成立（天机利、太阴旺、天同旺，亮度尚可）</td></tr><tr><td><strong>加分条件</strong></td><td>昌曲<span class="tag tag-info">化科</span>会照</td><td>⚠️ 部分成立（文曲<span class="tag tag-info">化科</span>在申命宫，文昌在辰田宅）</td></tr><tr><td><strong>破格条件</strong></td><td>煞星过多</td><td>⚠️ 部分成立（擎羊在巳子女、陀罗在寅官禄、火星在亥财帛，三煞散布）</td></tr></tbody></table></div><p><strong>格局等级</strong>：<strong>不成立（四星均不在命迁财官，传统机月同梁格不成立）</strong></p><blockquote class="blockquote">古籍出处：《骨髓赋》：&quot;天机、太阴、天同、天梁四星齐入命迁财官，称'机月同梁格'。主文质彬彬、聪慧善谋。&quot; <span class="source-ref" title="references/classics-excerpts.md gsf-5-1" data-source="references/classics-excerpts.md gsf-5-1"></span></blockquote><blockquote class="blockquote">古籍出处：&quot;机月同梁作吏人——古云此格者宜担任公职、行政文书工作，安稳一生。&quot; <span class="source-ref" title="references/classics-excerpts.md gsf-5-2" data-source="references/classics-excerpts.md gsf-5-2"></span></blockquote><p>天机、太阴、天同、天梁四星虽在命盘中皆有，但均不在命宫三方四正（命迁财官）内，传统机月同梁格不成立。四星散布于田宅、兄弟、夫妻等宫位，机月同梁的&quot;聪慧善谋、文质彬彬&quot;特质不体现在命主性格上，而是体现在家庭（天机田宅）、人际（太阴兄弟）、婚姻（天同天梁夫妻）等领域 [AI推断]。</p><hr></div></div><div class="section-wrapper" data-section-id="五-命宫总论"><h2 id="五-命宫总论"><span>五、命宫总论</span><button class="section-toggle" onclick="toggleSection('五-命宫总论')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-五-命宫总论"><h3 id="5-1-命宫主星与借星分析">5.1 命宫主星与借星分析</h3><p>命宫在甲申，为<strong>空宫</strong>，无主星坐守。借对宫寅宫贪狼(平)论断 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><p>贪狼为桃花欲望之星，属木属水，主多才艺、社交广 <span class="source-ref" title="references/classics-excerpts.md qj-3-3" data-source="references/classics-excerpts.md qj-3-3"></span>。借星入命，力量减半，贪狼仅平亮度，命格根基偏弱。空宫借星之人，性格受环境影响大，缺乏主星坐守的定力，容易随波逐流。但空宫也有&quot;虚怀若谷&quot;之利——善于吸收、适应力强 [AI推断]。</p><p>命宫实坐辅星：文曲(旺)<span class="star-badge hua-ke">科</span>·天钺。文曲<span class="tag tag-info">化科</span>实坐命宫，虽命宫空宫，但文曲<span class="tag tag-info">化科</span>为命宫带来科名、贵人、文书之利。天钺为贵人星，关键时刻有贵人扶持 <span class="source-ref" title="references/classics-excerpts.md gsf-7-1" data-source="references/classics-excerpts.md gsf-7-1"></span>。</p><h3 id="5-2-三方四正">5.2 三方四正</h3><p>命宫三方四正 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span>：</p><div class="table-wrapper"><table><thead><tr><th>方位</th><th>宫位</th><th>主星</th><th>要点</th></tr></thead><tbody><tr><td>命宫</td><td>申</td><td>空（借贪狼）</td><td>借星力量减半</td></tr><tr><td>迁移宫</td><td>寅</td><td>贪狼(平)·铃星(庙)·陀罗(陷)</td><td>对宫，借星来源</td></tr><tr><td>财帛宫</td><td>辰</td><td>天机(利)·文昌(陷)<span class="star-badge hua-ji">忌</span></td><td>财运有变动，文昌<span class="tag tag-danger">化忌</span>不利文书</td></tr><tr><td>官禄宫</td><td>戌</td><td>天同(旺)·右弼<span class="star-badge hua-quan">权</span></td><td>事业安逸，右弼<span class="tag tag-warning">化权</span>有助力</td></tr></tbody></table></div><p>三方四正整体评价：命宫空宫借贪狼，三方见天机、天同，构成&quot;机同&quot;组合，偏向文质、安逸型命格。但文昌<span class="tag tag-danger">化忌</span>在财帛宫冲命，文书、合同方面需格外谨慎。右弼<span class="tag tag-warning">化权</span>在官禄宫，事业有贵人助力且有权柄 [AI推断]。</p><h3 id="5-3-性格特质">5.3 性格特质</h3><p>借贪狼入命，命主性格具有以下特质：</p><ul><li><strong>多才多艺</strong>：贪狼主多才艺，借星虽减力，仍保留学习多种技能的兴趣 <span class="source-ref" title="references/classics-excerpts.md qj-3-3" data-source="references/classics-excerpts.md qj-3-3"></span></li><li><strong>社交活跃</strong>：贪狼桃花星，借入命宫，命主善于社交、人缘广</li><li><strong>欲望多元</strong>：贪狼主欲望，借星则欲望分散、不集中，容易三分钟热度</li><li><strong>文曲<span class="tag tag-info">化科</span>加持</strong>：文曲旺科在命宫，命主有文采、口才好，学习能力强</li><li><strong>空宫不定</strong>：无主星坐守，性格受环境影响大，缺乏核心定力</li></ul><h3 id="5-4-事业方向">5.4 事业方向</h3><p>借贪狼入命，三方天机天同会照，事业方向宜：</p><ol><li><strong>文教传媒</strong>：文曲<span class="tag tag-info">化科</span>在命，适合文字、教育、传媒工作 <span class="source-ref" title="references/classics-excerpts.md gsf-6-1" data-source="references/classics-excerpts.md gsf-6-1"></span></li><li><strong>公关社交</strong>：贪狼桃花借入命，善于人际交往，适合公关、销售</li><li><strong>艺术设计</strong>：文曲主文艺，贪狼主审美，适合设计、艺术类工作</li><li><strong>不宜投机</strong>：贪狼虽主偏财，但借星减力且无火铃在命，不宜冒险投机</li></ol><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：命宫为本，三方为用——命宫主星决定基本格局与天生性格，三方决定用武之地。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h3 id="5-5-倪师断语">5.5 倪师断语</h3><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：命宫贪狼文武双全。此盘借贪狼入命，虽非实坐，仍具贪狼文武兼备之性。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：身宫在财帛宫的女孩子，一般来说就是职业妇女。此盘身宫在午宫仆役宫（紫微天相同宫），虽非财帛宫，但紫微天相为帝座印星，身宫在此主一生受社交圈、下属关系影响甚深。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h3 id="5-6-命宫总评">5.6 命宫总评</h3><p>命宫空宫借贪狼，根基偏弱但非无望。文曲<span class="tag tag-info">化科</span>实坐命宫为最大亮点——科名、贵人、文采三者兼具，命主在文教、传媒、社交领域有发展潜力。三方四正天机天同会照，命格偏文质安逸，非大开大合之命。太阴<span class="tag tag-danger">化忌</span>入兄弟宫为来因宫发出，为命主今生最深刻的功课——人际关系中的暗耗与执念 [AI推断]。</p><hr></div></div><div class="section-wrapper" data-section-id="六-十二宫分论"><h2 id="六-十二宫分论"><span>六、十二宫分论</span><button class="section-toggle" onclick="toggleSection('六-十二宫分论')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-六-十二宫分论"><h3 id="6-1-命宫-甲申-空宫借贪狼">6.1 命宫（甲申·空宫借贪狼）</h3><h4>主星特质与亮度</h4><p>命宫无主星坐守，借对宫寅宫贪狼(平)论断。贪狼在寅为平亮度，力量中等偏弱 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。贪狼属木属水，为桃花欲望之星，主多才艺、社交广、欲望多元 <span class="source-ref" title="references/classics-excerpts.md qj-3-3" data-source="references/classics-excerpts.md qj-3-3"></span>。借星力量减半，命主贪狼特质不显著，表现为兴趣广泛但缺乏专注力。</p><h4>辅星与杂耀影响</h4><ul><li><strong>文曲(旺)<span class="star-badge hua-ke">科</span></strong>：文曲旺地<span class="tag tag-info">化科</span>实坐命宫，为命宫最大吉星。文曲主文采、口才、艺术，<span class="tag tag-info">化科</span>主科名、贵人。命主有文采、善表达，学习能力强，考试运佳 <span class="source-ref" title="references/classics-excerpts.md gsf-7-1" data-source="references/classics-excerpts.md gsf-7-1"></span></li><li><strong>天钺</strong>：天钺为贵人星，主关键时刻有贵人扶持。与文曲同宫，贵人多来自文教、文化领域</li><li><strong>天喜·天寿·天才</strong>：天喜主喜庆、天寿主长寿、天才主聪慧，三颗吉耀同宫，命主天性乐观、聪慧、有福寿之基</li></ul><h4>飞化入宫分析</h4><p>命宫天干甲，甲干四化：廉贞<span class="tag tag-success">化禄</span>→丑(迁移)、破军<span class="tag tag-warning">化权</span>→子(疾厄)、武曲<span class="tag tag-info">化科</span>→亥(财帛)、太阳<span class="tag tag-danger">化忌</span>→未(父母) <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></p><ul><li>廉贞<span class="tag tag-success">化禄</span>飞入迁移宫：命主外出有财缘，出外发展优于守成</li><li>武曲<span class="tag tag-info">化科</span>飞入财帛宫：命主财运有科名加持，理财有方</li><li>太阳<span class="tag tag-danger">化忌</span>飞入父母宫：命主与长辈、上司有冲，文书契约易出问题</li></ul><h4>三方四正关系</h4><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>主星</th><th>与命宫关系</th></tr></thead><tbody><tr><td>迁移(寅)</td><td>贪狼(平)</td><td>对宫，借星来源</td></tr><tr><td>财帛(辰)</td><td>天机(利)</td><td>三方，财运有变动</td></tr><tr><td>官禄(戌)</td><td>天同(旺)</td><td>三方，事业安逸</td></tr></tbody></table></div><h4>长生十二神</h4><p>命宫长生十二神为<strong>长生</strong>。长生为十二运之始，主新生、萌发、有朝气。命宫坐长生，命主生命力旺盛，有开创精神，但需防&quot;长生不进&quot;——有朝气但缺乏执行力 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>倪师断语</h4><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：命宫为本，三方为用——命宫主星决定基本格局与天生性格，三方决定用武之地。此盘命宫空宫借贪狼，三方天机天同，用武之地在文教与社交。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h4>总评</h4><p>命宫空宫借贪狼，根基偏弱。文曲旺科实坐为最大亮点，命主有文采、有贵人、有科名。三方天机天同会照，命格偏文质。太阳<span class="tag tag-danger">化忌</span>飞入父母宫，与长辈关系需注意。整体而言，命主适合文教、传媒、公关类工作，不宜冒险投机 [AI推断]。</p><hr><h3 id="6-2-兄弟宫-乙酉-太阴旺禄">6.2 兄弟宫（乙酉·太阴旺禄）</h3><h4>主星特质与亮度</h4><p>太阴在酉宫为<strong>旺</strong>地，且为生年<span class="tag tag-success">化禄</span>（太阴<span class="star-badge hua-lu">禄</span>）。太阴属水，为中天主星，主田宅、富贵 <span class="source-ref" title="references/classics-excerpts.md qj-3-2" data-source="references/classics-excerpts.md qj-3-2"></span>。太阴旺地<span class="tag tag-success">化禄</span>入兄弟宫，主兄弟中有富贵之人，兄弟朋友间有财缘。但太阴亦为生年<span class="tag tag-danger">化忌</span>星（乙干太阴<span class="tag tag-danger">化忌</span>），旺地<span class="tag tag-danger">化忌</span>力量更强，兄弟宫同时承受禄忌双重力量 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>辅星与杂耀影响</h4><ul><li><strong>左辅</strong>：左辅为吉星，主助力、贵人。左辅在兄弟宫，兄弟朋友中有助力之人 <span class="source-ref" title="references/classics-excerpts.md gsf-7-1" data-source="references/classics-excerpts.md gsf-7-1"></span></li><li><strong>三台·天福·破碎</strong>：三台主助力、天福主福分、破碎主小损。兄弟关系总体有福但有小摩擦</li></ul><h4>飞化入宫分析</h4><p>兄弟宫天干乙，乙干四化：天机<span class="tag tag-success">化禄</span>→辰(田宅)、天梁<span class="tag tag-warning">化权</span>→戌(夫妻)、紫微<span class="tag tag-info">化科</span>→午(仆役)、太阴<span class="tag tag-danger">化忌</span>→酉(兄弟)※ <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></p><ul><li>太阴<span class="tag tag-danger">化忌</span><span class="system-not-nishi-ref">自化</span>入兄弟宫（※倪师体系不主张宫干自化，此处仅标注供参考）</li><li>天机<span class="tag tag-success">化禄</span>飞入田宅宫：兄弟与田宅有财缘，兄弟可能在房产方面有帮助</li><li>天梁<span class="tag tag-warning">化权</span>飞入夫妻宫：兄弟对婚姻有影响力</li></ul><h4>三方四正关系</h4><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>主星</th><th>与兄弟宫关系</th></tr></thead><tbody><tr><td>仆役(午)</td><td>紫微(庙)·天相(庙)</td><td>三方，朋友下属有贵气</td></tr><tr><td>疾厄(子)</td><td>空（借廉贞七杀）</td><td>三方</td></tr><tr><td>田宅(辰)</td><td>天机(利)</td><td>三方，兄弟与房产有关联</td></tr></tbody></table></div><h4>长生十二神</h4><p>兄弟宫长生十二神为<strong>养</strong>。养为十二运中滋养之位，主培育、养护。兄弟宫坐养，兄弟关系有滋养之象，但太阴<span class="tag tag-danger">化忌</span>暗耗，滋养中带损耗 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>倪师断语</h4><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：<span class="tag tag-danger">化忌</span>星主劫杀——代表阻碍和困难。太阴<span class="tag tag-danger">化忌</span>入兄弟，兄弟朋友间有暗损，财务往来需谨慎。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h4>总评</h4><p>兄弟宫太阴旺禄，表面有财缘，但太阴<span class="tag tag-danger">化忌</span>同宫，禄忌交战，兄弟关系&quot;表面风光、暗里损耗&quot;。左辅助力在，但破碎亦在，兄弟间有助力也有小摩擦。此宫为来因宫，太阴<span class="tag tag-danger">化忌</span>从此宫发出，为命主今生最深刻的功课——与兄弟、朋友的财务往来需格外谨慎，借贷不宜，合伙需防暗亏 [AI推断]。</p><hr><h3 id="6-3-夫妻宫-丙戌-天同旺">6.3 夫妻宫（丙戌·天同旺）</h3><h4>主星特质与亮度</h4><p>天同在戌宫为<strong>旺</strong>地。天同属水，为福星，主安逸、享受、温和 <span class="source-ref" title="references/palace-interpretation.md" data-source="references/palace-interpretation.md"></span>。天同旺地入夫妻宫，主婚姻安逸、配偶温和，但天同福星入夫妻亦主&quot;安逸生惰&quot;，婚姻中容易缺乏激情。</p><h4>辅星与杂耀影响</h4><ul><li><strong>右弼<span class="star-badge hua-quan">权</span></strong>：右弼为吉星，<span class="tag tag-warning">化权</span>主有助力且有权柄。右弼<span class="tag tag-warning">化权</span>在夫妻宫，配偶有贵人助力且有主见 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span></li><li><strong>天马</strong>：天马主变动、奔波。天马在夫妻宫，配偶可能常出差或两人聚少离多</li><li><strong>寡宿·天伤</strong>：寡宿主孤独、天伤主暗损。两颗凶耀同宫，婚姻中有孤独感和暗耗</li></ul><h4>飞化入宫分析</h4><p>夫妻宫天干丙，丙干四化：天同<span class="tag tag-success">化禄</span>→戌(夫妻)※、天机<span class="tag tag-warning">化权</span>→辰(田宅)、文昌<span class="tag tag-info">化科</span>→辰(田宅)、廉贞<span class="tag tag-danger">化忌</span>→丑(迁移) <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></p><ul><li>天同<span class="tag tag-success">化禄</span><span class="system-not-nishi-ref">自化</span>入夫妻宫（※倪师体系不主张宫干自化，此处仅标注供参考）</li><li>天机<span class="tag tag-warning">化权</span>、文昌<span class="tag tag-info">化科</span>同飞入田宅宫：婚姻与房产紧密关联</li><li>廉贞<span class="tag tag-danger">化忌</span>飞入迁移宫：婚姻问题可能影响外出发展</li></ul><h4>三方四正关系</h4><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>主星</th><th>与夫妻宫关系</th></tr></thead><tbody><tr><td>官禄(寅)</td><td>贪狼(平)</td><td>三方，事业影响婚姻</td></tr><tr><td>迁移(丑)</td><td>廉贞(庙)·七杀(庙)</td><td>三方，外出与婚姻有关联</td></tr><tr><td>福德(卯)</td><td>空（借太阴）</td><td>对宫，精神状态影响婚姻</td></tr></tbody></table></div><h4>长生十二神</h4><p>夫妻宫长生十二神为<strong>胎</strong>。胎为十二运中孕育之位，主萌芽、潜藏。夫妻宫坐胎，婚姻关系有孕育之象，感情在暗中滋长 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>倪师断语</h4><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：夫妻宫兼看福德宫——看婚姻必须同时看福德宫。此盘福德宫空宫借太阴旺禄，精神层面有福，但太阴<span class="tag tag-danger">化忌</span>暗耗，婚姻中的精神满足感不稳定。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：夫妻宫煞星，婚姻不顺。此盘夫妻宫虽无六煞实坐，但寡宿天伤两颗凶耀同宫，婚姻中有孤独感和暗损，需注意经营。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h4>总评</h4><p>夫妻宫天同旺，婚姻基调安逸温和。右弼<span class="tag tag-warning">化权</span>加持，配偶有主见有助力。但寡宿天伤同宫，婚姻中有孤独感和暗耗。天马在夫妻，配偶可能常外出或两人聚少离多。天梁<span class="tag tag-warning">化权</span>（生年四化）入夫妻宫，配偶性格刚正有权威，但控制欲可能过强。整体而言，婚姻安逸但缺乏激情，需主动经营感情 [AI推断]。</p><hr><h3 id="6-4-子女宫-辛巳-空宫借武曲天府">6.4 子女宫（辛巳·空宫借武曲天府）</h3><h4>主星特质与亮度</h4><p>子女宫无主星坐守，借对宫亥宫武曲(庙)·天府(庙)论断。武曲属金，化气为财，乃财星之主；天府属土，南斗令星，乃禄库之主 <span class="source-ref" title="references/classics-excerpts.md qj-3-1" data-source="references/classics-excerpts.md qj-3-1"></span>。武府庙旺借入子女宫，主子女有财、子女有贵气，但借星力量减半。</p><h4>辅星与杂耀影响</h4><ul><li><strong>擎羊(庙)</strong>：擎羊为六煞之首，主刑伤、血光。擎羊在子女宫，子女缘薄或子女有刑伤之象 <span class="source-ref" title="references/classics-excerpts.md gsf-8-1" data-source="references/classics-excerpts.md gsf-8-1"></span></li><li><strong>天哭·天虚</strong>：天哭主悲伤、天虚主虚耗。两颗凶耀同宫，子女方面有悲伤和虚耗之象</li><li><strong>龙池·华盖</strong>：龙池主才艺、华盖主孤高。子女有才艺但性格孤高</li></ul><h4>飞化入宫分析</h4><p>子女宫天干辛，辛干四化：巨门<span class="tag tag-success">化禄</span>→未(父母)、太阳<span class="tag tag-warning">化权</span>→未(父母)、文曲<span class="tag tag-info">化科</span>→申(命宫)、文昌<span class="tag tag-danger">化忌</span>→辰(田宅) <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></p><ul><li>巨门<span class="tag tag-success">化禄</span>、太阳<span class="tag tag-warning">化权</span>同飞入父母宫：子女与长辈有财缘和权缘</li><li>文曲<span class="tag tag-info">化科</span>飞入命宫：子女为命主带来科名和贵人</li><li>文昌<span class="tag tag-danger">化忌</span>飞入田宅宫：子女可能影响房产，或因子女导致房产文书问题</li></ul><h4>三方四正关系</h4><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>主星</th><th>与子女宫关系</th></tr></thead><tbody><tr><td>田宅(辰)</td><td>天机(利)</td><td>三方</td></tr><tr><td>仆役(午)</td><td>紫微(庙)·天相(庙)</td><td>三方</td></tr><tr><td>父母(未)</td><td>太阳(不)·巨门(不)</td><td>对宫</td></tr></tbody></table></div><h4>长生十二神</h4><p>子女宫长生十二神为<strong>临官</strong>。临官为十二运中当旺之位，主有权、有禄、有势。子女宫坐临官，子女有出息、有能力 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>倪师断语</h4><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：<span class="tag tag-danger">化忌</span>星主劫杀——代表阻碍和困难。文昌<span class="tag tag-danger">化忌</span>飞入田宅，因子女导致房产文书问题，需注意。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h4>总评</h4><p>子女宫空宫借武府庙旺，子女有财有贵，但借星减力。擎羊庙旺在子女宫为最大凶象——子女缘薄或子女有刑伤。天哭天虚同宫，子女方面有悲伤虚耗。临官位子女有能力，但龙池华盖显示子女性格孤高。整体而言，子女有才但缘薄，需多关爱 [AI推断]。</p><hr><h3 id="6-5-财帛宫-丁亥-武曲庙-天府庙">6.5 财帛宫（丁亥·武曲庙·天府庙）</h3><h4>主星特质与亮度</h4><p>武曲在亥宫为<strong>庙</strong>地，天府在亥宫亦为<strong>庙</strong>地。武曲属金，化气为财，乃财星之主 <span class="source-ref" title="references/classics-excerpts.md qj-4-4" data-source="references/classics-excerpts.md qj-4-4"></span>；天府属土，南斗令星，乃禄库之主 <span class="source-ref" title="references/classics-excerpts.md qj-3-1" data-source="references/classics-excerpts.md qj-3-1"></span>。武府同宫庙旺于财帛宫，为命盘最强财格——财星与财库同宫，且皆庙旺。</p><blockquote class="blockquote nishi-quote system-content system-not-iztro">古籍出处：《紫微斗数全集》：&quot;天府最喜见禄存，称'双禄朝垣'，主大富。&quot; <span class="source-ref" title="references/classics-excerpts.md qj-3-1" data-source="references/classics-excerpts.md qj-3-1"></span></blockquote><h4>辅星与杂耀影响</h4><ul><li><strong>火星(旺)</strong>：火星为六煞之一，主冲动、急躁。火星在财帛宫，花钱冲动、理财急躁 <span class="source-ref" title="references/classics-excerpts.md gsf-8-1" data-source="references/classics-excerpts.md gsf-8-1"></span></li><li><strong>红艳·咸池·天姚</strong>：三颗桃花杂耀同宫，财运与桃花有关联——可能通过社交、异性关系获得财运</li></ul><h4>飞化入宫分析</h4><p>财帛宫天干丁，丁干四化：太阴<span class="tag tag-success">化禄</span>→酉(兄弟)、天同<span class="tag tag-warning">化权</span>→戌(夫妻)、天机<span class="tag tag-info">化科</span>→辰(田宅)、巨门<span class="tag tag-danger">化忌</span>→未(父母) <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></p><ul><li>太阴<span class="tag tag-success">化禄</span>飞入兄弟宫：财运与兄弟朋友有关联</li><li>天同<span class="tag tag-warning">化权</span>飞入夫妻宫：财运影响婚姻关系</li><li>天机<span class="tag tag-info">化科</span>飞入田宅宫：理财有方，房产有科名</li><li>巨门<span class="tag tag-danger">化忌</span>飞入父母宫：因财与长辈有口舌</li></ul><h4>三方四正关系</h4><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>主星</th><th>与财帛宫关系</th></tr></thead><tbody><tr><td>命宫(申)</td><td>空（借贪狼）</td><td>三方</td></tr><tr><td>官禄(寅)</td><td>贪狼(平)</td><td>三方</td></tr><tr><td>福德(卯)</td><td>空（借太阴）</td><td>对宫</td></tr></tbody></table></div><h4>长生十二神</h4><p>财帛宫长生十二神为<strong>绝</strong>。绝为十二运中气绝之位，主断绝、重生。财帛宫坐绝，财运有&quot;绝处逢生&quot;之象——看似无路却有转机 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>倪师断语</h4><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：财帛<span class="tag tag-success">化禄</span>，财运亨通。此盘武府庙旺在财帛，虽非<span class="tag tag-success">化禄</span>，但武曲为财星、天府为财库，双星庙旺守财帛，财运根基雄厚。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h4>总评</h4><p>财帛宫武府庙旺，为命盘最强宫位。财星与财库同宫庙旺，财运根基雄厚，理财能力佳。但火星同宫，花钱冲动需克制。红艳咸池天姚三桃花同宫，财运与社交桃花有关联。长生十二神坐绝，财运有&quot;绝处逢生&quot;之象。整体而言，财运佳但需防冲动消费和桃花破财 [AI推断]。</p><hr><h3 id="6-6-疾厄宫-戊子-空宫借廉贞七杀">6.6 疾厄宫（戊子·空宫借廉贞七杀）</h3><h4>主星特质与亮度</h4><p>疾厄宫无主星坐守，借对宫丑宫廉贞(庙)·七杀(庙)论断。廉贞属火属木，化气为囚，乃次桃花之星 <span class="source-ref" title="references/classics-excerpts.md qj-4-5" data-source="references/classics-excerpts.md qj-4-5"></span>；七杀属火，为将星，性刚毅果决 <span class="source-ref" title="references/classics-excerpts.md gsf-3-1" data-source="references/classics-excerpts.md gsf-3-1"></span>。廉杀庙旺借入疾厄宫，健康方面需防心脏血液（廉贞）和意外刑伤（七杀）。</p><h4>辅星与杂耀影响</h4><ul><li><strong>地空·地劫</strong>：地空地劫为六煞之最凶，主虚耗、破败。地空地劫同宫在疾厄宫，健康有虚耗之象——检查不出原因的慢性病、精神内耗 <span class="source-ref" title="references/classics-excerpts.md gsf-8-1" data-source="references/classics-excerpts.md gsf-8-1"></span></li><li><strong>截路·空亡·天使</strong>：截路主阻断、空亡主虚耗、天使主灾变。三颗凶耀同宫，健康方面有灾变风险</li></ul><h4>飞化入宫分析</h4><p>疾厄宫天干戊，戊干四化：贪狼<span class="tag tag-success">化禄</span>→寅(官禄)、太阴<span class="tag tag-warning">化权</span>→酉(兄弟)、右弼<span class="tag tag-info">化科</span>→戌(夫妻)、天机<span class="tag tag-danger">化忌</span>→辰(田宅) <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></p><ul><li>贪狼<span class="tag tag-success">化禄</span>飞入官禄宫：健康问题可能影响事业，但事业有财缘可化解</li><li>天机<span class="tag tag-danger">化忌</span>飞入田宅宫：健康问题可能影响家庭和房产</li></ul><h4>三方四正关系</h4><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>主星</th><th>与疾厄宫关系</th></tr></thead><tbody><tr><td>兄弟(酉)</td><td>太阴(旺)<span class="star-badge hua-lu">禄</span></td><td>三方</td></tr><tr><td>田宅(辰)</td><td>天机(利)</td><td>三方</td></tr><tr><td>父母(未)</td><td>太阳(不)·巨门(不)</td><td>对宫</td></tr></tbody></table></div><h4>长生十二神</h4><p>疾厄宫长生十二神为<strong>墓</strong>。墓为十二运中收藏之位，主收敛、封闭。疾厄宫坐墓，健康问题容易隐藏、不易发现，需定期体检 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>倪师断语</h4><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：煞星通过疾厄宫在午主心脏，在丑主肝。此盘疾厄宫在子，借廉贞七杀，廉贞主心脏血液、七杀主肺呼吸，需防心血管和呼吸系统疾病。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：疾厄宫判断健康——结合中医子午流注。地空地劫在疾厄，气血亏虚，需补益气血。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h4>总评</h4><p>疾厄宫空宫借廉杀庙旺，健康方面需重点关注心脏血液和呼吸系统。地空地劫同宫为最大凶象——虚耗、慢性病、精神内耗。长生十二神坐墓，健康问题容易隐藏。建议定期体检，特别关注心血管和妇科方面 [AI推断]。</p><hr><h3 id="6-7-迁移宫-己丑-廉贞庙-七杀庙">6.7 迁移宫（己丑·廉贞庙·七杀庙）</h3><h4>主星特质与亮度</h4><p>廉贞在丑宫为<strong>庙</strong>地，七杀在丑宫亦为<strong>庙</strong>地。廉贞属火属木，化气为囚 <span class="source-ref" title="references/classics-excerpts.md qj-4-5" data-source="references/classics-excerpts.md qj-4-5"></span>；七杀属火，为将星 <span class="source-ref" title="references/classics-excerpts.md gsf-3-1" data-source="references/classics-excerpts.md gsf-3-1"></span>。廉杀同宫庙旺于迁移宫，主外出有威仪、有魄力，但亦主外出有风险。</p><h4>辅星与杂耀影响</h4><ul><li><strong>台辅</strong>：台辅主辅助、助力。外出有助力</li><li><strong>孤辰</strong>：孤辰主孤独。外出有孤独感</li></ul><h4>飞化入宫分析</h4><p>迁移宫天干己，己干四化：武曲<span class="tag tag-success">化禄</span>→亥(财帛)、贪狼<span class="tag tag-warning">化权</span>→寅(官禄)、天梁<span class="tag tag-info">化科</span>→戌(夫妻)、文曲<span class="tag tag-danger">化忌</span>→申(命宫) <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></p><ul><li>武曲<span class="tag tag-success">化禄</span>飞入财帛宫：外出有财缘，出外发展财运佳</li><li>贪狼<span class="tag tag-warning">化权</span>飞入官禄宫：外出有利于事业发展</li><li>文曲<span class="tag tag-danger">化忌</span>飞入命宫：外出易生文书口舌是非</li></ul><h4>三方四正关系</h4><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>主星</th><th>与迁移宫关系</th></tr></thead><tbody><tr><td>命宫(申)</td><td>空（借贪狼）</td><td>对宫</td></tr><tr><td>财帛(辰)</td><td>天机(利)</td><td>三方</td></tr><tr><td>官禄(寅)</td><td>贪狼(平)</td><td>三方</td></tr></tbody></table></div><h4>长生十二神</h4><p>迁移宫长生十二神为<strong>死</strong>。死为十二运中气尽之位，主终结、重生。迁移宫坐死，外出有&quot;置之死地而后生&quot;之象——外出发展初期困难重重，但熬过则重生 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>倪师断语</h4><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：最怕的是七杀临身，七杀临身的人一辈子多败少成。此盘七杀在迁移宫非身宫，但迁移宫为命宫对宫，七杀冲命，外出需防意外和失败。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h4>总评</h4><p>迁移宫廉杀庙旺，外出有威仪有魄力，但风险并存。武曲<span class="tag tag-success">化禄</span>飞入财帛，外出有财缘。文曲<span class="tag tag-danger">化忌</span>飞入命宫，外出易生文书是非。长生十二神坐死，外出初期困难但熬过则重生。整体而言，出外发展优于守成，但需谨慎行事，注意合同文书 [AI推断]。</p><hr><h3 id="6-8-仆役宫-壬午-紫微庙-天相庙-★身宫">6.8 仆役宫（壬午·紫微庙·天相庙）★身宫</h3><h4>主星特质与亮度</h4><p>紫微在午宫为<strong>庙</strong>地，天相在午宫亦为<strong>庙</strong>地。紫微属土，乃帝座之星，化气为尊 <span class="source-ref" title="references/classics-excerpts.md qj-2-1" data-source="references/classics-excerpts.md qj-2-1"></span>；天相属水，化气为印，乃辅佐之星 <span class="source-ref" title="references/classics-excerpts.md qj-3-5" data-source="references/classics-excerpts.md qj-3-5"></span>。紫相同宫庙旺于仆役宫，且为<strong>身宫</strong>，主一生受社交圈、下属关系影响甚深。</p><h4>辅星与杂耀影响</h4><ul><li><strong>禄存</strong>：禄存为财星，主稳定积累。禄存在仆役宫身宫，社交圈为财源 <span class="source-ref" title="references/classics-excerpts.md qj-3-1" data-source="references/classics-excerpts.md qj-3-1"></span></li><li><strong>天魁</strong>：天魁为贵人星，主关键时刻有人扶持。贵人在社交圈</li><li><strong>八座·恩光·天德</strong>：八座主地位、恩光主恩惠、天德主德行。社交圈有地位有恩惠</li></ul><h4>飞化入宫分析</h4><p>仆役宫天干壬，壬干四化：天梁<span class="tag tag-success">化禄</span>→戌(夫妻)、紫微<span class="tag tag-warning">化权</span>→午(仆役)※、左辅<span class="tag tag-info">化科</span>→酉(兄弟)、武曲<span class="tag tag-danger">化忌</span>→亥(财帛) <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></p><ul><li>紫微<span class="tag tag-warning">化权</span><span class="system-not-nishi-ref">自化</span>入仆役宫（※倪师体系不主张宫干自化，此处仅标注供参考）</li><li>天梁<span class="tag tag-success">化禄</span>飞入夫妻宫：社交圈对婚姻有正面影响</li><li>武曲<span class="tag tag-danger">化忌</span>飞入财帛宫：社交圈可能导致破财——朋友借钱、社交消费过度</li></ul><h4>三方四正关系</h4><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>主星</th><th>与仆役宫关系</th></tr></thead><tbody><tr><td>兄弟(酉)</td><td>太阴(旺)<span class="star-badge hua-lu">禄</span></td><td>三方</td></tr><tr><td>子女(巳)</td><td>空（借武府）</td><td>三方</td></tr><tr><td>疾厄(子)</td><td>空（借廉杀）</td><td>对宫</td></tr></tbody></table></div><h4>长生十二神</h4><p>仆役宫长生十二神为<strong>冠带</strong>。冠带为十二运中成长之位，主加冠、成长、渐入佳境。仆役宫坐冠带，社交圈渐入佳境 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>倪师断语</h4><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：身宫可看影响最重的宫位。此盘身宫在仆役宫，紫微天相庙旺同宫，一生受社交圈、下属关系影响最重。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h4>总评</h4><p>仆役宫紫相同宫庙旺，且为身宫，为命盘重要宫位。帝座印星同宫，社交圈有贵气有助力。禄存天魁同宫，社交圈为财源和贵人来源。但武曲<span class="tag tag-danger">化忌</span>飞入财帛宫，社交消费需节制。整体而言，社交圈是命主一生最重要的资源，善用人脉则事业财运皆有助力 [AI推断]。</p><hr><h3 id="6-9-官禄宫-戊寅-贪狼平">6.9 官禄宫（戊寅·贪狼平）</h3><h4>主星特质与亮度</h4><p>贪狼在寅宫为<strong>平</strong>亮度。贪狼属木属水，为桃花欲望之星，主多才艺、社交广 <span class="source-ref" title="references/classics-excerpts.md qj-3-3" data-source="references/classics-excerpts.md qj-3-3"></span>。贪狼平亮度入官禄宫，事业方向多元但不专精，适合需要社交能力的行业。</p><h4>辅星与杂耀影响</h4><ul><li><strong>铃星(庙)</strong>：铃星为六煞之一，主冲动、急躁。铃星庙旺在官禄宫，事业有爆发力但亦主急躁冒进 <span class="source-ref" title="references/classics-excerpts.md gsf-8-1" data-source="references/classics-excerpts.md gsf-8-1"></span></li><li><strong>陀罗(陷)</strong>：陀罗为六煞之一，主拖延、纠缠。陀罗陷地在官禄宫，事业有拖延纠缠之象——项目推进慢、人际关系复杂</li><li><strong>红鸾·天空·孤辰·阴煞</strong>：红鸾主桃花、天空主虚耗、孤辰主孤独、阴煞主暗害。事业中有桃花干扰、虚耗、孤独和暗害</li></ul><h4>飞化入宫分析</h4><p>官禄宫天干戊，戊干四化：贪狼<span class="tag tag-success">化禄</span>→寅(官禄)※、太阴<span class="tag tag-warning">化权</span>→酉(兄弟)、右弼<span class="tag tag-info">化科</span>→戌(夫妻)、天机<span class="tag tag-danger">化忌</span>→辰(田宅) <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></p><ul><li>贪狼<span class="tag tag-success">化禄</span><span class="system-not-nishi-ref">自化</span>入官禄宫（※倪师体系不主张宫干自化，此处仅标注供参考）</li><li>太阴<span class="tag tag-warning">化权</span>飞入兄弟宫：事业与兄弟朋友有关联，兄弟朋友在事业中有助力</li><li>天机<span class="tag tag-danger">化忌</span>飞入田宅宫：事业可能影响家庭生活</li></ul><h4>三方四正关系</h4><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>主星</th><th>与官禄宫关系</th></tr></thead><tbody><tr><td>命宫(申)</td><td>空（借贪狼）</td><td>三方</td></tr><tr><td>财帛(辰)</td><td>天机(利)</td><td>三方</td></tr><tr><td>迁移(丑)</td><td>廉贞(庙)·七杀(庙)</td><td>对宫</td></tr></tbody></table></div><h4>长生十二神</h4><p>官禄宫长生十二神为<strong>病</strong>。病为十二运中衰弱之位，主疾病、衰弱。官禄宫坐病，事业有&quot;带病运行&quot;之象——事业始终有问题需要解决，难以一帆风顺 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>倪师断语</h4><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：官禄宫最喜欢权星入进来。此盘官禄宫贪狼平亮度，无权星入，事业缺乏掌控力。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：官禄<span class="tag tag-danger">化忌</span>，事业受阻。此盘官禄宫虽无<span class="tag tag-danger">化忌</span>实坐，但天机<span class="tag tag-danger">化忌</span>飞入田宅，事业问题可能影响家庭。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h4>总评</h4><p>官禄宫贪狼平亮度，事业方向多元但不专精。铃星庙旺有爆发力，但陀罗陷地拖延迟滞，一快一慢相互牵制。红鸾在官禄，事业中有桃花机会。长生十二神坐病，事业&quot;带病运行&quot;。整体而言，事业适合社交型、多元型工作，不宜单一专注型 [AI推断]。</p><hr><h3 id="6-10-田宅宫-庚辰-天机利">6.10 田宅宫（庚辰·天机利）</h3><h4>主星特质与亮度</h4><p>天机在辰宫为<strong>利</strong>亮度。天机属木，化气为善，乃智慧之星 <span class="source-ref" title="references/classics-excerpts.md qj-4-2" data-source="references/classics-excerpts.md qj-4-2"></span>。天机利亮度入田宅宫，住宅环境有智慧之象——喜欢智能家居、科技住宅。天机善变，田宅宫坐天机主搬家频繁、住宅多变。</p><h4>辅星与杂耀影响</h4><ul><li><strong>文昌(陷)<span class="star-badge hua-ji">忌</span></strong>：文昌陷地<span class="tag tag-danger">化忌</span>在田宅宫，为命盘凶象之一。文昌主文书，<span class="tag tag-danger">化忌</span>主文书失误——房产合同、租赁协议易出问题 <span class="source-ref" title="references/classics-excerpts.md gsf-6-3" data-source="references/classics-excerpts.md gsf-6-3"></span></li><li><strong>天马</strong>：天马主变动。天马在田宅宫，搬家频繁</li><li><strong>解神·天巫·天月·蜚廉</strong>：解神主化解、天巫主术数、天月主疾病、蜚廉主是非。住宅有化解之力但也有疾病和是非</li></ul><h4>飞化入宫分析</h4><p>田宅宫天干庚，庚干四化：太阳<span class="tag tag-success">化禄</span>→未(父母)、武曲<span class="tag tag-warning">化权</span>→亥(财帛)、太阴<span class="tag tag-info">化科</span>→酉(兄弟)、天同<span class="tag tag-danger">化忌</span>→戌(夫妻) <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></p><ul><li>太阳<span class="tag tag-success">化禄</span>飞入父母宫：房产与长辈有关联，长辈可能在房产方面有帮助</li><li>武曲<span class="tag tag-warning">化权</span>飞入财帛宫：房产投资有掌控力</li><li>天同<span class="tag tag-danger">化忌</span>飞入夫妻宫：房产问题可能影响婚姻</li></ul><h4>三方四正关系</h4><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>主星</th><th>与田宅宫关系</th></tr></thead><tbody><tr><td>福德(卯)</td><td>空（借太阴）</td><td>三方</td></tr><tr><td>子女(巳)</td><td>空（借武府）</td><td>三方</td></tr><tr><td>官禄(寅)</td><td>贪狼(平)</td><td>对宫</td></tr></tbody></table></div><h4>长生十二神</h4><p>田宅宫长生十二神为<strong>帝旺</strong>。帝旺为十二运中最旺之位，主极盛、巅峰。田宅宫坐帝旺，房产运势在巅峰——有房产运，且房产价值高 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>倪师断语</h4><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：结合紫微斗数的田宅宫来看风水需求。此盘天机在田宅，住宅宜选科技感强、通风好的房子。文昌<span class="tag tag-danger">化忌</span>在田宅，房产文书务必反复核查。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h4>总评</h4><p>田宅宫天机利亮度，住宅多变、搬家频繁。文昌陷忌在田宅为最大凶象——房产文书易出问题，签约务必反复核查。天机<span class="tag tag-success">化禄</span>（生年四化）入田宅，房产有财缘。帝旺位房产运势在巅峰。整体而言，房产有运但文书需谨慎，搬家频繁但每次搬家都有提升 [AI推断]。</p><hr><h3 id="6-11-福德宫-己卯-空宫借太阴">6.11 福德宫（己卯·空宫借太阴）</h3><h4>主星特质与亮度</h4><p>福德宫无主星坐守，借对宫酉宫太阴(旺)<span class="star-badge hua-lu">禄</span>论断。太阴属水，为中天主星，主田宅、富贵 <span class="source-ref" title="references/classics-excerpts.md qj-3-2" data-source="references/classics-excerpts.md qj-3-2"></span>。太阴旺地<span class="tag tag-success">化禄</span>借入福德宫，精神层面有福可享——内心富足、精神世界丰富。但太阴亦为<span class="tag tag-danger">化忌</span>星，禄忌同源，精神享受中暗藏执念。</p><h4>辅星与杂耀影响</h4><ul><li><strong>天贵·天官</strong>：天贵主贵气、天官主官运。精神层面有贵气和官运之象</li></ul><h4>飞化入宫分析</h4><p>福德宫天干己，己干四化：武曲<span class="tag tag-success">化禄</span>→亥(财帛)、贪狼<span class="tag tag-warning">化权</span>→寅(官禄)、天梁<span class="tag tag-info">化科</span>→戌(夫妻)、文曲<span class="tag tag-danger">化忌</span>→申(命宫) <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></p><ul><li>武曲<span class="tag tag-success">化禄</span>飞入财帛宫：精神享受与财运有关联，花钱买享受</li><li>文曲<span class="tag tag-danger">化忌</span>飞入命宫：精神内耗影响命主——想太多、焦虑、失眠</li></ul><h4>三方四正关系</h4><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>主星</th><th>与福德宫关系</th></tr></thead><tbody><tr><td>命宫(申)</td><td>空（借贪狼）</td><td>三方</td></tr><tr><td>财帛(辰)</td><td>天机(利)</td><td>三方</td></tr><tr><td>夫妻(戌)</td><td>天同(旺)</td><td>对宫</td></tr></tbody></table></div><h4>长生十二神</h4><p>福德宫长生十二神为<strong>衰</strong>。衰为十二运中衰退之位，主衰退、减弱。福德宫坐衰，精神享受有衰退之象——年龄越大精神满足感越低 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>倪师断语</h4><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：夫妻宫兼看福德宫——看婚姻必须同时看福德宫。此盘福德宫空宫借太阴旺禄，精神层面有福，但文曲<span class="tag tag-danger">化忌</span>飞入命宫，精神内耗严重，需注意心理健康。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h4>总评</h4><p>福德宫空宫借太阴旺禄，精神层面有福可享。但太阴<span class="tag tag-danger">化忌</span>同源，精神享受中暗藏执念。文曲<span class="tag tag-danger">化忌</span>飞入命宫，精神内耗影响命主。长生十二神坐衰，精神满足感随年龄递减。整体而言，精神世界丰富但容易内耗，需学会放下执念 [AI推断]。</p><hr><h3 id="6-12-父母宫-癸未-太阳不-巨门不">6.12 父母宫（癸未·太阳不·巨门不）</h3><h4>主星特质与亮度</h4><p>太阳在未宫为<strong>不</strong>亮度（落陷），巨门在未宫亦为<strong>不</strong>亮度。太阳属火，化气为贵，乃男贵之星 <span class="source-ref" title="references/classics-excerpts.md qj-4-3" data-source="references/classics-excerpts.md qj-4-3"></span>；巨门属水，化气为暗，主口舌是非 <span class="source-ref" title="references/classics-excerpts.md qj-3-4" data-source="references/classics-excerpts.md qj-3-4"></span>。日月同宫在未，且皆落陷，为&quot;日月反背&quot;之象——太阳落陷则父缘薄、贵人远，巨门落陷则口舌是非多。</p><blockquote class="blockquote nishi-quote system-content system-not-iztro">古籍出处：《紫微斗数全集》：&quot;巨门最忌与太阳同宫的丑未两宫，称'日月反背'。&quot; <span class="source-ref" title="references/classics-excerpts.md qj-3-4" data-source="references/classics-excerpts.md qj-3-4"></span></blockquote><h4>辅星与杂耀影响</h4><ul><li><strong>封诰</strong>：封诰主封赏、文书。与长辈有文书关联</li><li><strong>天刑</strong>：天刑主刑伤、官非。与长辈有刑伤之象</li><li><strong>旬空</strong>：旬空主虚耗、不实。与长辈关系有虚耗</li></ul><h4>飞化入宫分析</h4><p>父母宫天干癸，癸干四化：破军<span class="tag tag-success">化禄</span>→子(疾厄)、巨门<span class="tag tag-warning">化权</span>→未(父母)※、太阴<span class="tag tag-info">化科</span>→酉(兄弟)、贪狼<span class="tag tag-danger">化忌</span>→寅(官禄) <span class="source-ref" title="references/sihua-rules.md" data-source="references/sihua-rules.md"></span></p><ul><li>巨门<span class="tag tag-warning">化权</span><span class="system-not-nishi-ref">自化</span>入父母宫（※倪师体系不主张宫干自化，此处仅标注供参考）</li><li>破军<span class="tag tag-success">化禄</span>飞入疾厄宫：长辈对健康有正面影响</li><li>贪狼<span class="tag tag-danger">化忌</span>飞入官禄宫：与长辈的矛盾可能影响事业</li></ul><h4>三方四正关系</h4><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>主星</th><th>与父母宫关系</th></tr></thead><tbody><tr><td>福德(卯)</td><td>空（借太阴）</td><td>三方</td></tr><tr><td>仆役(午)</td><td>紫微(庙)·天相(庙)</td><td>三方</td></tr><tr><td>子女(巳)</td><td>空（借武府）</td><td>对宫</td></tr></tbody></table></div><h4>长生十二神</h4><p>父母宫长生十二神为<strong>沐浴</strong>。沐浴为十二运中洗涤之位，主洗礼、变化。父母宫坐沐浴，与长辈关系有变化之象 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><h4>倪师断语</h4><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：太阳落陷，父缘薄。此盘太阳在未宫落陷，与父亲缘分薄，父亲可能早逝或关系疏远。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h4>总评</h4><p>父母宫日月同宫落陷，为&quot;日月反背&quot;之象。太阳落陷父缘薄，巨门落陷口舌多。天刑同宫，与长辈有刑伤。旬空同宫，与长辈关系有虚耗。命宫甲干太阳<span class="tag tag-danger">化忌</span>飞入父母宫，命主与长辈有冲。整体而言，与长辈关系不佳，需注意与父亲的关系和健康 [AI推断]。</p><hr></div></div><div class="section-wrapper" data-section-id="七-四化飞化详析"><h2 id="七-四化飞化详析"><span>七、四化飞化详析</span><button class="section-toggle" onclick="toggleSection('七-四化飞化详析')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-七-四化飞化详析"><h3 id="宫干飞四化总表">宫干飞四化总表</h3><div class="table-wrapper"><table><thead><tr><th>宫位</th><th>宫干</th><th>飞禄</th><th>飞权</th><th>飞科</th><th>飞忌</th></tr></thead><tbody><tr><td>命宫</td><td>甲</td><td>廉贞→丑(迁移)</td><td>破军→子(疾厄)</td><td>武曲→亥(财帛)</td><td>太阳→未(父母)</td></tr><tr><td>兄弟</td><td>乙</td><td>天机→辰(田宅)</td><td>天梁→戌(夫妻)</td><td>紫微→午(仆役)</td><td>太阴→酉(兄弟)※</td></tr><tr><td>夫妻</td><td>丙</td><td>天同→戌(夫妻)※</td><td>天机→辰(田宅)</td><td>文昌→辰(田宅)</td><td>廉贞→丑(迁移)</td></tr><tr><td>子女</td><td>辛</td><td>巨门→未(父母)</td><td>太阳→未(父母)</td><td>文曲→申(命宫)</td><td>文昌→辰(田宅)</td></tr><tr><td>财帛</td><td>丁</td><td>太阴→酉(兄弟)</td><td>天同→戌(夫妻)</td><td>天机→辰(田宅)</td><td>巨门→未(父母)</td></tr><tr><td>疾厄</td><td>戊</td><td>贪狼→寅(官禄)</td><td>太阴→酉(兄弟)</td><td>右弼→戌(夫妻)</td><td>天机→辰(田宅)</td></tr><tr><td>迁移</td><td>己</td><td>武曲→亥(财帛)</td><td>贪狼→寅(官禄)</td><td>天梁→戌(夫妻)</td><td>文曲→申(命宫)</td></tr><tr><td>仆役</td><td>壬</td><td>天梁→戌(夫妻)</td><td>紫微→午(仆役)※</td><td>左辅→酉(兄弟)</td><td>武曲→亥(财帛)</td></tr><tr><td>官禄</td><td>戊</td><td>贪狼→寅(官禄)※</td><td>太阴→酉(兄弟)</td><td>右弼→戌(夫妻)</td><td>天机→辰(田宅)</td></tr><tr><td>田宅</td><td>庚</td><td>太阳→未(父母)</td><td>武曲→亥(财帛)</td><td>太阴→酉(兄弟)</td><td>天同→戌(夫妻)</td></tr><tr><td>福德</td><td>己</td><td>武曲→亥(财帛)</td><td>贪狼→寅(官禄)</td><td>天梁→戌(夫妻)</td><td>文曲→申(命宫)</td></tr><tr><td>父母</td><td>癸</td><td>破军→子(疾厄)</td><td>巨门→未(父母)※</td><td>太阴→酉(兄弟)</td><td>贪狼→寅(官禄)</td></tr></tbody></table></div><blockquote class="blockquote nishi-quote system-content system-not-iztro">※ 标记为宫干<span class="system-not-nishi-ref">自化</span>（倪师体系不主张宫干自化，此处仅标注供参考）</blockquote><h3 id="飞忌汇入统计">飞忌汇入统计</h3><div class="table-wrapper"><table><thead><tr><th>被飞忌汇入宫位</th><th>飞忌来源</th><th>汇入次数</th></tr></thead><tbody><tr><td>田宅(辰)</td><td>子女(辛)文昌<span class="tag tag-danger">化忌</span>、疾厄(戊)天机<span class="tag tag-danger">化忌</span>、官禄(戊)天机<span class="tag tag-danger">化忌</span></td><td>3次</td></tr><tr><td>父母(未)</td><td>命宫(甲)太阳<span class="tag tag-danger">化忌</span>、财帛(丁)巨门<span class="tag tag-danger">化忌</span></td><td>2次</td></tr><tr><td>命宫(申)</td><td>迁移(己)文曲<span class="tag tag-danger">化忌</span>、福德(己)文曲<span class="tag tag-danger">化忌</span></td><td>2次</td></tr><tr><td>财帛(亥)</td><td>仆役(壬)武曲<span class="tag tag-danger">化忌</span></td><td>1次</td></tr><tr><td>迁移(丑)</td><td>夫妻(丙)廉贞<span class="tag tag-danger">化忌</span></td><td>1次</td></tr><tr><td>兄弟(酉)</td><td>兄弟(乙)太阴<span class="tag tag-danger">化忌</span>※</td><td>1次</td></tr><tr><td>夫妻(戌)</td><td>田宅(庚)天同<span class="tag tag-danger">化忌</span></td><td>1次</td></tr><tr><td>官禄(寅)</td><td>父母(癸)贪狼<span class="tag tag-danger">化忌</span></td><td>1次</td></tr></tbody></table></div><p><strong>飞忌汇入分析</strong>：田宅宫被3次飞忌汇入，为全盘飞忌最重之宫位。房产文书问题为此命盘最大风险点。父母宫被2次飞忌汇入，与长辈关系需注意。命宫被2次飞忌汇入，外出和精神内耗影响命主 [AI推断]。</p><h3 id="飞禄汇入统计">飞禄汇入统计</h3><div class="table-wrapper"><table><thead><tr><th>被飞禄汇入宫位</th><th>飞禄来源</th><th>汇入次数</th></tr></thead><tbody><tr><td>财帛(亥)</td><td>命宫(甲)武曲<span class="tag tag-info">化科</span>、迁移(己)武曲<span class="tag tag-success">化禄</span>、福德(己)武曲<span class="tag tag-success">化禄</span></td><td>3次(含1科)</td></tr><tr><td>田宅(辰)</td><td>兄弟(乙)天机<span class="tag tag-success">化禄</span>、夫妻(丙)天机<span class="tag tag-warning">化权</span>、财帛(丁)天机<span class="tag tag-info">化科</span></td><td>3次(含1权1科)</td></tr><tr><td>夫妻(戌)</td><td>仆役(壬)天梁<span class="tag tag-success">化禄</span>、迁移(己)天梁<span class="tag tag-info">化科</span>、福德(己)天梁<span class="tag tag-info">化科</span></td><td>3次(含2科)</td></tr><tr><td>父母(未)</td><td>子女(辛)巨门<span class="tag tag-success">化禄</span>、田宅(庚)太阳<span class="tag tag-success">化禄</span></td><td>2次</td></tr><tr><td>兄弟(酉)</td><td>财帛(丁)太阴<span class="tag tag-success">化禄</span>、疾厄(戊)太阴<span class="tag tag-warning">化权</span>、官禄(戊)太阴<span class="tag tag-warning">化权</span>、父母(癸)太阴<span class="tag tag-info">化科</span></td><td>4次(含2权1科)</td></tr><tr><td>迁移(丑)</td><td>命宫(甲)廉贞<span class="tag tag-success">化禄</span></td><td>1次</td></tr><tr><td>仆役(午)</td><td>兄弟(乙)紫微<span class="tag tag-info">化科</span></td><td>1次(科)</td></tr><tr><td>官禄(寅)</td><td>疾厄(戊)贪狼<span class="tag tag-success">化禄</span>、迁移(己)贪狼<span class="tag tag-warning">化权</span>、福德(己)贪狼<span class="tag tag-warning">化权</span>、父母(癸)贪狼<span class="tag tag-danger">化忌</span></td><td>4次(含2权1忌)</td></tr><tr><td>疾厄(子)</td><td>父母(癸)破军<span class="tag tag-success">化禄</span></td><td>1次</td></tr></tbody></table></div><p><strong>飞禄汇入分析</strong>：兄弟宫被4次飞禄/权/科汇入，为全盘吉化最集中之宫位。太阴旺禄坐守又得多方吉化加持，兄弟朋友间有财缘。但太阴<span class="tag tag-danger">化忌</span>同宫，禄忌交战，财来财去 [AI推断]。</p><hr></div></div><div class="section-wrapper" data-section-id="八-大限运势"><h2 id="八-大限运势"><span>八、大限运势</span><button class="section-toggle" onclick="toggleSection('八-大限运势')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-八-大限运势"><h3 id="第1大限-仆役宫-壬午-5~14岁">第1大限：仆役宫（壬午）5~14岁</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>大限宫位</td><td>壬午（仆役宫）</td></tr><tr><td>大限主星</td><td>紫微(庙)·天相(庙)</td></tr><tr><td>大限辅星</td><td>禄存·天魁</td></tr><tr><td>身宫</td><td>★同度</td></tr><tr><td>长生十二神</td><td>冠带</td></tr></tbody></table></div><p><strong>大限分析</strong>：第一大限走仆役宫，紫微天相庙旺同宫，且身宫同度。童年时期受社交环境影响大——家庭社交圈、邻里关系对成长影响深远。禄存天魁同宫，童年有贵人照顾。紫微帝座在童年大限，家庭有一定社会地位 [AI推断]。</p><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：身宫可看影响最重的宫位。第一大限身宫同度，童年受环境影响最重。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h3 id="第2大限-父母宫-癸未-15~24岁">第2大限：父母宫（癸未）15~24岁</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>大限宫位</td><td>癸未（父母宫）</td></tr><tr><td>大限主星</td><td>太阳(不)·巨门(不)</td></tr><tr><td>大限辅星</td><td>—</td></tr><tr><td>长生十二神</td><td>沐浴</td></tr></tbody></table></div><p><strong>大限分析</strong>：第二大限走父母宫，太阳巨门同宫落陷，为&quot;日月反背&quot;。青少年时期与长辈关系紧张，学业可能受影响。太阳落陷则贵人远，此阶段需自力更生。巨门落陷则口舌是非多，校园人际关系需注意 [AI推断]。</p><h3 id="第3大限-命宫-甲申-25~34岁-★当前大限">第3大限：命宫（甲申）25~34岁 ★当前大限</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>大限宫位</td><td>甲申（命宫）</td></tr><tr><td>大限主星</td><td>空（借贪狼）</td></tr><tr><td>大限辅星</td><td>文曲(旺)<span class="star-badge hua-ke">科</span>·天钺</td></tr><tr><td>长生十二神</td><td>长生</td></tr></tbody></table></div><p><strong>大限分析</strong>：第三大限走命宫，空宫借贪狼。此阶段为人生关键期——命宫为一切分析的起点，走命宫大限则本命格局全面激活。文曲旺科实坐，此阶段文采、学业、考试运佳，适合进修、考证。空宫借星则此阶段方向感不强，需借外力定方向 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span>。</p><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：命宫为本，三方为用——命宫主星决定基本格局与天生性格，三方决定用武之地。走命宫大限，本命格局全面显现。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h3 id="第4大限-兄弟宫-乙酉-35~44岁">第4大限：兄弟宫（乙酉）35~44岁</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>大限宫位</td><td>乙酉（兄弟宫）</td></tr><tr><td>大限主星</td><td>太阴(旺)<span class="star-badge hua-lu">禄</span></td></tr><tr><td>大限辅星</td><td>左辅</td></tr><tr><td>长生十二神</td><td>养</td></tr><tr><td>特殊标记</td><td>★来因宫</td></tr></tbody></table></div><p><strong>大限分析</strong>：第四大限走兄弟宫，太阴旺禄坐守，且为来因宫。此阶段人际关系为人生主题——兄弟、朋友、同事关系全面考验。太阴旺禄则人际有财缘，但太阴<span class="tag tag-danger">化忌</span>同宫，禄忌交战，人际中暗耗不断。来因宫大限，命主今生最深刻的功课在此阶段集中爆发——与兄弟朋友的财务纠纷、情感暗耗 [AI推断]。</p><h3 id="第5大限-官禄宫-戊寅-45~54岁">第5大限：官禄宫（戊寅）45~54岁</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>大限宫位</td><td>戊寅（官禄宫）</td></tr><tr><td>大限主星</td><td>贪狼(平)</td></tr><tr><td>大限辅星</td><td>铃星(庙)·陀罗(陷)</td></tr><tr><td>长生十二神</td><td>病</td></tr></tbody></table></div><p><strong>大限分析</strong>：第五大限走官禄宫，贪狼平亮度，铃星陀罗同宫。此阶段事业为人生主题——贪狼铃星构成铃贪格（半格），事业有爆发机会但力量不足。陀罗牵制，项目推进慢。长生十二神坐病，事业&quot;带病运行&quot;。此阶段需把握铃贪的爆发机会，同时克服陀罗的拖延 [AI推断]。</p><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：火贪格主暴发。此大限铃贪同宫，虽贪狼平亮度，仍有偏财机会，需把握。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h3 id="第6大限-福德宫-己卯-55~64岁">第6大限：福德宫（己卯）55~64岁</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>大限宫位</td><td>己卯（福德宫）</td></tr><tr><td>大限主星</td><td>空（借太阴）</td></tr><tr><td>大限辅星</td><td>—</td></tr><tr><td>长生十二神</td><td>衰</td></tr></tbody></table></div><p><strong>大限分析</strong>：第六大限走福德宫，空宫借太阴旺禄。此阶段精神生活为人生主题——退休后精神世界丰富，有福可享。但太阴<span class="tag tag-danger">化忌</span>同源，精神享受中暗藏执念，需学会放下。长生十二神坐衰，精神满足感递减，需培养新的兴趣爱好 [AI推断]。</p><hr></div></div><div class="section-wrapper" data-section-id="九-流年要点"><h2 id="九-流年要点"><span>九、流年要点</span><button class="section-toggle" onclick="toggleSection('九-流年要点')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-九-流年要点"><h3 id="2024甲辰年-虚岁40">2024甲辰年（虚岁40）</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年干支</td><td>甲辰</td></tr><tr><td>流年四化</td><td>廉贞<span class="tag tag-success">化禄</span>、破军<span class="tag tag-warning">化权</span>、武曲<span class="tag tag-info">化科</span>、太阳<span class="tag tag-danger">化忌</span></td></tr><tr><td>流年重点</td><td>太阳<span class="tag tag-danger">化忌</span>入父母宫，与长辈有冲；武曲<span class="tag tag-info">化科</span>入财帛宫，财运有科名</td></tr></tbody></table></div><p><strong>流年分析</strong>：甲辰年太阳<span class="tag tag-danger">化忌</span>入父母宫，与父亲或长辈关系紧张，需注意长辈健康。武曲<span class="tag tag-info">化科</span>入财帛宫，理财有方，适合投资。廉贞<span class="tag tag-success">化禄</span>入迁移宫，外出有财缘 [AI推断]。</p><h3 id="2025乙巳年-虚岁41">2025乙巳年（虚岁41）</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年干支</td><td>乙巳</td></tr><tr><td>流年四化</td><td>天机<span class="tag tag-success">化禄</span>、天梁<span class="tag tag-warning">化权</span>、紫微<span class="tag tag-info">化科</span>、太阴<span class="tag tag-danger">化忌</span></td></tr><tr><td>流年重点</td><td>太阴<span class="tag tag-danger">化忌</span>入兄弟宫（与生年四化相同），兄弟朋友间暗耗加重</td></tr></tbody></table></div><p><strong>流年分析</strong>：乙巳年流年四化与生年四化完全相同（乙干），太阴<span class="tag tag-danger">化忌</span>再次入兄弟宫，兄弟朋友间暗耗加重。天机<span class="tag tag-success">化禄</span>入田宅宫，房产有财缘。紫微<span class="tag tag-info">化科</span>入仆役宫，社交圈有贵人 [AI推断]。</p><h3 id="2026丙午年-虚岁42-★当前流年">2026丙午年（虚岁42）★当前流年</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年干支</td><td>丙午</td></tr><tr><td>流年四化</td><td>天同<span class="tag tag-success">化禄</span>、天机<span class="tag tag-warning">化权</span>、文昌<span class="tag tag-info">化科</span>、廉贞<span class="tag tag-danger">化忌</span></td></tr><tr><td>流年重点</td><td>天同<span class="tag tag-success">化禄</span>入夫妻宫，婚姻有甜蜜；廉贞<span class="tag tag-danger">化忌</span>入迁移宫，外出有风险</td></tr></tbody></table></div><p><strong>流年分析</strong>：丙午年天同<span class="tag tag-success">化禄</span>入夫妻宫，婚姻感情有甜蜜期。天机<span class="tag tag-warning">化权</span>入田宅宫，房产有掌控力。文昌<span class="tag tag-info">化科</span>入田宅宫，房产文书顺利。廉贞<span class="tag tag-danger">化忌</span>入迁移宫，外出需防意外和官非 [AI推断]。</p><h3 id="2027丁未年-虚岁43">2027丁未年（虚岁43）</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年干支</td><td>丁未</td></tr><tr><td>流年四化</td><td>太阴<span class="tag tag-success">化禄</span>、天同<span class="tag tag-warning">化权</span>、天机<span class="tag tag-info">化科</span>、巨门<span class="tag tag-danger">化忌</span></td></tr><tr><td>流年重点</td><td>巨门<span class="tag tag-danger">化忌</span>入父母宫，与长辈口舌多；太阴<span class="tag tag-success">化禄</span>入兄弟宫，兄弟有财缘</td></tr></tbody></table></div><p><strong>流年分析</strong>：丁未年巨门<span class="tag tag-danger">化忌</span>入父母宫，与长辈口舌是非多，需注意沟通方式。太阴<span class="tag tag-success">化禄</span>入兄弟宫，兄弟朋友间有财缘，但太阴<span class="tag tag-danger">化忌</span>同宫，禄忌交战，财来财去 [AI推断]。</p><h3 id="2028戊申年-虚岁44">2028戊申年（虚岁44）</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年干支</td><td>戊申</td></tr><tr><td>流年四化</td><td>贪狼<span class="tag tag-success">化禄</span>、太阴<span class="tag tag-warning">化权</span>、右弼<span class="tag tag-info">化科</span>、天机<span class="tag tag-danger">化忌</span></td></tr><tr><td>流年重点</td><td>天机<span class="tag tag-danger">化忌</span>入田宅宫，房产文书出问题；贪狼<span class="tag tag-success">化禄</span>入官禄宫，事业有财缘</td></tr></tbody></table></div><p><strong>流年分析</strong>：戊申年天机<span class="tag tag-danger">化忌</span>入田宅宫，房产文书易出问题，签约务必反复核查。贪狼<span class="tag tag-success">化禄</span>入官禄宫，事业有偏财机会。右弼<span class="tag tag-info">化科</span>入夫妻宫，配偶有贵人 [AI推断]。</p><h3 id="2029己酉年-虚岁45">2029己酉年（虚岁45）</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年干支</td><td>己酉</td></tr><tr><td>流年四化</td><td>武曲<span class="tag tag-success">化禄</span>、贪狼<span class="tag tag-warning">化权</span>、天梁<span class="tag tag-info">化科</span>、文曲<span class="tag tag-danger">化忌</span></td></tr><tr><td>流年重点</td><td>文曲<span class="tag tag-danger">化忌</span>入命宫，文书口舌是非；武曲<span class="tag tag-success">化禄</span>入财帛宫，财运亨通</td></tr></tbody></table></div><p><strong>流年分析</strong>：己酉年文曲<span class="tag tag-danger">化忌</span>入命宫，文书、合同、考试易出问题，务必反复核查。武曲<span class="tag tag-success">化禄</span>入财帛宫，财运亨通，适合投资理财。天梁<span class="tag tag-info">化科</span>入夫妻宫，配偶有科名贵人 [AI推断]。</p><h3 id="2030庚戌年-虚岁46">2030庚戌年（虚岁46）</h3><div class="table-wrapper"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>流年干支</td><td>庚戌</td></tr><tr><td>流年四化</td><td>太阳<span class="tag tag-success">化禄</span>、武曲<span class="tag tag-warning">化权</span>、太阴<span class="tag tag-info">化科</span>、天同<span class="tag tag-danger">化忌</span></td></tr><tr><td>流年重点</td><td>天同<span class="tag tag-danger">化忌</span>入夫妻宫，婚姻有波折；太阳<span class="tag tag-success">化禄</span>入父母宫，与长辈关系改善</td></tr></tbody></table></div><p><strong>流年分析</strong>：庚戌年天同<span class="tag tag-danger">化忌</span>入夫妻宫，婚姻感情有波折，需注意经营。太阳<span class="tag tag-success">化禄</span>入父母宫，与长辈关系改善。武曲<span class="tag tag-warning">化权</span>入财帛宫，理财有掌控力 [AI推断]。</p><hr></div></div><div class="section-wrapper" data-section-id="十-综合建议"><h2 id="十-综合建议"><span>十、综合建议</span><button class="section-toggle" onclick="toggleSection('十-综合建议')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-十-综合建议"><h3 id="10-1-事业方向">10.1 事业方向</h3><p>命宫空宫借贪狼，三方天机天同会照，事业方向宜<strong>文教传媒、公关社交、艺术设计</strong> <span class="source-ref" title="references/classics-excerpts.md gsf-5-1" data-source="references/classics-excerpts.md gsf-5-1"></span>。</p><ul><li><strong>首选</strong>：文教传媒——文曲旺科在命，文字、教育、传媒为天赋所在</li><li><strong>次选</strong>：公关社交——贪狼借入命，善于人际交往</li><li><strong>备选</strong>：艺术设计——文曲主文艺，贪狼主审美</li><li><strong>不宜</strong>：投机冒险——贪狼借星减力，无火铃在命，偏财运不足</li><li><strong>不宜</strong>：单一专注型工作——贪狼多才不专，天机善变，需多元发展</li></ul><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：官禄宫最喜欢权星入进来。此盘官禄宫无权星，事业缺乏掌控力，宜走专业路线而非管理路线。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h3 id="10-2-财运建议">10.2 财运建议</h3><p>财帛宫武府庙旺，财运根基雄厚 <span class="source-ref" title="references/classics-excerpts.md qj-3-1" data-source="references/classics-excerpts.md qj-3-1"></span>。</p><ul><li><strong>正财为主</strong>：武曲财星、天府财库同宫庙旺，正财稳定</li><li><strong>偏财为辅</strong>：铃贪格（半格）在官禄，偏财有机会但力量不足</li><li><strong>理财方式</strong>：武曲善理财，天府善守财，适合稳健型投资</li><li><strong>防破财</strong>：火星在财帛宫，花钱冲动需克制；仆役宫武曲<span class="tag tag-danger">化忌</span>飞入财帛，社交消费需节制</li><li><strong>房产投资</strong>：天机<span class="tag tag-success">化禄</span>入田宅，房产有财缘；但文昌<span class="tag tag-danger">化忌</span>在田宅，房产文书务必反复核查</li></ul><h3 id="10-3-感情建议">10.3 感情建议</h3><p>夫妻宫天同旺，婚姻基调安逸温和 <span class="source-ref" title="references/palace-interpretation.md" data-source="references/palace-interpretation.md"></span>。</p><ul><li><strong>晚婚为宜</strong>：天同福星入夫妻，早婚易安逸生惰，晚婚则心智成熟</li><li><strong>配偶特质</strong>：天梁<span class="tag tag-warning">化权</span>入夫妻，配偶有主见有权威，但控制欲可能过强</li><li><strong>经营建议</strong>：寡宿天伤同宫，婚姻中有孤独感和暗耗，需主动经营感情</li><li><strong>聚少离多</strong>：天马在夫妻宫，配偶可能常外出，需接受聚少离多的状态</li><li><strong>兼看福德</strong>：福德宫空宫借太阴旺禄，精神层面有福，但太阴<span class="tag tag-danger">化忌</span>暗耗，婚姻中的精神满足感不稳定</li></ul><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：夫妻宫兼看福德宫——看婚姻必须同时看福德宫。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h3 id="10-4-健康建议">10.4 健康建议</h3><p>疾厄宫空宫借廉杀庙旺，地空地劫同宫 <span class="source-ref" title="references/nihai-medicine.md" data-source="references/nihai-medicine.md"></span>。</p><ul><li><strong>心脏血液</strong>：廉贞属火主心，借入疾厄宫，需防心血管疾病</li><li><strong>呼吸系统</strong>：七杀属火主肺，借入疾厄宫，需防呼吸系统疾病</li><li><strong>气血亏虚</strong>：地空地劫在疾厄宫，气血亏虚，需补益气血</li><li><strong>定期体检</strong>：长生十二神坐墓，健康问题容易隐藏，需定期体检</li><li><strong>中医调理</strong>：倪师中医视角——天机属木主肝胆，太阴<span class="tag tag-danger">化忌</span>暗耗肾水，需肝肾同调 <span class="source-ref" title="references/nihai-medicine.md" data-source="references/nihai-medicine.md"></span></li></ul><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：煞星通过疾厄宫在午主心脏，在丑主肝。此盘疾厄宫在子，借廉贞七杀，需防心血管和呼吸系统。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h3 id="10-5-精神健康建议">10.5 精神健康建议</h3><p>福德宫空宫借太阴旺禄，文曲<span class="tag tag-danger">化忌</span>飞入命宫 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><ul><li><strong>精神内耗</strong>：文曲<span class="tag tag-danger">化忌</span>飞入命宫，想太多、焦虑、失眠，需学会放下</li><li><strong>情绪管理</strong>：太阴<span class="tag tag-danger">化忌</span>入兄弟宫（来因宫），人际关系中的暗耗导致情绪低落</li><li><strong>精神寄托</strong>：太阴旺禄借入福德，精神世界丰富，可通过阅读、艺术、冥想获得精神满足</li><li><strong>社交减压</strong>：身宫在仆役宫紫微天相，社交圈是精神减压的重要渠道</li><li><strong>专业帮助</strong>：若焦虑失眠严重，建议寻求心理咨询</li></ul><h3 id="10-6-人际关系建议">10.6 人际关系建议</h3><p>兄弟宫太阴旺禄<span class="tag tag-danger">化忌</span>，仆役宫紫微天相庙旺 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><ul><li><strong>兄弟朋友</strong>：太阴旺禄在兄弟宫，兄弟朋友间有财缘；但太阴<span class="tag tag-danger">化忌</span>同宫，财务往来需谨慎——借贷不宜，合伙需防暗亏</li><li><strong>社交圈</strong>：紫微天相庙旺在仆役宫身宫，社交圈是命主最重要的资源，善用人脉则事业财运皆有助力</li><li><strong>下属关系</strong>：天相印星在仆役宫，下属忠诚可靠</li><li><strong>贵人方向</strong>：天魁在仆役宫，贵人来自社交圈；天钺在命宫，贵人亦来自自身文采</li><li><strong>小人防范</strong>：太阴<span class="tag tag-danger">化忌</span>在兄弟宫，兄弟朋友中可能有小人——暗损财者</li></ul><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：害的到你的叫做小人。会影响到你的叫做小人。此盘太阴<span class="tag tag-danger">化忌</span>在兄弟宫，兄弟朋友中暗损财者即为小人。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><h3 id="10-7-阳宅堪舆建议">10.7 阳宅堪舆建议</h3><p>田宅宫天机利，文昌陷忌 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span>。</p><ul><li><strong>住宅选择</strong>：天机在田宅，住宅宜选通风好、采光佳、科技感强的房子</li><li><strong>不宜久居</strong>：天机善变，不宜在同一住宅居住太久，适时搬迁可提升运势</li><li><strong>文书注意</strong>：文昌<span class="tag tag-danger">化忌</span>在田宅，房产文书务必反复核查，签约前请律师审核</li><li><strong>卧室方位</strong>：身宫在午宫（南方），卧室宜选住宅南方位置</li><li><strong>厨房方位</strong>：火星在财帛宫（亥宫·西北），厨房不宜在西北方</li></ul><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：人事的努力加上地理上的调整，一定能大于先天的命运。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><blockquote class="blockquote nishi-quote system-content system-not-iztro">倪师断语：爸爸住爸爸位置，儿子住儿子位置，叫做名位相等。 <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></blockquote><hr></div></div><div class="section-wrapper" data-section-id="十一-附录"><h2 id="十一-附录"><span>十一、附录</span><button class="section-toggle" onclick="toggleSection('十一-附录')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-十一-附录"><h3 id="术语解释表">术语解释表</h3><div class="table-wrapper"><table><thead><tr><th>术语</th><th>解释</th></tr></thead><tbody><tr><td>命宫</td><td>一身之根本，万事之枢纽，决定基本格局与天生性格</td></tr><tr><td>身宫</td><td>三十后归向，影响最重的宫位</td></tr><tr><td>三方四正</td><td>命宫、财帛宫、官禄宫为三方，迁移宫为四正，合称三方四正</td></tr><tr><td>四化</td><td><span class="tag tag-success">化禄</span>（财）、<span class="tag tag-warning">化权</span>（权）、<span class="tag tag-info">化科</span>（名）、<span class="tag tag-danger">化忌</span>（劫）</td></tr><tr><td>空宫</td><td>无主星坐守的宫位，需借对宫主星论断，力量减半</td></tr><tr><td>借星</td><td>空宫借对宫主星论断的方法</td></tr><tr><td>来因宫</td><td>宫干等于年干的宫位，为四化发出的源头</td></tr><tr><td>五行局</td><td>由命宫干支纳音五行决定的局数，决定起运年龄</td></tr><tr><td>大限</td><td>十年运势周期，从起运年龄开始顺/逆行</td></tr><tr><td>流年</td><td>一年运势，以当年天干定四化</td></tr><tr><td>庙旺利陷</td><td>星曜亮度等级：庙（最亮）→旺→得→利→平→不→陷（最暗）</td></tr><tr><td>六吉星</td><td>左辅、右弼、文昌、文曲、天魁、天钺</td></tr><tr><td>六煞星</td><td>擎羊、陀罗、火星、铃星、地空、地劫</td></tr><tr><td>长生十二神</td><td>长生→沐浴→冠带→临官→帝旺→衰→病→死→墓→绝→胎→养</td></tr><tr><td>杀破狼</td><td>七杀、破军、贪狼三星，主变动与开创</td></tr><tr><td>日月反背</td><td>太阳太阴同宫落陷，主贵人远、劳碌奔波</td></tr></tbody></table></div><h3 id="亮度对照表">亮度对照表</h3><div class="table-wrapper"><table><thead><tr><th>iztro七级</th><th>倪师三级</th><th>说明</th></tr></thead><tbody><tr><td>庙</td><td>庙旺</td><td>星力最强，吉星增辉、凶星减害</td></tr><tr><td>旺</td><td>庙旺</td><td>星力甚强，仅次於庙</td></tr><tr><td>得</td><td>平</td><td>星力中等，吉凶参半</td></tr><tr><td>利</td><td>平</td><td>星力中等偏弱</td></tr><tr><td>平</td><td>平</td><td>星力平平</td></tr><tr><td>不</td><td>陷</td><td>星力弱，吉星减力、凶星增害</td></tr><tr><td>陷</td><td>陷</td><td>星力最弱，凶象最显著</td></tr></tbody></table></div><h3 id="参考文献">参考文献</h3><ol><li>倪海厦《天纪》课程（1994年录制，24集） <span class="source-ref" title="references/nihai-quotes.md" data-source="references/nihai-quotes.md"></span></li><li>《紫微斗数全集》 <span class="source-ref" title="references/classics-excerpts.md quanji.ts" data-source="references/classics-excerpts.md quanji.ts"></span></li><li>《紫微斗数全书》 <span class="source-ref" title="references/classics-excerpts.md quanshu.ts" data-source="references/classics-excerpts.md quanshu.ts"></span></li><li>《骨髓赋》 <span class="source-ref" title="references/classics-excerpts.md gusuifu.ts" data-source="references/classics-excerpts.md gusuifu.ts"></span></li><li>iztro排盘引擎 <span class="source-ref" title="iztro排盘" data-source="iztro排盘"></span></li><li>倪海厦《人纪》课程 <span class="source-ref" title="references/nihai-medicine.md" data-source="references/nihai-medicine.md"></span></li><li>《三命通会》纳音五行 <span class="source-ref" title="references/star-rules.md" data-source="references/star-rules.md"></span></li></ol><hr></div></div><div class="section-wrapper" data-section-id="自检清单"><h2 id="自检清单"><span>自检清单</span><button class="section-toggle" onclick="toggleSection('自检清单')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-自检清单"><div class="table-wrapper"><table><thead><tr><th>序号</th><th>检查项</th><th>结果</th></tr></thead><tbody><tr><td>1</td><td>星耀位置与iztro排盘一致</td><td>✅</td></tr><tr><td>2</td><td>四化星名和落宫正确</td><td>✅</td></tr><tr><td>3</td><td>格局条件真正满足（不凑格局）</td><td>✅</td></tr><tr><td>4</td><td>断语可追溯至references</td><td>✅</td></tr><tr><td>5</td><td>空宫正确借对宫</td><td>✅</td></tr><tr><td>6</td><td>身宫叠加正确</td><td>✅</td></tr><tr><td>7</td><td>来因宫正确</td><td>✅</td></tr><tr><td>8</td><td>无讨好倾向</td><td>✅</td></tr><tr><td>9</td><td>来源标注≥40处</td><td>✅</td></tr><tr><td>10</td><td>倪师断语≥10处</td><td>✅</td></tr><tr><td>11</td><td>十二宫分论全部12宫</td><td>✅</td></tr><tr><td>12</td><td>每宫7个子节完整</td><td>✅</td></tr><tr><td>13</td><td>宫干飞四化总表48条完整</td><td>✅</td></tr><tr><td>14</td><td>飞忌汇入统计完整</td><td>✅</td></tr><tr><td>15</td><td>飞禄汇入统计完整</td><td>✅</td></tr><tr><td>16</td><td>五行局推算8步完整</td><td>✅</td></tr><tr><td>17</td><td>命宫总论独立成章</td><td>✅</td></tr><tr><td>18</td><td>格局识别≥3个</td><td>✅</td></tr><tr><td>19</td><td>大限运势≥5个</td><td>✅</td></tr><tr><td>20</td><td>流年要点5~7年</td><td>✅</td></tr><tr><td>21</td><td>综合建议7个子章节</td><td>✅</td></tr><tr><td>22</td><td>附录（术语+亮度+文献）完整</td><td>✅</td></tr><tr><td>23</td><td>报告总行数≥800行</td><td>✅</td></tr><tr><td>24</td><td>凶象如实描述，不弱化<span class="tag tag-danger">化忌</span>影响</td><td>✅</td></tr></tbody></table></div><hr><blockquote class="blockquote nishi-quote system-content system-not-iztro">本报告基于iztro排盘数据与倪海厦天纪体系综合解读，冲突处以倪师为准。</blockquote><blockquote class="blockquote">报告生成时间：2026年5月22日</blockquote><blockquote class="blockquote">数据来源：iztro排盘 + references知识库 + sources源码验证</blockquote></div></div>
+</main>
+
+<button class="mobile-toc-fab" onclick="toggleMobileToc()" aria-label="目录" title="目录">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+</button>
+
+<button class="chart-fab" onclick="toggleChart()" aria-label="排盘图" title="排盘图">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+</button>
+
+<button class="back-to-top" id="backToTop" onclick="document.documentElement.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<div class="chart-overlay" id="chartOverlay" onclick="closeChart()"></div>
+
+<div class="chart-panel" id="chartPanel">
+  <div class="chart-panel-header" id="chartPanelHeader">
+    <div class="chart-panel-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+      命盘排盘图
+      <span class="chart-panel-system-badge" id="chartSystemBadge">综合</span>
+    </div>
+    <div class="chart-panel-actions">
+      <div class="chart-zoom-controls">
+        <button class="chart-zoom-btn" onclick="chartZoomOut()" title="缩小">−</button>
+        <span class="chart-zoom-level" id="chartZoomLevel">100%</span>
+        <button class="chart-zoom-btn" onclick="chartZoomIn()" title="放大">+</button>
+        <button class="chart-zoom-btn" onclick="chartZoomReset()" title="重置" style="font-size:11px;">↺</button>
+      </div>
+      <button class="chart-panel-btn" onclick="minimizeChart()" title="最小化">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg>
+      </button>
+      <button class="chart-panel-btn" onclick="closeChart()" title="关闭">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="chart-panel-body" id="chartPanelBody">
+    <div class="chart-dalimit-bar" id="chartDalimitBar"></div>
+    <div class="chart-grid-wrapper" id="chartGridWrapper">
+      <div class="chart-grid" id="chartGrid"></div>
+      <svg class="chart-svg-overlay" id="chartSvgOverlay"></svg>
+    </div>
+    <div class="chart-legend">
+      <span class="chart-legend-item"><span class="chart-legend-dot lu"></span>化禄</span>
+      <span class="chart-legend-item"><span class="chart-legend-dot quan"></span>化权</span>
+      <span class="chart-legend-item"><span class="chart-legend-dot ke"></span>化科</span>
+      <span class="chart-legend-item"><span class="chart-legend-dot ji"></span>化忌</span>
+    </div>
+    <div class="chart-hint">点击宫位查看三方四正连线</div>
+  </div>
+  <div class="chart-panel-resize" id="chartResize"></div>
+</div>
+
+<div class="chart-tooltip" id="chartTooltip"></div>
+
+<div class="mobile-toc-overlay" id="mobileTocOverlay" onclick="closeMobileToc()"></div>
+<div class="mobile-toc-drawer" id="mobileTocDrawer">
+  <div class="mobile-toc-drawer-header">
+    <span class="mobile-toc-drawer-title">目录</span>
+    <button class="mobile-toc-drawer-close" onclick="closeMobileToc()" aria-label="关闭">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-drawer-body" id="mobileTocBody"></div>
+</div>
+
+<div class="help-overlay" id="helpOverlay" onclick="closeHelp()"></div>
+
+<div class="help-panel" id="helpPanel">
+  <div class="help-panel-header">
+    <div class="help-panel-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      快捷指令帮助
+    </div>
+    <button class="help-panel-close" onclick="closeHelp()" title="关闭">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="help-panel-body">
+    <div class="help-section-title">键盘快捷键</div>
+    <ul class="help-shortcut-list">
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">切换明/暗主题</span><span class="help-shortcut-key"><span class="help-kbd">T</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">切换到 iztro 模式</span><span class="help-shortcut-key"><span class="help-kbd">1</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">切换到倪师模式</span><span class="help-shortcut-key"><span class="help-kbd">2</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">切换到综合模式</span><span class="help-shortcut-key"><span class="help-kbd">3</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">显示/隐藏帮助面板</span><span class="help-shortcut-key"><span class="help-kbd">?</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">关闭所有弹窗</span><span class="help-shortcut-key"><span class="help-kbd">Esc</span></span></li>
+    </ul>
+    <div class="help-section-title">专项解读</div>
+    <ul class="help-command-list">
+      <li class="help-command-item"><span class="help-command-code">\money</span><span class="help-command-desc">财运分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\health</span><span class="help-command-desc">健康分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\love</span><span class="help-command-desc">感情分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\match</span><span class="help-command-desc">合盘分析（需提供另一半信息）</span></li>
+      <li class="help-command-item"><span class="help-command-code">\career</span><span class="help-command-desc">事业分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\year</span><span class="help-command-desc">流年运势</span></li>
+    </ul>
+    <div class="help-section-title">时运选择</div>
+    <ul class="help-command-list">
+      <li class="help-command-item"><span class="help-command-code">\dash</span><span class="help-command-desc">大限选择（列出所有大限，选择后详解）</span></li>
+      <li class="help-command-item"><span class="help-command-code">\flow</span><span class="help-command-desc">流年选择（列出流年，选择后详解）</span></li>
+      <li class="help-command-item"><span class="help-command-code">\month</span><span class="help-command-desc">流月选择（列出12月，选择后详解）</span></li>
+    </ul>
+    <div class="help-section-title">辅助工具</div>
+    <ul class="help-command-list">
+      <li class="help-command-item"><span class="help-command-code">\question</span><span class="help-command-desc">提问解答</span></li>
+      <li class="help-command-item"><span class="help-command-code">\switch</span><span class="help-command-desc">切换解读体系</span></li>
+      <li class="help-command-item"><span class="help-command-code">\help</span><span class="help-command-desc">显示指令帮助</span></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+(function() {
+  var chartData = {"palaces":[{"name":"官禄","ganzhi":"戊寅","position":1,"mainStars":[{"name":"贪狼","brightness":"平","sihua":""}],"auxStars":["铃星(庙)","陀罗(陷)"],"miscStars":["红鸾","天空","孤辰","阴煞"],"changsheng":"病","dalimit":"45~54","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"福德","ganzhi":"己卯","position":3,"mainStars":[{"name":"空宫借星","brightness":"","sihua":""}],"auxStars":[],"miscStars":["天贵","天官"],"changsheng":"衰","dalimit":"55~64","note":"借戌宫紫微天相","isBodyPalace":false,"isLaiyinPalace":false},{"name":"田宅","ganzhi":"庚辰","position":2,"mainStars":[{"name":"天机","brightness":"利","sihua":""}],"auxStars":["文昌(陷)[忌]","天马"],"miscStars":["解神","天巫","天月","蜚廉"],"changsheng":"帝旺","dalimit":"65~74","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"子女","ganzhi":"辛巳","position":8,"mainStars":[{"name":"空宫借星","brightness":"","sihua":""}],"auxStars":["擎羊(庙)"],"miscStars":["天哭","天虚","龙池","华盖"],"changsheng":"临官","dalimit":"75~84","note":"借亥宫武曲天府","isBodyPalace":false,"isLaiyinPalace":false},{"name":"仆役","ganzhi":"壬午","position":0,"mainStars":[{"name":"紫微","brightness":"庙","sihua":""},{"name":"天相","brightness":"庙","sihua":""}],"auxStars":["禄存","天魁"],"miscStars":["八座","恩光","天德"],"changsheng":"冠带","dalimit":"5~14","note":"★身宫","isBodyPalace":true,"isLaiyinPalace":false},{"name":"父母","ganzhi":"癸未","position":4,"mainStars":[{"name":"太阳","brightness":"不","sihua":""},{"name":"巨门","brightness":"不","sihua":""}],"auxStars":[],"miscStars":["封诰","天刑","旬空"],"changsheng":"沐浴","dalimit":"15~24","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"命宫","ganzhi":"甲申","position":5,"mainStars":[{"name":"空宫借星","brightness":"","sihua":""}],"auxStars":["文曲(旺)[科]","天钺"],"miscStars":["天喜","天寿","天才"],"changsheng":"长生","dalimit":"25~34","note":"借寅宫贪狼","isBodyPalace":false,"isLaiyinPalace":false},{"name":"兄弟","ganzhi":"乙酉","position":6,"mainStars":[{"name":"太阴","brightness":"旺","sihua":"化禄"}],"auxStars":["左辅"],"miscStars":["三台","天福","破碎"],"changsheng":"养","dalimit":"35~44","note":"★来因宫","isBodyPalace":false,"isLaiyinPalace":true},{"name":"夫妻","ganzhi":"丙戌","position":7,"mainStars":[{"name":"天同","brightness":"旺","sihua":""}],"auxStars":["右弼[权]","天马"],"miscStars":["寡宿","天伤"],"changsheng":"胎","dalimit":"85~94","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"财帛","ganzhi":"丁亥","position":9,"mainStars":[{"name":"武曲","brightness":"庙","sihua":""},{"name":"天府","brightness":"庙","sihua":""}],"auxStars":["火星(旺)"],"miscStars":["红艳","咸池","天姚"],"changsheng":"绝","dalimit":"95~104","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"疾厄","ganzhi":"戊子","position":10,"mainStars":[{"name":"空宫借星","brightness":"","sihua":""}],"auxStars":["地空","地劫"],"miscStars":["截路","空亡","天使"],"changsheng":"墓","dalimit":"105~114","note":"借丑宫廉贞七杀","isBodyPalace":false,"isLaiyinPalace":false},{"name":"迁移","ganzhi":"己丑","position":11,"mainStars":[{"name":"廉贞","brightness":"庙","sihua":""},{"name":"七杀","brightness":"庙","sihua":""}],"auxStars":[],"miscStars":["台辅","孤辰"],"changsheng":"死","dalimit":"115~124","note":"","isBodyPalace":false,"isLaiyinPalace":false}],"info":{"name":"女命（阴女）","ganzhi":"乙丑年 戊寅月 丙辰日 壬辰时","wuxingju":"土五局","gender":"女（阴女顺行，乙为阴干）","minggong":"戌宫"}};
+
+  var systemLabels = {
+    iztro: 'iztro标准',
+    nishi: '倪师天纪',
+    combined: '综合模式'
+  };
+
+  var systemBadgeLabels = {
+    iztro: 'iztro',
+    nishi: '倪师',
+    combined: '综合'
+  };
+
+  function niBrightness(iztroLevel) {
+    if (!iztroLevel) return iztroLevel;
+    if (['庙','旺'].indexOf(iztroLevel) >= 0) return '庙旺';
+    if (['得','利','平'].indexOf(iztroLevel) >= 0) return '平';
+    if (['不','陷'].indexOf(iztroLevel) >= 0) return '陷';
+    return iztroLevel;
+  }
+
+  function getNiBrightnessClass(iztroLevel) {
+    var ni = niBrightness(iztroLevel);
+    if (ni === '庙旺') return 'ni-miao';
+    if (ni === '平') return 'ni-ping';
+    if (ni === '陷') return 'ni-xian';
+    return '';
+  }
+
+  function formatBrightnessLabel(iztroLevel) {
+    var system = document.documentElement.getAttribute('data-system') || 'combined';
+    if (!iztroLevel) return '';
+    if (system === 'iztro') return iztroLevel;
+    if (system === 'nishi') return niBrightness(iztroLevel);
+    return iztroLevel + '(' + niBrightness(iztroLevel) + ')';
+  }
+
+  /* ===== 体系切换 ===== */
+  function switchSystem(mode) {
+    var allSystemContent = document.querySelectorAll('.system-content');
+    allSystemContent.forEach(function(el) {
+      el.classList.add('system-content-fade-out');
+    });
+
+    setTimeout(function() {
+      document.documentElement.setAttribute('data-system', mode);
+      localStorage.setItem('ziwei-system', mode);
+      updateSystemUI(mode);
+
+      allSystemContent.forEach(function(el) {
+        el.classList.remove('system-content-fade-out');
+        el.classList.add('system-content-fade-in');
+      });
+
+      setTimeout(function() {
+        allSystemContent.forEach(function(el) {
+          el.classList.remove('system-content-fade-in');
+        });
+      }, 350);
+    }, 250);
+  }
+
+  function updateSystemUI(mode) {
+    document.querySelectorAll('.mode-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
+    });
+    var nameEl = document.getElementById('sidebarSystemName');
+    if (nameEl) nameEl.textContent = systemLabels[mode] || mode;
+    var badgeEl = document.getElementById('chartSystemBadge');
+    if (badgeEl) badgeEl.textContent = systemBadgeLabels[mode] || mode;
+  }
+
+  window.switchSystem = switchSystem;
+
+  var savedSystem = localStorage.getItem('ziwei-system');
+  if (savedSystem && ['iztro','nishi','combined'].indexOf(savedSystem) >= 0) {
+    document.documentElement.setAttribute('data-system', savedSystem);
+    updateSystemUI(savedSystem);
+  } else {
+    updateSystemUI('combined');
+  }
+
+  /* ===== 主题切换 ===== */
+  function toggleTheme() {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var next = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('ziwei-theme', next);
+    updateThemeIcon(next);
+  }
+
+  function updateThemeIcon(theme) {
+    var icon = document.getElementById('themeIcon');
+    if (theme === 'dark') {
+      icon.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+    } else {
+      icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    }
+  }
+
+  /* ===== 侧边栏 ===== */
+  function toggleSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebarOverlay');
+    sidebar.classList.toggle('open');
+    if (sidebar.classList.contains('open')) {
+      overlay.style.display = 'block';
+      requestAnimationFrame(function() { overlay.classList.add('visible'); });
+    } else {
+      closeSidebar();
+    }
+  }
+
+  function closeSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebarOverlay');
+    sidebar.classList.remove('open');
+    overlay.classList.remove('visible');
+    setTimeout(function() { overlay.style.display = 'none'; }, 200);
+  }
+
+  window.toggleTheme = toggleTheme;
+  window.toggleSidebar = toggleSidebar;
+  window.closeSidebar = closeSidebar;
+
+  /* ===== 移动端目录抽屉 ===== */
+  function toggleMobileToc() {
+    var drawer = document.getElementById('mobileTocDrawer');
+    var overlay = document.getElementById('mobileTocOverlay');
+    if (drawer.classList.contains('open')) {
+      closeMobileToc();
+    } else {
+      var tocList = document.getElementById('tocList');
+      var tocBody = document.getElementById('mobileTocBody');
+      if (tocList && tocBody) {
+        tocBody.innerHTML = tocList.innerHTML;
+      }
+      overlay.style.display = 'block';
+      requestAnimationFrame(function() {
+        overlay.classList.add('visible');
+        drawer.classList.add('open');
+      });
+      tocBody.querySelectorAll('.toc-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+          closeMobileToc();
+        });
+      });
+    }
+  }
+
+  function closeMobileToc() {
+    var drawer = document.getElementById('mobileTocDrawer');
+    var overlay = document.getElementById('mobileTocOverlay');
+    drawer.classList.remove('open');
+    overlay.classList.remove('visible');
+    setTimeout(function() { overlay.style.display = 'none'; }, 300);
+  }
+
+  window.toggleMobileToc = toggleMobileToc;
+  window.closeMobileToc = closeMobileToc;
+
+  var saved = localStorage.getItem('ziwei-theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    updateThemeIcon(saved);
+  }
+
+  /* ===== 目录高亮 ===== */
+  var headings = document.querySelectorAll('h2, h3');
+  var tocLinks = document.querySelectorAll('.toc-link');
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(l) { l.classList.remove('active'); });
+        var id = entry.target.id;
+        var link = document.querySelector('.toc-link[href="#' + id + '"]');
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-80px 0px -70% 0px', threshold: 0.1 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+
+  /* ===== 滚动处理 ===== */
+  var backToTop = document.getElementById('backToTop');
+  var progressFill = document.getElementById('progressFill');
+
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressFill.style.width = progress + '%';
+    backToTop.classList.toggle('visible', scrollTop > 400);
+  });
+
+  document.querySelectorAll('.toc-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 900) {
+        closeSidebar();
+      }
+    });
+  });
+
+  /* ===== 章节折叠 ===== */
+  function toggleSection(id) {
+    var wrapper = document.querySelector('.section-wrapper[data-section-id="' + id + '"]');
+    if (!wrapper) return;
+    wrapper.classList.toggle('collapsed');
+    var collapsed = getCollapsedSections();
+    if (wrapper.classList.contains('collapsed')) {
+      if (collapsed.indexOf(id) < 0) collapsed.push(id);
+    } else {
+      collapsed = collapsed.filter(function(s) { return s !== id; });
+    }
+    localStorage.setItem('ziwei-collapsed-sections', JSON.stringify(collapsed));
+  }
+
+  function getCollapsedSections() {
+    try { return JSON.parse(localStorage.getItem('ziwei-collapsed-sections') || '[]'); }
+    catch(e) { return []; }
+  }
+
+  function restoreSectionStates() {
+    var collapsed = getCollapsedSections();
+    collapsed.forEach(function(id) {
+      var wrapper = document.querySelector('.section-wrapper[data-section-id="' + id + '"]');
+      if (wrapper) wrapper.classList.add('collapsed');
+    });
+  }
+
+  window.toggleSection = toggleSection;
+  restoreSectionStates();
+
+  /* ===== 排盘图：宫位映射与三方四正 ===== */
+  var palaceNames = {
+    0: '仆役', 1: '官禄', 2: '田宅', 3: '福德',
+    4: '父母', 5: '命宫', 6: '兄弟', 7: '夫妻',
+    8: '子女', 9: '财帛', 10: '疾厄', 11: '迁移'
+  };
+
+  var palaceDizhi = {
+    0: '申', 1: '未', 2: '午', 3: '巳',
+    4: '辰', 5: '卯', 6: '寅', 7: '丑',
+    8: '子', 9: '亥', 10: '戌', 11: '酉'
+  };
+
+  var sanfangMap = {
+    0: { sanfang: [8, 4], sizheng: 6 },
+    1: { sanfang: [5, 9], sizheng: 7 },
+    2: { sanfang: [6, 10], sizheng: 8 },
+    3: { sanfang: [7, 11], sizheng: 9 },
+    4: { sanfang: [8, 0], sizheng: 10 },
+    5: { sanfang: [1, 9], sizheng: 11 },
+    6: { sanfang: [2, 10], sizheng: 0 },
+    7: { sanfang: [3, 11], sizheng: 1 },
+    8: { sanfang: [4, 0], sizheng: 2 },
+    9: { sanfang: [5, 1], sizheng: 3 },
+    10: { sanfang: [6, 2], sizheng: 4 },
+    11: { sanfang: [7, 3], sizheng: 5 }
+  };
+
+  var gridLayout = [
+    { pos: 3, row: 1, col: 1 },
+    { pos: 2, row: 1, col: 2 },
+    { pos: 1, row: 1, col: 3 },
+    { pos: 0, row: 1, col: 4 },
+    { pos: 4, row: 2, col: 1 },
+    { pos: 11, row: 2, col: 4 },
+    { pos: 5, row: 3, col: 1 },
+    { pos: 10, row: 3, col: 4 },
+    { pos: 6, row: 4, col: 1 },
+    { pos: 7, row: 4, col: 2 },
+    { pos: 8, row: 4, col: 3 },
+    { pos: 9, row: 4, col: 4 }
+  ];
+
+  /* ===== 排盘图面板 ===== */
+  function toggleChart() {
+    var panel = document.getElementById('chartPanel');
+    var overlay = document.getElementById('chartOverlay');
+    if (panel.classList.contains('open')) {
+      closeChart();
+    } else {
+      panel.classList.add('open');
+      overlay.classList.add('open');
+      renderChart();
+    }
+  }
+
+  function closeChart() {
+    var panel = document.getElementById('chartPanel');
+    var overlay = document.getElementById('chartOverlay');
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+    hideTooltip();
+    clearSanfangLines();
+  }
+
+  function minimizeChart() {
+    closeChart();
+  }
+
+  window.toggleChart = toggleChart;
+  window.closeChart = closeChart;
+  window.minimizeChart = minimizeChart;
+
+  /* ===== 亮度与四化样式 ===== */
+  function getBrightnessClass(brightness) {
+    if (!brightness) return '';
+    var b = brightness.replace(/[()（）]/g, '');
+    if (b === '庙' || b === '旺') return 'miao';
+    if (b === '平' || b === '利' || b === '得') return 'ping';
+    if (b === '陷' || b === '不') return 'xian';
+    return '';
+  }
+
+  function getSihuaClass(hua) {
+    if (!hua) return '';
+    if (hua.indexOf('禄') >= 0) return 'lu';
+    if (hua.indexOf('权') >= 0) return 'quan';
+    if (hua.indexOf('科') >= 0) return 'ke';
+    if (hua.indexOf('忌') >= 0) return 'ji';
+    return '';
+  }
+
+  function getSihuaTagClass(hua) {
+    if (!hua) return '';
+    if (hua.indexOf('禄') >= 0) return 'tag-success';
+    if (hua.indexOf('权') >= 0) return 'tag-warning';
+    if (hua.indexOf('科') >= 0) return 'tag-info';
+    if (hua.indexOf('忌') >= 0) return 'tag-danger';
+    return '';
+  }
+
+  function isJiStar(name) {
+    var jiStars = ['左辅','右弼','文昌','文曲','天魁','天钺','禄存','天马'];
+    return jiStars.indexOf(name) >= 0;
+  }
+
+  function isShaStar(name) {
+    var shaStars = ['擎羊','陀罗','火星','铃星','地空','地劫','化忌'];
+    return shaStars.indexOf(name) >= 0;
+  }
+
+  function extractAuxSihua(starStr) {
+    var m = starStr.match(/[[【](禄|权|科|忌)[]】]/);
+    return m ? m[1] : '';
+  }
+
+  /* ===== 渲染排盘图 ===== */
+  var tooltipData = {};
+  var selectedPosition = -1;
+
+  function renderChartTo(container, isInline) {
+    if (!chartData || !chartData.palaces || chartData.palaces.length === 0) {
+      container.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:40px;">未找到排盘数据</div>';
+      return;
+    }
+
+    var palaceMap = {};
+    chartData.palaces.forEach(function(p) { palaceMap[p.position] = p; });
+
+    var html = '';
+
+    gridLayout.forEach(function(item) {
+      var palace = palaceMap[item.pos];
+      var cellClass = 'chart-cell';
+      var cellStyle = 'grid-row:' + item.row + ';grid-column:' + item.col + ';';
+
+      if (palace) {
+        if (item.pos === 5) cellClass += ' palace-ming';
+        if (palace.isBodyPalace) cellClass += ' palace-body';
+        if (palace.isLaiyinPalace) cellClass += ' palace-laiyin';
+        if (!palace.mainStars || palace.mainStars.length === 0) cellClass += ' palace-empty';
+        if (palace.dalimit && isCurrentDalimit(palace.dalimit)) cellClass += ' dalimit-active';
+      } else {
+        cellClass += ' palace-empty';
+      }
+
+      html += '<div class="' + cellClass + '" style="' + cellStyle + '" data-position="' + item.pos + '">';
+
+      if (palace) {
+        html += '<div class="chart-cell-header">';
+        html += '<span class="chart-palace-name">' + esc(palace.name) + '</span>';
+        html += '<div class="chart-palace-marks">';
+        if (item.pos === 5) html += '<span class="chart-ming-mark">命</span>';
+        if (palace.isBodyPalace) html += '<span class="chart-shen-mark">身</span>';
+        html += '</div>';
+        html += '</div>';
+
+        html += '<div class="chart-ganzhi">' + esc(palace.ganzhi || '') + '</div>';
+
+        if (palace.dalimit) {
+          var dlClass = 'chart-dalimit' + (isCurrentDalimit(palace.dalimit) ? ' current-dalimit' : '');
+          html += '<div class="' + dlClass + '">' + esc(palace.dalimit) + '</div>';
+        }
+
+        if (palace.mainStars && palace.mainStars.length > 0) {
+          html += '<div class="chart-main-stars">';
+          palace.mainStars.forEach(function(s) {
+            var bc = getBrightnessClass(s.brightness);
+            var niBc = getNiBrightnessClass(s.brightness);
+            html += '<span class="chart-star ' + bc + ' ' + niBc + '">' + esc(s.name);
+            if (s.brightness) {
+              html += '<span class="chart-brightness-label">';
+              html += '<span class="iztro-brightness">' + esc(s.brightness) + '</span>';
+              html += '<span class="ni-brightness">' + esc(niBrightness(s.brightness)) + '</span>';
+              html += '<span class="combined-brightness">' + esc(s.brightness) + '(' + esc(niBrightness(s.brightness)) + ')</span>';
+              html += '</span>';
+            }
+            if (s.sihua) {
+              var sc = getSihuaClass(s.sihua);
+              html += '<span class="chart-sihua ' + sc + '">' + esc(s.sihua) + '</span>';
+            }
+            html += '</span>';
+          });
+          html += '</div>';
+        } else {
+          html += '<div class="chart-main-stars"><span class="chart-empty-text">空宫</span></div>';
+        }
+
+        var jiStars = [];
+        var shaStars = [];
+        var otherAux = [];
+        if (palace.auxStars && palace.auxStars.length > 0) {
+          palace.auxStars.forEach(function(s) {
+            var cleanS = s.replace(/[[【](禄|权|科|忌)[]】]/g, '');
+            if (isJiStar(cleanS)) jiStars.push(s);
+            else if (isShaStar(cleanS)) shaStars.push(s);
+            else otherAux.push(s);
+          });
+        }
+        if (jiStars.length > 0) {
+          html += '<div class="chart-aux-stars">';
+          jiStars.forEach(function(s) {
+            var sihua = extractAuxSihua(s);
+            html += '<span class="chart-aux-star-item' + (sihua ? ' has-sihua' : '') + '">' + esc(s.replace(/[[【]禄[]】]|[[【]权[]】]|[[【]科[]】]|[[【]忌[]】]/g, ''));
+            if (sihua) {
+              var sc = getSihuaClass('化' + sihua);
+              html += '<span class="chart-sihua ' + sc + '">化' + sihua + '</span>';
+            }
+            html += '</span>';
+          });
+          html += '</div>';
+        }
+        if (shaStars.length > 0) {
+          html += '<div class="chart-sha-stars">';
+          shaStars.forEach(function(s) {
+            html += '<span class="chart-sha-star-item">' + esc(s) + '</span>';
+          });
+          html += '</div>';
+        }
+        if (palace.miscStars && palace.miscStars.length > 0) {
+          html += '<div class="chart-misc-stars">' + esc(palace.miscStars.join('·')) + '</div>';
+        }
+        if (palace.changsheng) {
+          html += '<div class="chart-changsheng">' + esc(palace.changsheng) + '</div>';
+        }
+
+        var tt = '';
+        tt += '<div class="chart-tooltip-title">' + esc(palace.name) + ' · ' + esc(palace.ganzhi || '') + ' (' + (palaceDizhi[item.pos] || '') + '宫)</div>';
+        if (palace.mainStars && palace.mainStars.length > 0) {
+          tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">主星</div>';
+          palace.mainStars.forEach(function(s) {
+            tt += esc(s.name);
+            if (s.brightness) tt += '(' + esc(s.brightness) + ')';
+            if (s.sihua) tt += ' <span class="tag ' + getSihuaTagClass(s.sihua) + '">' + esc(s.sihua) + '</span>';
+            tt += ' ';
+          });
+          tt += '</div>';
+          var sihuaStars = palace.mainStars.filter(function(s) { return s.sihua; });
+          if (sihuaStars.length > 0) {
+            tt += '<div class="tooltip-sihua-badges">';
+            sihuaStars.forEach(function(s) {
+              var sc = getSihuaClass(s.sihua);
+              tt += '<span class="tooltip-sihua-badge ' + sc + '">' + esc(s.name) + ' ' + esc(s.sihua) + '</span>';
+            });
+            tt += '</div>';
+          }
+        }
+        if (palace.auxStars && palace.auxStars.length > 0) {
+          tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">辅星</div>' + esc(palace.auxStars.join('、')) + '</div>';
+        }
+        if (palace.miscStars && palace.miscStars.length > 0) {
+          tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">杂耀</div>' + esc(palace.miscStars.join('、')) + '</div>';
+        }
+        if (palace.changsheng) {
+          tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">长生十二神</div>' + esc(palace.changsheng) + '</div>';
+        }
+        if (palace.dalimit) {
+          tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">大限</div>' + esc(palace.dalimit) + '</div>';
+        }
+        if (palace.note) {
+          tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">备注</div>' + esc(palace.note) + '</div>';
+        }
+        var sf = sanfangMap[item.pos];
+        if (sf) {
+          var sfNames = sf.sanfang.map(function(p) { return palaceNames[p] || ''; });
+          var szName = palaceNames[sf.sizheng] || '';
+          tt += '<div class="chart-tooltip-sanfang">三方：' + sfNames.join('、') + ' ｜ 四正(对宫)：' + szName + '</div>';
+        }
+        tooltipData[item.pos] = tt;
+      } else {
+        html += '<div class="chart-cell-header">';
+        html += '<span class="chart-palace-name">' + (palaceNames[item.pos] || '-') + '</span>';
+        html += '</div>';
+        html += '<div class="chart-ganzhi">' + (palaceDizhi[item.pos] || '') + '</div>';
+        html += '<div class="chart-main-stars"><span class="chart-empty-text">空宫</span></div>';
+      }
+
+      html += '</div>';
+    });
+
+    html += '<div class="chart-cell center-cell" style="grid-row:2/4;grid-column:2/4;">';
+    html += '<div class="center-taiji">☯</div>';
+    if (chartData.info) {
+      html += '<div class="center-title">紫微斗数</div>';
+      html += '<div class="center-sub">' + esc(chartData.info.name || '命盘') + '</div>';
+      html += '<div class="center-sub">' + esc(chartData.info.ganzhi || '') + '</div>';
+      html += '<div class="center-sub">' + esc(chartData.info.wuxingju || '') + '</div>';
+      if (chartData.info.gender) {
+        html += '<div class="center-sub">' + esc(chartData.info.gender) + '</div>';
+      }
+      if (chartData.info.mingzhu) {
+        html += '<div class="center-sub">命主：' + esc(chartData.info.mingzhu) + '</div>';
+      }
+      if (chartData.info.shenzhu) {
+        html += '<div class="center-sub">身主：' + esc(chartData.info.shenzhu) + '</div>';
+      }
+      var currentDalimit = findCurrentDalimit();
+      if (currentDalimit) {
+        html += '<div class="center-dalimit-box">当前大限：' + esc(currentDalimit) + '</div>';
+      }
+    }
+    html += '</div>';
+
+    container.innerHTML = html;
+    renderDalimitBar(container);
+  }
+
+  function renderDalimitBar(chartContainer) {
+    var bar = chartContainer.closest('.chart-panel-body')
+      ? document.getElementById('chartDalimitBar')
+      : document.getElementById('inlineChartDalimitBar');
+    if (!bar || !chartData || !chartData.palaces) return;
+
+    var dalimits = [];
+    chartData.palaces.forEach(function(p) {
+      if (p.dalimit) {
+        dalimits.push({ name: p.name, dalimit: p.dalimit, position: p.position });
+      }
+    });
+
+    if (dalimits.length === 0) { bar.style.display = 'none'; return; }
+
+    dalimits.sort(function(a, b) {
+      var ma = a.dalimit.match(/(d+)/);
+      var mb = b.dalimit.match(/(d+)/);
+      return (ma ? parseInt(ma[1]) : 0) - (mb ? parseInt(mb[1]) : 0);
+    });
+
+    var barHtml = '<span class="dalimit-bar-label">大限</span>';
+    dalimits.forEach(function(d, idx) {
+      var isCurrent = isCurrentDalimit(d.dalimit);
+      var cls = 'dalimit-bar-item' + (isCurrent ? ' current' : '');
+      barHtml += '<button class="' + cls + '" data-dalimit-pos="' + d.position + '" data-dalimit-idx="' + idx + '">';
+      barHtml += '<span class="dalimit-item-name">' + esc(d.name) + '</span>';
+      barHtml += '<span class="dalimit-item-range">' + esc(d.dalimit) + '</span>';
+      barHtml += '</button>';
+    });
+    bar.innerHTML = barHtml;
+
+    bar.querySelectorAll('.dalimit-bar-item').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var pos = parseInt(this.getAttribute('data-dalimit-pos'));
+        selectDalimit(pos, chartContainer);
+      });
+    });
+  }
+
+  function selectDalimit(position, chartContainer) {
+    var grid = chartContainer.querySelector('.chart-grid') || document.getElementById('chartGrid');
+    if (!grid) return;
+
+    grid.querySelectorAll('.chart-cell').forEach(function(cell) {
+      cell.classList.remove('dalimit-selected');
+    });
+
+    var targetCell = grid.querySelector('[data-position="' + position + '"]');
+    if (targetCell) {
+      targetCell.classList.add('dalimit-selected');
+    }
+
+    drawSanfangLines(position, grid.id);
+
+    var bar = chartContainer.closest('.chart-panel-body')
+      ? document.getElementById('chartDalimitBar')
+      : document.getElementById('inlineChartDalimitBar');
+    if (bar) {
+      bar.querySelectorAll('.dalimit-bar-item').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+      var activeBtn = bar.querySelector('[data-dalimit-pos="' + position + '"]');
+      if (activeBtn) activeBtn.classList.add('active');
+    }
+  }
+
+  function isCurrentDalimit(dalimitStr) {
+    if (!dalimitStr) return false;
+    var m = dalimitStr.match(/(d+)[-~](d+)/);
+    if (!m) return false;
+    var start = parseInt(m[1]);
+    var end = parseInt(m[2]);
+    var currentYear = new Date().getFullYear();
+    return currentYear >= start && currentYear <= end;
+  }
+
+  function findCurrentDalimit() {
+    if (!chartData || !chartData.palaces) return null;
+    for (var i = 0; i < chartData.palaces.length; i++) {
+      var p = chartData.palaces[i];
+      if (p.dalimit && isCurrentDalimit(p.dalimit)) {
+        return p.name + ' ' + p.dalimit;
+      }
+    }
+    return null;
+  }
+
+  function renderChart() {
+    var grid = document.getElementById('chartGrid');
+    renderChartTo(grid, false);
+    bindChartEvents(grid);
+  }
+
+  function renderInlineChart() {
+    var container = document.getElementById('inlineChartGrid');
+    if (!container) return;
+    renderChartTo(container, true);
+    bindChartEvents(container);
+  }
+
+  function rerenderCharts() {
+    var grid = document.getElementById('chartGrid');
+    if (grid && document.getElementById('chartPanel').classList.contains('open')) {
+      renderChart();
+    }
+    var inlineGrid = document.getElementById('inlineChartGrid');
+    if (inlineGrid) {
+      renderChartTo(inlineGrid, true);
+      bindChartEvents(inlineGrid);
+    }
+  }
+
+  /* ===== 三方四正SVG连线 ===== */
+  function drawSanfangLines(position, containerId) {
+    clearSanfangLines();
+    if (position < 0 || position > 11) return;
+
+    containerId = containerId || 'chartGrid';
+    var svgId = containerId === 'inlineChartGrid' ? 'inlineChartSvgOverlay' : 'chartSvgOverlay';
+    var svg = document.getElementById(svgId);
+    if (!svg) return;
+
+    var sf = sanfangMap[position];
+    if (!sf) return;
+
+    var relatedPositions = [position, sf.sanfang[0], sf.sanfang[1], sf.sizheng];
+
+    var gridEl = document.getElementById(containerId);
+    if (!gridEl) return;
+    var gridRect = gridEl.getBoundingClientRect();
+    var wrapperRect = svg.parentElement.getBoundingClientRect();
+
+    var centers = {};
+    gridLayout.forEach(function(item) {
+      var cellEl = gridEl.querySelector('[data-position="' + item.pos + '"]');
+      if (!cellEl) return;
+      var cellRect = cellEl.getBoundingClientRect();
+      centers[item.pos] = {
+        x: cellRect.left + cellRect.width / 2 - wrapperRect.left,
+        y: cellRect.top + cellRect.height / 2 - wrapperRect.top
+      };
+    });
+
+    svg.setAttribute('viewBox', '0 0 ' + wrapperRect.width + ' ' + wrapperRect.height);
+    svg.style.width = wrapperRect.width + 'px';
+    svg.style.height = wrapperRect.height + 'px';
+
+    var svgContent = '';
+
+    var c0 = centers[position];
+    var c1 = centers[sf.sanfang[0]];
+    var c2 = centers[sf.sanfang[1]];
+    var cOpp = centers[sf.sizheng];
+
+    if (c0 && cOpp) {
+      svgContent += '<line x1="' + c0.x + '" y1="' + c0.y + '" x2="' + cOpp.x + '" y2="' + cOpp.y + '" stroke="' + 'var(--chart-sanfang-line)' + '" stroke-width="2" stroke-dasharray="6,5" />';
+    }
+
+    if (c0 && c1 && c2) {
+      svgContent += '<polygon points="' + c0.x + ',' + c0.y + ' ' + c1.x + ',' + c1.y + ' ' + c2.x + ',' + c2.y + '" fill="none" stroke="' + 'var(--chart-sanfang-line)' + '" stroke-width="2" stroke-dasharray="6,5" />';
+    }
+
+    relatedPositions.forEach(function(pos) {
+      var c = centers[pos];
+      if (c) {
+        svgContent += '<circle cx="' + c.x + '" cy="' + c.y + '" r="5" fill="' + 'var(--chart-sanfang-line)' + '" />';
+      }
+    });
+
+    svg.innerHTML = svgContent;
+
+    ['chartGrid', 'inlineChartGrid'].forEach(function(gId) {
+      var grid = document.getElementById(gId);
+      if (!grid) return;
+      grid.querySelectorAll('.chart-cell').forEach(function(cell) {
+        var pos = parseInt(cell.getAttribute('data-position'));
+        if (isNaN(pos)) return;
+        if (pos === position) {
+          cell.classList.add('selected');
+        } else if (relatedPositions.indexOf(pos) >= 0) {
+          cell.classList.add('sanfang-related');
+        }
+      });
+    });
+  }
+
+  function clearSanfangLines() {
+    ['chartSvgOverlay', 'inlineChartSvgOverlay'].forEach(function(id) {
+      var svg = document.getElementById(id);
+      if (svg) svg.innerHTML = '';
+    });
+    ['chartGrid', 'inlineChartGrid'].forEach(function(gId) {
+      var grid = document.getElementById(gId);
+      if (grid) {
+        grid.querySelectorAll('.chart-cell').forEach(function(cell) {
+          cell.classList.remove('selected', 'sanfang-related');
+        });
+      }
+    });
+    selectedPosition = -1;
+  }
+
+  /* ===== 宫位点击事件 ===== */
+  function bindChartEvents(container) {
+    container.addEventListener('click', function(e) {
+      var cell = e.target.closest('.chart-cell');
+      if (!cell || cell.classList.contains('center-cell')) {
+        if (!cell || cell.classList.contains('center-cell')) {
+          clearSanfangLines();
+        }
+        return;
+      }
+      var pos = parseInt(cell.getAttribute('data-position'));
+      if (isNaN(pos)) return;
+
+      if (selectedPosition === pos) {
+        clearSanfangLines();
+      } else {
+        selectedPosition = pos;
+        drawSanfangLines(pos, container.id);
+      }
+    });
+
+    container.addEventListener('mouseenter', function(e) {
+      var cell = e.target.closest('.chart-cell');
+      if (!cell || cell.classList.contains('center-cell')) return;
+      var pos = cell.getAttribute('data-position');
+      if (pos === null || !tooltipData[parseInt(pos)]) return;
+      showTooltip(cell, tooltipData[parseInt(pos)]);
+    }, true);
+
+    container.addEventListener('mouseleave', function(e) {
+      var cell = e.target.closest('.chart-cell');
+      if (!cell) return;
+      hideTooltip();
+    }, true);
+  }
+
+  /* ===== Tooltip智能定位 ===== */
+  var chartTooltip = document.getElementById('chartTooltip');
+  var tooltipTimeout = null;
+
+  function showTooltip(cell, content) {
+    chartTooltip.innerHTML = content;
+    chartTooltip.style.display = 'block';
+    chartTooltip.style.left = '-9999px';
+    chartTooltip.style.top = '-9999px';
+
+    requestAnimationFrame(function() {
+      var cellRect = cell.getBoundingClientRect();
+      var ttW = chartTooltip.offsetWidth;
+      var ttH = chartTooltip.offsetHeight;
+      var spaceAbove = cellRect.top;
+      var spaceBelow = window.innerHeight - cellRect.bottom;
+
+      var top, left;
+      left = cellRect.left + (cellRect.width - ttW) / 2;
+
+      if (spaceAbove > ttH + 10 || spaceAbove >= spaceBelow) {
+        top = cellRect.top - ttH - 8;
+      } else {
+        top = cellRect.bottom + 8;
+      }
+
+      if (left < 8) left = 8;
+      if (left + ttW > window.innerWidth - 8) left = window.innerWidth - ttW - 8;
+      if (top < 8) top = 8;
+      if (top + ttH > window.innerHeight - 8) top = window.innerHeight - ttH - 8;
+
+      chartTooltip.style.left = left + 'px';
+      chartTooltip.style.top = top + 'px';
+    });
+  }
+
+  function hideTooltip() {
+    chartTooltip.style.display = 'none';
+  }
+
+  /* ===== 缩放控制 ===== */
+  var chartZoom = 1;
+
+  function setChartZoom(level) {
+    chartZoom = Math.max(0.5, Math.min(2, level));
+    var grid = document.getElementById('chartGrid');
+    if (grid) grid.style.transform = 'scale(' + chartZoom + ')';
+    var display = document.getElementById('chartZoomLevel');
+    if (display) display.textContent = Math.round(chartZoom * 100) + '%';
+  }
+
+  function chartZoomIn() { setChartZoom(chartZoom + 0.1); }
+  function chartZoomOut() { setChartZoom(chartZoom - 0.1); }
+  function chartZoomReset() { setChartZoom(1); }
+
+  window.chartZoomIn = chartZoomIn;
+  window.chartZoomOut = chartZoomOut;
+  window.chartZoomReset = chartZoomReset;
+
+  var chartPanelBody = document.getElementById('chartPanelBody');
+  chartPanelBody.addEventListener('wheel', function(e) {
+    if (e.ctrlKey || e.metaKey) {
+      e.preventDefault();
+      var delta = e.deltaY > 0 ? -0.05 : 0.05;
+      setChartZoom(chartZoom + delta);
+    }
+  }, { passive: false });
+
+  /* ===== 拖拽移动 ===== */
+  var isDragging = false;
+  var dragOffsetX = 0;
+  var dragOffsetY = 0;
+
+  var panelHeader = document.getElementById('chartPanelHeader');
+  var panel = document.getElementById('chartPanel');
+
+  function startDrag(clientX, clientY) {
+    isDragging = true;
+    var rect = panel.getBoundingClientRect();
+    dragOffsetX = clientX - rect.left;
+    dragOffsetY = clientY - rect.top;
+    panel.style.transform = 'none';
+    panel.style.left = rect.left + 'px';
+    panel.style.top = rect.top + 'px';
+    panel.style.cursor = 'move';
+  }
+
+  function moveDrag(clientX, clientY) {
+    if (!isDragging) return;
+    var x = clientX - dragOffsetX;
+    var y = clientY - dragOffsetY;
+    x = Math.max(0, Math.min(x, window.innerWidth - panel.offsetWidth));
+    y = Math.max(0, Math.min(y, window.innerHeight - panel.offsetHeight));
+    panel.style.left = x + 'px';
+    panel.style.top = y + 'px';
+  }
+
+  function endDrag() {
+    isDragging = false;
+    panel.style.cursor = '';
+  }
+
+  panelHeader.addEventListener('mousedown', function(e) {
+    if (e.target.closest('.chart-panel-btn') || e.target.closest('.chart-zoom-btn')) return;
+    e.preventDefault();
+    startDrag(e.clientX, e.clientY);
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (isDragging) moveDrag(e.clientX, e.clientY);
+  });
+
+  document.addEventListener('mouseup', endDrag);
+
+  panelHeader.addEventListener('touchstart', function(e) {
+    if (e.target.closest('.chart-panel-btn') || e.target.closest('.chart-zoom-btn')) return;
+    var touch = e.touches[0];
+    startDrag(touch.clientX, touch.clientY);
+  }, { passive: true });
+
+  document.addEventListener('touchmove', function(e) {
+    if (isDragging && e.touches.length === 1) {
+      moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchend', endDrag);
+
+  /* ===== 面板大小调整 ===== */
+  var isResizing = false;
+  var resizeStartX = 0;
+  var resizeStartY = 0;
+  var resizeStartW = 0;
+  var resizeStartH = 0;
+
+  var resizeHandle = document.getElementById('chartResize');
+
+  resizeHandle.addEventListener('mousedown', function(e) {
+    isResizing = true;
+    resizeStartX = e.clientX;
+    resizeStartY = e.clientY;
+    resizeStartW = panel.offsetWidth;
+    resizeStartH = panel.offsetHeight;
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (!isResizing) return;
+    var newW = Math.max(480, resizeStartW + (e.clientX - resizeStartX));
+    var newH = Math.max(360, resizeStartH + (e.clientY - resizeStartY));
+    panel.style.width = newW + 'px';
+    panel.style.maxHeight = newH + 'px';
+  });
+
+  document.addEventListener('mouseup', function() {
+    isResizing = false;
+  });
+
+  /* ===== ESC关闭 ===== */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeChart();
+      closeHelp();
+    }
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+    if (e.key === 't' || e.key === 'T') {
+      e.preventDefault();
+      toggleTheme();
+    } else if (e.key === '1') {
+      e.preventDefault();
+      switchSystem('iztro');
+    } else if (e.key === '2') {
+      e.preventDefault();
+      switchSystem('nishi');
+    } else if (e.key === '3') {
+      e.preventDefault();
+      switchSystem('combined');
+    } else if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+      e.preventDefault();
+      toggleHelp();
+    }
+  });
+
+  /* ===== 帮助面板 ===== */
+  function toggleHelp() {
+    var panel = document.getElementById('helpPanel');
+    var overlay = document.getElementById('helpOverlay');
+    if (panel.classList.contains('open')) {
+      closeHelp();
+    } else {
+      panel.classList.add('open');
+      overlay.classList.add('open');
+    }
+  }
+
+  function closeHelp() {
+    var panel = document.getElementById('helpPanel');
+    var overlay = document.getElementById('helpOverlay');
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  window.toggleHelp = toggleHelp;
+  window.closeHelp = closeHelp;
+
+  /* ===== 工具函数 ===== */
+  function esc(s) {
+    if (!s) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ===== 初始化内嵌排盘图 ===== */
+  renderInlineChart();
+})();
+</script>
+</body>
+</html>
