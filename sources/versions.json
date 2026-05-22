@@ -1,14 +1,14 @@
 {
   "iztro": {
     "remote": "https://github.com/SylarLong/iztro",
-    "commit": "9a13e0fa1d919774953bd9bb3f9068bacfbdc4bb",
     "date": "2026-05-22",
-    "version": "2.5.8"
+    "version": "2.5.8",
+    "note": "源码副本，无独立git，通过重新clone更新"
   },
   "ziwei-doushu": {
     "remote": "https://github.com/Renhuai123/ziwei-doushu",
-    "commit": "9a13e0fa1d919774953bd9bb3f9068bacfbdc4bb",
     "date": "2026-05-22",
-    "version": "latest"
+    "version": "latest",
+    "note": "源码副本，无独立git，通过重新clone更新"
   }
 }

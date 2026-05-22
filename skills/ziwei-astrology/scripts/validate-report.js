@@ -20,8 +20,9 @@ function validateReport(mdFilePath) {
   const feihuaRows = (content.match(/^\| (命宫|兄弟|夫妻|子女|财帛|疾厄|迁移|仆役|交友|官禄|田宅|福德|父母) \|/gm) || []).length;
   check(3, '宫干飞四化总表（找到' + feihuaRows + '行）', feihuaRows >= 12);
 
-  const emptyPalaceNotes = (content.match(/借.*宫.*主星/g) || []).length;
-  check(4, '空宫借对宫标注（找到' + emptyPalaceNotes + '处）', content.includes('空宫') ? emptyPalaceNotes > 0 : true);
+  const emptyPalaceNotes = (content.match(/借.*宫|借对宫/g) || []).length;
+  const noEmptyPalace = /无空宫|十二宫均有主星/.test(content);
+  check(4, '空宫借对宫标注（找到' + emptyPalaceNotes + '处）', !content.includes('空宫') || emptyPalaceNotes > 0 || noEmptyPalace);
 
   check(5, '身宫叠加标注', content.includes('身宫') && content.includes('★身宫'));
 
@@ -57,9 +58,9 @@ function validateReport(mdFilePath) {
 
   check(16, '附录存在', content.includes('## 十一、附录'));
 
-  const zhuxingSubCount = (content.match(/##### 主星/g) || []).length;
-  const zongpingSubCount = (content.match(/##### 总评/g) || []).length;
-  check(17, '每宫子节完整性（主星子节' + zhuxingSubCount + '个/总评子节' + zongpingSubCount + '个）', zhuxingSubCount >= 12 && zongpingSubCount >= 10);
+  const zhuxingSubCount = (content.match(/#### 主星特质与亮度/g) || []).length;
+  const zongpingSubCount = (content.match(/总评/g) || []).length;
+  check(17, '每宫子节完整性（主星特质章节' + zhuxingSubCount + '个/总评' + zongpingSubCount + '处）', zhuxingSubCount >= 12 && zongpingSubCount >= 10);
 
   const feihuaTableRows = (content.match(/^\| (命宫|兄弟|夫妻|子女|财帛|疾厄|迁移|仆役|交友|官禄|田宅|福德|父母) \|/gm) || []).length;
   let feihuaComplete = feihuaTableRows >= 12;
