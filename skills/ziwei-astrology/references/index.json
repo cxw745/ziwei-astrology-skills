@@ -1,311 +1,369 @@
 {
   "stars": {
     "紫微": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#紫微亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#紫微在命宫",
+        "兄弟宫": "palace-interpretation.md#紫微在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#紫微在夫妻宫",
+        "子女宫": "palace-interpretation.md#紫微在子女宫",
+        "财帛宫": "palace-interpretation.md#紫微在财帛宫",
+        "疾厄宫": "palace-interpretation.md#紫微在疾厄宫",
+        "迁移宫": "palace-interpretation.md#紫微在迁移宫",
+        "仆役宫": "palace-interpretation.md#紫微在仆役宫",
+        "官禄宫": "palace-interpretation.md#紫微在官禄宫",
+        "田宅宫": "palace-interpretation.md#紫微在田宅宫",
+        "福德宫": "palace-interpretation.md#紫微在福德宫",
+        "父母宫": "palace-interpretation.md#紫微在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["君臣庆会", "紫府同宫", "紫微入命"],
+      "matrix_ref": "star-palace-matrix.md#紫微",
+      "nihai_quotes_ref": "nihai-quotes.md#紫微",
+      "nihai_medicine_ref": "nihai-medicine.md#紫微",
+      "patterns": [
+        {"name": "君臣庆会", "ref": "patterns.md#君臣庆会"},
+        {"name": "紫府同宫", "ref": "patterns.md#紫府同宫"},
+        {"name": "紫微入命", "ref": "patterns.md#紫微入命"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "天机": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#天机亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#天机在命宫",
+        "兄弟宫": "palace-interpretation.md#天机在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#天机在夫妻宫",
+        "子女宫": "palace-interpretation.md#天机在子女宫",
+        "财帛宫": "palace-interpretation.md#天机在财帛宫",
+        "疾厄宫": "palace-interpretation.md#天机在疾厄宫",
+        "迁移宫": "palace-interpretation.md#天机在迁移宫",
+        "仆役宫": "palace-interpretation.md#天机在仆役宫",
+        "官禄宫": "palace-interpretation.md#天机在官禄宫",
+        "田宅宫": "palace-interpretation.md#天机在田宅宫",
+        "福德宫": "palace-interpretation.md#天机在福德宫",
+        "父母宫": "palace-interpretation.md#天机在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["机月同梁", "机月同梁三星会"],
+      "matrix_ref": "star-palace-matrix.md#天机",
+      "nihai_quotes_ref": "nihai-quotes.md#天机",
+      "nihai_medicine_ref": "nihai-medicine.md#天机",
+      "patterns": [
+        {"name": "机月同梁", "ref": "patterns.md#机月同梁"},
+        {"name": "机月同梁三星会", "ref": "patterns.md#机月同梁三星会"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "太阳": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#太阳亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#太阳在命宫",
+        "兄弟宫": "palace-interpretation.md#太阳在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#太阳在夫妻宫",
+        "子女宫": "palace-interpretation.md#太阳在子女宫",
+        "财帛宫": "palace-interpretation.md#太阳在财帛宫",
+        "疾厄宫": "palace-interpretation.md#太阳在疾厄宫",
+        "迁移宫": "palace-interpretation.md#太阳在迁移宫",
+        "仆役宫": "palace-interpretation.md#太阳在仆役宫",
+        "官禄宫": "palace-interpretation.md#太阳在官禄宫",
+        "田宅宫": "palace-interpretation.md#太阳在田宅宫",
+        "福德宫": "palace-interpretation.md#太阳在福德宫",
+        "父母宫": "palace-interpretation.md#太阳在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["阳梁昌禄", "日月同宫", "日月夹命", "巨日同宫", "明珠出海", "日月并明"],
+      "matrix_ref": "star-palace-matrix.md#太阳",
+      "nihai_quotes_ref": "nihai-quotes.md#太阳",
+      "nihai_medicine_ref": "nihai-medicine.md#太阳",
+      "patterns": [
+        {"name": "阳梁昌禄", "ref": "patterns.md#阳梁昌禄"},
+        {"name": "日月同宫", "ref": "patterns.md#日月同宫"},
+        {"name": "日月夹命", "ref": "patterns.md#日月夹命"},
+        {"name": "巨日同宫", "ref": "patterns.md#巨日同宫"},
+        {"name": "明珠出海", "ref": "patterns.md#明珠出海"},
+        {"name": "日月并明", "ref": "patterns.md#日月并明"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "武曲": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#武曲亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#武曲在命宫",
+        "兄弟宫": "palace-interpretation.md#武曲在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#武曲在夫妻宫",
+        "子女宫": "palace-interpretation.md#武曲在子女宫",
+        "财帛宫": "palace-interpretation.md#武曲在财帛宫",
+        "疾厄宫": "palace-interpretation.md#武曲在疾厄宫",
+        "迁移宫": "palace-interpretation.md#武曲在迁移宫",
+        "仆役宫": "palace-interpretation.md#武曲在仆役宫",
+        "官禄宫": "palace-interpretation.md#武曲在官禄宫",
+        "田宅宫": "palace-interpretation.md#武曲在田宅宫",
+        "福德宫": "palace-interpretation.md#武曲在福德宫",
+        "父母宫": "palace-interpretation.md#武曲在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["武贪格", "武曲七杀", "铃昌陀武"],
+      "matrix_ref": "star-palace-matrix.md#武曲",
+      "nihai_quotes_ref": "nihai-quotes.md#武曲",
+      "nihai_medicine_ref": "nihai-medicine.md#武曲",
+      "patterns": [
+        {"name": "武贪格", "ref": "patterns.md#武贪格"},
+        {"name": "武曲七杀", "ref": "patterns.md#武曲七杀"},
+        {"name": "铃昌陀武", "ref": "patterns.md#铃昌陀武"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "天同": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#天同亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#天同在命宫",
+        "兄弟宫": "palace-interpretation.md#天同在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#天同在夫妻宫",
+        "子女宫": "palace-interpretation.md#天同在子女宫",
+        "财帛宫": "palace-interpretation.md#天同在财帛宫",
+        "疾厄宫": "palace-interpretation.md#天同在疾厄宫",
+        "迁移宫": "palace-interpretation.md#天同在迁移宫",
+        "仆役宫": "palace-interpretation.md#天同在仆役宫",
+        "官禄宫": "palace-interpretation.md#天同在官禄宫",
+        "田宅宫": "palace-interpretation.md#天同在田宅宫",
+        "福德宫": "palace-interpretation.md#天同在福德宫",
+        "父母宫": "palace-interpretation.md#天同在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["机月同梁", "天同天梁格", "机月同梁三星会"],
+      "matrix_ref": "star-palace-matrix.md#天同",
+      "nihai_quotes_ref": "nihai-quotes.md#天同",
+      "nihai_medicine_ref": "nihai-medicine.md#天同",
+      "patterns": [
+        {"name": "机月同梁", "ref": "patterns.md#机月同梁"},
+        {"name": "天同天梁格", "ref": "patterns.md#天同天梁格"},
+        {"name": "机月同梁三星会", "ref": "patterns.md#机月同梁三星会"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "廉贞": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#廉贞亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#廉贞在命宫",
+        "兄弟宫": "palace-interpretation.md#廉贞在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#廉贞在夫妻宫",
+        "子女宫": "palace-interpretation.md#廉贞在子女宫",
+        "财帛宫": "palace-interpretation.md#廉贞在财帛宫",
+        "疾厄宫": "palace-interpretation.md#廉贞在疾厄宫",
+        "迁移宫": "palace-interpretation.md#廉贞在迁移宫",
+        "仆役宫": "palace-interpretation.md#廉贞在仆役宫",
+        "官禄宫": "palace-interpretation.md#廉贞在官禄宫",
+        "田宅宫": "palace-interpretation.md#廉贞在田宅宫",
+        "福德宫": "palace-interpretation.md#廉贞在福德宫",
+        "父母宫": "palace-interpretation.md#廉贞在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["廉贞天相格", "廉杀羊"],
+      "matrix_ref": "star-palace-matrix.md#廉贞",
+      "nihai_quotes_ref": "nihai-quotes.md#廉贞",
+      "nihai_medicine_ref": "nihai-medicine.md#廉贞",
+      "patterns": [
+        {"name": "廉贞天相格", "ref": "patterns.md#廉贞天相格"},
+        {"name": "廉杀羊", "ref": "patterns.md#廉杀羊"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "天府": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#天府亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#天府在命宫",
+        "兄弟宫": "palace-interpretation.md#天府在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#天府在夫妻宫",
+        "子女宫": "palace-interpretation.md#天府在子女宫",
+        "财帛宫": "palace-interpretation.md#天府在财帛宫",
+        "疾厄宫": "palace-interpretation.md#天府在疾厄宫",
+        "迁移宫": "palace-interpretation.md#天府在迁移宫",
+        "仆役宫": "palace-interpretation.md#天府在仆役宫",
+        "官禄宫": "palace-interpretation.md#天府在官禄宫",
+        "田宅宫": "palace-interpretation.md#天府在田宅宫",
+        "福德宫": "palace-interpretation.md#天府在福德宫",
+        "父母宫": "palace-interpretation.md#天府在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["紫府同宫", "府相朝垣"],
+      "matrix_ref": "star-palace-matrix.md#天府",
+      "nihai_quotes_ref": "nihai-quotes.md#天府",
+      "nihai_medicine_ref": "nihai-medicine.md#天府",
+      "patterns": [
+        {"name": "紫府同宫", "ref": "patterns.md#紫府同宫"},
+        {"name": "府相朝垣", "ref": "patterns.md#府相朝垣"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "太阴": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#太阴亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#太阴在命宫",
+        "兄弟宫": "palace-interpretation.md#太阴在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#太阴在夫妻宫",
+        "子女宫": "palace-interpretation.md#太阴在子女宫",
+        "财帛宫": "palace-interpretation.md#太阴在财帛宫",
+        "疾厄宫": "palace-interpretation.md#太阴在疾厄宫",
+        "迁移宫": "palace-interpretation.md#太阴在迁移宫",
+        "仆役宫": "palace-interpretation.md#太阴在仆役宫",
+        "官禄宫": "palace-interpretation.md#太阴在官禄宫",
+        "田宅宫": "palace-interpretation.md#太阴在田宅宫",
+        "福德宫": "palace-interpretation.md#太阴在福德宫",
+        "父母宫": "palace-interpretation.md#太阴在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["机月同梁", "日月同宫", "日月夹命", "明珠出海", "日月并明", "机月同梁三星会"],
+      "matrix_ref": "star-palace-matrix.md#太阴",
+      "nihai_quotes_ref": "nihai-quotes.md#太阴",
+      "nihai_medicine_ref": "nihai-medicine.md#太阴",
+      "patterns": [
+        {"name": "机月同梁", "ref": "patterns.md#机月同梁"},
+        {"name": "日月同宫", "ref": "patterns.md#日月同宫"},
+        {"name": "日月夹命", "ref": "patterns.md#日月夹命"},
+        {"name": "明珠出海", "ref": "patterns.md#明珠出海"},
+        {"name": "日月并明", "ref": "patterns.md#日月并明"},
+        {"name": "机月同梁三星会", "ref": "patterns.md#机月同梁三星会"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "贪狼": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#贪狼亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#贪狼在命宫",
+        "兄弟宫": "palace-interpretation.md#贪狼在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#贪狼在夫妻宫",
+        "子女宫": "palace-interpretation.md#贪狼在子女宫",
+        "财帛宫": "palace-interpretation.md#贪狼在财帛宫",
+        "疾厄宫": "palace-interpretation.md#贪狼在疾厄宫",
+        "迁移宫": "palace-interpretation.md#贪狼在迁移宫",
+        "仆役宫": "palace-interpretation.md#贪狼在仆役宫",
+        "官禄宫": "palace-interpretation.md#贪狼在官禄宫",
+        "田宅宫": "palace-interpretation.md#贪狼在田宅宫",
+        "福德宫": "palace-interpretation.md#贪狼在福德宫",
+        "父母宫": "palace-interpretation.md#贪狼在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["火贪格/铃贪格", "武贪格", "杀破狼"],
+      "matrix_ref": "star-palace-matrix.md#贪狼",
+      "nihai_quotes_ref": "nihai-quotes.md#贪狼",
+      "nihai_medicine_ref": "nihai-medicine.md#贪狼",
+      "patterns": [
+        {"name": "火贪格/铃贪格", "ref": "patterns.md#火贪格/铃贪格"},
+        {"name": "武贪格", "ref": "patterns.md#武贪格"},
+        {"name": "杀破狼", "ref": "patterns.md#杀破狼"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "巨门": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#巨门亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#巨门在命宫",
+        "兄弟宫": "palace-interpretation.md#巨门在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#巨门在夫妻宫",
+        "子女宫": "palace-interpretation.md#巨门在子女宫",
+        "财帛宫": "palace-interpretation.md#巨门在财帛宫",
+        "疾厄宫": "palace-interpretation.md#巨门在疾厄宫",
+        "迁移宫": "palace-interpretation.md#巨门在迁移宫",
+        "仆役宫": "palace-interpretation.md#巨门在仆役宫",
+        "官禄宫": "palace-interpretation.md#巨门在官禄宫",
+        "田宅宫": "palace-interpretation.md#巨门在田宅宫",
+        "福德宫": "palace-interpretation.md#巨门在福德宫",
+        "父母宫": "palace-interpretation.md#巨门在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["巨日同宫", "石中隐玉", "巨火羊"],
+      "matrix_ref": "star-palace-matrix.md#巨门",
+      "nihai_quotes_ref": "nihai-quotes.md#巨门",
+      "nihai_medicine_ref": "nihai-medicine.md#巨门",
+      "patterns": [
+        {"name": "巨日同宫", "ref": "patterns.md#巨日同宫"},
+        {"name": "石中隐玉", "ref": "patterns.md#石中隐玉"},
+        {"name": "巨火羊", "ref": "patterns.md#巨火羊"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "天相": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#天相亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#天相在命宫",
+        "兄弟宫": "palace-interpretation.md#天相在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#天相在夫妻宫",
+        "子女宫": "palace-interpretation.md#天相在子女宫",
+        "财帛宫": "palace-interpretation.md#天相在财帛宫",
+        "疾厄宫": "palace-interpretation.md#天相在疾厄宫",
+        "迁移宫": "palace-interpretation.md#天相在迁移宫",
+        "仆役宫": "palace-interpretation.md#天相在仆役宫",
+        "官禄宫": "palace-interpretation.md#天相在官禄宫",
+        "田宅宫": "palace-interpretation.md#天相在田宅宫",
+        "福德宫": "palace-interpretation.md#天相在福德宫",
+        "父母宫": "palace-interpretation.md#天相在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["府相朝垣", "廉贞天相格"],
+      "matrix_ref": "star-palace-matrix.md#天相",
+      "nihai_quotes_ref": "nihai-quotes.md#天相",
+      "nihai_medicine_ref": "nihai-medicine.md#天相",
+      "patterns": [
+        {"name": "府相朝垣", "ref": "patterns.md#府相朝垣"},
+        {"name": "廉贞天相格", "ref": "patterns.md#廉贞天相格"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "天梁": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#天梁亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#天梁在命宫",
+        "兄弟宫": "palace-interpretation.md#天梁在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#天梁在夫妻宫",
+        "子女宫": "palace-interpretation.md#天梁在子女宫",
+        "财帛宫": "palace-interpretation.md#天梁在财帛宫",
+        "疾厄宫": "palace-interpretation.md#天梁在疾厄宫",
+        "迁移宫": "palace-interpretation.md#天梁在迁移宫",
+        "仆役宫": "palace-interpretation.md#天梁在仆役宫",
+        "官禄宫": "palace-interpretation.md#天梁在官禄宫",
+        "田宅宫": "palace-interpretation.md#天梁在田宅宫",
+        "福德宫": "palace-interpretation.md#天梁在福德宫",
+        "父母宫": "palace-interpretation.md#天梁在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["阳梁昌禄", "机月同梁", "天同天梁格", "机月同梁三星会"],
+      "matrix_ref": "star-palace-matrix.md#天梁",
+      "nihai_quotes_ref": "nihai-quotes.md#天梁",
+      "nihai_medicine_ref": "nihai-medicine.md#天梁",
+      "patterns": [
+        {"name": "阳梁昌禄", "ref": "patterns.md#阳梁昌禄"},
+        {"name": "机月同梁", "ref": "patterns.md#机月同梁"},
+        {"name": "天同天梁格", "ref": "patterns.md#天同天梁格"},
+        {"name": "机月同梁三星会", "ref": "patterns.md#机月同梁三星会"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "七杀": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#七杀亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#七杀在命宫",
+        "兄弟宫": "palace-interpretation.md#七杀在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#七杀在夫妻宫",
+        "子女宫": "palace-interpretation.md#七杀在子女宫",
+        "财帛宫": "palace-interpretation.md#七杀在财帛宫",
+        "疾厄宫": "palace-interpretation.md#七杀在疾厄宫",
+        "迁移宫": "palace-interpretation.md#七杀在迁移宫",
+        "仆役宫": "palace-interpretation.md#七杀在仆役宫",
+        "官禄宫": "palace-interpretation.md#七杀在官禄宫",
+        "田宅宫": "palace-interpretation.md#七杀在田宅宫",
+        "福德宫": "palace-interpretation.md#七杀在福德宫",
+        "父母宫": "palace-interpretation.md#七杀在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["杀破狼", "武曲七杀", "廉杀羊", "七杀朝斗"],
+      "matrix_ref": "star-palace-matrix.md#七杀",
+      "nihai_quotes_ref": "nihai-quotes.md#七杀",
+      "nihai_medicine_ref": "nihai-medicine.md#七杀",
+      "patterns": [
+        {"name": "杀破狼", "ref": "patterns.md#杀破狼"},
+        {"name": "武曲七杀", "ref": "patterns.md#武曲七杀"},
+        {"name": "廉杀羊", "ref": "patterns.md#廉杀羊"},
+        {"name": "七杀朝斗", "ref": "patterns.md#七杀朝斗"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     },
     "破军": {
-      "brightness_ref": "star-rules.md",
+      "brightness_ref": "star-rules.md#破军亮度",
       "palace_refs": {
-        "命宫": "palace-interpretation.md",
-        "兄弟宫": "palace-interpretation.md",
-        "夫妻宫": "palace-interpretation.md",
-        "子女宫": "palace-interpretation.md",
-        "财帛宫": "palace-interpretation.md",
-        "疾厄宫": "palace-interpretation.md",
-        "迁移宫": "palace-interpretation.md",
-        "仆役宫": "palace-interpretation.md",
-        "官禄宫": "palace-interpretation.md",
-        "田宅宫": "palace-interpretation.md",
-        "福德宫": "palace-interpretation.md",
-        "父母宫": "palace-interpretation.md"
+        "命宫": "palace-interpretation.md#破军在命宫",
+        "兄弟宫": "palace-interpretation.md#破军在兄弟宫",
+        "夫妻宫": "palace-interpretation.md#破军在夫妻宫",
+        "子女宫": "palace-interpretation.md#破军在子女宫",
+        "财帛宫": "palace-interpretation.md#破军在财帛宫",
+        "疾厄宫": "palace-interpretation.md#破军在疾厄宫",
+        "迁移宫": "palace-interpretation.md#破军在迁移宫",
+        "仆役宫": "palace-interpretation.md#破军在仆役宫",
+        "官禄宫": "palace-interpretation.md#破军在官禄宫",
+        "田宅宫": "palace-interpretation.md#破军在田宅宫",
+        "福德宫": "palace-interpretation.md#破军在福德宫",
+        "父母宫": "palace-interpretation.md#破军在父母宫"
       },
-      "matrix_ref": "star-palace-matrix.md",
-      "nihai_quotes_ref": "nihai-quotes.md",
-      "nihai_medicine_ref": "nihai-medicine.md",
-      "patterns": ["杀破狼"],
+      "matrix_ref": "star-palace-matrix.md#破军",
+      "nihai_quotes_ref": "nihai-quotes.md#破军",
+      "nihai_medicine_ref": "nihai-medicine.md#破军",
+      "patterns": [
+        {"name": "杀破狼", "ref": "patterns.md#杀破狼"}
+      ],
       "source_files": ["iztro/src/data/stars.ts", "ziwei-doushu/lib/seo/knowledge.ts"]
     }
   },
@@ -313,7 +371,40 @@
     "命宫": {
       "interpretation_ref": "palace-interpretation.md",
       "nihai_quotes_ref": "nihai-quotes.md",
-      "related_patterns": ["君臣庆会", "紫府同宫", "府相朝垣", "阳梁昌禄", "火贪格/铃贪格", "武贪格", "杀破狼", "机月同梁", "紫微入命", "化禄入命", "化忌入命/迁", "马头带箭", "禄存守命/身", "天马入命/迁", "化科入命/身", "昌曲坐命/同会", "辅弼同会", "魁钺同会", "七杀朝斗", "石中隐玉", "辅弼夹命", "昌曲夹命", "魁钺夹命", "火铃夹命", "空劫夹命", "羊陀夹忌", "科权禄夹", "日月夹命", "三奇加会", "科权双会", "机月同梁三星会", "明珠出海"]
+      "related_patterns": [
+        {"name": "君臣庆会", "ref": "patterns.md#君臣庆会"},
+        {"name": "紫府同宫", "ref": "patterns.md#紫府同宫"},
+        {"name": "府相朝垣", "ref": "patterns.md#府相朝垣"},
+        {"name": "阳梁昌禄", "ref": "patterns.md#阳梁昌禄"},
+        {"name": "火贪格/铃贪格", "ref": "patterns.md#火贪格/铃贪格"},
+        {"name": "武贪格", "ref": "patterns.md#武贪格"},
+        {"name": "杀破狼", "ref": "patterns.md#杀破狼"},
+        {"name": "机月同梁", "ref": "patterns.md#机月同梁"},
+        {"name": "紫微入命", "ref": "patterns.md#紫微入命"},
+        {"name": "化禄入命", "ref": "patterns.md#化禄入命"},
+        {"name": "化忌入命/迁", "ref": "patterns.md#化忌入命/迁"},
+        {"name": "马头带箭", "ref": "patterns.md#马头带箭"},
+        {"name": "禄存守命/身", "ref": "patterns.md#禄存守命/身"},
+        {"name": "天马入命/迁", "ref": "patterns.md#天马入命/迁"},
+        {"name": "化科入命/身", "ref": "patterns.md#化科入命/身"},
+        {"name": "昌曲坐命/同会", "ref": "patterns.md#昌曲坐命/同会"},
+        {"name": "辅弼同会", "ref": "patterns.md#辅弼同会"},
+        {"name": "魁钺同会", "ref": "patterns.md#魁钺同会"},
+        {"name": "七杀朝斗", "ref": "patterns.md#七杀朝斗"},
+        {"name": "石中隐玉", "ref": "patterns.md#石中隐玉"},
+        {"name": "辅弼夹命", "ref": "patterns.md#辅弼夹命"},
+        {"name": "昌曲夹命", "ref": "patterns.md#昌曲夹命"},
+        {"name": "魁钺夹命", "ref": "patterns.md#魁钺夹命"},
+        {"name": "火铃夹命", "ref": "patterns.md#火铃夹命"},
+        {"name": "空劫夹命", "ref": "patterns.md#空劫夹命"},
+        {"name": "羊陀夹忌", "ref": "patterns.md#羊陀夹忌"},
+        {"name": "科权禄夹", "ref": "patterns.md#科权禄夹"},
+        {"name": "日月夹命", "ref": "patterns.md#日月夹命"},
+        {"name": "三奇加会", "ref": "patterns.md#三奇加会"},
+        {"name": "科权双会", "ref": "patterns.md#科权双会"},
+        {"name": "机月同梁三星会", "ref": "patterns.md#机月同梁三星会"},
+        {"name": "明珠出海", "ref": "patterns.md#明珠出海"}
+      ]
     },
     "兄弟宫": {
       "interpretation_ref": "palace-interpretation.md",
@@ -323,7 +414,11 @@
     "夫妻宫": {
       "interpretation_ref": "palace-interpretation.md",
       "nihai_quotes_ref": "nihai-quotes.md",
-      "related_patterns": ["日月同宫", "巨日同宫", "廉贞天相格"]
+      "related_patterns": [
+        {"name": "日月同宫", "ref": "patterns.md#日月同宫"},
+        {"name": "巨日同宫", "ref": "patterns.md#巨日同宫"},
+        {"name": "廉贞天相格", "ref": "patterns.md#廉贞天相格"}
+      ]
     },
     "子女宫": {
       "interpretation_ref": "palace-interpretation.md",
@@ -333,7 +428,11 @@
     "财帛宫": {
       "interpretation_ref": "palace-interpretation.md",
       "nihai_quotes_ref": "nihai-quotes.md",
-      "related_patterns": ["化禄入财", "双禄朝垣", "双禄交流"]
+      "related_patterns": [
+        {"name": "化禄入财", "ref": "patterns.md#化禄入财"},
+        {"name": "双禄朝垣", "ref": "patterns.md#双禄朝垣"},
+        {"name": "双禄交流", "ref": "patterns.md#双禄交流"}
+      ]
     },
     "疾厄宫": {
       "interpretation_ref": "palace-interpretation.md",
@@ -343,7 +442,10 @@
     "迁移宫": {
       "interpretation_ref": "palace-interpretation.md",
       "nihai_quotes_ref": null,
-      "related_patterns": ["化忌入命/迁", "天马入命/迁"]
+      "related_patterns": [
+        {"name": "化忌入命/迁", "ref": "patterns.md#化忌入命/迁"},
+        {"name": "天马入命/迁", "ref": "patterns.md#天马入命/迁"}
+      ]
     },
     "仆役宫": {
       "interpretation_ref": "palace-interpretation.md",
@@ -353,7 +455,9 @@
     "官禄宫": {
       "interpretation_ref": "palace-interpretation.md",
       "nihai_quotes_ref": "nihai-quotes.md",
-      "related_patterns": ["化权入官"]
+      "related_patterns": [
+        {"name": "化权入官", "ref": "patterns.md#化权入官"}
+      ]
     },
     "田宅宫": {
       "interpretation_ref": "palace-interpretation.md",
@@ -373,322 +477,322 @@
   },
   "patterns": {
     "君臣庆会": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#君臣庆会",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "上格",
       "must_conditions": ["紫微入命", "左辅右弼同会三方四正"],
       "key_stars": ["紫微"]
     },
     "紫府同宫": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#紫府同宫",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "上格",
       "must_conditions": ["紫微天府同入命宫（限寅申宫）"],
       "key_stars": ["紫微", "天府"]
     },
     "府相朝垣": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#府相朝垣",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "上格",
       "must_conditions": ["天府坐命三方", "天相坐命三方", "两星不同宫"],
       "key_stars": ["天府", "天相"]
     },
     "阳梁昌禄": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#阳梁昌禄",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "上格",
       "must_conditions": ["太阳会命宫三方", "天梁会命宫三方", "文昌会命宫三方", "禄存会命宫三方"],
       "key_stars": ["太阳", "天梁"]
     },
     "火贪格/铃贪格": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#火贪格/铃贪格",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "上格",
       "must_conditions": ["贪狼与火星/铃星同宫或会照", "贪狼会照命宫三方"],
       "key_stars": ["贪狼"]
     },
     "武贪格": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#武贪格",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "上格",
       "must_conditions": ["武曲贪狼同宫（丑/未）或对宫拱照", "会照命宫三方"],
       "key_stars": ["武曲", "贪狼"]
     },
     "杀破狼": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#杀破狼",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "上格",
       "must_conditions": ["七杀、破军、贪狼三星齐入命宫三方四正"],
       "key_stars": ["七杀", "破军", "贪狼"]
     },
     "机月同梁": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#机月同梁",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "上格",
       "must_conditions": ["天机、太阴、天同、天梁四星齐入命宫三方四正"],
       "key_stars": ["天机", "太阴", "天同", "天梁"]
     },
     "廉贞天相格": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#廉贞天相格",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "中格",
       "must_conditions": ["廉贞天相同宫"],
       "key_stars": ["廉贞", "天相"]
     },
     "武曲七杀": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#武曲七杀",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "中格",
       "must_conditions": ["武曲七杀同宫"],
       "key_stars": ["武曲", "七杀"]
     },
     "天同天梁格": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#天同天梁格",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "中格",
       "must_conditions": ["天同天梁同宫"],
       "key_stars": ["天同", "天梁"]
     },
     "日月同宫": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#日月同宫",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "中格",
       "must_conditions": ["太阳太阴同入丑宫或未宫"],
       "key_stars": ["太阳", "太阴"]
     },
     "日月夹命": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#日月夹命",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "中格",
       "must_conditions": ["太阳太阴分居命宫前后两宫"],
       "key_stars": ["太阳", "太阴"]
     },
     "巨日同宫": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#巨日同宫",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "中格",
       "must_conditions": ["巨门太阳同入寅宫或申宫"],
       "key_stars": ["巨门", "太阳"]
     },
     "石中隐玉": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#石中隐玉",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "中格",
       "must_conditions": ["巨门入命于子宫或午宫"],
       "key_stars": ["巨门"]
     },
     "明珠出海": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#明珠出海",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "中格",
       "must_conditions": ["命宫在未为空宫", "对宫丑宫为太阳太阴同度"],
       "key_stars": ["太阳", "太阴"]
     },
     "紫微入命": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#紫微入命",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "中格",
       "must_conditions": ["紫微独坐命宫（无天府同坐）"],
       "key_stars": ["紫微"]
     },
     "辅弼夹命": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#辅弼夹命",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "助力格",
       "must_conditions": ["左辅右弼分居命宫前后两宫"],
       "key_stars": ["左辅", "右弼"]
     },
     "昌曲夹命": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#昌曲夹命",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "助力格",
       "must_conditions": ["文昌文曲分居命宫前后两宫"],
       "key_stars": ["文昌", "文曲"]
     },
     "魁钺夹命": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#魁钺夹命",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "助力格",
       "must_conditions": ["天魁天钺分居命宫前后两宫"],
       "key_stars": ["天魁", "天钺"]
     },
     "双禄朝垣": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#双禄朝垣",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "助力格",
       "must_conditions": ["化禄会照三方四正", "禄存会照三方四正"],
       "key_stars": []
     },
     "三奇加会": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#三奇加会",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "助力格",
       "must_conditions": ["化禄、化权、化科三吉化齐会命宫三方四正"],
       "key_stars": []
     },
     "化禄入命": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#化禄入命",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "助力格",
       "must_conditions": ["主星化禄坐命宫"],
       "key_stars": []
     },
     "化忌入命/迁": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#化忌入命/迁",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "恶格",
       "must_conditions": ["主星化忌坐命宫或迁移宫"],
       "key_stars": []
     },
     "羊陀夹忌": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#羊陀夹忌",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "恶格",
       "must_conditions": ["化忌坐命", "擎羊陀罗分居命宫前后两宫"],
       "key_stars": ["擎羊", "陀罗"]
     },
     "火铃夹命": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#火铃夹命",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "恶格",
       "must_conditions": ["火星铃星分居命宫前后两宫"],
       "key_stars": ["火星", "铃星"]
     },
     "空劫夹命": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#空劫夹命",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "恶格",
       "must_conditions": ["地空地劫分居命宫前后两宫"],
       "key_stars": ["地空", "地劫"]
     },
     "廉杀羊": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#廉杀羊",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "恶格",
       "must_conditions": ["廉贞、七杀、擎羊三星会照三方四正"],
       "key_stars": ["廉贞", "七杀"]
     },
     "巨火羊": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#巨火羊",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "恶格",
       "must_conditions": ["巨门、火星、擎羊三星会照三方四正"],
       "key_stars": ["巨门"]
     },
     "铃昌陀武": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#铃昌陀武",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "恶格",
       "must_conditions": ["铃星、文昌、陀罗、武曲四星会照三方四正"],
       "key_stars": ["武曲"]
     },
     "马头带箭": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#马头带箭",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "恶格",
       "must_conditions": ["擎羊于午宫坐命"],
       "key_stars": ["擎羊"]
     },
     "禄存守命/身": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#禄存守命/身",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "基础格局",
       "must_conditions": ["禄存入命宫或身宫"],
       "key_stars": ["禄存"]
     },
     "天马入命/迁": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#天马入命/迁",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "基础格局",
       "must_conditions": ["天马入命宫或迁移宫"],
       "key_stars": ["天马"]
     },
     "化禄入财": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#化禄入财",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "基础格局",
       "must_conditions": ["财帛宫主星化禄"],
       "key_stars": []
     },
     "化权入官": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#化权入官",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "基础格局",
       "must_conditions": ["官禄宫主星化权"],
       "key_stars": []
     },
     "化科入命/身": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#化科入命/身",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "基础格局",
       "must_conditions": ["主星化科入命宫或身宫"],
       "key_stars": []
     },
     "机月同梁三星会": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#机月同梁三星会",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "基础格局",
       "must_conditions": ["天机/太阴/天同/天梁任3星齐入三方四正"],
       "key_stars": ["天机", "太阴", "天同", "天梁"]
     },
     "昌曲坐命/同会": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#昌曲坐命/同会",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "基础格局",
       "must_conditions": ["文昌文曲同入命宫或同会三方四正"],
       "key_stars": ["文昌", "文曲"]
     },
     "辅弼同会": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#辅弼同会",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "基础格局",
       "must_conditions": ["左辅右弼同会命宫三方四正"],
       "key_stars": ["左辅", "右弼"]
     },
     "魁钺同会": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#魁钺同会",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "基础格局",
       "must_conditions": ["天魁天钺同会命宫三方四正"],
       "key_stars": ["天魁", "天钺"]
     },
     "科权双会": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#科权双会",
       "source_file": "ziwei-doushu/lib/ziwei/patterns.ts",
       "category": "基础格局",
       "must_conditions": ["化科+化权同会三方四正"],
       "key_stars": []
     },
     "日月并明": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#日月并明",
       "source_file": null,
       "category": "补充格局",
       "must_conditions": ["太阳在卯辰巳午（庙旺）", "太阴在酉戌亥子（庙旺）", "且会照命宫"],
       "key_stars": ["太阳", "太阴"]
     },
     "禄马交驰": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#禄马交驰",
       "source_file": null,
       "category": "补充格局",
       "must_conditions": ["禄存与天马同宫或对照"],
       "key_stars": ["禄存", "天马"]
     },
     "科权禄夹": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#科权禄夹",
       "source_file": null,
       "category": "补充格局",
       "must_conditions": ["化科、化权、化禄夹命（命宫前后两宫含三化中两化以上）"],
       "key_stars": []
     },
     "双禄交流": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#双禄交流",
       "source_file": null,
       "category": "补充格局",
       "must_conditions": ["化禄与禄存同宫或对照"],
       "key_stars": []
     },
     "七杀朝斗": {
-      "ref": "patterns.md",
+      "ref": "patterns.md#七杀朝斗",
       "source_file": null,
       "category": "补充格局",
       "must_conditions": ["七杀入命于寅申宫（庙旺）", "三方有吉星会照"],

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const evalsPath = path.resolve(__dirname, '..', 'evals', 'evals.json');
+const evalsPath = path.resolve(__dirname, '..', '..', 'evals', 'evals.json');
 const reportPath = process.argv[2];
 const targetEvalId = process.argv[3] ? parseInt(process.argv[3], 10) : null;
 
@@ -20,6 +20,9 @@ const evalsData = JSON.parse(fs.readFileSync(evalsPath, 'utf-8'));
 const reportContent = fs.readFileSync(resolvedReportPath, 'utf-8');
 const reportLines = reportContent.split('\n');
 
+const criteria = evalsData.pass_criteria || {};
+const gates = evalsData.quality_gates || {};
+
 const flatteringPatterns = [
   /非常棒/g, /太厉害了/g, /令人惊叹/g, /非常优秀/g, /恭喜您/g,
   /您真[是的有]/g, /令人羡慕/g, /太好了/g, /非常幸运/g, /绝佳/g
@@ -36,13 +39,9 @@ function checkFlattering(text) {
 
 function countSourceAnnotations(text) {
   const patterns = [
-    /来源[：:]/g,
-    /出处[：:]/g,
-    /引用/g,
-    /《[^》]+》/g,
-    /断语[：:]/g,
-    /典籍/g,
-    /参考/g
+    /\[来源[：:]/g,
+    /来源[：:]\s*iztro/g,
+    /来源[：:]\s*ziwei-doushu/g
   ];
   let count = 0;
   for (const p of patterns) {
@@ -52,31 +51,107 @@ function countSourceAnnotations(text) {
   return count;
 }
 
+function countFlyingSihua(text) {
+  const flyMatches = text.match(/飞[禄权科忌]/g);
+  return flyMatches ? flyMatches.length : 0;
+}
+
+function checkSelfInspection(text) {
+  return text.includes('自检清单') || text.includes('检查项');
+}
+
+function checkNihaiQuotes(text) {
+  return text.includes('倪师断语') || text.includes('倪海厦');
+}
+
+function checkClassicsSource(text) {
+  return text.includes('骨髓赋') || text.includes('全书') || text.includes('全集');
+}
+
+function checkGepuPattern(text) {
+  const hasMust = /必须条件/.test(text);
+  const hasBonus = /加分条件/.test(text);
+  const hasBreak = /破格条件/.test(text);
+  return hasMust && hasBonus && hasBreak;
+}
+
 const chapterKeywords = [
-  '基本信息', '十二宫', '生年四化', '宫位详析', '格局分析',
-  '大限运势', '流年运势', '健康总览', '综合人生建议', '命盘总表'
+  '基本信息', '十二宫', '生年四化', '格局', '命宫总论',
+  '大限运势', '流年', '综合建议', '附录', '四化飞化'
 ];
 
 const twelvePalaces = [
   '命宫', '兄弟宫', '夫妻宫', '子女宫', '财帛宫', '疾厄宫',
-  '迁移宫', '交友宫', '官禄宫', '田宅宫', '福德宫', '父母宫'
+  '迁移宫', '仆役宫', '官禄宫', '田宅宫', '福德宫', '父母宫'
 ];
+
+function runQualityGates(text) {
+  const gateResults = [];
+  const minLines = criteria.report_min_lines || 800;
+  const minSources = criteria.source_annotations_min || 15;
+
+  gateResults.push({
+    gate: 'gate1_structure',
+    name: (gates.gate1_structure || {}).description || '报告结构完整性',
+    checks: [
+      { pass: reportLines.length >= minLines, detail: '行数≥' + minLines + '（当前' + reportLines.length + '行）' },
+      { pass: chapterKeywords.filter(k => text.includes(k)).length >= 8, detail: '章节关键词≥8（当前' + chapterKeywords.filter(k => text.includes(k)).length + '/10）' },
+      { pass: twelvePalaces.filter(p => text.includes(p)).length >= (criteria.twelve_palaces_required || 12), detail: '十二宫≥12（当前' + twelvePalaces.filter(p => text.includes(p)).length + '/12）' },
+      { pass: checkSelfInspection(text), detail: '自检清单' + (checkSelfInspection(text) ? '已填写' : '缺失') }
+    ]
+  });
+
+  gateResults.push({
+    gate: 'gate2_accuracy',
+    name: (gates.gate2_accuracy || {}).description || '排盘数据准确性',
+    checks: [
+      { pass: ['化禄', '化权', '化科', '化忌'].every(s => text.includes(s)), detail: '生年四化4条' + (['化禄', '化权', '化科', '化忌'].every(s => text.includes(s)) ? '完整' : '不完整') },
+      { pass: countFlyingSihua(text) >= 30, detail: '宫干飞四化条目≥30（当前' + countFlyingSihua(text) + '条）' },
+      { pass: !text.includes('空宫') || text.includes('借对宫'), detail: '空宫借对宫' + (!text.includes('空宫') || text.includes('借对宫') ? '正确' : '缺失') },
+      { pass: text.includes('身宫') && text.includes('来因宫'), detail: '身宫来因宫' + (text.includes('身宫') && text.includes('来因宫') ? '已标注' : '缺失') }
+    ]
+  });
+
+  gateResults.push({
+    gate: 'gate3_sourcing',
+    name: (gates.gate3_sourcing || {}).description || '来源标注完整性',
+    checks: [
+      { pass: countSourceAnnotations(text) >= minSources, detail: '来源标注≥' + minSources + '（当前' + countSourceAnnotations(text) + '处）' },
+      { pass: checkNihaiQuotes(text), detail: '倪师断语' + (checkNihaiQuotes(text) ? '有引用' : '缺失') },
+      { pass: checkClassicsSource(text), detail: '古籍出处' + (checkClassicsSource(text) ? '有标注' : '缺失') }
+    ]
+  });
+
+  gateResults.push({
+    gate: 'gate4_objectivity',
+    name: (gates.gate4_objectivity || {}).description || '客观性检查',
+    checks: [
+      { pass: checkFlattering(text).length === 0, detail: '讨好倾向词汇' + (checkFlattering(text).length === 0 ? '无' : ': ' + checkFlattering(text).join(', ')) },
+      { pass: text.includes('化忌'), detail: '化忌' + (text.includes('化忌') ? '有描述' : '缺失') },
+      { pass: checkGepuPattern(text), detail: '格局三层结构' + (checkGepuPattern(text) ? '完整' : '缺失') }
+    ]
+  });
+
+  return gateResults;
+}
 
 function runEval(evalCase, text) {
   const results = [];
   const id = evalCase.id;
+  const minLines = criteria.report_min_lines || 800;
+  const minSources = criteria.source_annotations_min || 15;
 
-  if (reportLines.length < 300) {
-    results.push({ pass: false, detail: '报告行数不足300行（当前' + reportLines.length + '行）' });
+  if (reportLines.length < minLines) {
+    results.push({ pass: false, detail: '报告行数不足' + minLines + '行（当前' + reportLines.length + '行）' });
   } else {
-    results.push({ pass: true, detail: '报告行数≥300' });
+    results.push({ pass: true, detail: '报告行数≥' + minLines });
   }
 
   const sourceCount = countSourceAnnotations(text);
-  if (sourceCount < 10) {
-    results.push({ pass: false, detail: '来源标注不足10处（当前' + sourceCount + '处）' });
+  if (sourceCount < minSources) {
+    results.push({ pass: false, detail: '来源标注不足' + minSources + '处（当前' + sourceCount + '处）' });
   } else {
-    results.push({ pass: true, detail: '来源标注≥10处' });
+    results.push({ pass: true, detail: '来源标注≥' + minSources + '处' });
   }
 
   const flattering = checkFlattering(text);
@@ -242,6 +317,38 @@ console.log('紫微斗数 Skill 自动化评测');
 console.log('报告: ' + resolvedReportPath);
 console.log('========================================\n');
 
+console.log('========================================');
+console.log('质量门禁检查');
+console.log('========================================\n');
+
+const gateResults = runQualityGates(reportContent);
+let allGatesPass = true;
+
+for (const gate of gateResults) {
+  let gatePass = 0;
+  let gateFail = 0;
+  console.log('【' + gate.name + '】');
+  for (const c of gate.checks) {
+    if (c.pass) {
+      gatePass++;
+      console.log('  ✅ ' + c.detail);
+    } else {
+      gateFail++;
+      allGatesPass = false;
+      console.log('  ❌ ' + c.detail);
+    }
+  }
+  console.log('  → ' + (gateFail === 0 ? '✅ 通过' : '❌ 未通过') + ' (' + gatePass + '/' + (gatePass + gateFail) + ')');
+  console.log();
+}
+
+console.log('质量门禁总结果: ' + (allGatesPass ? '✅ 全部通过' : '❌ 存在未通过项'));
+console.log();
+
+console.log('========================================');
+console.log('评测用例检查');
+console.log('========================================\n');
+
 let totalChecks = 0;
 let totalPass = 0;
 let totalFail = 0;
@@ -268,17 +375,28 @@ for (const evalCase of evals) {
     }
   }
 
-  const evalStatus = evalFail === 0 ? '✅ PASS' : '❌ FAIL';
+  const evalScore = evalPass / (evalPass + evalFail);
+  const minScore = evalCase.min_pass_score || 0.8;
+  const evalStatus = evalFail === 0 ? '✅ PASS' : (evalScore >= minScore ? '⚠️ PARTIAL' : '❌ FAIL');
   console.log();
-  console.log('  结果: ' + evalStatus + ' (' + evalPass + '/' + (evalPass + evalFail) + ')');
+  console.log('  结果: ' + evalStatus + ' (' + evalPass + '/' + (evalPass + evalFail) + ', 得分' + (evalScore * 100).toFixed(0) + '%, 门槛' + (minScore * 100).toFixed(0) + '%)');
   console.log();
 }
 
 console.log('========================================');
 console.log('汇总');
 console.log('========================================');
-console.log('总检查项: ' + totalChecks);
+console.log('质量门禁: ' + (allGatesPass ? '✅ 通过' : '❌ 未通过'));
+console.log('评测用例总检查项: ' + totalChecks);
 console.log('通过: ' + totalPass);
 console.log('失败: ' + totalFail);
 console.log('通过率: ' + (totalChecks > 0 ? ((totalPass / totalChecks) * 100).toFixed(1) : 0) + '%');
 console.log();
+
+if (!allGatesPass || totalFail > 0) {
+  console.log('⚠️ 评测未全部通过，请修正后重新运行。');
+  process.exit(1);
+} else {
+  console.log('✅ 全部评测通过！');
+  process.exit(0);
+}
