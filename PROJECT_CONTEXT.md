@@ -88,7 +88,7 @@ ziwei-astrology-skills/
 │   ├── iztro/                         # iztro 排盘引擎源码（~7300行）
 │   └── ziwei-doushu/                  # 倪海厦知识库源码（~12900行）
 ├── ziwei-output/                     # 排盘输出目录（与skills同级）
-│   └── {日期}_{出生信息}/
+│   └── {日期时分}_{出生信息}/
 └── skills/
     └── ziwei-astrology/
         ├── SKILL.md                   # 核心指令文件（含来源标注+知识准备+网页搜索策略+降级方案）
@@ -241,7 +241,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] 亮度映射修正（得→平，非庙旺）
 - [x] 紫府同宫格修正（限申宫）
 - [x] 快捷指令体系（\money \health \love \career \year \dash \flow \month \question \switch \help）
-- [x] 输出文件夹规范（ziwei-output/{日期}_{出生信息}/分类存放，含大限/流年/流月子目录）
+- [x] 输出文件夹规范（ziwei-output/{日期时分}_{出生信息}/分类存放，含大限/流年/流月子目录，时间戳精确到分钟避免覆盖）
 - [x] 完成后提示语模板（含文件位置和快捷指令说明）
 - [x] 大限/流年/流月选择指引（\dash \flow \month，从出生到终老完整列表）
 - [x] 专项解读模板（财运/健康/感情/事业/大限/流年/流月，含HTML双格式输出）

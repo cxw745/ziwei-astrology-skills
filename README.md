@@ -118,7 +118,7 @@ ziwei-astrology-skills/
 │   ├── iztro/                       # iztro 排盘引擎源码
 │   └── ziwei-doushu/                # 倪海厦知识库源码
 ├── ziwei-output/                    # 排盘输出目录（与skills同级）
-│   └── {日期}_{出生信息}/
+│   └── {日期时分}_{出生信息}/
 └── skills/
     └── ziwei-astrology/
         ├── SKILL.md                  # 核心指令文件
