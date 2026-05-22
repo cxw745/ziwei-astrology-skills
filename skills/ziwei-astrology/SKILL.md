@@ -224,6 +224,13 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 6. 身宫叠加正确
 7. 来因宫正确
 8. 无讨好倾向
+9. **HTML完整性验证**：MD写入磁盘后，运行 `node scripts/md2html.js <input.md> [output.html]` 生成HTML，然后运行 `node scripts/validate-html.js <output_dir>` 验证HTML与MD内容对应完整，重点检查：
+   - 十一章节全部存在于HTML中（一~十一）
+   - 十二宫分论6.1~6.12全部存在于HTML中
+   - HTML H2/H3数量与MD一致（差异≤2为正常）
+   - HTML包含闭合标签`</body></html>`
+   - MD中的自检清单、页脚声明在HTML中也存在
+   - 若验证失败，重新运行md2html.js生成HTML
 
 ## 参考文件索引
 
@@ -246,6 +253,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `references/nihai-medicine.md` | 倪师人纪地纪健康断语（疾厄宫联动） | ~400 |
 | `references/fallback-guide.md` | Skill独立使用降级策略 | ~60 |
 | `scripts/md2html.js` | MD转HTML脚本 | ~3420 |
+| `scripts/validate-html.js` | HTML完整性验证脚本 | ~180 |
 | `examples/` | 示例命盘 | - |
 | `sources/iztro/` | iztro排盘引擎源码（事实索引） | ~7300行 |
 | `sources/ziwei-doushu/` | 倪海厦知识库源码（事实索引） | ~12900行 |
@@ -314,3 +322,4 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - **省略命宫总论**：命宫必须独立成章，包含6个子节
 - **来源标注缺失**：每条事实性内容必须标注 `[来源: 仓库名/文件路径]`，无法追溯的标注"AI推断"
 - **虚构来源**：标注的来源文件必须在 sources/ 中实际存在，不可编造文件路径
+- **HTML截断**：MD写入后必须等文件完全落盘再运行md2html.js转换，否则HTML可能不完整；转换后必须运行validate-html.js验证
