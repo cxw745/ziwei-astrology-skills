@@ -338,13 +338,13 @@ node scripts/astro.js "YYYY-M-D" hourIndex gender [outputDir]
 - gender："男" 或 "女"
 - outputDir：可选，指定时排盘结果保存为 `chart-data.json`
 
-**排盘结果持久化（必须执行）**：排盘成功后，**必须**将 chart-data.json 保存到输出目录 `ziwei-output/{日期}_{出生信息}/chart-data.json`。这是后续所有快捷指令的数据基础，缺失此文件将导致快捷指令无法复用排盘数据。
+**排盘结果持久化（必须执行）**：排盘成功后，**必须**将 chart-data.json 保存到输出目录 `ziwei-output/{日期_HHmm}_{出生信息}/chart-data.json`。这是后续所有快捷指令的数据基础，缺失此文件将导致快捷指令无法复用排盘数据。
 
 ```bash
-node scripts/astro.js "2002-4-5" 7 男 ziwei-output/2026-05-22_2002年04月05日午时男
+node scripts/astro.js "2002-4-5" 7 男 ziwei-output/2026-05-22_1430_2002年04月05日午时男
 ```
 
-快捷指令（\money \health \love \career \dash \flow \month）**必须**读取 `ziwei-output/{日期}_{出生信息}/chart-data.json` 复用排盘数据，禁止重新排盘。若 chart-data.json 不存在，需提示用户重新排盘。
+快捷指令（\money \health \love \career \dash \flow \month）**必须**读取 `ziwei-output/{日期_HHmm}_{出生信息}/chart-data.json` 复用排盘数据，禁止重新排盘。若 chart-data.json 不存在，需提示用户重新排盘。
 
 降级方案：若 astro.js 执行失败，回退到 iztro 直接调用：
 ```typescript
