@@ -82,19 +82,32 @@ ziwei-astrology-skills/
 ├── README.md
 ├── LICENSE                            # MIT License
 ├── PROJECT_CONTEXT.md                 # 本文档
+├── package.json                       # 项目依赖与脚本命令
+├── scripts/
+│   ├── sync-skills.sh                 # 同步skills到.trae目录
+│   └── update-sources.sh             # 更新源仓库到最新版本
 ├── evals/
 │   └── evals.json                     # 开发者评测用例（非Skill运行时部分）
 ├── sources/                           # 源仓库本地副本（事实索引数据库）
 │   ├── iztro/                         # iztro 排盘引擎源码（~7300行）
-│   └── ziwei-doushu/                  # 倪海厦知识库源码（~12900行）
+│   ├── ziwei-doushu/                  # 倪海厦知识库源码（~12900行）
+│   └── versions.json                  # 源仓库版本追踪
 ├── ziwei-output/                     # 排盘输出目录（与skills同级）
 │   └── {日期时分}_{出生信息}/
+│       ├── chart-data.json            # 排盘结果持久化
+│       ├── 命盘详析.md / .html
+│       └── {专项解读}.md / .html
 └── skills/
     └── ziwei-astrology/
         ├── SKILL.md                   # 核心指令文件（含来源标注+知识准备+网页搜索策略+降级方案）
         ├── scripts/
+        │   ├── astro.js              # 排盘脚本（封装iztro bySolar）
         │   ├── md2html.js             # MD转HTML脚本（主入口）
-        │   ├── validate-report.js     # 报告结构验证脚本
+        │   ├── validate-report.js     # 报告结构验证脚本（24项检查）
+        │   ├── validate-html.js       # HTML完整性验证脚本
+        │   ├── verify-astro.js        # 排盘准确性校验脚本
+        │   ├── lint-md.js             # MD格式规范检查脚本（10项检查）
+        │   ├── run-evals.js           # 自动化评测脚本
         │   └── lib/                   # md2html模块化拆分
         │       ├── parser.js          # Markdown解析逻辑
         │       ├── chart.js           # 排盘图渲染逻辑
@@ -103,7 +116,8 @@ ziwei-astrology-skills/
         ├── examples/
         │   ├── 命盘详析_1999年9月9日巳时男.md
         │   └── 命盘详析_1999年9月9日巳时男.html
-        └── references/                # 渐进式披露参考文档（14个）
+        └── references/                # 渐进式披露参考文档（15个+索引+缓存）
+            ├── index.json             # 结构化索引（星曜/宫位/格局/四化/古籍）
             ├── time-mapping.md
             ├── star-rules.md
             ├── sihua-rules.md
@@ -114,10 +128,11 @@ ziwei-astrology-skills/
             ├── classics-excerpts.md   # 古典完整原文（骨髓赋/全集/全书）
             ├── star-palace-matrix.md  # 14主星×12宫深度断语（含庙旺/四化/煞星三维）
             ├── nihai-medicine.md      # 倪师人纪地纪健康断语（疾厄宫联动）
-            ├── fallback-guide.md      # Skill独立使用降级策略
-            ├── report-template.md     # 含16项自检清单+分级制
+            ├── fallback-guide.md      # Skill独立使用精简模式指南
+            ├── report-template.md     # 含24项自检清单+分级制
             ├── shortcuts.md
-            └── source-repos.md        # 源仓库本地文件索引+引用标注格式
+            ├── source-repos.md        # 源仓库本地文件索引+引用标注格式
+            └── web-cache/             # 网页搜索缓存目录
 ```
 
 ---
@@ -279,6 +294,23 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] 手机端HTML目录不可见问题修复
 - [x] md2html.js 帮助面板新增 `\match` 指令
 - [x] 完成后提示语模板更新（含 `\match`）
+
+### v2.3.0 新增（验证闭环优化）
+
+- [x] 排盘脚本封装 scripts/astro.js（封装iztro bySolar，命令行输出JSON+持久化）
+- [x] 排盘结果持久化 chart-data.json（快捷指令复用排盘数据，无需重新排盘）
+- [x] 结构化索引 references/index.json（14主星×12宫×46格局×十天干四化完整索引）
+- [x] 排盘准确性校验 scripts/verify-astro.js（7项数据级校验：星曜/四化/空宫/身宫/来因宫/五行局/命宫）
+- [x] 增强 validate-report.js（16项→24项检查：子节完整性/飞四化48条/来源标注密度/倪师断语/行数/讨好倾向扩展/附录）
+- [x] MD格式规范检查 scripts/lint-md.js（10项检查：标题层级/表格/章节/空行/列表/引用/HTML残留/四化标记/来源标注/多余空行）
+- [x] 自动化评测 scripts/run-evals.js（6个eval用例自动检查）
+- [x] 网页搜索缓存机制 references/web-cache/（避免重复搜索）
+- [x] 知识库版本追踪 sources/versions.json + scripts/update-sources.sh
+- [x] Skill独立使用优化：降级模式→精简模式（排盘不受影响，验证脚本可用）
+- [x] 同步脚本 scripts/sync-skills.sh（.trae目录版本同步）
+- [x] package.json脚本命令（astro/md2html/validate/lint/eval/sync/update）
+- [x] SKILL.md更新：排盘持久化、12步核查流程、搜索缓存、参考文件索引扩充
+- [x] PROJECT_CONTEXT.md文件结构更新
 
 ---
 

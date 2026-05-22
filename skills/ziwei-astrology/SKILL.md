@@ -154,6 +154,12 @@ node scripts/md2html.js <input.md> [output.html]
 - 格局判断规则（以仓库为准）
 - 亮度数据（以仓库为准）
 
+**搜索缓存机制**：
+- 搜索结果保存到 `references/web-cache/{主题关键词}.md`，格式：`# {关键词}\n\n> 搜索时间: {日期}\n> 来源: {URL}\n\n{内容}`
+- 后续相同主题搜索时先检查缓存，避免重复搜索
+- 缓存内容与仓库冲突时仍以仓库为准
+- 缓存内容标注 `[来源: 网络搜索-缓存]`
+
 ### 排盘失败降级方案
 
 若 iztro 代码执行失败：
@@ -185,6 +191,25 @@ node scripts/md2html.js <input.md> [output.html]
 
 ### Step 2：执行排盘
 
+```bash
+node scripts/astro.js "YYYY-M-D" hourIndex gender [outputDir]
+```
+
+- hourIndex：0=早子时, 1=丑时, ..., 11=亥时, 12=晚子时
+- gender："男" 或 "女"
+- outputDir：可选，指定时排盘结果保存为 `chart-data.json`
+
+**排盘结果持久化**：排盘成功后，必须将 chart-data.json 保存到输出目录 `ziwei-output/{日期}_{出生信息}/chart-data.json`。后续快捷指令（\money \health \love \career \dash \flow \month）直接读取该文件复用排盘数据，无需重新排盘。
+
+```bash
+# 排盘并保存结果
+node scripts/astro.js "2002-4-5" 7 男 ziwei-output/2026-05-22_2002年04月05日午时男
+
+# 快捷指令复用排盘数据
+# 读取 ziwei-output/{日期}_{出生信息}/chart-data.json 即可
+```
+
+降级方案：若 astro.js 执行失败，回退到 iztro 直接调用：
 ```typescript
 import { astro } from 'iztro';
 const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
@@ -226,13 +251,16 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 6. 身宫叠加正确
 7. 来因宫正确
 8. 无讨好倾向
-9. **HTML完整性验证**：MD写入磁盘后，运行 `node scripts/md2html.js <input.md> [output.html]` 生成HTML，然后运行 `node scripts/validate-html.js <output_dir>` 验证HTML与MD内容对应完整，重点检查：
-   - 十一章节全部存在于HTML中（一~十一）
-   - 十二宫分论6.1~6.12全部存在于HTML中
-   - HTML H2/H3数量与MD一致（差异≤2为正常）
-   - HTML包含闭合标签`</body></html>`
-   - MD中的自检清单、页脚声明在HTML中也存在
-   - 若验证失败，重新运行md2html.js生成HTML
+9. **排盘准确性校验**：运行 `node scripts/verify-astro.js <chart-data.json> <report.md>` 对比排盘数据与报告内容，确保星曜位置、四化、空宫、身宫、来因宫、五行局、命宫位置均一致
+10. **报告结构验证**：运行 `node scripts/validate-report.js <report.md>` 检查24项结构完整性
+11. **MD格式规范检查**：运行 `node scripts/lint-md.js <report.md>` 检查10项格式规范
+12. **HTML完整性验证**：MD写入磁盘后，运行 `node scripts/md2html.js <input.md> [output.html]` 生成HTML，然后运行 `node scripts/validate-html.js <output_dir>` 验证HTML与MD内容对应完整，重点检查：
+    - 十一章节全部存在于HTML中（一~十一）
+    - 十二宫分论6.1~6.12全部存在于HTML中
+    - HTML H2/H3数量与MD一致（差异≤2为正常）
+    - HTML包含闭合标签`</body></html>`
+    - MD中的自检清单、页脚声明在HTML中也存在
+    - 若验证失败，重新运行md2html.js生成HTML
 
 ## 参考文件索引
 
@@ -254,8 +282,15 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `references/source-repos.md` | 源仓库本地文件索引+引用标注格式 | ~168 |
 | `references/nihai-medicine.md` | 倪师人纪地纪健康断语（疾厄宫联动） | ~400 |
 | `references/fallback-guide.md` | Skill独立使用降级策略 | ~60 |
+| `references/index.json` | 结构化索引（星曜/宫位/格局/四化/古籍） | ~500 |
+| `references/web-cache/` | 网页搜索缓存目录 | - |
+| `scripts/astro.js` | 排盘脚本（封装iztro bySolar） | ~200 |
 | `scripts/md2html.js` | MD转HTML脚本 | ~3420 |
 | `scripts/validate-html.js` | HTML完整性验证脚本 | ~180 |
+| `scripts/validate-report.js` | 报告结构验证脚本（24项检查） | ~150 |
+| `scripts/verify-astro.js` | 排盘准确性校验脚本 | ~200 |
+| `scripts/lint-md.js` | MD格式规范检查脚本（10项检查） | ~150 |
+| `scripts/run-evals.js` | 自动化评测脚本 | ~200 |
 | `examples/` | 示例命盘 | - |
 | `sources/iztro/` | iztro排盘引擎源码（事实索引） | ~7300行 |
 | `sources/ziwei-doushu/` | 倪海厦知识库源码（事实索引） | ~12900行 |

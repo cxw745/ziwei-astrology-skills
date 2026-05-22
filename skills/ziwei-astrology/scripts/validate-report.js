@@ -57,6 +57,59 @@ function validateReport(mdFilePath) {
 
   check(16, '附录存在', content.includes('## 十一、附录'));
 
+  const zhuxingSubCount = (content.match(/##### 主星/g) || []).length;
+  const zongpingSubCount = (content.match(/##### 总评/g) || []).length;
+  check(17, '每宫子节完整性（主星子节' + zhuxingSubCount + '个/总评子节' + zongpingSubCount + '个）', zhuxingSubCount >= 12 && zongpingSubCount >= 10);
+
+  const feihuaTableRows = (content.match(/^\| (命宫|兄弟|夫妻|子女|财帛|疾厄|迁移|仆役|交友|官禄|田宅|福德|父母) \|/gm) || []).length;
+  let feihuaComplete = feihuaTableRows >= 12;
+  if (feihuaComplete) {
+    const feihuaLines = content.split('\n').filter(function(line) {
+      return /^\| (命宫|兄弟|夫妻|子女|财帛|疾厄|迁移|仆役|交友|官禄|田宅|福德|父母) \|/.test(line);
+    });
+    for (var i = 0; i < feihuaLines.length; i++) {
+      var huaCount = (feihuaLines[i].match(/化[禄权科忌]/g) || []).length;
+      if (huaCount < 4) {
+        feihuaComplete = false;
+        break;
+      }
+    }
+  }
+  check(18, '飞四化48条完整性（' + feihuaTableRows + '行×4化）', feihuaComplete);
+
+  const sourceRefDense = (content.match(/\[来源:/g) || []).length;
+  check(19, '来源标注密度（找到' + sourceRefDense + '处，需≥30）', sourceRefDense >= 30);
+
+  const niRef = (content.match(/倪师|倪海厦/g) || []).length;
+  check(20, '倪师断语引用（找到' + niRef + '处，需≥5）', niRef >= 5);
+
+  const totalLines = content.split('\n').length;
+  check(21, '报告总行数（' + totalLines + '行，需≥500）', totalLines >= 500);
+
+  const flatteringPatterns = ['不必担心', '一定能够', '越来越好', '只要努力', '放心', '肯定会好'];
+  var flatteringFound = [];
+  for (var p = 0; p < flatteringPatterns.length; p++) {
+    if (content.includes(flatteringPatterns[p])) {
+      flatteringFound.push(flatteringPatterns[p]);
+    }
+  }
+  check(22, '无讨好倾向扩展检查' + (flatteringFound.length > 0 ? '（发现：' + flatteringFound.join('、') + '）' : ''), flatteringFound.length === 0);
+
+  const appendixStart = content.indexOf('## 十一、附录');
+  var hasTermGlossary = false;
+  if (appendixStart !== -1) {
+    var appendixContent = content.substring(appendixStart);
+    hasTermGlossary = /术语|名词|解释|释义|词汇/.test(appendixContent);
+  }
+  check(23, '附录术语解释', hasTermGlossary);
+
+  var hasBrightnessTable = false;
+  if (appendixStart !== -1) {
+    var appendixContent2 = content.substring(appendixStart);
+    hasBrightnessTable = /亮度|庙旺|得地|利|平|不|陷/.test(appendixContent2) && appendixContent2.includes('|');
+  }
+  check(24, '附录亮度对照', hasBrightnessTable);
+
   console.log('\n📋 报告结构验证结果：' + path.basename(mdFilePath));
   console.log('═'.repeat(60));
 
