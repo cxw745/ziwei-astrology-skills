@@ -11,6 +11,9 @@
 - **继续提问** — 首次输出完整报告后，可基于已排命盘深入追问
 - **三模式解读** — iztro标准 / 倪海厦天纪 / 综合模式（默认），冲突以倪师为准
 - **双层输出** — 专业解读（术语严谨）+ 通俗解析（轻松易懂）
+- **验前事校验** — 排盘后推导可证伪断语，校准命盘可信度（灵感来源：vedic-astro-skills）
+- **盲审原则** — 分析阶段只看排盘数据，禁止反向推导和确认偏误（灵感来源：vedic-astro-skills）
+- **大限硬约束** — 可计算判定条件+禁止美化凶象+格局激活验证（灵感来源：vedic-astro-skills）
 - **交互式HTML** — 排盘图可视化、明暗主题、体系切换、三方四正连线
 - **快捷指令** — `\money` `\health` `\love` `\career` `\year` `\dash` `\flow` `\month` `\question` `\switch` `\help`
 
@@ -143,6 +146,10 @@ ziwei-astrology-skills/
             ├── nihai-quotes.md
             ├── nihai-medicine.md      # 倪师健康断语
             ├── fallback-guide.md     # 独立使用降级策略
+            ├── validation-protocol.md # 验前事校验协议
+            ├── period-constraints.md  # 大限/流年硬约束规则
+            ├── star-constraints.md    # 星曜联合判定约束
+            ├── qa-rules.md           # Q&A正反双审规则
             ├── classics-excerpts.md
             ├── star-palace-matrix.md
             ├── report-template.md
@@ -241,3 +248,4 @@ MIT License
 - [iztro](https://github.com/SylarLong/iztro) — 紫微斗数排盘引擎
 - [ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu) — 倪海厦《天纪》体系知识库
 - 倪海厦老师 — 《天纪》紫微斗数讲义
+- [vedic-astro-skills](https://github.com/CNWU16/vedic-astro-skills) — 验前事校验、盲审原则、大限硬约束、星曜联合判定、Q&A双审等分析严谨性机制的灵感来源

@@ -2,6 +2,41 @@
 
 本文件记录项目的所有重要变更。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)。
 
+## [2.4.1] - 2026-05-22
+
+### Added
+
+- **强制数据回调机制**（SKILL.md）：每个Step开始前必须重新读取chart-data.json，不凭对话记忆分析。灵感来源：vedic-astro-skills 的阶段间强制数据回调
+- **语言风格量化配比**（SKILL.md核心原则）：70%通俗解读+20%数据表格+10%技术注释，解读在前数据在后。灵感来源：vedic-astro-skills 的语言风格规则
+- **禁止词清单**（SKILL.md核心原则）：禁止"该星曜""此配置""上述参数""综上所述""值得注意的是"等论文腔。灵感来源：vedic-astro-skills 的术语使用规则
+- **验前事复盘机制**（validation-protocol.md）：完整报告生成后自动回溯解释验前事未命中的原因，保持盲审完整性。灵感来源：vedic-astro-skills 的验前事复盘
+- **反敌意用户防御**（validation-protocol.md）：验前事阶段用户表达强烈不满时的应对话术和硬规则。灵感来源：vedic-astro-skills 的反轴用户防御
+- **核心关切只影响排版不影响内容**（SKILL.md）：用户关心事业→事业部分先写详细，但不能因此把所有星曜都解读成支持事业。灵感来源：vedic-astro-skills career skill
+- **快捷指令继承盲审+双审**（SKILL.md）：所有快捷指令均继承盲审原则和Q&A正反双审规则
+
+### Changed
+
+- SKILL.md 核心原则从8条增至10条（新增语言风格配比+禁止词清单）
+
+## [2.4.0] - 2026-05-22
+
+### Added
+
+- **验前事校验机制**（`references/validation-protocol.md`）：排盘后、报告前，从排盘数据推导3-5条可证伪的事实性预测，用户逐条确认后校准命盘可信度。灵感来源：vedic-astro-skills 的 past-validation 机制
+- **大限/流年硬约束规则**（`references/period-constraints.md`）：正面/负面判定条件（可计算）、流年叠加规则（6种组合）、5条禁止推导错误（打击美化/鸡汤/确认偏误/灵性包装/讨好）、格局激活验证（承诺×时机×品质三层验证+兑现率估算）。灵感来源：vedic-astro-skills 的 Dasha hard-constraint rules
+- **星曜联合判定约束**（`references/star-constraints.md`）：信号分诊（A/B/C级分析深度）、冲突仲裁4规则（带毒高价值/表面风光底子虚/有贵人但自己弱/信号混合）、禁止折衷表述清单（7条）。灵感来源：vedic-astro-skills 的 PAC 联合判定机制
+- **Q&A正反双审规则**（`references/qa-rules.md`）：判断性问题必须同时列出支持和制约数据、数据源优先级（报告→排盘→references→修正日志）、禁止卖乐观/卖悲观。灵感来源：vedic-astro-skills 的 dual-review Q&A
+- **盲审原则8条**（SKILL.md核心原则新增）：禁止反向推导、禁止经历=天赋、禁止情绪定调、大限回顾必须双向、不同用户同样数据→同样结论、验前事信息不影响分析、反锚定自检、信号修正日志。灵感来源：vedic-astro-skills 的 blind-audit 机制
+- **Step 2.5 验前事校验**（SKILL.md工作流新增）：排盘后、格局识别前的可信度守门员步骤
+- **数据隔离声明**（SKILL.md工作流新增）：分析阶段只看排盘数据，Q&A阶段有限开放+正反双审
+- SKILL.md 常见陷阱新增6条：反向推导、信号冲突取平均、大限凶象美化、验前事辩解、Q&A只列单边、格局未验证激活
+
+### Changed
+
+- SKILL.md 核心原则从7条增至8条（新增盲审原则）
+- SKILL.md 参考文件索引从14个references增至18个
+- SKILL.md 解读阶段陷阱范围从 Step 3-4 扩展为 Step 2.5-4
+
 ## [2.2.1] - 2026-05-22
 
 ### Changed

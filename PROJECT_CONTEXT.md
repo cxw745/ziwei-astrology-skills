@@ -25,6 +25,11 @@
 | 输出风格 | 双层：专业解读+通俗解析 | 覆盖零基础到专业用户 |
 | 功能模块 | 4个：单人排盘/合盘/流年/择日 | 用户需求全覆盖 |
 | Skill规范 | 遵循 Anthropic skill-creator 方法论 | SKILL.md<500行，渐进式披露references |
+| 盲审原则 | 8条，分析阶段只看排盘数据 | 灵感来源：vedic-astro-skills blind-audit，对抗确认偏误和圆场本能 |
+| 验前事校验 | Step 2.5，排盘后报告前的可信度守门员 | 灵感来源：vedic-astro-skills past-validation |
+| 大限硬约束 | 可计算判定条件+5条禁止推导错误 | 灵感来源：vedic-astro-skills Dasha hard-constraint |
+| 星曜联合判定 | 信号分诊+冲突仲裁4规则 | 灵感来源：vedic-astro-skills PAC联合判定 |
+| Q&A双审 | 判断性问题正反双审 | 灵感来源：vedic-astro-skills dual-review Q&A |
 
 ---
 
@@ -116,7 +121,7 @@ ziwei-astrology-skills/
         ├── examples/
         │   ├── 命盘详析_1999年9月9日巳时男.md
         │   └── 命盘详析_1999年9月9日巳时男.html
-        └── references/                # 渐进式披露参考文档（15个+索引+缓存）
+        └── references/                # 渐进式披露参考文档（18个+索引+缓存）
             ├── index.json             # 结构化索引（星曜/宫位/格局/四化/古籍）
             ├── time-mapping.md
             ├── star-rules.md
@@ -129,6 +134,10 @@ ziwei-astrology-skills/
             ├── star-palace-matrix.md  # 14主星×12宫深度断语（含庙旺/四化/煞星三维）
             ├── nihai-medicine.md      # 倪师人纪地纪健康断语（疾厄宫联动）
             ├── fallback-guide.md      # Skill独立使用精简模式指南
+            ├── validation-protocol.md # 验前事校验协议（灵感来源：vedic-astro-skills）
+            ├── period-constraints.md  # 大限/流年硬约束规则（灵感来源：vedic-astro-skills）
+            ├── star-constraints.md    # 星曜联合判定约束（灵感来源：vedic-astro-skills）
+            ├── qa-rules.md            # Q&A正反双审规则（灵感来源：vedic-astro-skills）
             ├── report-template.md     # 含24项自检清单+分级制
             ├── shortcuts.md
             ├── source-repos.md        # 源仓库本地文件索引+引用标注格式
@@ -146,9 +155,9 @@ ziwei-astrology-skills/
 3. **星耀处理规范**：空宫处理规范（借星规则、minorStars归属）
 4. **输出风格**：三模式（iztro/倪师/综合）+双层（专业+通俗），含完整示例
 5. **功能模块**：4个模块+排盘可视化，每个含输入示例
-6. **工作流**：Step 0（知识准备+按需回源验证）→ Step 1（收集输入）→ Step 2（排盘）→ Step 3（格局识别）→ Step 4（生成报告MD+HTML）→ Step 5（继续提问）→ Step 6（全面核查+自检清单）
-7. **参考索引**：14个references按需加载+2个脚本工具
-8. **常见陷阱**：19条+正反对比示例，含内容丰富度分级制要求（重点宫7子节/普通宫5子节/轻量宫3子节、宫干飞四化48条、内容以示例为标准）
+6. **工作流**：Step 0（知识准备+按需回源验证）→ Step 1（收集输入）→ Step 2（排盘）→ Step 2.5（验前事校验）→ Step 3（格局识别）→ Step 4（生成报告MD+HTML）→ Step 5（继续提问，正反双审）→ Step 6（全面核查+自检清单）
+7. **参考索引**：18个references按需加载+2个脚本工具
+8. **常见陷阱**：25条+正反对比示例，含内容丰富度分级制要求（重点宫7子节/普通宫5子节/轻量宫3子节、宫干飞四化48条、内容以示例为标准）
 9. **知识补充**：网页搜索策略（仓库优先、冲突以仓库为准）、排盘失败降级方案、来源标注决策树
 
 ---
@@ -311,6 +320,18 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] package.json脚本命令（astro/md2html/validate/lint/eval/sync/update）
 - [x] SKILL.md更新：排盘持久化、12步核查流程、搜索缓存、参考文件索引扩充
 - [x] PROJECT_CONTEXT.md文件结构更新
+
+### v2.4.0 新增（分析严谨性优化 — 灵感来源：vedic-astro-skills）
+
+- [x] 验前事校验机制 references/validation-protocol.md（排盘后报告前的可信度守门员）
+- [x] 大限/流年硬约束规则 references/period-constraints.md（可计算判定+5条禁止推导错误+格局激活验证）
+- [x] 星曜联合判定约束 references/star-constraints.md（信号分诊+冲突仲裁4规则+禁止折衷表述）
+- [x] Q&A正反双审规则 references/qa-rules.md（判断性问题双审+数据源优先级）
+- [x] 盲审原则8条（SKILL.md核心原则新增，对抗确认偏误和圆场本能）
+- [x] Step 2.5 验前事校验（SKILL.md工作流新增）
+- [x] 数据隔离声明（SKILL.md工作流新增，分析阶段只看排盘数据）
+- [x] 常见陷阱新增6条（反向推导/信号冲突取平均/大限凶象美化/验前事辩解/Q&A只列单边/格局未验证激活）
+- [x] CHANGELOG.md / PROJECT_CONTEXT.md / README.md 同步更新
 
 ---
 
