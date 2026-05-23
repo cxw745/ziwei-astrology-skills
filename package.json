@@ -1,0 +1,38 @@
+{
+  "name": "ziwei-astrology-skills",
+  "version": "2.5.0",
+  "description": "紫微斗数排盘与命盘详析 AI Skill —— 融合 [iztro](https://github.com/SylarLong/iztro) 排盘引擎与 [ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu) 倪海厦《天纪》知识库，支持三模式解读切换和快捷指令。",
+  "main": "index.js",
+  "scripts": {
+    "astro": "node skills/ziwei-astrology/scripts/astro.js",
+    "md2html": "node skills/ziwei-astrology/scripts/md2html.js",
+    "validate:report": "node skills/ziwei-astrology/scripts/validate-report.js",
+    "validate:html": "node skills/ziwei-astrology/scripts/validate-html.js",
+    "validate:astro": "node skills/ziwei-astrology/scripts/verify-astro.js",
+    "validate:fix": "node skills/ziwei-astrology/scripts/validate-and-fix.js",
+    "validate:section": "node skills/ziwei-astrology/scripts/section-validator.js",
+    "generate:section": "node skills/ziwei-astrology/scripts/generate-section.js",
+    "lint:md": "node skills/ziwei-astrology/scripts/lint-md.js",
+    "preview": "node skills/ziwei-astrology/scripts/preview.js",
+    "eval": "node skills/ziwei-astrology/scripts/run-evals.js",
+    "sync": "bash scripts/sync-skills.sh",
+    "update:sources": "bash scripts/update-sources.sh",
+    "test": "node skills/ziwei-astrology/scripts/validate-report.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cxw745/ziwei-astrology-skills.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/cxw745/ziwei-astrology-skills/issues"
+  },
+  "homepage": "https://github.com/cxw745/ziwei-astrology-skills#readme",
+  "dependencies": {
+    "iztro": "^2.5.8",
+    "marked": "^18.0.4"
+  }
+}
