@@ -1,0 +1,3465 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-system="combined">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>感情详解</title>
+<style>
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f7f5;
+  --bg-sidebar: #f7f7f5;
+  --bg-card: #ffffff;
+  --bg-hover: rgba(55,53,47,0.08);
+  --bg-hover-strong: rgba(55,53,47,0.12);
+  --bg-code: #f7f7f5;
+  --bg-table-header: #f0f0ee;
+  --bg-table-stripe: rgba(55,53,47,0.024);
+  --bg-blockquote: rgba(35,131,226,0.04);
+  --bg-overlay: rgba(15,15,15,0.6);
+  --text-primary: #37352f;
+  --text-secondary: #787774;
+  --text-muted: #b4b4b0;
+  --text-link: #2383e2;
+  --text-link-hover: #1b6ec2;
+  --border-color: #e3e3e0;
+  --border-light: #ededec;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --shadow-xl: 0 12px 40px rgba(0,0,0,0.16);
+  --accent: #2383e2;
+  --accent-light: rgba(35,131,226,0.08);
+  --accent-medium: rgba(35,131,226,0.14);
+  --danger: #eb5757;
+  --danger-light: rgba(235,87,87,0.08);
+  --success: #4dab5c;
+  --success-light: rgba(77,171,92,0.08);
+  --warning: #e8912d;
+  --warning-light: rgba(232,145,45,0.08);
+  --info: #3b82f6;
+  --info-light: rgba(59,130,246,0.08);
+  --radius: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+  --sidebar-width: 280px;
+  --content-max-width: 860px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", "SF Mono", Menlo, monospace;
+  --chart-lu: #4dab5c;
+  --chart-quan: #e8912d;
+  --chart-ke: #3b82f6;
+  --chart-ji: #eb5757;
+  --chart-miao-bg: rgba(77,171,92,0.1);
+  --chart-ping-bg: rgba(232,145,45,0.1);
+  --chart-xian-bg: rgba(235,87,87,0.1);
+  --chart-ming-bg: rgba(255,193,7,0.08);
+  --chart-body-border: rgba(255,152,0,0.5);
+  --chart-laiyin-border: rgba(59,130,246,0.5);
+  --chart-empty-border: #c0c0bc;
+  --progress-bg: #ededec;
+  --progress-fill: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  --gold: #d4a017;
+  --gold-light: rgba(212,160,23,0.1);
+  --gold-medium: rgba(212,160,23,0.2);
+  --purple: #7c3aed;
+  --purple-light: rgba(124,58,237,0.08);
+  --purple-medium: rgba(124,58,237,0.14);
+  --system-iztro: #2563eb;
+  --system-nishi: #d4a017;
+  --system-combined: #7c3aed;
+  --ni-miao-color: #d4a017;
+  --ni-ping-color: #787774;
+  --ni-xian-color: #b91c1c;
+  --ni-miao-bg: rgba(212,160,23,0.12);
+  --ni-ping-bg: rgba(120,119,116,0.08);
+  --ni-xian-bg: rgba(185,28,28,0.1);
+  --chart-sanfang-line: rgba(37,99,235,0.55);
+  --chart-selected-bg: rgba(37,99,235,0.08);
+  --chart-selected-border: rgba(37,99,235,0.6);
+  --chart-dalimit-border: rgba(124,58,237,0.6);
+  --chart-dalimit-bg: rgba(124,58,237,0.06);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #191919;
+  --bg-secondary: #202020;
+  --bg-sidebar: #202020;
+  --bg-card: #252525;
+  --bg-hover: rgba(255,255,255,0.055);
+  --bg-hover-strong: rgba(255,255,255,0.09);
+  --bg-code: #2a2a2a;
+  --bg-table-header: #2a2a2a;
+  --bg-table-stripe: rgba(255,255,255,0.02);
+  --bg-blockquote: rgba(82,156,202,0.08);
+  --bg-overlay: rgba(0,0,0,0.7);
+  --text-primary: #ecece8;
+  --text-secondary: #b0b0ac;
+  --text-muted: #8a8a86;
+  --text-link: #529cca;
+  --text-link-hover: #6db3d8;
+  --border-color: #383838;
+  --border-light: #3a3a3a;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
+  --shadow-xl: 0 12px 40px rgba(0,0,0,0.5);
+  --accent: #529cca;
+  --accent-light: rgba(82,156,202,0.1);
+  --accent-medium: rgba(82,156,202,0.18);
+  --danger: #f87171;
+  --danger-light: rgba(248,113,113,0.1);
+  --success: #6ee77a;
+  --success-light: rgba(110,231,122,0.1);
+  --warning: #fbbf24;
+  --warning-light: rgba(251,191,36,0.1);
+  --info: #60a5fa;
+  --info-light: rgba(96,165,250,0.1);
+  --chart-lu: #6ee77a;
+  --chart-quan: #fbbf24;
+  --chart-ke: #60a5fa;
+  --chart-ji: #f87171;
+  --chart-miao-bg: rgba(110,231,122,0.12);
+  --chart-ping-bg: rgba(251,191,36,0.12);
+  --chart-xian-bg: rgba(248,113,113,0.12);
+  --chart-ming-bg: rgba(255,193,7,0.06);
+  --chart-body-border: rgba(255,152,0,0.4);
+  --chart-laiyin-border: rgba(96,165,250,0.4);
+  --chart-empty-border: #555;
+  --progress-bg: #333;
+  --gold: #fbbf24;
+  --gold-light: rgba(251,191,36,0.1);
+  --gold-medium: rgba(251,191,36,0.2);
+  --purple: #a78bfa;
+  --purple-light: rgba(167,139,250,0.1);
+  --purple-medium: rgba(167,139,250,0.18);
+  --system-iztro: #60a5fa;
+  --system-nishi: #fbbf24;
+  --system-combined: #a78bfa;
+  --ni-miao-color: #fbbf24;
+  --ni-ping-color: #9b9b97;
+  --ni-xian-color: #f87171;
+  --ni-miao-bg: rgba(251,191,36,0.12);
+  --ni-ping-bg: rgba(155,155,151,0.1);
+  --ni-xian-bg: rgba(248,113,113,0.12);
+  --chart-sanfang-line: rgba(96,165,250,0.55);
+  --chart-selected-bg: rgba(96,165,250,0.1);
+  --chart-selected-border: rgba(96,165,250,0.6);
+  --chart-dalimit-border: rgba(167,139,250,0.5);
+  --chart-dalimit-bg: rgba(167,139,250,0.08);
+}
+
+[data-theme="dark"] table { border-color: var(--border-color); }
+[data-theme="dark"] .table-wrapper { border-color: var(--border-color); }
+[data-theme="dark"] td { border-bottom-color: #3a3a3a; color: #b8b8b4; }
+[data-theme="dark"] th { color: #b8b8b4; border-bottom-color: #444; }
+[data-theme="dark"] blockquote { color: #b0b0ac; border-left-color: var(--accent); background: rgba(82,156,202,0.08); }
+[data-theme="dark"] blockquote strong { color: #ecece8; }
+[data-theme="dark"] pre { border-color: #3a3a3a; background: #222; }
+[data-theme="dark"] code { background: #2e2e2e; color: #d8d8d4; }
+[data-theme="dark"] pre code { background: none; color: #d8d8d4; }
+[data-theme="dark"] hr { background: #3a3a3a; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.8;
+  font-size: 16px;
+  transition: background var(--transition), color var(--transition);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-medium);
+  color: var(--text-primary);
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999;
+  background: var(--progress-bg);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 200% 100%;
+  animation: progressShimmer 3s ease infinite;
+  width: 0%;
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(139,92,246,0.4);
+}
+
+@keyframes progressShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  z-index: 100;
+  transition: transform var(--transition), background var(--transition);
+  padding: 16px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
+.sidebar-header {
+  padding: 8px 16px 14px;
+  margin-bottom: 4px;
+}
+
+.sidebar-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
+}
+
+.sidebar-title svg { width: 18px; height: 18px; color: var(--accent); flex-shrink: 0; }
+
+.sidebar-system-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.sidebar-system-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+[data-system="iztro"] .sidebar-system-dot { background: var(--system-iztro); }
+[data-system="nishi"] .sidebar-system-dot { background: var(--system-nishi); }
+[data-system="combined"] .sidebar-system-dot { background: var(--system-combined); }
+
+.sidebar-system-name {
+  font-weight: 600;
+}
+
+[data-system="iztro"] .sidebar-system-name { color: var(--system-iztro); }
+[data-system="nishi"] .sidebar-system-name { color: var(--system-nishi); }
+[data-system="combined"] .sidebar-system-name { color: var(--system-combined); }
+
+.toc-list { list-style: none; padding: 0 6px; }
+
+.toc-item { margin-bottom: 1px; }
+
+.toc-link {
+  display: block;
+  padding: 5px 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13.5px;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+  position: relative;
+}
+
+.toc-link:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.toc-link:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.toc-link.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.toc-h3 { padding-left: 28px; font-size: 13px; }
+.toc-h4 { padding-left: 36px; font-size: 12px; color: var(--text-tertiary); }
+.toc-h5 { padding-left: 44px; font-size: 11.5px; color: var(--text-tertiary); }
+.toc-h6 { padding-left: 52px; font-size: 11px; color: var(--text-tertiary); }
+
+.toc-h1 { font-weight: 600; font-size: 13.5px; color: var(--text-primary); }
+
+.toc-h1-group > .toc-h1 { border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 2px; }
+
+.toc-sub-list { list-style: none; padding: 0; margin: 0; }
+
+.toc-sub-list .toc-link { padding-left: 20px; font-size: 12.5px; }
+
+.toc-sub-list .toc-h3 { padding-left: 32px; font-size: 12px; }
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.sidebar-overlay.visible {
+  opacity: 1;
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  padding: 40px 48px 80px;
+  max-width: var(--content-max-width);
+  min-height: 100vh;
+  transition: margin-left var(--transition);
+}
+
+.toolbar {
+  position: fixed;
+  top: 14px;
+  right: 20px;
+  z-index: 200;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.toolbar-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.toolbar-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-light);
+}
+
+.toolbar-btn svg { width: 16px; height: 16px; }
+
+.mode-btn-group {
+  display: flex;
+  gap: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.mode-btn {
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  border-right: 1px solid var(--border-color);
+}
+
+.mode-btn:last-child { border-right: none; }
+
+.mode-btn:hover { background: var(--bg-hover); }
+
+.mode-btn[data-mode="iztro"].active {
+  background: var(--system-iztro);
+  color: #fff;
+}
+.mode-btn[data-mode="nishi"].active {
+  background: var(--system-nishi);
+  color: #fff;
+}
+.mode-btn[data-mode="combined"].active {
+  background: var(--system-combined);
+  color: #fff;
+}
+
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 200;
+}
+
+.mobile-toc-fab { display: none; }
+
+h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 3px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  border-radius: 2px;
+}
+
+h1 + blockquote { margin-bottom: 28px; }
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 52px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  scroll-margin-top: 24px;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 12px;
+  border-left: 3px solid var(--gold);
+}
+
+h3 {
+  font-size: 17px;
+  font-weight: 650;
+  margin-top: 32px;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  scroll-margin-top: 24px;
+  line-height: 1.4;
+}
+
+h4 {
+  font-size: 14.5px;
+  font-weight: 650;
+  margin-top: 20px;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+}
+
+h5 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 16px;
+  margin-bottom: 4px;
+  color: var(--text-tertiary);
+}
+
+h6 {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  color: var(--text-tertiary);
+}
+
+p { margin-bottom: 14px; }
+
+blockquote {
+  background: var(--bg-blockquote);
+  border-left: 3px solid var(--accent);
+  padding: 10px 18px;
+  margin: 14px 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+blockquote.nishi-quote {
+  background: var(--gold-light);
+  border-left-color: var(--gold);
+}
+
+blockquote strong { color: var(--text-primary); font-style: normal; }
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--border-color);
+  margin: 36px 0;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin: 14px 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead { background: var(--bg-table-header); position: relative; }
+
+thead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+}
+
+th {
+  padding: 10px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border-color);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+td {
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: var(--bg-table-stripe); }
+tbody tr:hover {
+  background: var(--bg-hover);
+  transform: translateY(-1px);
+  transition: transform 0.15s ease;
+}
+
+table caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 8px 16px 4px;
+}
+
+code {
+  background: var(--bg-code);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+pre {
+  background: var(--bg-code);
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  margin: 14px 0;
+  font-size: 13px;
+  line-height: 1.6;
+  border: 1px solid var(--border-color);
+}
+
+pre code { background: none; padding: 0; border: none; }
+
+ul, ol { padding-left: 22px; margin-bottom: 14px; }
+li { margin-bottom: 5px; }
+
+strong { font-weight: 650; color: var(--text-primary); }
+em { color: var(--text-secondary); }
+
+a { color: var(--text-link); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--text-link-hover); text-decoration: underline; }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.tag-danger { background: var(--danger-light); color: var(--danger); }
+.tag-success { background: var(--success-light); color: var(--success); }
+.tag-warning { background: var(--warning-light); color: var(--warning); }
+.tag-info { background: var(--info-light); color: var(--info); }
+
+.tag-system-iztro { background: rgba(37,99,235,0.1); color: var(--system-iztro); }
+.tag-system-nishi { background: var(--gold-light); color: var(--system-nishi); }
+.tag-system-combined { background: var(--purple-light); color: var(--system-combined); }
+
+.star-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.star-badge.bright { background: var(--success-light); color: var(--success); }
+.star-badge.normal { background: var(--warning-light); color: var(--warning); }
+.star-badge.dim { background: var(--danger-light); color: var(--danger); }
+
+.star-badge.hua-lu {
+  background: var(--success-light);
+  color: var(--chart-lu);
+  box-shadow: 0 0 6px rgba(77,171,92,0.3);
+}
+.star-badge.hua-quan {
+  background: var(--info-light);
+  color: var(--chart-quan);
+  box-shadow: 0 0 6px rgba(59,130,246,0.3);
+}
+.star-badge.hua-ke {
+  background: var(--warning-light);
+  color: var(--chart-ke);
+  box-shadow: 0 0 6px rgba(232,145,45,0.3);
+}
+.star-badge.hua-ji {
+  background: var(--danger-light);
+  color: var(--chart-ji);
+  box-shadow: 0 0 6px rgba(235,87,87,0.3);
+}
+
+.interpretation-block {
+  margin: 16px 0;
+  padding: 18px 22px;
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+.interpretation-block.pro {
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--accent);
+}
+
+.interpretation-block.lay {
+  background: var(--bg-blockquote);
+  border-left: 3px solid var(--success);
+}
+
+.interpretation-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.interpretation-block.pro .interpretation-label { color: var(--accent); }
+.interpretation-block.lay .interpretation-label { color: var(--success); }
+
+.interpretation-block.pro .interpretation-label::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20'/%3E%3Cpath d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20'/%3E%3Cpath d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+  flex-shrink: 0;
+}
+
+.interpretation-block.lay .interpretation-label::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: var(--success);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M9 18h6'/%3E%3Cpath d='M10 22h4'/%3E%3Cpath d='M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M9 18h6'/%3E%3Cpath d='M10 22h4'/%3E%3Cpath d='M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+  flex-shrink: 0;
+}
+
+.interpretation-pair {
+  position: relative;
+  margin: 16px 0;
+}
+
+.interpretation-pair .interpretation-block.pro {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0;
+}
+
+.interpretation-pair .interpretation-block.lay {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: 0;
+  border-top: 1px dashed var(--border-color);
+}
+
+.interpretation-connector {
+  position: absolute;
+  left: 14px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--success));
+  opacity: 0.3;
+}
+
+.pattern-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+  margin: 10px 0;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.pattern-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.pattern-card.excellent::before { background: var(--success); }
+.pattern-card.good::before { background: var(--info); }
+.pattern-card.neutral::before { background: var(--warning); }
+.pattern-card.caution::before { background: var(--danger); }
+
+.pattern-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.pattern-card-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.pattern-card.excellent .pattern-card-title { color: var(--success); }
+.pattern-card.good .pattern-card-title { color: var(--info); }
+.pattern-card.neutral .pattern-card-title { color: var(--warning); }
+.pattern-card.caution .pattern-card-title { color: var(--danger); }
+
+.section-wrapper {
+  position: relative;
+}
+
+.section-toggle {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.section-toggle:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.section-toggle svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s ease;
+}
+
+.section-wrapper.collapsed .section-toggle svg {
+  transform: rotate(-90deg);
+}
+
+.section-content {
+  overflow: hidden;
+}
+
+.section-wrapper.collapsed .section-content {
+  display: none;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition);
+  z-index: 150;
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.back-to-top.visible { display: flex; }
+.back-to-top svg { width: 18px; height: 18px; }
+
+.chart-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 80px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition);
+  z-index: 150;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.chart-fab:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-xl);
+}
+
+.chart-fab svg { width: 20px; height: 20px; }
+
+.chart-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 780px;
+  max-width: 96vw;
+  max-height: 92vh;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  z-index: 500;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  transition: opacity 0.15s ease;
+}
+
+.chart-panel.open {
+  display: flex;
+  animation: chartPanelIn 0.2s ease;
+}
+
+@keyframes chartPanelIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.chart-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border-color);
+  cursor: move;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.chart-panel-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chart-panel-title svg { width: 16px; height: 16px; color: var(--accent); }
+
+.chart-panel-system-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 4px;
+}
+
+[data-system="iztro"] .chart-panel-system-badge { background: rgba(37,99,235,0.12); color: var(--system-iztro); }
+[data-system="nishi"] .chart-panel-system-badge { background: var(--gold-light); color: var(--system-nishi); }
+[data-system="combined"] .chart-panel-system-badge { background: var(--purple-light); color: var(--system-combined); }
+
+.chart-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chart-zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-right: 8px;
+  padding-right: 8px;
+  border-right: 1px solid var(--border-color);
+}
+
+.chart-zoom-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.chart-zoom-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-light);
+}
+
+.chart-zoom-level {
+  font-size: 11px;
+  color: var(--text-muted);
+  min-width: 36px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-panel-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.chart-panel-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.chart-panel-btn svg { width: 14px; height: 14px; }
+
+.chart-panel-body {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  position: relative;
+}
+
+.chart-grid-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 480px;
+  transform-origin: top center;
+  transition: transform 0.15s ease;
+}
+
+.chart-svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.chart-cell {
+  border: 1.5px solid var(--border-color);
+  border-radius: 3px;
+  padding: 6px 8px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+  background: var(--bg-primary);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-cell:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), var(--shadow-sm);
+  z-index: 2;
+}
+
+.chart-cell.selected {
+  border-color: var(--chart-selected-border);
+  border-width: 2px;
+  background: var(--chart-selected-bg);
+  box-shadow: 0 0 0 1px var(--chart-selected-border);
+  z-index: 3;
+}
+
+.chart-cell.sanfang-related {
+  background: var(--chart-selected-bg);
+  border-color: rgba(37,99,235,0.35);
+}
+
+.chart-cell.dalimit-active {
+  border-left: 3px solid var(--chart-dalimit-border);
+  background: var(--chart-dalimit-bg);
+}
+
+.chart-cell.palace-ming {
+  background: var(--chart-ming-bg);
+}
+
+.chart-cell.palace-body {
+  border-color: var(--chart-body-border);
+  border-width: 2px;
+}
+
+.chart-cell.palace-laiyin {
+  border-color: var(--chart-laiyin-border);
+  border-width: 2px;
+}
+
+.chart-cell.palace-empty {
+  border-style: dashed;
+  border-color: var(--chart-empty-border);
+}
+
+.chart-cell.center-cell {
+  background: var(--bg-secondary);
+  border-color: var(--border-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+  gap: 2px;
+  cursor: default;
+}
+
+.chart-cell.center-cell .center-taiji {
+  font-size: 32px;
+  opacity: 0.15;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chart-cell.center-cell .center-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.chart-cell.center-cell .center-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+}
+
+.chart-cell.center-cell .center-dalimit-box {
+  margin-top: 4px;
+  padding: 2px 8px;
+  border: 1px solid var(--chart-dalimit-border);
+  border-radius: 4px;
+  font-size: 10px;
+  color: var(--purple);
+  background: var(--chart-dalimit-bg);
+  position: relative;
+  z-index: 1;
+}
+
+.chart-cell-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3px;
+  gap: 4px;
+}
+
+.chart-palace-name {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.chart-palace-marks {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.chart-ming-mark {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 0 3px;
+  border-radius: 2px;
+  background: rgba(212,160,23,0.15);
+  color: var(--gold);
+  line-height: 1.5;
+}
+
+.chart-shen-mark {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 0 3px;
+  border-radius: 2px;
+  background: var(--info-light);
+  color: var(--info);
+  line-height: 1.5;
+}
+
+.chart-ganzhi {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.chart-main-stars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.chart-star {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 4px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.chart-star.miao, .chart-star.wang { background: var(--chart-miao-bg); color: var(--chart-lu); }
+.chart-star.ping, .chart-star.li, .chart-star.de { background: var(--chart-ping-bg); color: var(--chart-quan); }
+.chart-star.xian, .chart-star.bu { background: var(--chart-xian-bg); color: var(--chart-ji); }
+
+[data-system="nishi"] .chart-star.miao,
+[data-system="nishi"] .chart-star.wang,
+[data-system="nishi"] .chart-star.ni-miao { background: var(--ni-miao-bg); color: var(--ni-miao-color); }
+[data-system="nishi"] .chart-star.ping,
+[data-system="nishi"] .chart-star.li,
+[data-system="nishi"] .chart-star.de,
+[data-system="nishi"] .chart-star.ni-ping { background: var(--ni-ping-bg); color: var(--ni-ping-color); }
+[data-system="nishi"] .chart-star.xian,
+[data-system="nishi"] .chart-star.bu,
+[data-system="nishi"] .chart-star.ni-xian { background: var(--ni-xian-bg); color: var(--ni-xian-color); }
+
+[data-system="combined"] .chart-star.miao,
+[data-system="combined"] .chart-star.wang,
+[data-system="combined"] .chart-star.ni-miao { background: var(--chart-miao-bg); color: var(--chart-lu); }
+[data-system="combined"] .chart-star.ping,
+[data-system="combined"] .chart-star.li,
+[data-system="combined"] .chart-star.de,
+[data-system="combined"] .chart-star.ni-ping { background: var(--chart-ping-bg); color: var(--chart-quan); }
+[data-system="combined"] .chart-star.xian,
+[data-system="combined"] .chart-star.bu,
+[data-system="combined"] .chart-star.ni-xian { background: var(--chart-xian-bg); color: var(--chart-ji); }
+
+.chart-brightness-label {
+  font-size: 9px;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+[data-system="iztro"] .ni-brightness { display: none; }
+[data-system="iztro"] .combined-brightness { display: none; }
+[data-system="nishi"] .iztro-brightness { display: none; }
+[data-system="nishi"] .combined-brightness { display: none; }
+[data-system="combined"] .iztro-brightness { display: none; }
+[data-system="combined"] .ni-brightness { display: none; }
+
+.chart-sihua {
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 0 3px;
+  border-radius: 2px;
+  margin-left: 1px;
+}
+
+.chart-sihua.lu { background: var(--success-light); color: var(--chart-lu); }
+.chart-sihua.quan { background: var(--info-light); color: var(--chart-quan); }
+.chart-sihua.ke { background: var(--warning-light); color: var(--chart-ke); }
+.chart-sihua.ji { background: var(--danger-light); color: var(--chart-ji); }
+
+.chart-aux-stars {
+  font-size: 10px;
+  color: var(--info);
+  margin-top: 1px;
+}
+
+.chart-sha-stars {
+  font-size: 10px;
+  color: var(--danger);
+  margin-top: 1px;
+}
+
+.chart-dalimit {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  position: absolute;
+  bottom: 3px;
+  left: 5px;
+}
+
+.chart-dalimit.current-dalimit {
+  color: var(--purple);
+  font-weight: 700;
+  background: var(--chart-dalimit-bg);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+.chart-empty-text {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 0 4px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chart-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.chart-legend-dot.lu { background: var(--chart-lu); }
+.chart-legend-dot.quan { background: var(--chart-quan); }
+.chart-legend-dot.ke { background: var(--chart-ke); }
+.chart-legend-dot.ji { background: var(--chart-ji); }
+
+.chart-aux-star-item { margin-right: 2px; }
+.chart-aux-star-item.has-sihua { font-weight: 600; }
+.chart-sha-star-item { margin-right: 2px; }
+.chart-misc-stars {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: 1px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.chart-changsheng {
+  font-size: 8.5px;
+  color: var(--text-muted);
+  opacity: 0.7;
+  margin-top: auto;
+  text-align: right;
+}
+.chart-dalimit-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+.dalimit-bar-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--purple);
+  white-space: nowrap;
+  margin-right: 4px;
+}
+.dalimit-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+.dalimit-bar-item:hover {
+  border-color: var(--purple);
+  background: var(--chart-dalimit-bg);
+}
+.dalimit-bar-item.current {
+  border-color: var(--chart-dalimit-border);
+  background: var(--chart-dalimit-bg);
+}
+.dalimit-bar-item.active {
+  border-color: var(--chart-dalimit-border);
+  background: var(--chart-dalimit-bg);
+  box-shadow: 0 0 0 1px var(--chart-dalimit-border);
+}
+.dalimit-item-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.dalimit-item-range {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+.chart-cell.dalimit-selected {
+  border-color: var(--chart-dalimit-border) !important;
+  border-width: 2.5px !important;
+  background: var(--chart-dalimit-bg) !important;
+  box-shadow: 0 0 0 1px var(--chart-dalimit-border), 0 0 8px rgba(124,58,237,0.15);
+}
+
+.chart-hint {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 2px 0 0;
+}
+
+.chart-tooltip {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-lg);
+  min-width: 240px;
+  max-width: 320px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.chart-tooltip-title {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 13px;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.chart-tooltip-section {
+  margin-bottom: 4px;
+}
+
+.chart-tooltip-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.chart-tooltip-sanfang {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--border-light);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.help-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  max-width: 94vw;
+  max-height: 85vh;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  z-index: 600;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.help-panel.open {
+  display: flex;
+  animation: chartPanelIn 0.2s ease;
+}
+
+.help-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.help-panel-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.help-panel-title svg { width: 18px; height: 18px; color: var(--accent); }
+
+.help-panel-close {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.help-panel-close:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.help-panel-close svg { width: 14px; height: 14px; }
+
+.help-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.help-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  margin-top: 16px;
+}
+
+.help-section-title:first-child { margin-top: 0; }
+
+.help-shortcut-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.help-shortcut-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  margin-bottom: 2px;
+  transition: background var(--transition);
+}
+
+.help-shortcut-item:hover {
+  background: var(--bg-hover);
+}
+
+.help-shortcut-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.help-shortcut-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.help-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 5px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 0 var(--border-color);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.help-command-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.help-command-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  margin-bottom: 2px;
+  transition: background var(--transition);
+}
+
+.help-command-item:hover {
+  background: var(--bg-hover);
+}
+
+.help-command-code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 80px;
+}
+
+.help-command-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.help-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 599;
+}
+
+.help-overlay.open { display: block; }
+
+.tooltip-sihua-badges {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.tooltip-sihua-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.tooltip-sihua-badge.lu { background: var(--success-light); color: var(--chart-lu); }
+.tooltip-sihua-badge.quan { background: var(--warning-light); color: var(--chart-quan); }
+.tooltip-sihua-badge.ke { background: var(--info-light); color: var(--chart-ke); }
+.tooltip-sihua-badge.ji { background: var(--danger-light); color: var(--chart-ji); }
+
+.inline-chart-container {
+  margin: 24px 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+  max-width: 100%;
+}
+
+.inline-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.inline-chart-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.inline-chart-title svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+}
+
+.inline-chart-expand {
+  font-size: 12px;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-weight: 600;
+}
+
+.inline-chart-expand:hover {
+  background: var(--accent-light);
+}
+
+.inline-chart-body {
+  padding: 12px;
+  position: relative;
+}
+
+.chart-grid-inline {
+  min-height: 360px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.chart-grid-inline .chart-cell {
+  padding: 4px 6px;
+  font-size: 10px;
+}
+
+.chart-grid-inline .chart-star {
+  font-size: 9.5px;
+}
+
+.chart-grid-inline .chart-palace-name {
+  font-size: 10px;
+}
+
+.chart-grid-inline .chart-ganzhi {
+  font-size: 9px;
+}
+
+.chart-grid-inline .chart-cell.center-cell .center-title {
+  font-size: 13px;
+}
+
+.chart-grid-inline .chart-cell.center-cell .center-sub {
+  font-size: 10px;
+}
+
+.chart-panel-resize {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+  z-index: 10;
+}
+
+.chart-panel-resize::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+}
+
+.chart-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 499;
+}
+
+.chart-overlay.open { display: block; }
+
+.system-content { margin: 12px 0; transition: opacity 0.3s ease, max-height 0.3s ease; overflow: hidden; }
+
+[data-system="iztro"] .system-nishi { display: none; }
+[data-system="iztro"] .system-combined { display: none; }
+[data-system="iztro"] .system-not-iztro { display: none; }
+
+[data-system="nishi"] .system-iztro { display: none; }
+[data-system="nishi"] .system-combined { display: none; }
+[data-system="nishi"] .system-not-nishi { display: none; }
+
+[data-system="combined"] .system-iztro { display: none; }
+[data-system="combined"] .system-nishi { display: none; }
+
+[data-system="nishi"] .system-nishi-note::after {
+  content: '（倪师体系不使用）';
+  font-size: 11px;
+  color: var(--chart-ji);
+  margin-left: 4px;
+}
+
+[data-system="nishi"] .system-not-nishi-ref::after {
+  content: '（供参考，倪师体系不主张）';
+  font-size: 11px;
+  color: var(--chart-ke);
+  margin-left: 4px;
+}
+
+.system-content-fade-out {
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 0.25s ease, max-height 0.25s ease;
+}
+
+.source-ref {
+  display: none;
+}
+
+.system-content-fade-in {
+  opacity: 1;
+  max-height: 9999px;
+  transition: opacity 0.3s ease 0.05s, max-height 0.3s ease 0.05s;
+}
+
+@media print {
+  .system-content { display: block !important; }
+  .system-nishi-note::after,
+  .system-not-nishi-ref::after { display: none !important; }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .toolbar {
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 6px 10px 6px 52px;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    justify-content: flex-end;
+    gap: 4px;
+    transition: background var(--transition), border-color var(--transition);
+  }
+  .mode-btn-group {
+    position: static;
+    margin-right: auto;
+  }
+  .mobile-menu-btn {
+    display: flex;
+    top: 6px;
+    left: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+  }
+  .mobile-toc-fab {
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    z-index: 150;
+    transition: all var(--transition);
+  }
+  .mobile-toc-fab:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-xl);
+  }
+  .mobile-toc-fab svg { width: 20px; height: 20px; }
+  .mobile-toc-drawer {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 60vh;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    box-shadow: var(--shadow-xl);
+    z-index: 600;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-toc-drawer.open {
+    display: flex;
+    transform: translateY(0);
+  }
+  .mobile-toc-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+  }
+  .mobile-toc-drawer-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .mobile-toc-drawer-close {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius);
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+  }
+  .mobile-toc-drawer-close:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+  .mobile-toc-drawer-close svg { width: 14px; height: 14px; }
+  .mobile-toc-drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mobile-toc-drawer-body .toc-list {
+    list-style: none;
+    padding: 0 12px;
+  }
+  .mobile-toc-drawer-body .toc-item { margin-bottom: 1px; }
+  .mobile-toc-drawer-body .toc-link {
+    display: block;
+    padding: 10px 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: var(--radius);
+    transition: all var(--transition);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mobile-toc-drawer-body .toc-link:hover,
+  .mobile-toc-drawer-body .toc-link:active {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+  .mobile-toc-drawer-body .toc-link.active {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .mobile-toc-drawer-body .toc-h3 {
+    padding-left: 28px;
+    font-size: 13px;
+  }
+  .mobile-toc-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--bg-overlay);
+    z-index: 599;
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+  .mobile-toc-overlay.visible {
+    opacity: 1;
+  }
+  .main-content {
+    margin-left: 0;
+    padding: 24px 16px 60px;
+    padding-top: 60px;
+  }
+  .chart-panel {
+    width: 98vw;
+    max-height: 85vh;
+  }
+  .chart-grid {
+    min-height: 340px;
+  }
+  .chart-cell {
+    padding: 4px 5px;
+    font-size: 10px;
+  }
+  .chart-star { font-size: 9.5px; }
+  .chart-fab {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+  .back-to-top {
+    bottom: 20px;
+    right: 68px;
+    width: 36px;
+    height: 36px;
+  }
+  .chart-zoom-controls {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar {
+    padding: 5px 6px 5px 46px;
+    gap: 3px;
+  }
+  .toolbar-btn {
+    width: 30px;
+    height: 30px;
+  }
+  .toolbar-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  .mode-btn {
+    padding: 3px 6px;
+    font-size: 10px;
+  }
+  .mobile-menu-btn {
+    top: 5px;
+    left: 6px;
+    width: 30px;
+    height: 30px;
+  }
+  .mobile-menu-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  .main-content {
+    padding-top: 54px;
+  }
+  h2 { scroll-margin-top: 54px; }
+  h3 { scroll-margin-top: 54px; }
+}
+
+.toc-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.toc-group-header .toc-link {
+  flex: 1;
+  min-width: 0;
+}
+
+.toc-toggle {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.toc-toggle:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.toc-toggle svg {
+  transition: transform 0.2s ease;
+}
+
+.toc-group.collapsed .toc-toggle svg {
+  transform: rotate(-90deg);
+}
+
+.toc-children {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  max-height: 2000px;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+  opacity: 1;
+}
+
+.toc-group.collapsed .toc-children {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.15s ease;
+}
+
+@media print {
+  .sidebar, .toolbar, .back-to-top, .chart-fab, .chart-panel, .chart-overlay,
+  .mobile-menu-btn, .progress-bar, .section-toggle, .inline-chart-expand,
+  .mode-btn-group, .toc-toggle { display: none !important; }
+  .toc-group.collapsed .toc-children { max-height: none !important; opacity: 1 !important; }
+  .main-content { margin-left: 0; padding: 0; max-width: 100%; }
+  body { background: white; color: black; }
+  .table-wrapper { border: 1px solid #ddd; }
+  .tag, .star-badge { border: 1px solid currentColor; background: transparent; }
+  .section-wrapper.collapsed .section-content { display: block !important; }
+  .chart-cell { border: 1px solid #ccc !important; }
+  .chart-cell.palace-ming { background: #fff8e1 !important; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+
+<button class="mobile-menu-btn toolbar-btn" onclick="toggleSidebar()" aria-label="Menu">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+</button>
+
+<div class="toolbar">
+  <div class="mode-btn-group">
+    <button class="mode-btn" data-mode="iztro" onclick="switchSystem('iztro')">iztro</button>
+    <button class="mode-btn" data-mode="nishi" onclick="switchSystem('nishi')">倪师</button>
+    <button class="mode-btn" data-mode="combined" onclick="switchSystem('combined')">综合</button>
+  </div>
+  <button class="toolbar-btn" onclick="toggleChart()" aria-label="排盘图" title="排盘图">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+  </button>
+  <button class="toolbar-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle theme">
+    <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+  <button class="toolbar-btn" onclick="toggleHelp()" aria-label="帮助" title="快捷指令帮助">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  </button>
+</div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+      紫微斗数命盘
+    </div>
+  </div>
+  <div class="sidebar-system-indicator">
+    <span class="sidebar-system-dot"></span>
+    <span class="sidebar-system-name" id="sidebarSystemName">综合模式</span>
+  </div>
+  <ul class="toc-list" id="tocList">
+<li class="toc-item"><a class="toc-link toc-h1" href="#感情详解">感情详解</a></li>
+<li class="toc-item toc-group">
+<div class="toc-group-header">
+<a class="toc-link" href="#一-夫妻宫详析">一、夫妻宫详析</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
+<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+</button>
+</div>
+<ul class="toc-children">
+<li class="toc-item"><a class="toc-link toc-h3" href="#1-1-夫妻宫星曜组合">1.1 夫妻宫星曜组合</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#1-2-逐星解读">1.2 逐星解读</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#1-3-夫妻宫飞化关系">1.3 夫妻宫飞化关系</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#1-4-夫妻宫聚忌——命盘最重的忌力点">1.4 夫妻宫聚忌——命盘最重的忌力点</a></li>
+</ul></li>
+<li class="toc-item toc-group">
+<div class="toc-group-header">
+<a class="toc-link" href="#二-福德宫与感情">二、福德宫与感情</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
+<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+</button>
+</div>
+<ul class="toc-children">
+<li class="toc-item"><a class="toc-link toc-h3" href="#2-1-为什么看感情必须看福德宫">2.1 为什么看感情必须看福德宫</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2-2-福德宫星曜组合">2.2 福德宫星曜组合</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2-3-福德宫对感情的影响">2.3 福德宫对感情的影响</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2-4-福德宫飞化——精神与感情的深度绑定">2.4 福德宫飞化——精神与感情的深度绑定</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#2-5-命宫天府与感情的配合">2.5 命宫天府与感情的配合</a></li>
+</ul></li>
+<li class="toc-item toc-group">
+<div class="toc-group-header">
+<a class="toc-link" href="#三-婚期判断三层法">三、婚期判断三层法</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
+<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+</button>
+</div>
+<ul class="toc-children">
+<li class="toc-item"><a class="toc-link toc-h3" href="#3-1-第一层-本命——晚婚信号">3.1 第一层：本命——晚婚信号</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#3-2-第二层-大限——婚恋机会窗口">3.2 第二层：大限——婚恋机会窗口</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#3-3-第三层-流年——具体婚恋时机">3.3 第三层：流年——具体婚恋时机</a></li>
+</ul></li>
+<li class="toc-item toc-group">
+<div class="toc-group-header">
+<a class="toc-link" href="#四-桃花运势">四、桃花运势</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
+<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+</button>
+</div>
+<ul class="toc-children">
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-1-桃花星分布">4.1 桃花星分布</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-2-桃花质量评估">4.2 桃花质量评估</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#4-3-桃花风险提示">4.3 桃花风险提示</a></li>
+</ul></li>
+<li class="toc-item toc-group">
+<div class="toc-group-header">
+<a class="toc-link" href="#五-大限感情周期">五、大限感情周期</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
+<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+</button>
+</div>
+<ul class="toc-children">
+<li class="toc-item"><a class="toc-link toc-h3" href="#5-1-八大限感情总览">5.1 八大限感情总览</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#5-2-逐限感情详析">5.2 逐限感情详析</a></li>
+</ul></li>
+<li class="toc-item toc-group">
+<div class="toc-group-header">
+<a class="toc-link" href="#六-流年感情提示">六、流年感情提示</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
+<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+</button>
+</div>
+<ul class="toc-children">
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-1-2024-2030流年感情一览">6.1 2024-2030流年感情一览</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#6-2-逐年感情详析">6.2 逐年感情详析</a></li>
+</ul></li>
+<li class="toc-item toc-group">
+<div class="toc-group-header">
+<a class="toc-link" href="#七-感情建议">七、感情建议</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
+<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+</button>
+</div>
+<ul class="toc-children">
+<li class="toc-item"><a class="toc-link toc-h3" href="#7-1-核心原则-先稳自己-再谈感情">7.1 核心原则：先稳自己，再谈感情</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#7-2-给天府坐命的你">7.2 给天府坐命的你</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#7-3-武曲化忌的化解">7.3 武曲化忌的化解</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#7-4-破军的应对">7.4 破军的应对</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#7-5-交友圈管理">7.5 交友圈管理</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#7-6-健康与感情的关联">7.6 健康与感情的关联</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#7-7-伴侣画像">7.7 伴侣画像</a></li>
+</ul></li>
+<li class="toc-item toc-group">
+<div class="toc-group-header">
+<a class="toc-link" href="#八-总结评级">八、总结评级</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
+<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+</button>
+</div>
+<ul class="toc-children">
+<li class="toc-item"><a class="toc-link toc-h3" href="#8-1-感情维度评分">8.1 感情维度评分</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#8-2-感情总评">8.2 感情总评</a></li>
+<li class="toc-item"><a class="toc-link toc-h3" href="#8-3-一句话总结">8.3 一句话总结</a></li>
+</ul></li>
+<li class="toc-item toc-group">
+<div class="toc-group-header">
+<a class="toc-link" href="#附录-感情相关飞化速查表">附录：感情相关飞化速查表</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
+<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+</button>
+</div>
+<ul class="toc-children">
+</ul></li>
+  </ul>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<main class="main-content" id="mainContent">
+<h1 id="感情详解">感情详解</h1><blockquote class="blockquote nishi-quote system-content system-not-iztro"><strong>命主：</strong> 2002年8月25日丑时生人（男）</blockquote><blockquote class="blockquote"><strong>阳历：</strong> 2002年8月25日</blockquote><blockquote class="blockquote nishi-quote system-content system-not-iztro"><strong>体系：</strong> 倪海厦《天纪》紫微斗数体系</blockquote><blockquote class="blockquote nishi-quote system-content system-not-iztro"><strong>排盘引擎：</strong> iztro</blockquote><blockquote class="blockquote"><strong>报告日期：</strong> 2026年5月22日</blockquote><hr><div class="section-wrapper" data-section-id="一-夫妻宫详析"><h2 id="一-夫妻宫详析"><span>一、夫妻宫详析</span><button class="section-toggle" onclick="toggleSection('一-夫妻宫详析')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-一-夫妻宫详析"><h3 id="1-1-夫妻宫星曜组合">1.1 夫妻宫星曜组合</h3><p>夫妻宫在巳宫，乙干，武曲<span class="star-badge normal">平</span><span class="tag tag-danger">化忌</span>+破军<span class="star-badge normal">平</span>+文曲<span class="star-badge bright">庙</span>+天钺。杂曜有破碎。</p><p>武曲破军同宫坐夫妻，武曲<span class="tag tag-danger">化忌</span>——四个字概括：<strong>又硬又烈</strong>。武曲是刚硬的财星，破军是翻腾的耗星，两颗星凑在夫妻宫，感情就像坐过山车，上坡的时候觉得全世界都是甜的，下坡的时候觉得天塌了。武曲<span class="tag tag-danger">化忌</span>让这趟过山车更刺激：你一旦爱上一个人，执念深到骨子里，放不下、想不开、钻牛角尖。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><h3 id="1-2-逐星解读">1.2 逐星解读</h3><div class="table-wrapper"><table><thead><tr><th>星曜</th><th>亮度</th><th>化象</th><th>感情含义</th></tr></thead><tbody><tr><td>武曲</td><td>平</td><td><span class="tag tag-danger">化忌</span></td><td>感情执念深，金钱是矛盾导火索，不善表达柔情</td></tr><tr><td>破军</td><td>平</td><td>—</td><td>感情大起大落，有突然的转折或分离</td></tr><tr><td>文曲</td><td>庙</td><td>—</td><td>伴侣有文才，你容易被才华吸引</td></tr><tr><td>天钺</td><td>—</td><td>—</td><td>伴侣有贵气或出身不错，异性中有贵人</td></tr><tr><td>破碎</td><td>—</td><td>—</td><td>感情中有碎裂、不完整的感觉</td></tr></tbody></table></div><p>武曲<span class="tag tag-danger">化忌</span>在夫妻宫，最直接的体现就是：<strong>钱是感情的雷区</strong>。谈恋爱的时候可能因为消费观念不同吵架，结婚后可能因为谁来管钱、怎么花钱闹矛盾。武曲是财星，<span class="tag tag-danger">化忌</span>就是&quot;财出了问题&quot;，投射到感情里，经济基础不稳的时候感情也跟着摇。<span class="source-ref" title="倪海厦《天纪》" data-source="倪海厦《天纪》"></span></p><p>破军在夫妻宫，感情不走寻常路。可能突然爱上一个人，也可能突然分手。破军是&quot;先破后立&quot;的星，你的感情模式往往是：一段关系结束了，才能开始下一段。中间没有过渡期，干净利落但也伤筋动骨。<span class="source-ref" title="ziwei-doushu/lib/nihai/tianji.ts" data-source="ziwei-doushu/lib/nihai/tianji.ts"></span></p><p>文曲庙旺在夫妻宫，是这组星曜里难得的柔光。文曲主文才、口才、浪漫，说明你的伴侣大概率是个有才气的人——可能擅长写作、音乐、设计，或者至少谈吐不俗。你被有才华的人吸引，这是你感情中的&quot;软肋&quot;。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><p>天钺在夫妻宫，伴侣有贵气。天钺是阴贵人，暗示你的另一半可能来自体面家庭，或者本身气质出众。但天钺帮不了武曲<span class="tag tag-danger">化忌</span>——贵人星化解不了<span class="tag tag-danger">化忌</span>的执念，只能让伴侣的&quot;底子&quot;不差。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><p>破碎杂曜虽小，却像鞋里的沙子——不会让你摔倒，但每走一步都不舒服。感情中总有零碎的摩擦和不圆满，很难有一段关系让你觉得&quot;完全没问题&quot;。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><h3 id="1-3-夫妻宫飞化关系">1.3 夫妻宫飞化关系</h3><p>夫妻宫乙干飞化：</p><div class="table-wrapper"><table><thead><tr><th>飞化</th><th>星曜</th><th>落宫</th><th>感情解读</th></tr></thead><tbody><tr><td><span class="tag tag-success">化禄</span></td><td>天机</td><td>父母</td><td>伴侣与你的父母有缘分，可能因父母而认识</td></tr><tr><td><span class="tag tag-warning">化权</span></td><td>天梁</td><td>仆役</td><td>伴侣在朋友圈中有权威感</td></tr><tr><td><span class="tag tag-info">化科</span></td><td>紫微</td><td>福德</td><td>伴侣对你的精神成长有正面影响</td></tr><tr><td><span class="tag tag-danger">化忌</span></td><td>太阴</td><td>父母</td><td>伴侣与母亲（太阴）有矛盾</td></tr></tbody></table></div><p>飞禄飞忌同入父母宫，伴侣与你的家庭关系密切——可能因家庭而结缘，也可能因家庭而争吵。太阴<span class="tag tag-danger">化忌</span>入父母，伴侣和你母亲之间容易有摩擦，这是婚后需要提前预判的问题。<span class="source-ref" title="iztro飞化数据" data-source="iztro飞化数据"></span></p><h3 id="1-4-夫妻宫聚忌——命盘最重的忌力点">1.4 夫妻宫聚忌——命盘最重的忌力点</h3><p>夫妻宫是全盘忌力最集中的宫位：</p><div class="table-wrapper"><table><thead><tr><th>忌星来源</th><th>宫干</th><th>飞忌星</th><th>方向</th></tr></thead><tbody><tr><td>生年忌</td><td>壬年</td><td>武曲<span class="tag tag-danger">化忌</span></td><td>直接坐守</td></tr><tr><td>疾厄宫</td><td>壬干</td><td>武曲<span class="tag tag-danger">化忌</span></td><td>飞入夫妻</td></tr><tr><td>仆役宫</td><td>壬干</td><td>武曲<span class="tag tag-danger">化忌</span></td><td>飞入夫妻</td></tr><tr><td>福德宫</td><td>己干</td><td>文曲<span class="tag tag-danger">化忌</span></td><td>飞入夫妻</td></tr></tbody></table></div><p>四忌汇聚夫妻宫，感情是命盘最沉重的课题。疾厄飞忌入夫妻——身体不好影响感情；仆役飞忌入夫妻——朋友问题波及感情；福德飞忌入夫妻——精神状态与感情深度绑定。三条忌线从三个不同方向射入夫妻宫，加上生年武曲<span class="tag tag-danger">化忌</span>坐守，感情想不折腾都难。<span class="source-ref" title="iztro飞化数据" data-source="iztro飞化数据"></span></p><p>但夫妻宫同时也有三禄汇入：</p><div class="table-wrapper"><table><thead><tr><th>禄星来源</th><th>宫干</th><th>飞禄星</th><th>方向</th></tr></thead><tbody><tr><td>财帛宫</td><td>癸干</td><td>破军<span class="tag tag-success">化禄</span></td><td>飞入夫妻</td></tr><tr><td>迁移宫</td><td>癸干</td><td>破军<span class="tag tag-success">化禄</span></td><td>飞入夫妻</td></tr><tr><td>福德宫</td><td>己干</td><td>武曲<span class="tag tag-success">化禄</span></td><td>飞入夫妻</td></tr></tbody></table></div><p>3禄对3忌+生年忌，禄忌交战。好的时候感情甜蜜到发光，差的时候痛苦到窒息。这种格局的人感情经历不会少，但每一段都刻骨铭心。<span class="source-ref" title="iztro飞化数据" data-source="iztro飞化数据"></span></p><blockquote class="blockquote"><strong>技术注释：</strong> 夫妻宫禄忌交战（3飞禄 vs 3飞忌+生年忌），忌力略占上风。禄忌交战的宫位，吉凶波动极大，不宜在忌力激活的流年做重大感情决定。判断忌力是否激活，需看流年四化是否触动夫妻宫或对宫。<span class="source-ref" title="iztro飞化数据" data-source="iztro飞化数据"></span></blockquote><hr></div></div><div class="section-wrapper" data-section-id="二-福德宫与感情"><h2 id="二-福德宫与感情"><span>二、福德宫与感情</span><button class="section-toggle" onclick="toggleSection('二-福德宫与感情')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-二-福德宫与感情"><h3 id="2-1-为什么看感情必须看福德宫">2.1 为什么看感情必须看福德宫</h3><p>倪师体系明确指出：<strong>看婚姻必须同时看福德宫</strong>。夫妻宫管的是&quot;你遇到什么样的人&quot;，福德宫管的是&quot;你内心想要什么样的人&quot;。如果夫妻宫和福德宫的信号矛盾，感情就会拧巴——遇到的人不是心里想要的，心里想要的又遇不到。<span class="source-ref" title="倪海厦《天纪》" data-source="倪海厦《天纪》"></span></p><h3 id="2-2-福德宫星曜组合">2.2 福德宫星曜组合</h3><p>福德宫在酉宫，己干，紫微<span class="star-badge bright">旺</span><span class="tag tag-warning">化权</span>+贪狼<span class="star-badge normal">利</span>+文昌<span class="star-badge bright">庙</span>+红鸾+天厨。★身宫同度。</p><p>福德宫的信息量比夫妻宫还大。紫微<span class="tag tag-warning">化权</span>——精神掌控欲强，你在感情中想说了算。贪狼——欲望之星，桃花重，兴趣广泛。红鸾——桃花星在福德，精神层面有浪漫倾向。身宫在福德——后天追求精神享受，越来越在意内心的满足感。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><h3 id="2-3-福德宫对感情的影响">2.3 福德宫对感情的影响</h3><div class="table-wrapper"><table><thead><tr><th>星曜</th><th>对感情的影响</th></tr></thead><tbody><tr><td>紫微<span class="tag tag-warning">化权</span></td><td>感情中想主导，不愿被安排，有&quot;我要最好的&quot;心态</td></tr><tr><td>贪狼</td><td>对异性有强烈吸引力，兴趣广泛也吸引异性，但容易分心</td></tr><tr><td>文昌</td><td>精神层面追求文雅、有格调的恋爱方式</td></tr><tr><td>红鸾</td><td>内心浪漫，期待命中注定的相遇</td></tr><tr><td>天厨</td><td>感情中注重生活品质，&quot;吃得好&quot;比&quot;说得好&quot;更打动你</td></tr></tbody></table></div><p>紫微<span class="tag tag-warning">化权</span>在福德宫且身宫同度，你在感情中的核心矛盾是：<strong>太想掌控，又太想要浪漫</strong>。紫微让你想当感情里的&quot;皇帝&quot;，贪狼让你想要轰轰烈烈的激情，红鸾让你期待浪漫邂逅——但武曲<span class="tag tag-danger">化忌</span>在夫妻宫偏偏给你一个&quot;硬邦邦&quot;的现实：感情不是你想怎样就怎样。<span class="source-ref" title="倪海厦《天纪》" data-source="倪海厦《天纪》"></span></p><h3 id="2-4-福德宫飞化——精神与感情的深度绑定">2.4 福德宫飞化——精神与感情的深度绑定</h3><p>福德宫己干飞化：</p><div class="table-wrapper"><table><thead><tr><th>飞化</th><th>星曜</th><th>落宫</th><th>感情解读</th></tr></thead><tbody><tr><td><span class="tag tag-success">化禄</span></td><td>武曲</td><td>夫妻</td><td>精神愉悦时感情顺利</td></tr><tr><td><span class="tag tag-warning">化权</span></td><td>贪狼</td><td>福德(※)</td><td>精神层面自我强化</td></tr><tr><td><span class="tag tag-info">化科</span></td><td>天梁</td><td>仆役</td><td>精神成长中有贵人</td></tr><tr><td><span class="tag tag-danger">化忌</span></td><td>文曲</td><td>夫妻</td><td>精神焦虑时感情出问题</td></tr></tbody></table></div><p><strong>福德飞禄飞忌同入夫妻宫</strong>——这是全盘最关键的感情信号。你的精神状态和感情状况是绑定的：心情好的时候，感情甜蜜；心情差的时候，感情也跟着崩。身宫在福德，这种绑定更加紧密——你的幸福感很大程度上取决于感情好不好。<span class="source-ref" title="iztro飞化数据" data-source="iztro飞化数据"></span></p><blockquote class="blockquote nishi-quote system-content system-not-iztro"><strong>技术注释：</strong> 福德宫己干使武曲<span class="tag tag-success">化禄</span>、文曲<span class="tag tag-danger">化忌</span>同入夫妻宫，形成&quot;禄忌同宫&quot;。禄忌同宫的解读不是&quot;抵消&quot;，而是&quot;先禄后忌&quot;或&quot;禄忌交替&quot;——感情中甜蜜和痛苦交替出现，很难持续稳定。倪师云：&quot;禄忌同宫，如冰炭同炉，非融即裂。&quot;<span class="source-ref" title="倪海厦《天纪》" data-source="倪海厦《天纪》"></span></blockquote><h3 id="2-5-命宫天府与感情的配合">2.5 命宫天府与感情的配合</h3><p>命宫天府庙旺独坐，感情上偏被动、慢热。天府是&quot;库星&quot;，守成有余、开创不足——你不会主动追求别人，但一旦确定关系，会认真经营。天姚入命增加了异性缘，你身上有一种不刻意的魅力，容易吸引异性，但天府的被动让你不知如何回应。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><p>天府的被动+武曲<span class="tag tag-danger">化忌</span>的执念+紫微贪狼的掌控欲和浪漫——三股力量拉扯，你在感情中的表现是：<strong>前期慢热被动，中期一旦投入就极度执着，后期又想掌控一切</strong>。这种模式需要对方有足够的耐心和包容力。</p><hr></div></div><div class="section-wrapper" data-section-id="三-婚期判断三层法"><h2 id="三-婚期判断三层法"><span>三、婚期判断三层法</span><button class="section-toggle" onclick="toggleSection('三-婚期判断三层法')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-三-婚期判断三层法"><p>倪师体系判断婚期必须遵循三层法：本命→大限→流年，层层递进，缺一不可。</p><h3 id="3-1-第一层-本命——晚婚信号">3.1 第一层：本命——晚婚信号</h3><div class="table-wrapper"><table><thead><tr><th>晚婚信号</th><th>具体表现</th></tr></thead><tbody><tr><td>武曲在夫妻宫</td><td>武曲刚硬，感情中不善柔软，需岁月磨圆</td></tr><tr><td>破军在夫妻宫</td><td>感情大起大落，需经历沉淀</td></tr><tr><td>武曲<span class="tag tag-danger">化忌</span></td><td>执念深，年轻时容易钻牛角尖</td></tr><tr><td>夫妻宫聚4忌</td><td>忌力极重，早婚容易因不成熟而破裂</td></tr></tbody></table></div><p><strong>本命结论：一律建议晚婚，28岁以后再考虑婚姻。</strong> 武曲、破军在夫妻宫，倪师体系有明确断语——&quot;武破在夫妻，非晚婚不可&quot;。早婚的隐患在于：武曲的刚硬还没被生活磨圆，破军的冲动还没被经历沉淀，<span class="tag tag-danger">化忌</span>的执念还没被时间化解。28岁之前，你大概率还没准备好。<span class="source-ref" title="倪海厦《天纪》" data-source="倪海厦《天纪》"></span></p><h3 id="3-2-第二层-大限——婚恋机会窗口">3.2 第二层：大限——婚恋机会窗口</h3><p>当前第3大限（22-31岁）走福德宫，紫微贪狼+红鸾。</p><div class="table-wrapper"><table><thead><tr><th>大限信号</th><th>解读</th></tr></thead><tbody><tr><td>红鸾在大限命宫</td><td>这十年有婚恋机会，红鸾主喜庆</td></tr><tr><td>贪狼在大限命宫</td><td>桃花旺，异性缘强</td></tr><tr><td>身宫同度</td><td>自我意识觉醒，对感情有更清晰的认知</td></tr><tr><td>福德飞忌入夫妻</td><td>机会有，但不宜急，急了容易出错</td></tr></tbody></table></div><p><strong>大限结论：有婚恋机会，但不宜急。</strong> 红鸾在宫说明这十年你会遇到心动的人，贪狼让你桃花不断，但福德飞忌入夫妻提醒你——精神状态不稳定的时候做感情决定容易后悔。22-25岁先稳定自己，26-31岁再认真考虑婚姻。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><h3 id="3-3-第三层-流年——具体婚恋时机">3.3 第三层：流年——具体婚恋时机</h3><div class="table-wrapper"><table><thead><tr><th>流年</th><th>干支</th><th>关键四化</th><th>感情信号</th></tr></thead><tbody><tr><td>2026</td><td>丙午</td><td>廉贞<span class="tag tag-danger">化忌</span>入迁移</td><td>外出感情纠葛，不宜做决定</td></tr><tr><td>2027</td><td>丁未</td><td>巨门<span class="tag tag-danger">化忌</span>入田宅</td><td>家庭口舌影响感情</td></tr><tr><td>2028</td><td>戊申</td><td>贪狼<span class="tag tag-success">化禄</span>入福德</td><td>精神享受增加，心态转好</td></tr><tr><td><strong>2029</strong></td><td><strong>己酉</strong></td><td><strong>武曲<span class="tag tag-success">化禄</span>入夫妻</strong></td><td><strong>感情上有财运，婚恋好时机</strong></td></tr><tr><td>2030</td><td>庚戌</td><td>武曲<span class="tag tag-warning">化权</span>入夫妻</td><td>感情中一方强势</td></tr></tbody></table></div><p><strong>2029己酉年是婚恋好时机。</strong> 理由有三：</p><ol><li>武曲<span class="tag tag-success">化禄</span>入夫妻宫——武曲本是夫妻宫<span class="tag tag-danger">化忌</span>之星，流年<span class="tag tag-success">化禄</span>等于&quot;忌星转禄&quot;，执念转化为动力，感情中的金钱问题有望缓解。<span class="source-ref" title="iztro流年四化数据" data-source="iztro流年四化数据"></span></li><li>流年命宫在福德宫身宫——精神追求和自我实现是核心，你在这年更清楚自己想要什么。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></li><li>虚岁28，刚好满足晚婚的年龄下限。<span class="source-ref" title="倪海厦《天纪》" data-source="倪海厦《天纪》"></span></li></ol><p>但2029年也有文曲<span class="tag tag-danger">化忌</span>入夫妻宫，禄忌交战——好时机不代表一帆风顺，可能订婚或领证过程中有文书、沟通方面的小波折（比如证件办理不顺、双方家庭沟通有分歧）。提前做好心理准备，小问题不影响大局。<span class="source-ref" title="iztro流年四化数据" data-source="iztro流年四化数据"></span></p><blockquote class="blockquote nishi-quote system-content system-not-iztro"><strong>技术注释：</strong> 三层法判断婚期的逻辑是&quot;本命定基调→大限开窗口→流年定时机&quot;。本命晚婚信号强，大限有红鸾开窗口，流年2029武曲<span class="tag tag-success">化禄</span>入夫妻定时机——三层信号共振，2029年是最有可能的婚恋年份。但需注意，婚期判断是概率而非定数，实际婚期还受个人选择影响。<span class="source-ref" title="倪海厦《天纪》" data-source="倪海厦《天纪》"></span></blockquote><hr></div></div><div class="section-wrapper" data-section-id="四-桃花运势"><h2 id="四-桃花运势"><span>四、桃花运势</span><button class="section-toggle" onclick="toggleSection('四-桃花运势')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-四-桃花运势"><h3 id="4-1-桃花星分布">4.1 桃花星分布</h3><p>你的命盘桃花星不少，分布在三个关键宫位：</p><div class="table-wrapper"><table><thead><tr><th>桃花星</th><th>所在宫位</th><th>桃花类型</th></tr></thead><tbody><tr><td>天姚</td><td>命宫</td><td>先天异性缘，不刻意也吸引人</td></tr><tr><td>红鸾</td><td>福德宫</td><td>精神层面浪漫，期待命中注定</td></tr><tr><td>贪狼</td><td>福德宫</td><td>欲望之星，兴趣广泛吸引异性</td></tr><tr><td>文曲</td><td>夫妻宫</td><td>被才华吸引，伴侣有文才</td></tr><tr><td>廉贞</td><td>迁移宫</td><td>出外有桃花，社交场合有人缘</td></tr></tbody></table></div><p>天姚入命是先天桃花——你不用刻意表现，身上就有一种异性觉得&quot;有意思&quot;的气质。天府的稳重压住了天姚的轻浮，所以你的桃花不是那种轻佻的吸引，而是&quot;这个人看起来很靠谱，但又有点神秘&quot;的感觉。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><p>红鸾+贪狼在福德宫，精神层面的桃花最重。你内心对浪漫有强烈的渴望，兴趣广泛也让你在社交场合容易成为焦点——什么都懂一点、什么都能聊，自然吸引异性。但贪狼的桃花是双刃剑：吸引人的同时，也容易让你分心，对一个人还没了解透彻就被另一个人吸引。<span class="source-ref" title="ziwei-doushu/lib/nihai/tianji.ts" data-source="ziwei-doushu/lib/nihai/tianji.ts"></span></p><p>廉贞在迁移宫，出外有桃花。出差、旅行、异地社交中容易遇到心动的人。但廉贞带杀气，外出桃花往往伴随着纠葛——可能对方不是单身，或者关系发展太快来不及想清楚。<span class="source-ref" title="ziwei-doushu/lib/nihai/tianji.ts" data-source="ziwei-doushu/lib/nihai/tianji.ts"></span></p><h3 id="4-2-桃花质量评估">4.2 桃花质量评估</h3><div class="table-wrapper"><table><thead><tr><th>维度</th><th>评分</th><th>说明</th></tr></thead><tbody><tr><td>桃花数量</td><td>★★★★☆</td><td>天姚+红鸾+贪狼+廉贞，桃花不少</td></tr><tr><td>桃花质量</td><td>★★☆☆☆</td><td>武曲<span class="tag tag-danger">化忌</span>+破军在夫妻，遇人不淑的概率高</td></tr><tr><td>桃花稳定性</td><td>★☆☆☆☆</td><td>破军主变动，感情来得快去得也快</td></tr><tr><td>正缘辨识</td><td>★★☆☆☆</td><td>贪狼分心+紫微高标准，容易错过对的人</td></tr></tbody></table></div><p>桃花多但质量不稳定，是这组星曜的典型特征。你身边不缺异性，但真正适合你的人可能被你忽略了——因为贪狼让你容易被新鲜感吸引，紫微让你对&quot;不够好&quot;的人看不上眼。建议：遇到感觉还不错的人，多给对方一些时间，别急着下结论。<span class="source-ref" title="倪海厦《天纪》" data-source="倪海厦《天纪》"></span></p><h3 id="4-3-桃花风险提示">4.3 桃花风险提示</h3><ul><li><strong>贪狼分心风险：</strong> 贪狼在福德宫，兴趣广泛是优点，但感情中容易&quot;吃着碗里看着锅里&quot;。一旦分心，原本可以发展的正缘可能被你错过。</li><li><strong>廉贞外出纠葛：</strong> 廉贞在迁移宫，外出社交中遇到的人要谨慎了解背景，避免陷入三角关系。</li><li><strong>仆役飞忌入夫妻：</strong> 朋友介绍的对象可能带来麻烦，或因朋友而与伴侣产生矛盾。交友圈对感情的影响比你想象的大。<span class="source-ref" title="iztro飞化数据" data-source="iztro飞化数据"></span></li></ul><hr></div></div><div class="section-wrapper" data-section-id="五-大限感情周期"><h2 id="五-大限感情周期"><span>五、大限感情周期</span><button class="section-toggle" onclick="toggleSection('五-大限感情周期')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-五-大限感情周期"><h3 id="5-1-八大限感情总览">5.1 八大限感情总览</h3><div class="table-wrapper"><table><thead><tr><th>大限</th><th>年龄</th><th>宫位</th><th>主星</th><th>感情基调</th></tr></thead><tbody><tr><td>第1</td><td>2-11</td><td>命宫</td><td>天府庙</td><td>童年无感情，安稳成长</td></tr><tr><td>第2</td><td>12-21</td><td>父母宫</td><td>天机得+太阴利</td><td>情窦初开但多思多虑</td></tr><tr><td>第3</td><td>22-31</td><td>福德宫</td><td>紫微旺权+贪狼利</td><td>★桃花最旺十年，红鸾在宫</td></tr><tr><td>第4</td><td>32-41</td><td>田宅宫</td><td>巨门陷+陀罗庙</td><td>家庭矛盾影响感情</td></tr><tr><td>第5</td><td>42-51</td><td>官禄宫</td><td>天相得+禄存</td><td>事业稳定，婚姻趋稳</td></tr><tr><td>第6</td><td>52-61</td><td>仆役宫</td><td>天梁庙禄+地劫</td><td>朋友影响感情</td></tr><tr><td>第7</td><td>62-71</td><td>迁移宫</td><td>廉贞利+七杀庙</td><td>晚年仍有桃花但孤独</td></tr><tr><td>第8</td><td>72-81</td><td>疾厄宫</td><td>空宫+火星庙</td><td>健康优先，感情退居其次</td></tr></tbody></table></div><h3 id="5-2-逐限感情详析">5.2 逐限感情详析</h3><p><strong>第1大限（2-11岁）命宫天府：</strong> 童年时期感情空白，天府庙旺坐命，家庭环境尚可，性格偏稳重。天姚入命，可能从小就有异性缘，但年龄太小，谈不上感情。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><p><strong>第2大限（12-21岁）父母宫天机太阴：</strong> 情窦初开的十年。天机主思虑，太阴主感性，两颗星让你在青春期特别容易胡思乱想——暗恋、单相思、写情书不敢送，都是这十年的典型画面。天马同宫，可能经历过异地暗恋或因转学而错过某人。太阴力量偏弱，你在感情中缺乏安全感，容易患得患失。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><p><strong>第3大限（22-31岁）福德宫紫微贪狼★当前：</strong> 桃花最旺的十年。红鸾在宫，你会遇到让你心动的人；贪狼让你魅力四射，异性缘爆棚；紫微<span class="tag tag-warning">化权</span>让你在感情中越来越有主见。但这也是最折腾的十年——福德飞忌入夫妻，感情问题直接影响精神状态；贪狼的欲望如果失控，容易陷入多角关系或感情纠纷。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><p><strong>第4大限（32-41岁）田宅宫巨门陷+陀罗：</strong> 婚后磨合期。巨门陷地在田宅，家庭内部口舌多，可能因为家务分工、婆媳关系、房产问题与伴侣争吵。陀罗主拖延，矛盾不容易解决，容易冷战。地空带来空虚感，可能觉得婚姻不如预期。左辅<span class="tag tag-info">化科</span>是亮点——总有贵人帮你化解家庭矛盾，不至于闹到不可收拾。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><p><strong>第5大限（42-51岁）官禄宫天相+禄存：</strong> 事业稳定期，婚姻也趋稳。天相规矩、禄存守财，经济基础稳固，家庭生活步入正轨。官禄飞忌入福德，工作压力仍然影响精神，但天相的稳定力量让婚姻不至于出大问题。如果前几个大限的感情课题已经修完，这十年是享受婚姻成果的时候。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><p><strong>第6大限（52-61岁）仆役宫天梁禄+地劫：</strong> 朋友影响感情的十年。天梁<span class="tag tag-success">化禄</span>在仆役，社交圈活跃，但地劫夺禄，朋友中有人让你破财或影响家庭。仆役飞忌入夫妻，朋友问题可能波及婚姻——比如因社交活动忽略伴侣，或朋友介入家庭事务引发矛盾。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><p><strong>第7大限（62-71岁）迁移宫廉贞+七杀：</strong> 晚年仍有桃花。廉贞带桃花，七杀主孤独——有人缘但难有深交。如果丧偶或离异，这十年可能遇到新的感情对象，但七杀的孤克让关系难以长久。迁移飞忌入福德，外出活动影响精神状态，不宜过度社交。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><p><strong>第8大限（72-81岁）疾厄宫空宫+火星：</strong> 健康优先，感情退居其次。火星在疾厄宫火气大，身体是这十年的核心关注点。空宫借对宫天机太阴力量减半，精神上需要陪伴但体力不支。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><hr></div></div><div class="section-wrapper" data-section-id="六-流年感情提示"><h2 id="六-流年感情提示"><span>六、流年感情提示</span><button class="section-toggle" onclick="toggleSection('六-流年感情提示')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-六-流年感情提示"><h3 id="6-1-2024-2030流年感情一览">6.1 2024-2030流年感情一览</h3><div class="table-wrapper"><table><thead><tr><th>流年</th><th>干支</th><th>虚岁</th><th>流年命宫</th><th>关键四化</th><th>感情关键词</th></tr></thead><tbody><tr><td>2024</td><td>甲辰</td><td>23</td><td>子女宫</td><td>武曲<span class="tag tag-info">化科</span>入夫妻</td><td>正面沟通</td></tr><tr><td>2025</td><td>乙巳</td><td>24</td><td>夫妻宫</td><td>太阴<span class="tag tag-danger">化忌</span>入父母</td><td>感情是焦点</td></tr><tr><td>2026</td><td>丙午</td><td>25</td><td>兄弟宫</td><td>廉贞<span class="tag tag-danger">化忌</span>入迁移</td><td>外出纠葛</td></tr><tr><td>2027</td><td>丁未</td><td>26</td><td>命宫</td><td>巨门<span class="tag tag-danger">化忌</span>入田宅</td><td>家庭口舌</td></tr><tr><td>2028</td><td>戊申</td><td>27</td><td>父母宫</td><td>贪狼<span class="tag tag-success">化禄</span>入福德</td><td>心态转好</td></tr><tr><td>2029</td><td>己酉</td><td>28</td><td>福德宫</td><td>武曲<span class="tag tag-success">化禄</span>入夫妻</td><td>★婚恋好时机</td></tr><tr><td>2030</td><td>庚戌</td><td>29</td><td>田宅宫</td><td>武曲<span class="tag tag-warning">化权</span>入夫妻</td><td>一方强势</td></tr></tbody></table></div><h3 id="6-2-逐年感情详析">6.2 逐年感情详析</h3><p><strong>2024甲辰年（虚岁23）：</strong> 武曲<span class="tag tag-info">化科</span>入夫妻宫，感情上有正面沟通的机会。<span class="tag tag-info">化科</span>主名声、贵人，可能通过社交场合认识条件不错的对象，或与现有对象的关系有所改善。但甲年太阳<span class="tag tag-danger">化忌</span>冲兄弟宫，同辈朋友中有人不顺，可能间接影响你的心情和社交状态。<span class="source-ref" title="iztro流年四化数据" data-source="iztro流年四化数据"></span></p><p><strong>2025乙巳年（虚岁24）：</strong> 流年命宫在夫妻宫，这一年感情是绝对焦点。你可能会经历一段重要的感情——开始或结束。太阴<span class="tag tag-danger">化忌</span>入父母宫，母亲或女性长辈身体不好，或你与母亲有矛盾，家庭氛围影响感情判断。天机<span class="tag tag-success">化禄</span>入父母，与父亲关系改善，可能得到父亲在感情上的建议。<span class="source-ref" title="iztro流年四化数据" data-source="iztro流年四化数据"></span></p><p><strong>2026丙午年（虚岁25）★当前：</strong> 廉贞<span class="tag tag-danger">化忌</span>入迁移宫，外出感情纠葛是今年的风险。出差、旅行、异地社交中遇到的人要谨慎——廉贞<span class="tag tag-danger">化忌</span>主感情上的困扰和官非风险。文昌<span class="tag tag-info">化科</span>入福德宫是今年的亮点，适合通过学习、进修来转移注意力，提升自我比急着找对象更靠谱。<span class="source-ref" title="iztro流年四化数据" data-source="iztro流年四化数据"></span></p><p><strong>2027丁未年（虚岁26）：</strong> 流年命宫回到本命命宫，自我重新定位的关键年。巨门<span class="tag tag-danger">化忌</span>入田宅宫，家庭内部有口舌是非，可能因为家人对感情对象的看法不同而争吵。太阴<span class="tag tag-success">化禄</span>入父母，母亲的态度转好，可能开始支持你的感情选择。<span class="source-ref" title="iztro流年四化数据" data-source="iztro流年四化数据"></span></p><p><strong>2028戊申年（虚岁27）：</strong> 贪狼<span class="tag tag-success">化禄</span>入福德宫（身宫），精神享受增加，心态明显转好。这一年你对感情的焦虑感降低，更享受当下的状态。右弼<span class="tag tag-info">化科</span>入子女，如果有孩子，与孩子关系融洽。天机<span class="tag tag-danger">化忌</span>入父母，父母中有人身体不好或与父母产生矛盾，但不太影响感情主线。<span class="source-ref" title="iztro流年四化数据" data-source="iztro流年四化数据"></span></p><p><strong>2029己酉年（虚岁28）：</strong> ★婚恋好时机。武曲<span class="tag tag-success">化禄</span>入夫妻宫，忌星转禄，感情中的金钱问题有望缓解。贪狼<span class="tag tag-warning">化权</span>入福德，精神掌控力增强，你更清楚自己想要什么。但文曲<span class="tag tag-danger">化忌</span>入夫妻宫，沟通不畅或文书问题可能带来小波折——比如双方家庭在婚事细节上有分歧，或证件办理不顺。提前沟通、提前准备，小问题不影响大局。<span class="source-ref" title="iztro流年四化数据" data-source="iztro流年四化数据"></span></p><p><strong>2030庚戌年（虚岁29）：</strong> 武曲<span class="tag tag-warning">化权</span>入夫妻宫，感情中一方强势。如果2029年已经确定关系或结婚，2030年可能因为谁说了算而产生摩擦。太阳<span class="tag tag-success">化禄</span>入兄弟，兄弟中有好消息，可能通过兄弟介绍认识新的社交圈。天同<span class="tag tag-danger">化忌</span>入子女，如果有孩子，养育过程中可能有烦心事。<span class="source-ref" title="iztro流年四化数据" data-source="iztro流年四化数据"></span></p><hr></div></div><div class="section-wrapper" data-section-id="七-感情建议"><h2 id="七-感情建议"><span>七、感情建议</span><button class="section-toggle" onclick="toggleSection('七-感情建议')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-七-感情建议"><h3 id="7-1-核心原则-先稳自己-再谈感情">7.1 核心原则：先稳自己，再谈感情</h3><p>福德宫飞禄飞忌同入夫妻宫，你的精神状态和感情深度绑定。这意味着：<strong>你精神独立的时候，感情反而更顺；你精神依赖的时候，感情反而更糟。</strong> 所以第一条建议是——先把自己的精神世界建设好，再投入感情。有自己的兴趣爱好、有自己的社交圈、有自己的事业目标，这些不是感情的障碍，而是感情的护城河。<span class="source-ref" title="iztro飞化数据" data-source="iztro飞化数据"></span></p><h3 id="7-2-给天府坐命的你">7.2 给天府坐命的你</h3><p>天府坐命的人感情偏被动慢热，这不是缺点，是性格。但天姚入命让你有异性缘，被动就容易变成&quot;别人追你你不知道怎么回应&quot;。建议：遇到感觉还不错的人，主动一点——天府的稳重+一点点主动，杀伤力比贪狼的张扬更大。<span class="source-ref" title="iztro排盘数据" data-source="iztro排盘数据"></span></p><h3 id="7-3-武曲化忌的化解">7.3 武曲<span class="tag tag-danger">化忌</span>的化解</h3><p>武曲<span class="tag tag-danger">化忌</span>在夫妻宫，执念深、金钱是矛盾点。化解方法不是&quot;不在意钱&quot;，而是<strong>提前把钱的事说清楚</strong>。谈恋爱的时候就聊消费观念，谈婚论嫁的时候就把财务安排谈妥。武曲是财星，<span class="tag tag-danger">化忌</span>就是&quot;财的问题没处理好&quot;，把问题摆到台面上，反而比藏着掖着好。<span class="source-ref" title="倪海厦《天纪》" data-source="倪海厦《天纪》"></span></p><h3 id="7-4-破军的应对">7.4 破军的应对</h3><p>破军在夫妻宫，感情大起大落。应对破军的方法是：<strong>不要在情绪最高点做决定</strong>。热恋的时候别急着结婚，吵架的时候别急着分手。给自己24小时冷静期，破军的冲动劲过了，决定会更理性。<span class="source-ref" title="ziwei-doushu/lib/nihai/tianji.ts" data-source="ziwei-doushu/lib/nihai/tianji.ts"></span></p><h3 id="7-5-交友圈管理">7.5 交友圈管理</h3><p>仆役飞忌入夫妻——朋友问题可能影响感情。这不是说你要断绝社交，而是要<strong>把感情圈和朋友圈适当分开</strong>。不要让朋友过度介入你和伴侣的关系，也不要因为朋友的意见轻易改变对伴侣的看法。天梁<span class="tag tag-success">化禄</span>在仆役宫，朋友中确实有贵人，但地劫和擎羊同宫，也有损友——学会分辨。<span class="source-ref" title="iztro飞化数据" data-source="iztro飞化数据"></span></p><h3 id="7-6-健康与感情的关联">7.6 健康与感情的关联</h3><p>疾厄飞忌入夫妻——健康问题影响感情。来因宫在疾厄，身体是此生因果的根源。身体不好的时候，脾气差、精神差，感情自然受影响。反过来，感情不顺的时候，焦虑失眠、饮食不规律，身体也跟着垮。打破这个循环的关键是：<strong>无论感情怎样，保持规律的作息和运动习惯</strong>。身体是你唯一真正拥有的本钱。<span class="source-ref" title="iztro飞化数据" data-source="iztro飞化数据"></span></p><h3 id="7-7-伴侣画像">7.7 伴侣画像</h3><p>根据夫妻宫和福德宫的星曜组合，你的伴侣可能具备以下特征：</p><div class="table-wrapper"><table><thead><tr><th>特征</th><th>来源星曜</th><th>说明</th></tr></thead><tbody><tr><td>有文才或从事文化工作</td><td>文曲在夫妻</td><td>写作、音乐、设计、教育等</td></tr><tr><td>出身不错或气质出众</td><td>天钺在夫妻</td><td>家境中上，或本身修养好</td></tr><tr><td>性格偏刚强</td><td>武曲在夫妻</td><td>有主见，不轻易妥协</td></tr><tr><td>有变动性</td><td>破军在夫妻</td><td>可能换过城市、换过行业</td></tr><tr><td>与你母亲有摩擦</td><td>太阴<span class="tag tag-danger">化忌</span>入父母</td><td>婆媳关系需要提前经营</td></tr></tbody></table></div><hr></div></div><div class="section-wrapper" data-section-id="八-总结评级"><h2 id="八-总结评级"><span>八、总结评级</span><button class="section-toggle" onclick="toggleSection('八-总结评级')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-八-总结评级"><h3 id="8-1-感情维度评分">8.1 感情维度评分</h3><div class="table-wrapper"><table><thead><tr><th>维度</th><th>评分</th><th>说明</th></tr></thead><tbody><tr><td>桃花运</td><td>★★★★☆</td><td>天姚+红鸾+贪狼+廉贞，桃花数量充足</td></tr><tr><td>正缘质量</td><td>★★★☆☆</td><td>文曲+天钺在夫妻，伴侣底子不差，但武曲<span class="tag tag-danger">化忌</span>增加波折</td></tr><tr><td>感情稳定性</td><td>★★☆☆☆</td><td>破军+禄忌交战，大起大落是常态</td></tr><tr><td>婚姻和谐度</td><td>★★★☆☆</td><td>晚婚可化解部分问题，但田宅巨门陷地婚后仍有磨合</td></tr><tr><td>精神匹配度</td><td>★★★☆☆</td><td>紫微贪狼在福德，精神追求高，需找到同频的人</td></tr></tbody></table></div><h3 id="8-2-感情总评">8.2 感情总评</h3><p><strong>感情难度：★★★★☆（偏难）</strong></p><p>夫妻宫聚4忌是全盘最重的忌力点，武曲<span class="tag tag-danger">化忌</span>+破军的组合让感情路注定不平坦。但3禄同时汇入夫妻宫，说明感情中并非没有甜蜜——只是甜蜜和痛苦交替出现，需要强大的心理承受力。</p><p>福德宫紫微贪狼+红鸾，桃花旺、精神追求高，这是你的优势也是你的考验——优势在于你不缺机会，考验在于你容易因为标准太高或分心而错过对的人。</p><p><strong>关键转折点：2029己酉年（虚岁28）。</strong> 武曲<span class="tag tag-success">化禄</span>入夫妻，忌星转禄，是最有可能确定正缘或步入婚姻的年份。在此之前，先稳定事业和心态，把精神独立建设好——这是你能为感情做的最好的准备。<span class="source-ref" title="iztro流年四化数据" data-source="iztro流年四化数据"></span></p><h3 id="8-3-一句话总结">8.3 一句话总结</h3><p><strong>桃花不少但正缘难求，先稳自己再谈感情，28岁后婚运渐开。</strong></p><hr></div></div><div class="section-wrapper" data-section-id="附录-感情相关飞化速查表"><h2 id="附录-感情相关飞化速查表"><span>附录：感情相关飞化速查表</span><button class="section-toggle" onclick="toggleSection('附录-感情相关飞化速查表')" aria-label="折叠/展开"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></h2><div class="section-content" id="section-附录-感情相关飞化速查表"><div class="table-wrapper"><table><thead><tr><th>飞化方向</th><th>宫干</th><th>星曜</th><th>对感情的影响</th></tr></thead><tbody><tr><td>疾厄→夫妻</td><td>壬</td><td>武曲<span class="tag tag-danger">化忌</span></td><td>健康影响感情</td></tr><tr><td>仆役→夫妻</td><td>壬</td><td>武曲<span class="tag tag-danger">化忌</span></td><td>朋友问题波及感情</td></tr><tr><td>福德→夫妻</td><td>己</td><td>武曲<span class="tag tag-success">化禄</span></td><td>精神好时感情顺</td></tr><tr><td>福德→夫妻</td><td>己</td><td>文曲<span class="tag tag-danger">化忌</span></td><td>精神差时感情出问题</td></tr><tr><td>财帛→夫妻</td><td>癸</td><td>破军<span class="tag tag-success">化禄</span></td><td>钱财与伴侣有关</td></tr><tr><td>迁移→夫妻</td><td>癸</td><td>破军<span class="tag tag-success">化禄</span></td><td>出外可能遇对象</td></tr><tr><td>田宅→夫妻</td><td>庚</td><td>武曲<span class="tag tag-warning">化权</span></td><td>房产与婚姻挂钩</td></tr><tr><td>官禄→夫妻</td><td>辛</td><td>文曲<span class="tag tag-info">化科</span></td><td>事业助力感情名声</td></tr><tr><td>子女→夫妻</td><td>甲</td><td>破军<span class="tag tag-warning">化权</span></td><td>子女与伴侣关系密切</td></tr><tr><td>子女→夫妻</td><td>甲</td><td>武曲<span class="tag tag-info">化科</span></td><td>子女带来感情正面信号</td></tr></tbody></table></div><hr><blockquote class="blockquote nishi-quote system-content system-not-iztro"><strong>倪师体系声明：</strong> 本报告基于倪海厦《天纪》紫微斗数体系，不使用大限四化，看婚姻必须同时看福德宫。武曲/廉贞/七杀/破军在夫妻宫一律建议晚婚。</blockquote><blockquote class="blockquote"><strong>报告尾部声明：</strong> 本报告由 iztro 排盘引擎生成数据，经人工解读撰写而成。命理分析仅供参考，不构成任何决策依据。人的命运掌握在自己手中，知命而不认命，方为正道。</blockquote><p><strong>排盘时间：</strong> 2026年5月22日</p><p><strong>排盘体系：</strong> 倪海厦《天纪》紫微斗数</p><p><strong>排盘引擎：</strong> iztro</p><p><strong>报告生成：</strong> AI辅助撰写</p></div></div>
+</main>
+
+<button class="mobile-toc-fab" onclick="toggleMobileToc()" aria-label="目录" title="目录">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+</button>
+
+<button class="chart-fab" onclick="toggleChart()" aria-label="排盘图" title="排盘图">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+</button>
+
+<button class="back-to-top" id="backToTop" onclick="document.documentElement.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<div class="chart-overlay" id="chartOverlay" onclick="closeChart()"></div>
+
+<div class="chart-panel" id="chartPanel">
+  <div class="chart-panel-header" id="chartPanelHeader">
+    <div class="chart-panel-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+      命盘排盘图
+      <span class="chart-panel-system-badge" id="chartSystemBadge">综合</span>
+    </div>
+    <div class="chart-panel-actions">
+      <div class="chart-zoom-controls">
+        <button class="chart-zoom-btn" onclick="chartZoomOut()" title="缩小">−</button>
+        <span class="chart-zoom-level" id="chartZoomLevel">100%</span>
+        <button class="chart-zoom-btn" onclick="chartZoomIn()" title="放大">+</button>
+        <button class="chart-zoom-btn" onclick="chartZoomReset()" title="重置" style="font-size:11px;">↺</button>
+      </div>
+      <button class="chart-panel-btn" onclick="minimizeChart()" title="最小化">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg>
+      </button>
+      <button class="chart-panel-btn" onclick="closeChart()" title="关闭">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="chart-panel-body" id="chartPanelBody">
+    <div class="chart-dalimit-bar" id="chartDalimitBar"></div>
+    <div class="chart-grid-wrapper" id="chartGridWrapper">
+      <div class="chart-grid" id="chartGrid"></div>
+      <svg class="chart-svg-overlay" id="chartSvgOverlay"></svg>
+    </div>
+    <div class="chart-legend">
+      <span class="chart-legend-item"><span class="chart-legend-dot lu"></span>化禄</span>
+      <span class="chart-legend-item"><span class="chart-legend-dot quan"></span>化权</span>
+      <span class="chart-legend-item"><span class="chart-legend-dot ke"></span>化科</span>
+      <span class="chart-legend-item"><span class="chart-legend-dot ji"></span>化忌</span>
+    </div>
+    <div class="chart-hint">点击宫位查看三方四正连线</div>
+  </div>
+  <div class="chart-panel-resize" id="chartResize"></div>
+</div>
+
+<div class="chart-tooltip" id="chartTooltip"></div>
+
+<div class="mobile-toc-overlay" id="mobileTocOverlay" onclick="closeMobileToc()"></div>
+<div class="mobile-toc-drawer" id="mobileTocDrawer">
+  <div class="mobile-toc-drawer-header">
+    <span class="mobile-toc-drawer-title">目录</span>
+    <button class="mobile-toc-drawer-close" onclick="closeMobileToc()" aria-label="关闭">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-drawer-body" id="mobileTocBody"></div>
+</div>
+
+<div class="help-overlay" id="helpOverlay" onclick="closeHelp()"></div>
+
+<div class="help-panel" id="helpPanel">
+  <div class="help-panel-header">
+    <div class="help-panel-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      快捷指令帮助
+    </div>
+    <button class="help-panel-close" onclick="closeHelp()" title="关闭">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="help-panel-body">
+    <div class="help-section-title">键盘快捷键</div>
+    <ul class="help-shortcut-list">
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">切换明/暗主题</span><span class="help-shortcut-key"><span class="help-kbd">T</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">切换到 iztro 模式</span><span class="help-shortcut-key"><span class="help-kbd">1</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">切换到倪师模式</span><span class="help-shortcut-key"><span class="help-kbd">2</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">切换到综合模式</span><span class="help-shortcut-key"><span class="help-kbd">3</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">显示/隐藏帮助面板</span><span class="help-shortcut-key"><span class="help-kbd">?</span></span></li>
+      <li class="help-shortcut-item"><span class="help-shortcut-desc">关闭所有弹窗</span><span class="help-shortcut-key"><span class="help-kbd">Esc</span></span></li>
+    </ul>
+    <div class="help-section-title">专项解读</div>
+    <ul class="help-command-list">
+      <li class="help-command-item"><span class="help-command-code">\money</span><span class="help-command-desc">财运分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\health</span><span class="help-command-desc">健康分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\love</span><span class="help-command-desc">感情分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\match</span><span class="help-command-desc">合盘分析（需提供另一半信息）</span></li>
+      <li class="help-command-item"><span class="help-command-code">\career</span><span class="help-command-desc">事业分析</span></li>
+      <li class="help-command-item"><span class="help-command-code">\year</span><span class="help-command-desc">流年运势</span></li>
+    </ul>
+    <div class="help-section-title">时运选择</div>
+    <ul class="help-command-list">
+      <li class="help-command-item"><span class="help-command-code">\dash</span><span class="help-command-desc">大限选择（列出所有大限，选择后详解）</span></li>
+      <li class="help-command-item"><span class="help-command-code">\flow</span><span class="help-command-desc">流年选择（列出流年，选择后详解）</span></li>
+      <li class="help-command-item"><span class="help-command-code">\month</span><span class="help-command-desc">流月选择（列出12月，选择后详解）</span></li>
+    </ul>
+    <div class="help-section-title">辅助工具</div>
+    <ul class="help-command-list">
+      <li class="help-command-item"><span class="help-command-code">\question</span><span class="help-command-desc">提问解答</span></li>
+      <li class="help-command-item"><span class="help-command-code">\switch</span><span class="help-command-desc">切换解读体系</span></li>
+      <li class="help-command-item"><span class="help-command-code">\help</span><span class="help-command-desc">显示指令帮助</span></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+
+(function() {
+  var chartData = {"palaces":[{"name":"疾厄","ganzhi":"壬寅","position":10,"mainStars":[],"auxStars":["火星"],"miscStars":["解神","三台","天巫","截路","蜚廉","阴煞","天使"],"changsheng":"病","dalimit":"72-81岁","note":"★来因宫","isBodyPalace":false,"isLaiyinPalace":true},{"name":"财帛","ganzhi":"癸卯","position":9,"mainStars":[],"auxStars":["天魁"],"miscStars":["天喜","咸池","天寿","封诰","天德","空亡","天刑"],"changsheng":"死","dalimit":"82-91岁","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"子女","ganzhi":"甲辰","position":8,"mainStars":[{"name":"天同","brightness":"平","sihua":""}],"auxStars":["右弼","铃星"],"miscStars":["凤阁","寡宿","年解"],"changsheng":"墓","dalimit":"92-101岁","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"夫妻","ganzhi":"乙巳","position":7,"mainStars":[{"name":"武曲","brightness":"平","sihua":"化忌"},{"name":"破军","brightness":"平","sihua":""}],"auxStars":["文曲","天钺"],"miscStars":["破碎"],"changsheng":"绝","dalimit":"102-111岁","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"兄弟","ganzhi":"丙午","position":6,"mainStars":[{"name":"太阳","brightness":"旺","sihua":""}],"auxStars":[],"miscStars":["天福"],"changsheng":"胎","dalimit":"112-121岁","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"命宫","ganzhi":"丁未","position":5,"mainStars":[{"name":"天府","brightness":"庙","sihua":""}],"auxStars":[],"miscStars":["天姚","台辅","天空"],"changsheng":"养","dalimit":"2-11岁","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"父母","ganzhi":"戊申","position":4,"mainStars":[{"name":"天机","brightness":"得","sihua":""},{"name":"太阴","brightness":"利","sihua":""}],"auxStars":["天马"],"miscStars":["天贵","旬空","孤辰"],"changsheng":"长生","dalimit":"12-21岁","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"福德","ganzhi":"己酉","position":3,"mainStars":[{"name":"紫微","brightness":"旺","sihua":"化权"},{"name":"贪狼","brightness":"利","sihua":""}],"auxStars":["文昌"],"miscStars":["红鸾","天厨"],"changsheng":"沐浴","dalimit":"22-31岁","note":"","isBodyPalace":true,"isLaiyinPalace":false},{"name":"田宅","ganzhi":"庚戌","position":2,"mainStars":[{"name":"巨门","brightness":"陷","sihua":""}],"auxStars":["左辅【科】","地空","陀罗"],"miscStars":["龙池","华盖","天官"],"changsheng":"冠带","dalimit":"32-41岁","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"官禄","ganzhi":"辛亥","position":1,"mainStars":[{"name":"天相","brightness":"得","sihua":""}],"auxStars":["禄存"],"miscStars":["天月","月德"],"changsheng":"临官","dalimit":"42-51岁","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"仆役","ganzhi":"壬子","position":0,"mainStars":[{"name":"天梁","brightness":"庙","sihua":"化禄"}],"auxStars":["地劫","擎羊"],"miscStars":["八座","恩光","天哭","天虚","天伤"],"changsheng":"帝旺","dalimit":"52-61岁","note":"","isBodyPalace":false,"isLaiyinPalace":false},{"name":"迁移","ganzhi":"癸丑","position":11,"mainStars":[{"name":"廉贞","brightness":"利","sihua":""},{"name":"七杀","brightness":"庙","sihua":""}],"auxStars":[],"miscStars":["天才"],"changsheng":"衰","dalimit":"62-71岁","note":"","isBodyPalace":false,"isLaiyinPalace":false}],"info":{"name":"男","ganzhi":"壬午 戊申 乙丑 丁丑","wuxingju":"水二局","gender":"男","minggong":"未宫","mingzhu":"武曲","shenzhu":"火星"}};
+
+  var systemLabels = {
+    iztro: 'iztro标准',
+    nishi: '倪师天纪',
+    combined: '综合模式'
+  };
+
+  var systemBadgeLabels = {
+    iztro: 'iztro',
+    nishi: '倪师',
+    combined: '综合'
+  };
+
+  function niBrightness(iztroLevel) {
+    if (!iztroLevel) return iztroLevel;
+    if (['庙','旺'].indexOf(iztroLevel) >= 0) return '庙旺';
+    if (['得','利','平'].indexOf(iztroLevel) >= 0) return '平';
+    if (['不','陷'].indexOf(iztroLevel) >= 0) return '陷';
+    return iztroLevel;
+  }
+
+  function getNiBrightnessClass(iztroLevel) {
+    var ni = niBrightness(iztroLevel);
+    if (ni === '庙旺') return 'ni-miao';
+    if (ni === '平') return 'ni-ping';
+    if (ni === '陷') return 'ni-xian';
+    return '';
+  }
+
+  function formatBrightnessLabel(iztroLevel) {
+    var system = document.documentElement.getAttribute('data-system') || 'combined';
+    if (!iztroLevel) return '';
+    if (system === 'iztro') return iztroLevel;
+    if (system === 'nishi') return niBrightness(iztroLevel);
+    return iztroLevel + '(' + niBrightness(iztroLevel) + ')';
+  }
+
+  /* ===== 体系切换 ===== */
+  function switchSystem(mode) {
+    var allSystemContent = document.querySelectorAll('.system-content');
+    allSystemContent.forEach(function(el) {
+      el.classList.add('system-content-fade-out');
+    });
+
+    setTimeout(function() {
+      document.documentElement.setAttribute('data-system', mode);
+      localStorage.setItem('ziwei-system', mode);
+      updateSystemUI(mode);
+
+      allSystemContent.forEach(function(el) {
+        el.classList.remove('system-content-fade-out');
+        el.classList.add('system-content-fade-in');
+      });
+
+      setTimeout(function() {
+        allSystemContent.forEach(function(el) {
+          el.classList.remove('system-content-fade-in');
+        });
+      }, 350);
+    }, 250);
+  }
+
+  function updateSystemUI(mode) {
+    document.querySelectorAll('.mode-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
+    });
+    var nameEl = document.getElementById('sidebarSystemName');
+    if (nameEl) nameEl.textContent = systemLabels[mode] || mode;
+    var badgeEl = document.getElementById('chartSystemBadge');
+    if (badgeEl) badgeEl.textContent = systemBadgeLabels[mode] || mode;
+  }
+
+  window.switchSystem = switchSystem;
+
+  var savedSystem = localStorage.getItem('ziwei-system');
+  if (savedSystem && ['iztro','nishi','combined'].indexOf(savedSystem) >= 0) {
+    document.documentElement.setAttribute('data-system', savedSystem);
+    updateSystemUI(savedSystem);
+  } else {
+    updateSystemUI('combined');
+  }
+
+  /* ===== 主题切换 ===== */
+  function toggleTheme() {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var next = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('ziwei-theme', next);
+    updateThemeIcon(next);
+  }
+
+  function updateThemeIcon(theme) {
+    var icon = document.getElementById('themeIcon');
+    if (theme === 'dark') {
+      icon.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+    } else {
+      icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    }
+  }
+
+  /* ===== 侧边栏 ===== */
+  function toggleSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebarOverlay');
+    sidebar.classList.toggle('open');
+    if (sidebar.classList.contains('open')) {
+      overlay.style.display = 'block';
+      requestAnimationFrame(function() { overlay.classList.add('visible'); });
+    } else {
+      closeSidebar();
+    }
+  }
+
+  function closeSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebarOverlay');
+    sidebar.classList.remove('open');
+    overlay.classList.remove('visible');
+    setTimeout(function() { overlay.style.display = 'none'; }, 200);
+  }
+
+  window.toggleTheme = toggleTheme;
+  window.toggleSidebar = toggleSidebar;
+  window.closeSidebar = closeSidebar;
+
+  /* ===== 移动端目录抽屉 ===== */
+  function toggleMobileToc() {
+    var drawer = document.getElementById('mobileTocDrawer');
+    var overlay = document.getElementById('mobileTocOverlay');
+    if (drawer.classList.contains('open')) {
+      closeMobileToc();
+    } else {
+      var tocList = document.getElementById('tocList');
+      var tocBody = document.getElementById('mobileTocBody');
+      if (tocList && tocBody) {
+        tocBody.innerHTML = tocList.innerHTML;
+      }
+      overlay.style.display = 'block';
+      requestAnimationFrame(function() {
+        overlay.classList.add('visible');
+        drawer.classList.add('open');
+      });
+      tocBody.querySelectorAll('.toc-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+          closeMobileToc();
+        });
+      });
+    }
+  }
+
+  function closeMobileToc() {
+    var drawer = document.getElementById('mobileTocDrawer');
+    var overlay = document.getElementById('mobileTocOverlay');
+    drawer.classList.remove('open');
+    overlay.classList.remove('visible');
+    setTimeout(function() { overlay.style.display = 'none'; }, 300);
+  }
+
+  window.toggleMobileToc = toggleMobileToc;
+  window.closeMobileToc = closeMobileToc;
+
+  var saved = localStorage.getItem('ziwei-theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    updateThemeIcon(saved);
+  }
+
+  /* ===== 目录高亮 ===== */
+  var headings = document.querySelectorAll('h2, h3');
+  var tocLinks = document.querySelectorAll('.toc-link');
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(l) { l.classList.remove('active'); });
+        var id = entry.target.id;
+        var link = document.querySelector('.toc-link[href="#' + id + '"]');
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-80px 0px -70% 0px', threshold: 0.1 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+
+  /* ===== 滚动处理 ===== */
+  var backToTop = document.getElementById('backToTop');
+  var progressFill = document.getElementById('progressFill');
+
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressFill.style.width = progress + '%';
+    backToTop.classList.toggle('visible', scrollTop > 400);
+  });
+
+  document.querySelectorAll('.toc-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 900) {
+        closeSidebar();
+      }
+    });
+  });
+
+  /* ===== 章节折叠 ===== */
+  function toggleSection(id) {
+    var wrapper = document.querySelector('.section-wrapper[data-section-id="' + id + '"]');
+    if (!wrapper) return;
+    wrapper.classList.toggle('collapsed');
+    var collapsed = getCollapsedSections();
+    if (wrapper.classList.contains('collapsed')) {
+      if (collapsed.indexOf(id) < 0) collapsed.push(id);
+    } else {
+      collapsed = collapsed.filter(function(s) { return s !== id; });
+    }
+    localStorage.setItem('ziwei-collapsed-sections', JSON.stringify(collapsed));
+  }
+
+  function getCollapsedSections() {
+    try { return JSON.parse(localStorage.getItem('ziwei-collapsed-sections') || '[]'); }
+    catch(e) { return []; }
+  }
+
+  function restoreSectionStates() {
+    var collapsed = getCollapsedSections();
+    collapsed.forEach(function(id) {
+      var wrapper = document.querySelector('.section-wrapper[data-section-id="' + id + '"]');
+      if (wrapper) wrapper.classList.add('collapsed');
+    });
+  }
+
+  window.toggleSection = toggleSection;
+  restoreSectionStates();
+
+  /* ===== 排盘图：宫位映射与三方四正 ===== */
+  var palaceNames = {
+    0: '仆役', 1: '官禄', 2: '田宅', 3: '福德',
+    4: '父母', 5: '命宫', 6: '兄弟', 7: '夫妻',
+    8: '子女', 9: '财帛', 10: '疾厄', 11: '迁移'
+  };
+
+  var palaceDizhi = {
+    0: '申', 1: '未', 2: '午', 3: '巳',
+    4: '辰', 5: '卯', 6: '寅', 7: '丑',
+    8: '子', 9: '亥', 10: '戌', 11: '酉'
+  };
+
+  var sanfangMap = {
+    0: { sanfang: [8, 4], sizheng: 6 },
+    1: { sanfang: [5, 9], sizheng: 7 },
+    2: { sanfang: [6, 10], sizheng: 8 },
+    3: { sanfang: [7, 11], sizheng: 9 },
+    4: { sanfang: [8, 0], sizheng: 10 },
+    5: { sanfang: [1, 9], sizheng: 11 },
+    6: { sanfang: [2, 10], sizheng: 0 },
+    7: { sanfang: [3, 11], sizheng: 1 },
+    8: { sanfang: [4, 0], sizheng: 2 },
+    9: { sanfang: [5, 1], sizheng: 3 },
+    10: { sanfang: [6, 2], sizheng: 4 },
+    11: { sanfang: [7, 3], sizheng: 5 }
+  };
+
+  var gridLayout = [
+    { pos: 3, row: 1, col: 1 },
+    { pos: 2, row: 1, col: 2 },
+    { pos: 1, row: 1, col: 3 },
+    { pos: 0, row: 1, col: 4 },
+    { pos: 4, row: 2, col: 1 },
+    { pos: 11, row: 2, col: 4 },
+    { pos: 5, row: 3, col: 1 },
+    { pos: 10, row: 3, col: 4 },
+    { pos: 6, row: 4, col: 1 },
+    { pos: 7, row: 4, col: 2 },
+    { pos: 8, row: 4, col: 3 },
+    { pos: 9, row: 4, col: 4 }
+  ];
+
+  /* ===== 排盘图面板 ===== */
+  function toggleChart() {
+    var panel = document.getElementById('chartPanel');
+    var overlay = document.getElementById('chartOverlay');
+    if (panel.classList.contains('open')) {
+      closeChart();
+    } else {
+      panel.classList.add('open');
+      overlay.classList.add('open');
+      renderChart();
+    }
+  }
+
+  function closeChart() {
+    var panel = document.getElementById('chartPanel');
+    var overlay = document.getElementById('chartOverlay');
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+    hideTooltip();
+    clearSanfangLines();
+  }
+
+  function minimizeChart() {
+    closeChart();
+  }
+
+  window.toggleChart = toggleChart;
+  window.closeChart = closeChart;
+  window.minimizeChart = minimizeChart;
+
+  /* ===== 亮度与四化样式 ===== */
+  function getBrightnessClass(brightness) {
+    if (!brightness) return '';
+    var b = brightness.replace(/[()（）]/g, '');
+    if (b === '庙' || b === '旺') return 'miao';
+    if (b === '平' || b === '利' || b === '得') return 'ping';
+    if (b === '陷' || b === '不') return 'xian';
+    return '';
+  }
+
+  function getSihuaClass(hua) {
+    if (!hua) return '';
+    if (hua.indexOf('禄') >= 0) return 'lu';
+    if (hua.indexOf('权') >= 0) return 'quan';
+    if (hua.indexOf('科') >= 0) return 'ke';
+    if (hua.indexOf('忌') >= 0) return 'ji';
+    return '';
+  }
+
+  function getSihuaTagClass(hua) {
+    if (!hua) return '';
+    if (hua.indexOf('禄') >= 0) return 'tag-success';
+    if (hua.indexOf('权') >= 0) return 'tag-warning';
+    if (hua.indexOf('科') >= 0) return 'tag-info';
+    if (hua.indexOf('忌') >= 0) return 'tag-danger';
+    return '';
+  }
+
+  function isJiStar(name) {
+    var jiStars = ['左辅','右弼','文昌','文曲','天魁','天钺','禄存','天马'];
+    return jiStars.indexOf(name) >= 0;
+  }
+
+  function isShaStar(name) {
+    var shaStars = ['擎羊','陀罗','火星','铃星','地空','地劫','化忌'];
+    return shaStars.indexOf(name) >= 0;
+  }
+
+  function extractAuxSihua(starStr) {
+    var m = starStr.match(/[[【](禄|权|科|忌)[]】]/);
+    return m ? m[1] : '';
+  }
+
+  /* ===== 渲染排盘图 ===== */
+  var tooltipData = {};
+  var selectedPosition = -1;
+
+  function renderChartTo(container, isInline) {
+    if (!chartData || !chartData.palaces || chartData.palaces.length === 0) {
+      container.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:40px;">未找到排盘数据</div>';
+      return;
+    }
+
+    var palaceMap = {};
+    chartData.palaces.forEach(function(p) { palaceMap[p.position] = p; });
+
+    var html = '';
+
+    gridLayout.forEach(function(item) {
+      var palace = palaceMap[item.pos];
+      var cellClass = 'chart-cell';
+      var cellStyle = 'grid-row:' + item.row + ';grid-column:' + item.col + ';';
+
+      if (palace) {
+        if (item.pos === 5) cellClass += ' palace-ming';
+        if (palace.isBodyPalace) cellClass += ' palace-body';
+        if (palace.isLaiyinPalace) cellClass += ' palace-laiyin';
+        if (!palace.mainStars || palace.mainStars.length === 0) cellClass += ' palace-empty';
+        if (palace.dalimit && isCurrentDalimit(palace.dalimit)) cellClass += ' dalimit-active';
+      } else {
+        cellClass += ' palace-empty';
+      }
+
+      html += '<div class="' + cellClass + '" style="' + cellStyle + '" data-position="' + item.pos + '">';
+
+      if (palace) {
+        html += '<div class="chart-cell-header">';
+        html += '<span class="chart-palace-name">' + esc(palace.name) + '</span>';
+        html += '<div class="chart-palace-marks">';
+        if (item.pos === 5) html += '<span class="chart-ming-mark">命</span>';
+        if (palace.isBodyPalace) html += '<span class="chart-shen-mark">身</span>';
+        html += '</div>';
+        html += '</div>';
+
+        html += '<div class="chart-ganzhi">' + esc(palace.ganzhi || '') + '</div>';
+
+        if (palace.dalimit) {
+          var dlClass = 'chart-dalimit' + (isCurrentDalimit(palace.dalimit) ? ' current-dalimit' : '');
+          html += '<div class="' + dlClass + '">' + esc(palace.dalimit) + '</div>';
+        }
+
+        if (palace.mainStars && palace.mainStars.length > 0) {
+          html += '<div class="chart-main-stars">';
+          palace.mainStars.forEach(function(s) {
+            var bc = getBrightnessClass(s.brightness);
+            var niBc = getNiBrightnessClass(s.brightness);
+            html += '<span class="chart-star ' + bc + ' ' + niBc + '">' + esc(s.name);
+            if (s.brightness) {
+              html += '<span class="chart-brightness-label">';
+              html += '<span class="iztro-brightness">' + esc(s.brightness) + '</span>';
+              html += '<span class="ni-brightness">' + esc(niBrightness(s.brightness)) + '</span>';
+              html += '<span class="combined-brightness">' + esc(s.brightness) + '(' + esc(niBrightness(s.brightness)) + ')</span>';
+              html += '</span>';
+            }
+            if (s.sihua) {
+              var sc = getSihuaClass(s.sihua);
+              html += '<span class="chart-sihua ' + sc + '">' + esc(s.sihua) + '</span>';
+            }
+            html += '</span>';
+          });
+          html += '</div>';
+        } else {
+          html += '<div class="chart-main-stars"><span class="chart-empty-text">空宫</span></div>';
+        }
+
+        var jiStars = [];
+        var shaStars = [];
+        var otherAux = [];
+        if (palace.auxStars && palace.auxStars.length > 0) {
+          palace.auxStars.forEach(function(s) {
+            var cleanS = s.replace(/[[【](禄|权|科|忌)[]】]/g, '');
+            if (isJiStar(cleanS)) jiStars.push(s);
+            else if (isShaStar(cleanS)) shaStars.push(s);
+            else otherAux.push(s);
+          });
+        }
+        if (jiStars.length > 0) {
+          html += '<div class="chart-aux-stars">';
+          jiStars.forEach(function(s) {
+            var sihua = extractAuxSihua(s);
+            html += '<span class="chart-aux-star-item' + (sihua ? ' has-sihua' : '') + '">' + esc(s.replace(/[[【]禄[]】]|[[【]权[]】]|[[【]科[]】]|[[【]忌[]】]/g, ''));
+            if (sihua) {
+              var sc = getSihuaClass('化' + sihua);
+              html += '<span class="chart-sihua ' + sc + '">化' + sihua + '</span>';
+            }
+            html += '</span>';
+          });
+          html += '</div>';
+        }
+        if (shaStars.length > 0) {
+          html += '<div class="chart-sha-stars">';
+          shaStars.forEach(function(s) {
+            html += '<span class="chart-sha-star-item">' + esc(s) + '</span>';
+          });
+          html += '</div>';
+        }
+        if (palace.miscStars && palace.miscStars.length > 0) {
+          html += '<div class="chart-misc-stars">' + esc(palace.miscStars.join('·')) + '</div>';
+        }
+        if (palace.changsheng) {
+          html += '<div class="chart-changsheng">' + esc(palace.changsheng) + '</div>';
+        }
+
+        var tt = '';
+        tt += '<div class="chart-tooltip-title">' + esc(palace.name) + ' · ' + esc(palace.ganzhi || '') + ' (' + (palaceDizhi[item.pos] || '') + '宫)</div>';
+        if (palace.mainStars && palace.mainStars.length > 0) {
+          tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">主星</div>';
+          palace.mainStars.forEach(function(s) {
+            tt += esc(s.name);
+            if (s.brightness) tt += '(' + esc(s.brightness) + ')';
+            if (s.sihua) tt += ' <span class="tag ' + getSihuaTagClass(s.sihua) + '">' + esc(s.sihua) + '</span>';
+            tt += ' ';
+          });
+          tt += '</div>';
+          var sihuaStars = palace.mainStars.filter(function(s) { return s.sihua; });
+          if (sihuaStars.length > 0) {
+            tt += '<div class="tooltip-sihua-badges">';
+            sihuaStars.forEach(function(s) {
+              var sc = getSihuaClass(s.sihua);
+              tt += '<span class="tooltip-sihua-badge ' + sc + '">' + esc(s.name) + ' ' + esc(s.sihua) + '</span>';
+            });
+            tt += '</div>';
+          }
+        }
+        if (palace.auxStars && palace.auxStars.length > 0) {
+          tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">辅星</div>' + esc(palace.auxStars.join('、')) + '</div>';
+        }
+        if (palace.miscStars && palace.miscStars.length > 0) {
+          tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">杂耀</div>' + esc(palace.miscStars.join('、')) + '</div>';
+        }
+        if (palace.changsheng) {
+          tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">长生十二神</div>' + esc(palace.changsheng) + '</div>';
+        }
+        if (palace.dalimit) {
+          tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">大限</div>' + esc(palace.dalimit) + '</div>';
+        }
+        if (palace.note) {
+          tt += '<div class="chart-tooltip-section"><div class="chart-tooltip-label">备注</div>' + esc(palace.note) + '</div>';
+        }
+        var sf = sanfangMap[item.pos];
+        if (sf) {
+          var sfNames = sf.sanfang.map(function(p) { return palaceNames[p] || ''; });
+          var szName = palaceNames[sf.sizheng] || '';
+          tt += '<div class="chart-tooltip-sanfang">三方：' + sfNames.join('、') + ' ｜ 四正(对宫)：' + szName + '</div>';
+        }
+        tooltipData[item.pos] = tt;
+      } else {
+        html += '<div class="chart-cell-header">';
+        html += '<span class="chart-palace-name">' + (palaceNames[item.pos] || '-') + '</span>';
+        html += '</div>';
+        html += '<div class="chart-ganzhi">' + (palaceDizhi[item.pos] || '') + '</div>';
+        html += '<div class="chart-main-stars"><span class="chart-empty-text">空宫</span></div>';
+      }
+
+      html += '</div>';
+    });
+
+    html += '<div class="chart-cell center-cell" style="grid-row:2/4;grid-column:2/4;">';
+    html += '<div class="center-taiji">☯</div>';
+    if (chartData.info) {
+      html += '<div class="center-title">紫微斗数</div>';
+      html += '<div class="center-sub">' + esc(chartData.info.name || '命盘') + '</div>';
+      html += '<div class="center-sub">' + esc(chartData.info.ganzhi || '') + '</div>';
+      html += '<div class="center-sub">' + esc(chartData.info.wuxingju || '') + '</div>';
+      if (chartData.info.gender) {
+        html += '<div class="center-sub">' + esc(chartData.info.gender) + '</div>';
+      }
+      if (chartData.info.mingzhu) {
+        html += '<div class="center-sub">命主：' + esc(chartData.info.mingzhu) + '</div>';
+      }
+      if (chartData.info.shenzhu) {
+        html += '<div class="center-sub">身主：' + esc(chartData.info.shenzhu) + '</div>';
+      }
+      var currentDalimit = findCurrentDalimit();
+      if (currentDalimit) {
+        html += '<div class="center-dalimit-box">当前大限：' + esc(currentDalimit) + '</div>';
+      }
+    }
+    html += '</div>';
+
+    container.innerHTML = html;
+    renderDalimitBar(container);
+  }
+
+  function renderDalimitBar(chartContainer) {
+    var bar = chartContainer.closest('.chart-panel-body')
+      ? document.getElementById('chartDalimitBar')
+      : document.getElementById('inlineChartDalimitBar');
+    if (!bar || !chartData || !chartData.palaces) return;
+
+    var dalimits = [];
+    chartData.palaces.forEach(function(p) {
+      if (p.dalimit) {
+        dalimits.push({ name: p.name, dalimit: p.dalimit, position: p.position });
+      }
+    });
+
+    if (dalimits.length === 0) { bar.style.display = 'none'; return; }
+
+    dalimits.sort(function(a, b) {
+      var ma = a.dalimit.match(/(d+)/);
+      var mb = b.dalimit.match(/(d+)/);
+      return (ma ? parseInt(ma[1]) : 0) - (mb ? parseInt(mb[1]) : 0);
+    });
+
+    var barHtml = '<span class="dalimit-bar-label">大限</span>';
+    dalimits.forEach(function(d, idx) {
+      var isCurrent = isCurrentDalimit(d.dalimit);
+      var cls = 'dalimit-bar-item' + (isCurrent ? ' current' : '');
+      barHtml += '<button class="' + cls + '" data-dalimit-pos="' + d.position + '" data-dalimit-idx="' + idx + '">';
+      barHtml += '<span class="dalimit-item-name">' + esc(d.name) + '</span>';
+      barHtml += '<span class="dalimit-item-range">' + esc(d.dalimit) + '</span>';
+      barHtml += '</button>';
+    });
+    bar.innerHTML = barHtml;
+
+    bar.querySelectorAll('.dalimit-bar-item').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var pos = parseInt(this.getAttribute('data-dalimit-pos'));
+        selectDalimit(pos, chartContainer);
+      });
+    });
+  }
+
+  function selectDalimit(position, chartContainer) {
+    var grid = chartContainer.querySelector('.chart-grid') || document.getElementById('chartGrid');
+    if (!grid) return;
+
+    grid.querySelectorAll('.chart-cell').forEach(function(cell) {
+      cell.classList.remove('dalimit-selected');
+    });
+
+    var targetCell = grid.querySelector('[data-position="' + position + '"]');
+    if (targetCell) {
+      targetCell.classList.add('dalimit-selected');
+    }
+
+    drawSanfangLines(position, grid.id);
+
+    var bar = chartContainer.closest('.chart-panel-body')
+      ? document.getElementById('chartDalimitBar')
+      : document.getElementById('inlineChartDalimitBar');
+    if (bar) {
+      bar.querySelectorAll('.dalimit-bar-item').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+      var activeBtn = bar.querySelector('[data-dalimit-pos="' + position + '"]');
+      if (activeBtn) activeBtn.classList.add('active');
+    }
+  }
+
+  function isCurrentDalimit(dalimitStr) {
+    if (!dalimitStr) return false;
+    var m = dalimitStr.match(/(d+)[-~](d+)/);
+    if (!m) return false;
+    var start = parseInt(m[1]);
+    var end = parseInt(m[2]);
+    var currentYear = new Date().getFullYear();
+    return currentYear >= start && currentYear <= end;
+  }
+
+  function findCurrentDalimit() {
+    if (!chartData || !chartData.palaces) return null;
+    for (var i = 0; i < chartData.palaces.length; i++) {
+      var p = chartData.palaces[i];
+      if (p.dalimit && isCurrentDalimit(p.dalimit)) {
+        return p.name + ' ' + p.dalimit;
+      }
+    }
+    return null;
+  }
+
+  function renderChart() {
+    var grid = document.getElementById('chartGrid');
+    renderChartTo(grid, false);
+    bindChartEvents(grid);
+  }
+
+  function renderInlineChart() {
+    var container = document.getElementById('inlineChartGrid');
+    if (!container) return;
+    renderChartTo(container, true);
+    bindChartEvents(container);
+  }
+
+  function rerenderCharts() {
+    var grid = document.getElementById('chartGrid');
+    if (grid && document.getElementById('chartPanel').classList.contains('open')) {
+      renderChart();
+    }
+    var inlineGrid = document.getElementById('inlineChartGrid');
+    if (inlineGrid) {
+      renderChartTo(inlineGrid, true);
+      bindChartEvents(inlineGrid);
+    }
+  }
+
+  /* ===== 三方四正SVG连线 ===== */
+  function drawSanfangLines(position, containerId) {
+    clearSanfangLines();
+    if (position < 0 || position > 11) return;
+
+    containerId = containerId || 'chartGrid';
+    var svgId = containerId === 'inlineChartGrid' ? 'inlineChartSvgOverlay' : 'chartSvgOverlay';
+    var svg = document.getElementById(svgId);
+    if (!svg) return;
+
+    var sf = sanfangMap[position];
+    if (!sf) return;
+
+    var relatedPositions = [position, sf.sanfang[0], sf.sanfang[1], sf.sizheng];
+
+    var gridEl = document.getElementById(containerId);
+    if (!gridEl) return;
+    var gridRect = gridEl.getBoundingClientRect();
+    var wrapperRect = svg.parentElement.getBoundingClientRect();
+
+    var centers = {};
+    gridLayout.forEach(function(item) {
+      var cellEl = gridEl.querySelector('[data-position="' + item.pos + '"]');
+      if (!cellEl) return;
+      var cellRect = cellEl.getBoundingClientRect();
+      centers[item.pos] = {
+        x: cellRect.left + cellRect.width / 2 - wrapperRect.left,
+        y: cellRect.top + cellRect.height / 2 - wrapperRect.top
+      };
+    });
+
+    svg.setAttribute('viewBox', '0 0 ' + wrapperRect.width + ' ' + wrapperRect.height);
+    svg.style.width = wrapperRect.width + 'px';
+    svg.style.height = wrapperRect.height + 'px';
+
+    var svgContent = '';
+
+    var c0 = centers[position];
+    var c1 = centers[sf.sanfang[0]];
+    var c2 = centers[sf.sanfang[1]];
+    var cOpp = centers[sf.sizheng];
+
+    if (c0 && cOpp) {
+      svgContent += '<line x1="' + c0.x + '" y1="' + c0.y + '" x2="' + cOpp.x + '" y2="' + cOpp.y + '" stroke="' + 'var(--chart-sanfang-line)' + '" stroke-width="2" stroke-dasharray="6,5" />';
+    }
+
+    if (c0 && c1 && c2) {
+      svgContent += '<polygon points="' + c0.x + ',' + c0.y + ' ' + c1.x + ',' + c1.y + ' ' + c2.x + ',' + c2.y + '" fill="none" stroke="' + 'var(--chart-sanfang-line)' + '" stroke-width="2" stroke-dasharray="6,5" />';
+    }
+
+    relatedPositions.forEach(function(pos) {
+      var c = centers[pos];
+      if (c) {
+        svgContent += '<circle cx="' + c.x + '" cy="' + c.y + '" r="5" fill="' + 'var(--chart-sanfang-line)' + '" />';
+      }
+    });
+
+    svg.innerHTML = svgContent;
+
+    ['chartGrid', 'inlineChartGrid'].forEach(function(gId) {
+      var grid = document.getElementById(gId);
+      if (!grid) return;
+      grid.querySelectorAll('.chart-cell').forEach(function(cell) {
+        var pos = parseInt(cell.getAttribute('data-position'));
+        if (isNaN(pos)) return;
+        if (pos === position) {
+          cell.classList.add('selected');
+        } else if (relatedPositions.indexOf(pos) >= 0) {
+          cell.classList.add('sanfang-related');
+        }
+      });
+    });
+  }
+
+  function clearSanfangLines() {
+    ['chartSvgOverlay', 'inlineChartSvgOverlay'].forEach(function(id) {
+      var svg = document.getElementById(id);
+      if (svg) svg.innerHTML = '';
+    });
+    ['chartGrid', 'inlineChartGrid'].forEach(function(gId) {
+      var grid = document.getElementById(gId);
+      if (grid) {
+        grid.querySelectorAll('.chart-cell').forEach(function(cell) {
+          cell.classList.remove('selected', 'sanfang-related');
+        });
+      }
+    });
+    selectedPosition = -1;
+  }
+
+  /* ===== 宫位点击事件 ===== */
+  function bindChartEvents(container) {
+    container.addEventListener('click', function(e) {
+      var cell = e.target.closest('.chart-cell');
+      if (!cell || cell.classList.contains('center-cell')) {
+        if (!cell || cell.classList.contains('center-cell')) {
+          clearSanfangLines();
+        }
+        return;
+      }
+      var pos = parseInt(cell.getAttribute('data-position'));
+      if (isNaN(pos)) return;
+
+      if (selectedPosition === pos) {
+        clearSanfangLines();
+      } else {
+        selectedPosition = pos;
+        drawSanfangLines(pos, container.id);
+      }
+    });
+
+    container.addEventListener('mouseenter', function(e) {
+      var cell = e.target.closest('.chart-cell');
+      if (!cell || cell.classList.contains('center-cell')) return;
+      var pos = cell.getAttribute('data-position');
+      if (pos === null || !tooltipData[parseInt(pos)]) return;
+      showTooltip(cell, tooltipData[parseInt(pos)]);
+    }, true);
+
+    container.addEventListener('mouseleave', function(e) {
+      var cell = e.target.closest('.chart-cell');
+      if (!cell) return;
+      hideTooltip();
+    }, true);
+  }
+
+  /* ===== Tooltip智能定位 ===== */
+  var chartTooltip = document.getElementById('chartTooltip');
+  var tooltipTimeout = null;
+
+  function showTooltip(cell, content) {
+    chartTooltip.innerHTML = content;
+    chartTooltip.style.display = 'block';
+    chartTooltip.style.left = '-9999px';
+    chartTooltip.style.top = '-9999px';
+
+    requestAnimationFrame(function() {
+      var cellRect = cell.getBoundingClientRect();
+      var ttW = chartTooltip.offsetWidth;
+      var ttH = chartTooltip.offsetHeight;
+      var spaceAbove = cellRect.top;
+      var spaceBelow = window.innerHeight - cellRect.bottom;
+
+      var top, left;
+      left = cellRect.left + (cellRect.width - ttW) / 2;
+
+      if (spaceAbove > ttH + 10 || spaceAbove >= spaceBelow) {
+        top = cellRect.top - ttH - 8;
+      } else {
+        top = cellRect.bottom + 8;
+      }
+
+      if (left < 8) left = 8;
+      if (left + ttW > window.innerWidth - 8) left = window.innerWidth - ttW - 8;
+      if (top < 8) top = 8;
+      if (top + ttH > window.innerHeight - 8) top = window.innerHeight - ttH - 8;
+
+      chartTooltip.style.left = left + 'px';
+      chartTooltip.style.top = top + 'px';
+    });
+  }
+
+  function hideTooltip() {
+    chartTooltip.style.display = 'none';
+  }
+
+  /* ===== 缩放控制 ===== */
+  var chartZoom = 1;
+
+  function setChartZoom(level) {
+    chartZoom = Math.max(0.5, Math.min(2, level));
+    var grid = document.getElementById('chartGrid');
+    if (grid) grid.style.transform = 'scale(' + chartZoom + ')';
+    var display = document.getElementById('chartZoomLevel');
+    if (display) display.textContent = Math.round(chartZoom * 100) + '%';
+  }
+
+  function chartZoomIn() { setChartZoom(chartZoom + 0.1); }
+  function chartZoomOut() { setChartZoom(chartZoom - 0.1); }
+  function chartZoomReset() { setChartZoom(1); }
+
+  window.chartZoomIn = chartZoomIn;
+  window.chartZoomOut = chartZoomOut;
+  window.chartZoomReset = chartZoomReset;
+
+  var chartPanelBody = document.getElementById('chartPanelBody');
+  chartPanelBody.addEventListener('wheel', function(e) {
+    if (e.ctrlKey || e.metaKey) {
+      e.preventDefault();
+      var delta = e.deltaY > 0 ? -0.05 : 0.05;
+      setChartZoom(chartZoom + delta);
+    }
+  }, { passive: false });
+
+  /* ===== 拖拽移动 ===== */
+  var isDragging = false;
+  var dragOffsetX = 0;
+  var dragOffsetY = 0;
+
+  var panelHeader = document.getElementById('chartPanelHeader');
+  var panel = document.getElementById('chartPanel');
+
+  function startDrag(clientX, clientY) {
+    isDragging = true;
+    var rect = panel.getBoundingClientRect();
+    dragOffsetX = clientX - rect.left;
+    dragOffsetY = clientY - rect.top;
+    panel.style.transform = 'none';
+    panel.style.left = rect.left + 'px';
+    panel.style.top = rect.top + 'px';
+    panel.style.cursor = 'move';
+  }
+
+  function moveDrag(clientX, clientY) {
+    if (!isDragging) return;
+    var x = clientX - dragOffsetX;
+    var y = clientY - dragOffsetY;
+    x = Math.max(0, Math.min(x, window.innerWidth - panel.offsetWidth));
+    y = Math.max(0, Math.min(y, window.innerHeight - panel.offsetHeight));
+    panel.style.left = x + 'px';
+    panel.style.top = y + 'px';
+  }
+
+  function endDrag() {
+    isDragging = false;
+    panel.style.cursor = '';
+  }
+
+  panelHeader.addEventListener('mousedown', function(e) {
+    if (e.target.closest('.chart-panel-btn') || e.target.closest('.chart-zoom-btn')) return;
+    e.preventDefault();
+    startDrag(e.clientX, e.clientY);
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (isDragging) moveDrag(e.clientX, e.clientY);
+  });
+
+  document.addEventListener('mouseup', endDrag);
+
+  panelHeader.addEventListener('touchstart', function(e) {
+    if (e.target.closest('.chart-panel-btn') || e.target.closest('.chart-zoom-btn')) return;
+    var touch = e.touches[0];
+    startDrag(touch.clientX, touch.clientY);
+  }, { passive: true });
+
+  document.addEventListener('touchmove', function(e) {
+    if (isDragging && e.touches.length === 1) {
+      moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchend', endDrag);
+
+  /* ===== 面板大小调整 ===== */
+  var isResizing = false;
+  var resizeStartX = 0;
+  var resizeStartY = 0;
+  var resizeStartW = 0;
+  var resizeStartH = 0;
+
+  var resizeHandle = document.getElementById('chartResize');
+
+  resizeHandle.addEventListener('mousedown', function(e) {
+    isResizing = true;
+    resizeStartX = e.clientX;
+    resizeStartY = e.clientY;
+    resizeStartW = panel.offsetWidth;
+    resizeStartH = panel.offsetHeight;
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (!isResizing) return;
+    var newW = Math.max(480, resizeStartW + (e.clientX - resizeStartX));
+    var newH = Math.max(360, resizeStartH + (e.clientY - resizeStartY));
+    panel.style.width = newW + 'px';
+    panel.style.maxHeight = newH + 'px';
+  });
+
+  document.addEventListener('mouseup', function() {
+    isResizing = false;
+  });
+
+  /* ===== ESC关闭 ===== */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeChart();
+      closeHelp();
+    }
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+    if (e.key === 't' || e.key === 'T') {
+      e.preventDefault();
+      toggleTheme();
+    } else if (e.key === '1') {
+      e.preventDefault();
+      switchSystem('iztro');
+    } else if (e.key === '2') {
+      e.preventDefault();
+      switchSystem('nishi');
+    } else if (e.key === '3') {
+      e.preventDefault();
+      switchSystem('combined');
+    } else if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+      e.preventDefault();
+      toggleHelp();
+    }
+  });
+
+  /* ===== 帮助面板 ===== */
+  function toggleHelp() {
+    var panel = document.getElementById('helpPanel');
+    var overlay = document.getElementById('helpOverlay');
+    if (panel.classList.contains('open')) {
+      closeHelp();
+    } else {
+      panel.classList.add('open');
+      overlay.classList.add('open');
+    }
+  }
+
+  function closeHelp() {
+    var panel = document.getElementById('helpPanel');
+    var overlay = document.getElementById('helpOverlay');
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  window.toggleHelp = toggleHelp;
+  window.closeHelp = closeHelp;
+
+  /* ===== 工具函数 ===== */
+  function esc(s) {
+    if (!s) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ===== 初始化内嵌排盘图 ===== */
+  renderInlineChart();
+
+  /* ===== 目录折叠 ===== */
+  function toggleTocGroup(btn) {
+    var group = btn.closest('.toc-group');
+    if (!group) return;
+    group.classList.toggle('collapsed');
+    var collapsedGroups = getCollapsedTocGroups();
+    var header = group.querySelector('.toc-link');
+    if (!header) return;
+    var href = header.getAttribute('href') || '';
+    if (group.classList.contains('collapsed')) {
+      if (collapsedGroups.indexOf(href) < 0) collapsedGroups.push(href);
+    } else {
+      collapsedGroups = collapsedGroups.filter(function(h) { return h !== href; });
+    }
+    localStorage.setItem('ziwei-collapsed-toc', JSON.stringify(collapsedGroups));
+  }
+
+  function getCollapsedTocGroups() {
+    try { return JSON.parse(localStorage.getItem('ziwei-collapsed-toc') || '[]'); }
+    catch(e) { return []; }
+  }
+
+  function restoreTocStates() {
+    var collapsed = getCollapsedTocGroups();
+    collapsed.forEach(function(href) {
+      var link = document.querySelector('.toc-link[href="' + href + '"]');
+      if (link) {
+        var group = link.closest('.toc-group');
+        if (group) group.classList.add('collapsed');
+      }
+    });
+  }
+
+  window.toggleTocGroup = toggleTocGroup;
+  restoreTocStates();
+})();
+
+</script>
+</body>
+</html>
