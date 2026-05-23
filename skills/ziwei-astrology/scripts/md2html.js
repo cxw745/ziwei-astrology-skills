@@ -162,16 +162,16 @@ function enhanceHtml(html) {
   );
 
   html = html.replace(
-    /(<p>[\s\S]*?)(宫干飞化|自化)([\s\S]*?<\/p>)/g,
-    function(match, pre, keyword, post) {
-      return pre + '<span class="system-not-nishi-ref">' + keyword + '</span>' + post;
+    /(<p>[\s\S]*?>)([^<]*?)(宫干飞化|自化)([^<]*?)(<\/p>)/g,
+    function(match, open, pre, keyword, post, close) {
+      return open + pre + '<span class="system-not-nishi-ref">' + keyword + '</span>' + post + close;
     }
   );
 
   html = html.replace(
-    /(<p>[\s\S]*?)(大限四化)([\s\S]*?<\/p>)/g,
-    function(match, pre, keyword, post) {
-      return pre + '<span class="system-nishi-note">' + keyword + '</span>' + post;
+    /(<p>[\s\S]*?>)([^<]*?)(大限四化)([^<]*?)(<\/p>)/g,
+    function(match, open, pre, keyword, post, close) {
+      return open + pre + '<span class="system-nishi-note">' + keyword + '</span>' + post + close;
     }
   );
 

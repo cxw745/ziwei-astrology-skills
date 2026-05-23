@@ -3,7 +3,7 @@
 function slugify(text) {
   return text
     .replace(/^[#\s]+/, '')
-    .replace(/[（()）\[\]·、：:，,。.！!？?\s]+/g, '-')
+    .replace(/[（()）\[\]·、：:，,。.！!？?\s★]+/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '')
     .replace(/"/g, '');
@@ -59,6 +59,16 @@ function markdownToHtml(md) {
 }
 
 function markdownToHtmlInner(md) {
+  var idCounters = {};
+  function uniqueId(text) {
+    var base = slugify(text);
+    if (!idCounters[base]) {
+      idCounters[base] = 1;
+      return base;
+    }
+    idCounters[base]++;
+    return base + '-' + idCounters[base];
+  }
   var lines = md.split('\n');
   var html = '';
   var inTable = false;
@@ -111,15 +121,15 @@ function markdownToHtmlInner(md) {
       tableRows = [];
     }
 
-    if (line.match(/^#{1,4}\s/)) {
+    if (line.match(/^#{1,6}\s/)) {
       if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
       if (inTable) { html += buildTable(tableHeaders, tableRows); inTable = false; tableHeaders = []; tableRows = []; }
       if (inInterpretation) { html += '</div><!-- /interp-block -->'; inInterpretation = false; }
-      var match = line.match(/^(#{1,4})\s+(.+)/);
+      var match = line.match(/^(#{1,6})\s+(.+)/);
       if (match) {
         var level = match[1].length;
         var text = match[2].trim();
-        var id = slugify(text);
+        var id = uniqueId(text);
         var content = inlineFormat(text);
 
         if (level === 2) {
@@ -136,7 +146,11 @@ function markdownToHtmlInner(md) {
         } else if (level === 3) {
           html += '<h3 id="' + id + '">' + content + '</h3>';
         } else if (level === 4) {
-          html += '<h4>' + content + '</h4>';
+          html += '<h4 id="' + id + '">' + content + '</h4>';
+        } else if (level === 5) {
+          html += '<h5 id="' + id + '">' + content + '</h5>';
+        } else if (level === 6) {
+          html += '<h6 id="' + id + '">' + content + '</h6>';
         } else {
           html += '<h1 id="' + id + '">' + content + '</h1>';
         }

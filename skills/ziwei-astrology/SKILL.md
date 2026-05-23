@@ -159,14 +159,26 @@ ziwei-output/{日期_HHmm}_{出生信息}/
 ├── 流月/
 │   └── {YYYY}年{MM}月.md / .html
 ├── 合盘_{乙方信息}.md / .html
-└── 问答记录.md
+└── 问答记录.md / .html
 ```
+
+**问答记录增量更新规范（重要）**：
+- 问答记录.md 和 问答记录.html **必须增量更新**，禁止覆盖
+- 每次追问追加新的 `## {YYYY-MM-DD HH:mm} — {问题摘要}` 章节
+- 追加完成后**必须**重新运行 `md2html.js` 生成新的HTML（HTML无法增量，需整体重新生成）
+- **禁止**用Write工具覆盖整个问答记录文件，必须用SearchReplace在文件末尾追加
 
 **问答记录.md 格式**：
 ```markdown
 # 问答记录 — {命主信息}
 
 ## {YYYY-MM-DD HH:mm} — {问题摘要}
+
+{完整回答内容}
+
+---
+
+## {YYYY-MM-DD HH:mm} — 追问N — {问题摘要}
 
 {完整回答内容}
 
@@ -221,6 +233,15 @@ HTML界面体系切换：工具栏按钮或键盘1/2/3切换，正文内容实�
 ```bash
 node scripts/md2html.js <input.md> [output.html]
 ```
+
+**HTML左侧目录（TOC）规范**：
+- H2和H3级别的目录项**必须**支持收起/展开功能（由 `scripts/lib/toc.js` 自动生成）
+- H2折叠组（`toc-group-h2`）：包含其下所有H3/H4/H5/H6子项
+- H3折叠组（`toc-group-h3`）：包含其下所有H4/H5/H6子项
+- 每个折叠组有▶箭头按钮，点击切换展开/收起，状态保存到localStorage
+- H1和H4/H5/H6不可折叠
+- 折叠功能由 `toc.js` + `styles.js` + `interaction.js` 三个模块协同实现，**无需手动编写HTML**
+- **禁止AI手动编写TOC HTML**，必须通过 `md2html.js` 脚本自动生成
 
 完成后必须附加提示语（模板见上方"对话输出模板"），告知文件位置和可用快捷指令。
 

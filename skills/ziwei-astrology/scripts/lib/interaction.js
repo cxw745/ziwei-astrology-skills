@@ -997,6 +997,42 @@ return `
 
   /* ===== 初始化内嵌排盘图 ===== */
   renderInlineChart();
+
+  /* ===== 目录折叠 ===== */
+  function toggleTocGroup(btn) {
+    var group = btn.closest('.toc-group');
+    if (!group) return;
+    group.classList.toggle('collapsed');
+    var collapsedGroups = getCollapsedTocGroups();
+    var header = group.querySelector('.toc-link');
+    if (!header) return;
+    var href = header.getAttribute('href') || '';
+    if (group.classList.contains('collapsed')) {
+      if (collapsedGroups.indexOf(href) < 0) collapsedGroups.push(href);
+    } else {
+      collapsedGroups = collapsedGroups.filter(function(h) { return h !== href; });
+    }
+    localStorage.setItem('ziwei-collapsed-toc', JSON.stringify(collapsedGroups));
+  }
+
+  function getCollapsedTocGroups() {
+    try { return JSON.parse(localStorage.getItem('ziwei-collapsed-toc') || '[]'); }
+    catch(e) { return []; }
+  }
+
+  function restoreTocStates() {
+    var collapsed = getCollapsedTocGroups();
+    collapsed.forEach(function(href) {
+      var link = document.querySelector('.toc-link[href="' + href + '"]');
+      if (link) {
+        var group = link.closest('.toc-group');
+        if (group) group.classList.add('collapsed');
+      }
+    });
+  }
+
+  window.toggleTocGroup = toggleTocGroup;
+  restoreTocStates();
 })();
 `;
 }
