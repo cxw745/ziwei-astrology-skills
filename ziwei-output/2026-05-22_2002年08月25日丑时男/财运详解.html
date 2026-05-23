@@ -2138,6 +2138,29 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   transition: max-height 0.3s ease, opacity 0.15s ease;
 }
 
+.toc-group-h3 {
+  padding-left: 12px;
+}
+
+.toc-group-h3 > .toc-group-header .toc-link {
+  font-size: 13px;
+}
+
+.toc-group-h3 > .toc-children .toc-link {
+  padding-left: 36px;
+  font-size: 12px;
+}
+
+.toc-group-h3 > .toc-children .toc-h5 {
+  padding-left: 44px;
+  font-size: 11.5px;
+}
+
+.toc-group-h3 > .toc-children .toc-h6 {
+  padding-left: 52px;
+  font-size: 11px;
+}
+
 @media print {
   .sidebar, .toolbar, .back-to-top, .chart-fab, .chart-panel, .chart-overlay,
   .mobile-menu-btn, .progress-bar, .section-toggle, .inline-chart-expand,
@@ -2192,131 +2215,395 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   </div>
   <ul class="toc-list" id="tocList">
 <li class="toc-item"><a class="toc-link toc-h1" href="#财运详解">财运详解</a></li>
-<li class="toc-item toc-group">
+<li class="toc-item toc-group toc-group-h2">
 <div class="toc-group-header">
-<a class="toc-link" href="#一-财帛宫详析">一、财帛宫详析</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h2" href="#一-财帛宫详析">一、财帛宫详析</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#1-1-宫位基本信息">1.1 宫位基本信息</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#1-2-空宫借星——财运无主">1.2 空宫借星——财运无主</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#1-3-天魁与空亡——贵人来-钱也空">1.3 天魁与空亡——贵人来，钱也空</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#1-4-财帛宫飞化——钱往哪里走">1.4 财帛宫飞化——钱往哪里走</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#1-5-财帛宫总评">1.5 财帛宫总评</a></li>
-</ul></li>
-<li class="toc-item toc-group">
+<li class="toc-item toc-group toc-group-h3">
 <div class="toc-group-header">
-<a class="toc-link" href="#二-田宅宫详析">二、田宅宫详析</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
-</div>
-<ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#2-1-宫位基本信息">2.1 宫位基本信息</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#2-2-巨门陷地——家中是非不断">2.2 巨门陷地——家中是非不断</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#2-3-左辅化科——贵人来救场">2.3 左辅化科——贵人来救场</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#2-4-地空+陀罗——房产波折不断">2.4 地空+陀罗——房产波折不断</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#2-5-田宅宫飞化——房产与谁有关">2.5 田宅宫飞化——房产与谁有关</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#2-6-命宫飞忌入田宅——巨门化忌的杀伤力">2.6 命宫飞忌入田宅——巨门化忌的杀伤力</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#2-7-田宅宫总评">2.7 田宅宫总评</a></li>
-</ul></li>
-<li class="toc-item toc-group">
-<div class="toc-group-header">
-<a class="toc-link" href="#三-福德宫与财运">三、福德宫与财运</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
-</div>
-<ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#3-1-宫位基本信息">3.1 宫位基本信息</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#3-2-身宫在福德——精神追求决定财运">3.2 身宫在福德——精神追求决定财运</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#3-3-福德宫聚3忌——精神压力重">3.3 福德宫聚3忌——精神压力重</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#3-4-福德宫飞化——精神与感情的纠缠">3.4 福德宫飞化——精神与感情的纠缠</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#3-5-贪狼欲望与消费模式">3.5 贪狼欲望与消费模式</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#3-6-福德宫与财运总评">3.6 福德宫与财运总评</a></li>
-</ul></li>
-<li class="toc-item toc-group">
-<div class="toc-group-header">
-<a class="toc-link" href="#四-大限财运周期">四、大限财运周期</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
-</div>
-<ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#4-1-八大限财运总览">4.1 八大限财运总览</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#4-2-第1大限-2-11岁-命宫-天府庙——童年无忧">4.2 第1大限（2-11岁）：命宫 天府庙——童年无忧</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#4-3-第2大限-12-21岁-父母宫-天机得+太阴利+天马——经济不独立">4.3 第2大限（12-21岁）：父母宫 天机得+太阴利+天马——经济不独立</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#4-4-第3大限-22-31岁-福德宫-紫微旺权+贪狼利-当前——花钱在兴趣上">4.4 第3大限（22-31岁）：福德宫 紫微旺权+贪狼利 ★当前——花钱在兴趣上</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#4-5-第4大限-32-41岁-田宅宫-巨门陷+陀罗——家庭房产多波折">4.5 第4大限（32-41岁）：田宅宫 巨门陷+陀罗——家庭房产多波折</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#4-6-第5大限-42-51岁-官禄宫-天相得+禄存——事业高峰-收入稳定">4.6 第5大限（42-51岁）：官禄宫 天相得+禄存——事业高峰，收入稳定</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#4-7-第6大限-52-61岁-仆役宫-天梁庙禄+地劫+擎羊陷——贵人运强但有损耗">4.7 第6大限（52-61岁）：仆役宫 天梁庙禄+地劫+擎羊陷——贵人运强但有损耗</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#4-8-第7大限-62-71岁-迁移宫-廉贞利+七杀庙——出外辛苦求财">4.8 第7大限（62-71岁）：迁移宫 廉贞利+七杀庙——出外辛苦求财</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#4-9-第8大限-72-81岁-疾厄宫-空宫+火星庙——健康消耗财力">4.9 第8大限（72-81岁）：疾厄宫 空宫+火星庙——健康消耗财力</a></li>
-</ul></li>
-<li class="toc-item toc-group">
-<div class="toc-group-header">
-<a class="toc-link" href="#五-流年财运提示">五、流年财运提示</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
-</div>
-<ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-1-流年财运总览-2024-2030">5.1 流年财运总览（2024-2030）</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-2-2024甲辰年——出外有财">5.2 2024甲辰年——出外有财</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-3-2025乙巳年——长辈给财">5.3 2025乙巳年——长辈给财</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-4-2026丙午年-当前——子女有禄-出行有忌">5.4 2026丙午年 ★当前——子女有禄，出行有忌</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-5-2027丁未年——巨门化忌入田宅-家庭财务有口舌">5.5 2027丁未年——巨门化忌入田宅，家庭财务有口舌</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-6-2028戊申年——贪狼化禄入福德-精神享受花钱">5.6 2028戊申年——贪狼化禄入福德，精神享受花钱</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-7-2029己酉年——武曲化禄入夫妻-感情上有财">5.7 2029己酉年——武曲化禄入夫妻，感情上有财</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-8-2030庚戌年——太阳化禄入兄弟-天同化忌入子女">5.8 2030庚戌年——太阳化禄入兄弟，天同化忌入子女</a></li>
-</ul></li>
-<li class="toc-item toc-group">
-<div class="toc-group-header">
-<a class="toc-link" href="#六-理财建议">六、理财建议</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
-</div>
-<ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-1-天府坐命的理财优势">6.1 天府坐命的理财优势</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-2-五条理财铁律">6.2 五条理财铁律</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-3-收入结构建议">6.3 收入结构建议</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-4-消费陷阱警示">6.4 消费陷阱警示</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-5-不同年龄段理财重点">6.5 不同年龄段理财重点</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-6-房产投资建议">6.6 房产投资建议</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-7-贵人运与财运">6.7 贵人运与财运</a></li>
-</ul></li>
-<li class="toc-item toc-group">
-<div class="toc-group-header">
-<a class="toc-link" href="#七-总结评级">七、总结评级</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
-</div>
-<ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#7-1-财运三维评分">7.1 财运三维评分</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#7-2-财运核心格局">7.2 财运核心格局</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#7-3-财运关键年份">7.3 财运关键年份</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#7-4-一生财运曲线">7.4 一生财运曲线</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#7-5-财运终极建议">7.5 财运终极建议</a></li>
-</ul></li>
-<li class="toc-item toc-group">
-<div class="toc-group-header">
-<a class="toc-link" href="#技术注释">技术注释</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h3" href="#1-1-宫位基本信息">1.1 宫位基本信息</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
 </ul></li>
-<li class="toc-item toc-group">
+<li class="toc-item toc-group toc-group-h3">
 <div class="toc-group-header">
-<a class="toc-link" href="#报告尾部声明">报告尾部声明</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h3" href="#1-2-空宫借星——财运无主">1.2 空宫借星——财运无主</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#1-3-天魁与空亡——贵人来-钱也空">1.3 天魁与空亡——贵人来，钱也空</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#1-4-财帛宫飞化——钱往哪里走">1.4 财帛宫飞化——钱往哪里走</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#1-5-财帛宫总评">1.5 财帛宫总评</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#二-田宅宫详析">二、田宅宫详析</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2-1-宫位基本信息">2.1 宫位基本信息</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2-2-巨门陷地——家中是非不断">2.2 巨门陷地——家中是非不断</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2-3-左辅化科——贵人来救场">2.3 左辅化科——贵人来救场</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2-4-地空+陀罗——房产波折不断">2.4 地空+陀罗——房产波折不断</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2-5-田宅宫飞化——房产与谁有关">2.5 田宅宫飞化——房产与谁有关</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2-6-命宫飞忌入田宅——巨门化忌的杀伤力">2.6 命宫飞忌入田宅——巨门化忌的杀伤力</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2-7-田宅宫总评">2.7 田宅宫总评</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#三-福德宫与财运">三、福德宫与财运</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#3-1-宫位基本信息">3.1 宫位基本信息</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#3-2-身宫在福德——精神追求决定财运">3.2 身宫在福德——精神追求决定财运</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#3-3-福德宫聚3忌——精神压力重">3.3 福德宫聚3忌——精神压力重</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#3-4-福德宫飞化——精神与感情的纠缠">3.4 福德宫飞化——精神与感情的纠缠</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#3-5-贪狼欲望与消费模式">3.5 贪狼欲望与消费模式</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#3-6-福德宫与财运总评">3.6 福德宫与财运总评</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#四-大限财运周期">四、大限财运周期</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#4-1-八大限财运总览">4.1 八大限财运总览</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#4-2-第1大限-2-11岁-命宫-天府庙——童年无忧">4.2 第1大限（2-11岁）：命宫 天府庙——童年无忧</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#4-3-第2大限-12-21岁-父母宫-天机得+太阴利+天马——经济不独立">4.3 第2大限（12-21岁）：父母宫 天机得+太阴利+天马——经济不独立</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#4-4-第3大限-22-31岁-福德宫-紫微旺权+贪狼利-当前——花钱在兴趣上">4.4 第3大限（22-31岁）：福德宫 紫微旺权+贪狼利 ★当前——花钱在兴趣上</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#4-5-第4大限-32-41岁-田宅宫-巨门陷+陀罗——家庭房产多波折">4.5 第4大限（32-41岁）：田宅宫 巨门陷+陀罗——家庭房产多波折</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#4-6-第5大限-42-51岁-官禄宫-天相得+禄存——事业高峰-收入稳定">4.6 第5大限（42-51岁）：官禄宫 天相得+禄存——事业高峰，收入稳定</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#4-7-第6大限-52-61岁-仆役宫-天梁庙禄+地劫+擎羊陷——贵人运强但有损耗">4.7 第6大限（52-61岁）：仆役宫 天梁庙禄+地劫+擎羊陷——贵人运强但有损耗</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#4-8-第7大限-62-71岁-迁移宫-廉贞利+七杀庙——出外辛苦求财">4.8 第7大限（62-71岁）：迁移宫 廉贞利+七杀庙——出外辛苦求财</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#4-9-第8大限-72-81岁-疾厄宫-空宫+火星庙——健康消耗财力">4.9 第8大限（72-81岁）：疾厄宫 空宫+火星庙——健康消耗财力</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#五-流年财运提示">五、流年财运提示</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-1-流年财运总览-2024-2030">5.1 流年财运总览（2024-2030）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-2-2024甲辰年——出外有财">5.2 2024甲辰年——出外有财</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-3-2025乙巳年——长辈给财">5.3 2025乙巳年——长辈给财</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-4-2026丙午年-当前——子女有禄-出行有忌">5.4 2026丙午年 ★当前——子女有禄，出行有忌</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-5-2027丁未年——巨门化忌入田宅-家庭财务有口舌">5.5 2027丁未年——巨门化忌入田宅，家庭财务有口舌</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-6-2028戊申年——贪狼化禄入福德-精神享受花钱">5.6 2028戊申年——贪狼化禄入福德，精神享受花钱</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-7-2029己酉年——武曲化禄入夫妻-感情上有财">5.7 2029己酉年——武曲化禄入夫妻，感情上有财</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-8-2030庚戌年——太阳化禄入兄弟-天同化忌入子女">5.8 2030庚戌年——太阳化禄入兄弟，天同化忌入子女</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#六-理财建议">六、理财建议</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-1-天府坐命的理财优势">6.1 天府坐命的理财优势</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-2-五条理财铁律">6.2 五条理财铁律</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-3-收入结构建议">6.3 收入结构建议</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-4-消费陷阱警示">6.4 消费陷阱警示</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-5-不同年龄段理财重点">6.5 不同年龄段理财重点</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-6-房产投资建议">6.6 房产投资建议</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-7-贵人运与财运">6.7 贵人运与财运</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#七-总结评级">七、总结评级</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#7-1-财运三维评分">7.1 财运三维评分</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#7-2-财运核心格局">7.2 财运核心格局</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#7-3-财运关键年份">7.3 财运关键年份</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#7-4-一生财运曲线">7.4 一生财运曲线</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#7-5-财运终极建议">7.5 财运终极建议</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#技术注释">技术注释</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#报告尾部声明">报告尾部声明</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
 </ul></li>

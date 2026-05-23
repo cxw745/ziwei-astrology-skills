@@ -2138,6 +2138,29 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   transition: max-height 0.3s ease, opacity 0.15s ease;
 }
 
+.toc-group-h3 {
+  padding-left: 12px;
+}
+
+.toc-group-h3 > .toc-group-header .toc-link {
+  font-size: 13px;
+}
+
+.toc-group-h3 > .toc-children .toc-link {
+  padding-left: 36px;
+  font-size: 12px;
+}
+
+.toc-group-h3 > .toc-children .toc-h5 {
+  padding-left: 44px;
+  font-size: 11.5px;
+}
+
+.toc-group-h3 > .toc-children .toc-h6 {
+  padding-left: 52px;
+  font-size: 11px;
+}
+
 @media print {
   .sidebar, .toolbar, .back-to-top, .chart-fab, .chart-panel, .chart-overlay,
   .mobile-menu-btn, .progress-bar, .section-toggle, .inline-chart-expand,
@@ -2192,72 +2215,137 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   </div>
   <ul class="toc-list" id="tocList">
 <li class="toc-item"><a class="toc-link toc-h1" href="#紫微斗数命盘详析">紫微斗数命盘详析</a></li>
-<li class="toc-item toc-group">
+<li class="toc-item toc-group toc-group-h2">
 <div class="toc-group-header">
-<a class="toc-link" href="#一-基本信息">一、基本信息</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h2" href="#一-基本信息">一、基本信息</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#五行局推算八步">五行局推算八步</a></li>
-</ul></li>
-<li class="toc-item toc-group">
+<li class="toc-item toc-group toc-group-h3">
 <div class="toc-group-header">
-<a class="toc-link" href="#二-十二宫排盘总表">二、十二宫排盘总表</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h3" href="#五行局推算八步">五行局推算八步</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
 </ul></li>
-<li class="toc-item toc-group">
-<div class="toc-group-header">
-<a class="toc-link" href="#三-生年四化表">三、生年四化表</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
-</div>
-<ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#生年四化-壬年">生年四化（壬年）</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#宫干飞四化四十八条-宫干飞化总表">宫干飞四化四十八条（宫干飞化总表）</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#倪师断语">倪师断语</a></li>
 </ul></li>
-<li class="toc-item toc-group">
+<li class="toc-item toc-group toc-group-h2">
 <div class="toc-group-header">
-<a class="toc-link" href="#四-格局识别">四、格局识别</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h2" href="#二-十二宫排盘总表">二、十二宫排盘总表</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#格局一-府相朝垣格-来源-ziwei-doushu/lib/ziwei/patterns-ts">格局一：府相朝垣格 [来源: ziwei-doushu/lib/ziwei/patterns.ts]</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#格局二-日月夹命格-来源-ziwei-doushu/lib/ziwei/patterns-ts">格局二：日月夹命格 [来源: ziwei-doushu/lib/ziwei/patterns.ts]</a></li>
 </ul></li>
-<li class="toc-item toc-group">
+<li class="toc-item toc-group toc-group-h2">
 <div class="toc-group-header">
-<a class="toc-link" href="#五-命宫总论">五、命宫总论</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h2" href="#三-生年四化表">三、生年四化表</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-1-命宫星曜组合">5.1 命宫星曜组合</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-2-命宫杂曜与辅星">5.2 命宫杂曜与辅星</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-3-命宫四化关系">5.3 命宫四化关系</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-4-命宫与身宫关系">5.4 命宫与身宫关系</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-5-命宫与来因宫关系">5.5 命宫与来因宫关系</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#5-6-命宫三方四正总评">5.6 命宫三方四正总评</a></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#生年四化-壬年">生年四化（壬年）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 </ul></li>
-<li class="toc-item toc-group">
+<li class="toc-item toc-group toc-group-h3">
 <div class="toc-group-header">
-<a class="toc-link" href="#六-十二宫分论">六、十二宫分论</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h3" href="#宫干飞四化四十八条-宫干飞化总表">宫干飞四化四十八条（宫干飞化总表）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-1-命宫-未-丁-天府庙-——重点宫">6.1 命宫（未·丁·天府庙）——重点宫</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#倪师断语">倪师断语</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#四-格局识别">四、格局识别</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#格局一-府相朝垣格-来源-ziwei-doushu/lib/ziwei/patterns-ts">格局一：府相朝垣格 [来源: ziwei-doushu/lib/ziwei/patterns.ts]</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#格局二-日月夹命格-来源-ziwei-doushu/lib/ziwei/patterns-ts">格局二：日月夹命格 [来源: ziwei-doushu/lib/ziwei/patterns.ts]</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#五-命宫总论">五、命宫总论</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-1-命宫星曜组合">5.1 命宫星曜组合</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-2-命宫杂曜与辅星">5.2 命宫杂曜与辅星</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-3-命宫四化关系">5.3 命宫四化关系</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-4-命宫与身宫关系">5.4 命宫与身宫关系</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-5-命宫与来因宫关系">5.5 命宫与来因宫关系</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#5-6-命宫三方四正总评">5.6 命宫三方四正总评</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#六-十二宫分论">六、十二宫分论</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-1-命宫-未-丁-天府庙-——重点宫">6.1 命宫（未·丁·天府庙）——重点宫</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#星曜组合">星曜组合</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#主星特质与亮度">主星特质与亮度</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#四化关系">四化关系</a></li>
@@ -2267,7 +2355,13 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 <li class="toc-item"><a class="toc-link toc-h4" href="#事业倾向">事业倾向</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#感情倾向">感情倾向</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#总评">总评</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-2-疾厄宫-寅-壬-空宫-——重点宫-来因宫">6.2 疾厄宫（寅·壬·空宫）——重点宫 ★来因宫</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-2-疾厄宫-寅-壬-空宫-——重点宫-来因宫">6.2 疾厄宫（寅·壬·空宫）——重点宫 ★来因宫</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#星曜组合-2">星曜组合</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#主星特质与亮度-2">主星特质与亮度</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#四化关系-2">四化关系</a></li>
@@ -2275,7 +2369,13 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 <li class="toc-item"><a class="toc-link toc-h4" href="#健康分析">健康分析</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#倪师断语-3">倪师断语</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#总评-2">总评</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-3-福德宫-酉-己-紫微旺权+贪狼利-——重点宫-身宫">6.3 福德宫（酉·己·紫微旺权+贪狼利）——重点宫（身宫）</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-3-福德宫-酉-己-紫微旺权+贪狼利-——重点宫-身宫">6.3 福德宫（酉·己·紫微旺权+贪狼利）——重点宫（身宫）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#星曜组合-3">星曜组合</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#主星特质与亮度-3">主星特质与亮度</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#四化关系-3">四化关系</a></li>
@@ -2284,7 +2384,13 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 <li class="toc-item"><a class="toc-link toc-h4" href="#倪师断语-4">倪师断语</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#当前大限">当前大限</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#总评-3">总评</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-4-夫妻宫-巳-乙-武曲平忌+破军平-——重点宫-生年化忌落宫">6.4 夫妻宫（巳·乙·武曲平忌+破军平）——重点宫（生年化忌落宫）</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-4-夫妻宫-巳-乙-武曲平忌+破军平-——重点宫-生年化忌落宫">6.4 夫妻宫（巳·乙·武曲平忌+破军平）——重点宫（生年化忌落宫）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#星曜组合-4">星曜组合</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#主星特质与亮度-4">主星特质与亮度</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#四化关系-4">四化关系</a></li>
@@ -2292,7 +2398,13 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 <li class="toc-item"><a class="toc-link toc-h4" href="#感情模式">感情模式</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#倪师断语-5">倪师断语</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#总评-4">总评</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-5-田宅宫-戌-庚-巨门陷+左辅科+地空+陀罗庙-——重点宫-生年化科落宫">6.5 田宅宫（戌·庚·巨门陷+左辅科+地空+陀罗庙）——重点宫（生年化科落宫）</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-5-田宅宫-戌-庚-巨门陷+左辅科+地空+陀罗庙-——重点宫-生年化科落宫">6.5 田宅宫（戌·庚·巨门陷+左辅科+地空+陀罗庙）——重点宫（生年化科落宫）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#星曜组合-5">星曜组合</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#主星特质与亮度-5">主星特质与亮度</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#四化关系-5">四化关系</a></li>
@@ -2300,49 +2412,91 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 <li class="toc-item"><a class="toc-link toc-h4" href="#房产运">房产运</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#倪师断语-6">倪师断语</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#总评-5">总评</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-6-仆役宫-子-壬-天梁庙禄+地劫+擎羊陷-——重点宫-生年化禄落宫">6.6 仆役宫（子·壬·天梁庙禄+地劫+擎羊陷）——重点宫（生年化禄落宫）</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-6-仆役宫-子-壬-天梁庙禄+地劫+擎羊陷-——重点宫-生年化禄落宫">6.6 仆役宫（子·壬·天梁庙禄+地劫+擎羊陷）——重点宫（生年化禄落宫）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#星曜组合-6">星曜组合</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#主星特质与亮度-6">主星特质与亮度</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#四化关系-6">四化关系</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#人际关系">人际关系</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#倪师断语-7">倪师断语</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#总评-6">总评</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-7-官禄宫-亥-辛-天相得+禄存-——普通宫-格局相关">6.7 官禄宫（亥·辛·天相得+禄存）——普通宫（格局相关）</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-7-官禄宫-亥-辛-天相得+禄存-——普通宫-格局相关">6.7 官禄宫（亥·辛·天相得+禄存）——普通宫（格局相关）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#星曜组合-7">星曜组合</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#主星特质与亮度-7">主星特质与亮度</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#四化关系-7">四化关系</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#事业分析">事业分析</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#倪师断语-8">倪师断语</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#总评-7">总评</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-8-迁移宫-丑-癸-廉贞利+七杀庙-——普通宫">6.8 迁移宫（丑·癸·廉贞利+七杀庙）——普通宫</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-8-迁移宫-丑-癸-廉贞利+七杀庙-——普通宫">6.8 迁移宫（丑·癸·廉贞利+七杀庙）——普通宫</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#星曜组合-8">星曜组合</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#主星特质与亮度-8">主星特质与亮度</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#四化关系-8">四化关系</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#出外运势">出外运势</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#倪师断语-9">倪师断语</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#总评-8">总评</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-9-父母宫-申-戊-天机得+太阴利+天马-——普通宫">6.9 父母宫（申·戊·天机得+太阴利+天马）——普通宫</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-9-父母宫-申-戊-天机得+太阴利+天马-——普通宫">6.9 父母宫（申·戊·天机得+太阴利+天马）——普通宫</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#星曜组合-9">星曜组合</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#主星特质与亮度-9">主星特质与亮度</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#四化关系-9">四化关系</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#与父母关系">与父母关系</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#倪师断语-10">倪师断语</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#总评-9">总评</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-10-子女宫-辰-甲-天同平+右弼+铃星陷-——普通宫">6.10 子女宫（辰·甲·天同平+右弼+铃星陷）——普通宫</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-10-子女宫-辰-甲-天同平+右弼+铃星陷-——普通宫">6.10 子女宫（辰·甲·天同平+右弼+铃星陷）——普通宫</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#星曜组合-10">星曜组合</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#主星特质与亮度-10">主星特质与亮度</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#四化关系-10">四化关系</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#子女缘分">子女缘分</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#倪师断语-11">倪师断语</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#总评-10">总评</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-11-兄弟宫-午-丙-太阳旺-——轻量宫">6.11 兄弟宫（午·丙·太阳旺）——轻量宫</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-11-兄弟宫-午-丙-太阳旺-——轻量宫">6.11 兄弟宫（午·丙·太阳旺）——轻量宫</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#星曜组合-11">星曜组合</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#主星特质与亮度-11">主星特质与亮度</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#四化关系-11">四化关系</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#与兄弟关系">与兄弟关系</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#倪师断语-12">倪师断语</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#总评-11">总评</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#6-12-财帛宫-卯-癸-空宫-——轻量宫">6.12 财帛宫（卯·癸·空宫）——轻量宫</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#6-12-财帛宫-卯-癸-空宫-——轻量宫">6.12 财帛宫（卯·癸·空宫）——轻量宫</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#星曜组合-12">星曜组合</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#主星特质与亮度-12">主星特质与亮度</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#四化关系-12">四化关系</a></li>
@@ -2350,99 +2504,284 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
 <li class="toc-item"><a class="toc-link toc-h4" href="#倪师断语-13">倪师断语</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#总评-12">总评</a></li>
 </ul></li>
-<li class="toc-item toc-group">
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
 <div class="toc-group-header">
-<a class="toc-link" href="#七-四化飞化详析">七、四化飞化详析</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h2" href="#七-四化飞化详析">七、四化飞化详析</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#飞忌汇入统计">飞忌汇入统计</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#飞禄汇入统计">飞禄汇入统计</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#关键互动">关键互动</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#四化能量流向图">四化能量流向图</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#化忌连环分析">化忌连环分析</a></li>
-</ul></li>
-<li class="toc-item toc-group">
+<li class="toc-item toc-group toc-group-h3">
 <div class="toc-group-header">
-<a class="toc-link" href="#八-大限运势">八、大限运势</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
-</div>
-<ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#第1大限-2-11岁-命宫-丁未-天府庙-来源-iztro排盘数据">第1大限（2-11岁）：命宫 丁未 天府庙 [来源: iztro排盘数据]</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#第2大限-12-21岁-父母宫-戊申-天机得+太阴利+天马-来源-iztro排盘数据">第2大限（12-21岁）：父母宫 戊申 天机得+太阴利+天马 [来源: iztro排盘数据]</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#第3大限-22-31岁-福德宫-己酉-紫微旺权+贪狼利+文昌庙-当前-身宫同度-来源-iztro排盘数据">第3大限（22-31岁）：福德宫 己酉 紫微旺权+贪狼利+文昌庙 ★当前 ★身宫同度 [来源: iztro排盘数据]</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#第4大限-32-41岁-田宅宫-庚戌-巨门陷+左辅科+地空+陀罗庙-来源-iztro排盘数据">第4大限（32-41岁）：田宅宫 庚戌 巨门陷+左辅科+地空+陀罗庙 [来源: iztro排盘数据]</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#第5大限-42-51岁-官禄宫-辛亥-天相得+禄存-来源-iztro排盘数据">第5大限（42-51岁）：官禄宫 辛亥 天相得+禄存 [来源: iztro排盘数据]</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#第6大限-52-61岁-仆役宫-壬子-天梁庙禄+地劫+擎羊陷-来源-iztro排盘数据">第6大限（52-61岁）：仆役宫 壬子 天梁庙禄+地劫+擎羊陷 [来源: iztro排盘数据]</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#第7大限-62-71岁-迁移宫-癸丑-廉贞利+七杀庙-来源-iztro排盘数据">第7大限（62-71岁）：迁移宫 癸丑 廉贞利+七杀庙 [来源: iztro排盘数据]</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#第8大限-72-81岁-疾厄宫-壬寅-空宫+火星庙-来源-iztro排盘数据">第8大限（72-81岁）：疾厄宫 壬寅 空宫+火星庙 [来源: iztro排盘数据]</a></li>
-</ul></li>
-<li class="toc-item toc-group">
-<div class="toc-group-header">
-<a class="toc-link" href="#九-流年要点">九、流年要点</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
-</div>
-<ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#2024甲辰年-虚岁23">2024甲辰年（虚岁23）</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#2025乙巳年-虚岁24">2025乙巳年（虚岁24）</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#2026丙午年-虚岁25-当前">2026丙午年（虚岁25）★当前</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#2027丁未年-虚岁26">2027丁未年（虚岁26）</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#2028戊申年-虚岁27">2028戊申年（虚岁27）</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#2029己酉年-虚岁28">2029己酉年（虚岁28）</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#2030庚戌年-虚岁29">2030庚戌年（虚岁29）</a></li>
-</ul></li>
-<li class="toc-item toc-group">
-<div class="toc-group-header">
-<a class="toc-link" href="#十-综合建议">十、综合建议</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
-</div>
-<ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#10-1-事业规划">10.1 事业规划</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#10-2-感情经营">10.2 感情经营</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#10-3-健康管理">10.3 健康管理</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#10-4-财务规划">10.4 财务规划</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#10-5-人际交往">10.5 人际交往</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#10-6-精神修养">10.6 精神修养</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#10-7-人生阶段规划">10.7 人生阶段规划</a></li>
-</ul></li>
-<li class="toc-item toc-group">
-<div class="toc-group-header">
-<a class="toc-link" href="#十一-附录">十一、附录</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
-</div>
-<ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#术语解释">术语解释</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#亮度对照表">亮度对照表</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#参考文献">参考文献</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#十四主星速查表">十四主星速查表</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#四化星曜对照表-天干→四化">四化星曜对照表（天干→四化）</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#本命盘关键数字速览">本命盘关键数字速览</a></li>
-</ul></li>
-<li class="toc-item toc-group">
-<div class="toc-group-header">
-<a class="toc-link" href="#自检清单">自检清单</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h3" href="#飞忌汇入统计">飞忌汇入统计</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
 </ul></li>
-<li class="toc-item toc-group">
+<li class="toc-item toc-group toc-group-h3">
 <div class="toc-group-header">
-<a class="toc-link" href="#报告尾部声明">报告尾部声明</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h3" href="#飞禄汇入统计">飞禄汇入统计</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#关键互动">关键互动</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#四化能量流向图">四化能量流向图</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#化忌连环分析">化忌连环分析</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#八-大限运势">八、大限运势</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#第1大限-2-11岁-命宫-丁未-天府庙-来源-iztro排盘数据">第1大限（2-11岁）：命宫 丁未 天府庙 [来源: iztro排盘数据]</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#第2大限-12-21岁-父母宫-戊申-天机得+太阴利+天马-来源-iztro排盘数据">第2大限（12-21岁）：父母宫 戊申 天机得+太阴利+天马 [来源: iztro排盘数据]</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#第3大限-22-31岁-福德宫-己酉-紫微旺权+贪狼利+文昌庙-当前-身宫同度-来源-iztro排盘数据">第3大限（22-31岁）：福德宫 己酉 紫微旺权+贪狼利+文昌庙 ★当前 ★身宫同度 [来源: iztro排盘数据]</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#第4大限-32-41岁-田宅宫-庚戌-巨门陷+左辅科+地空+陀罗庙-来源-iztro排盘数据">第4大限（32-41岁）：田宅宫 庚戌 巨门陷+左辅科+地空+陀罗庙 [来源: iztro排盘数据]</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#第5大限-42-51岁-官禄宫-辛亥-天相得+禄存-来源-iztro排盘数据">第5大限（42-51岁）：官禄宫 辛亥 天相得+禄存 [来源: iztro排盘数据]</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#第6大限-52-61岁-仆役宫-壬子-天梁庙禄+地劫+擎羊陷-来源-iztro排盘数据">第6大限（52-61岁）：仆役宫 壬子 天梁庙禄+地劫+擎羊陷 [来源: iztro排盘数据]</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#第7大限-62-71岁-迁移宫-癸丑-廉贞利+七杀庙-来源-iztro排盘数据">第7大限（62-71岁）：迁移宫 癸丑 廉贞利+七杀庙 [来源: iztro排盘数据]</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#第8大限-72-81岁-疾厄宫-壬寅-空宫+火星庙-来源-iztro排盘数据">第8大限（72-81岁）：疾厄宫 壬寅 空宫+火星庙 [来源: iztro排盘数据]</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#九-流年要点">九、流年要点</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2024甲辰年-虚岁23">2024甲辰年（虚岁23）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2025乙巳年-虚岁24">2025乙巳年（虚岁24）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2026丙午年-虚岁25-当前">2026丙午年（虚岁25）★当前</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2027丁未年-虚岁26">2027丁未年（虚岁26）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2028戊申年-虚岁27">2028戊申年（虚岁27）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2029己酉年-虚岁28">2029己酉年（虚岁28）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#2030庚戌年-虚岁29">2030庚戌年（虚岁29）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#十-综合建议">十、综合建议</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#10-1-事业规划">10.1 事业规划</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#10-2-感情经营">10.2 感情经营</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#10-3-健康管理">10.3 健康管理</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#10-4-财务规划">10.4 财务规划</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#10-5-人际交往">10.5 人际交往</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#10-6-精神修养">10.6 精神修养</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#10-7-人生阶段规划">10.7 人生阶段规划</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#十一-附录">十一、附录</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#术语解释">术语解释</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#亮度对照表">亮度对照表</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#参考文献">参考文献</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#十四主星速查表">十四主星速查表</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#四化星曜对照表-天干→四化">四化星曜对照表（天干→四化）</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#本命盘关键数字速览">本命盘关键数字速览</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#自检清单">自检清单</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#报告尾部声明">报告尾部声明</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
 </ul></li>

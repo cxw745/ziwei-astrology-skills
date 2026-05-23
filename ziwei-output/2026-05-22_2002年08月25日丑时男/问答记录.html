@@ -2138,6 +2138,29 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   transition: max-height 0.3s ease, opacity 0.15s ease;
 }
 
+.toc-group-h3 {
+  padding-left: 12px;
+}
+
+.toc-group-h3 > .toc-group-header .toc-link {
+  font-size: 13px;
+}
+
+.toc-group-h3 > .toc-children .toc-link {
+  padding-left: 36px;
+  font-size: 12px;
+}
+
+.toc-group-h3 > .toc-children .toc-h5 {
+  padding-left: 44px;
+  font-size: 11.5px;
+}
+
+.toc-group-h3 > .toc-children .toc-h6 {
+  padding-left: 52px;
+  font-size: 11px;
+}
+
 @media print {
   .sidebar, .toolbar, .back-to-top, .chart-fab, .chart-panel, .chart-overlay,
   .mobile-menu-btn, .progress-bar, .section-toggle, .inline-chart-expand,
@@ -2192,56 +2215,100 @@ a:hover { color: var(--text-link-hover); text-decoration: underline; }
   </div>
   <ul class="toc-list" id="tocList">
 <li class="toc-item"><a class="toc-link toc-h1" href="#问答记录-—-2002年8月25日丑时男">问答记录 — 2002年8月25日丑时男</a></li>
-<li class="toc-item toc-group">
+<li class="toc-item toc-group toc-group-h2">
 <div class="toc-group-header">
-<a class="toc-link" href="#2026-05-22-—-事业方向-兴趣坚持-副业规划-社交困境">2026-05-22 — 事业方向·兴趣坚持·副业规划·社交困境</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h2" href="#2026-05-22-—-事业方向-兴趣坚持-副业规划-社交困境">2026-05-22 — 事业方向·兴趣坚持·副业规划·社交困境</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#一-事业方向-计算机硕士-vs-产品经理">一、事业方向：计算机硕士 vs 产品经理</a></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#一-事业方向-计算机硕士-vs-产品经理">一、事业方向：计算机硕士 vs 产品经理</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#问题-在读计算机硕士-不喜欢写代码和做研究-想做产品经理-命盘支持吗">问题：在读计算机硕士，不喜欢写代码和做研究，想做产品经理，命盘支持吗？</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎支持产品经理方向的数据">▎支持产品经理方向的数据</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎制约产品经理方向的数据">▎制约产品经理方向的数据</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎综合判断">▎综合判断</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎为什么不喜欢写代码——从命盘看">▎为什么不喜欢写代码——从命盘看</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#二-兴趣三分钟热度-贪狼的困境">二、兴趣三分钟热度：贪狼的困境</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#二-兴趣三分钟热度-贪狼的困境">二、兴趣三分钟热度：贪狼的困境</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#问题-喜欢音乐-唱歌-作曲-但总是三分钟热度-坚持不下去-找不到反馈和圈子-怎么办">问题：喜欢音乐、唱歌、作曲，但总是三分钟热度，坚持不下去，找不到反馈和圈子，怎么办？</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎贪狼在福德宫-身宫-的核心矛盾">▎贪狼在福德宫(身宫)的核心矛盾</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎为什么找不到反馈">▎为什么找不到反馈</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎破解之道-基于排盘数据">▎破解之道（基于排盘数据）</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#三-副业规划与脱离职场">三、副业规划与脱离职场</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#三-副业规划与脱离职场">三、副业规划与脱离职场</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#问题-想发展副业-最终脱离职场-命盘支持吗">问题：想发展副业，最终脱离职场，命盘支持吗？</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎支持发展副业的数据">▎支持发展副业的数据</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎制约脱离职场的数据">▎制约脱离职场的数据</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎综合判断-2">▎综合判断</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎倪师断语">▎倪师断语</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎建议路径">▎建议路径</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#四-社交困境-七杀之孤与天梁之禄">四、社交困境：七杀之孤与天梁之禄</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#四-社交困境-七杀之孤与天梁之禄">四、社交困境：七杀之孤与天梁之禄</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#问题-想要朋友但不知道怎么交-没有社交圈-怎么办">问题：想要朋友但不知道怎么交，没有社交圈，怎么办？</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎为什么社交受阻">▎为什么社交受阻</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎为什么又渴望有人来找">▎为什么又渴望有人来找</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎破解之道-基于排盘数据-2">▎破解之道（基于排盘数据）</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#五-四个问题的底层逻辑">五、四个问题的底层逻辑</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#技术注释">技术注释</a></li>
 </ul></li>
-<li class="toc-item toc-group">
+<li class="toc-item toc-group toc-group-h3">
 <div class="toc-group-header">
-<a class="toc-link" href="#2026-05-22-追问二-—-社交困境深挖-被动-怕受伤-情感上被需要">2026-05-22 追问二 — 社交困境深挖：被动·怕受伤·情感上被需要</a>
-<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起">
-<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-</button>
+<a class="toc-link toc-h3" href="#五-四个问题的底层逻辑">五、四个问题的底层逻辑</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 <ul class="toc-children">
-<li class="toc-item"><a class="toc-link toc-h3" href="#一-为什么被动等别人来找">一、为什么被动等别人来找</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#技术注释">技术注释</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+</ul></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h2">
+<div class="toc-group-header">
+<a class="toc-link toc-h2" href="#2026-05-22-追问二-—-社交困境深挖-被动-怕受伤-情感上被需要">2026-05-22 追问二 — 社交困境深挖：被动·怕受伤·情感上被需要</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#一-为什么被动等别人来找">一、为什么被动等别人来找</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎武曲化忌不只是管感情-它管你所有要不要投入的决策">▎武曲化忌不只是管感情，它管你所有&quot;要不要投入&quot;的决策</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎情感上被需要——盘里确实有这个需求">▎&quot;情感上被需要&quot;——盘里确实有这个需求</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎为什么别人不来找你——不是你不值得-是你把门关了">▎为什么别人不来找你——不是你不值得，是你把门关了</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎一个很小但真实的开始">▎一个很小但真实的开始</a></li>
-<li class="toc-item"><a class="toc-link toc-h3" href="#二-关于情感上被需要的澄清">二、关于&quot;情感上被需要&quot;的澄清</a></li>
+</ul></li>
+<li class="toc-item toc-group toc-group-h3">
+<div class="toc-group-header">
+<a class="toc-link toc-h3" href="#二-关于情感上被需要的澄清">二、关于&quot;情感上被需要&quot;的澄清</a>
+<button class="toc-toggle" onclick="toggleTocGroup(this)" aria-label="展开/收起"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+<ul class="toc-children">
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎你说的对-我之前的建议偏了">▎你说的对，我之前的建议偏了</a></li>
 <li class="toc-item"><a class="toc-link toc-h4" href="#▎情感上被需要的真正来源">▎&quot;情感上被需要&quot;的真正来源</a></li>
+</ul></li>
 </ul></li>
   </ul>
 </nav>
