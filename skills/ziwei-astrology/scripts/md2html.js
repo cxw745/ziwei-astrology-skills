@@ -389,7 +389,7 @@ ${bodyHtml}
     </ul>
     <div class="help-section-title">辅助工具</div>
     <ul class="help-command-list">
-      <li class="help-command-item"><span class="help-command-code">\\question</span><span class="help-command-desc">提问解答</span></li>
+      <li class="help-command-item"><span class="help-command-code">\\question</span><span class="help-command-desc">AI向用户提问</span></li>
       <li class="help-command-item"><span class="help-command-code">\\switch</span><span class="help-command-desc">切换解读体系</span></li>
       <li class="help-command-item"><span class="help-command-code">\\help</span><span class="help-command-desc">显示指令帮助</span></li>
     </ul>
