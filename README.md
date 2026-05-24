@@ -14,8 +14,9 @@
 - **验前事校验** — 排盘后推导可证伪断语，校准命盘可信度（灵感来源：vedic-astro-skills）
 - **盲审原则** — 分析阶段只看排盘数据，禁止反向推导和确认偏误（灵感来源：vedic-astro-skills）
 - **大限硬约束** — 可计算判定条件+禁止美化凶象+格局激活验证（灵感来源：vedic-astro-skills）
+- **写作质量铁律** — 禁止错误归因/绝对论断/滥用句式，审查制逐条检查
 - **交互式HTML** — 排盘图可视化、明暗主题、体系切换、三方四正连线
-- **快捷指令** — `\money` `\health` `\love` `\career` `\year` `\dash` `\flow` `\month` `\question` `\switch` `\help`
+- **快捷指令** — `\money` `\health` `\love` `\career` `\year` `\dash` `\flow` `\month` `\question` `\deep` `\switch` `\help`
 
 ## 依赖仓库
 
@@ -66,7 +67,8 @@
 
 | 指令 | 功能 |
 |------|------|
-| `\question` | 随机提问 |
+| `\question` | 随机提问（无上下文，5段格式） |
+| `\deep` | 深度内省（8大话题自选，三大专业体系融合） |
 | `\switch` | 切换体系 |
 | `\help` | 查看帮助 |
 

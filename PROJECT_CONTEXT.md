@@ -30,6 +30,10 @@
 | 大限硬约束 | 可计算判定条件+5条禁止推导错误 | 灵感来源：vedic-astro-skills Dasha hard-constraint |
 | 星曜联合判定 | 信号分诊+冲突仲裁4规则 | 灵感来源：vedic-astro-skills PAC联合判定 |
 | Q&A双审 | 判断性问题正反双审 | 灵感来源：vedic-astro-skills dual-review Q&A |
+| 写作质量铁律 | 禁止错误归因/绝对论断/滥用"不是…而是…" | 审查制逐条检查，不恰当的改写为直接表述 |
+| 输出隔离 | ziwei-output/只写，.md/.html禁止回读分析 | 防止旧报告锚定新分析 |
+| \question | 随机提问，5段格式，无上下文 | 固化格式防止不同AI表现不一致 |
+| \deep | 苏格拉底式引导内省，三大专业体系融合 | MI OARS+叙事治疗外化+苏格拉底6方向 |
 
 ---
 
@@ -158,6 +162,7 @@ ziwei-astrology-skills/
 
 1. **Frontmatter**：name + description（20+触发关键词，防undertrigger）
 2. **核心原则**：6条，含"实事求是，拒绝讨好"
+3. **铁律速查卡**：8条最高频违反铁律（含写作质量3条），每个Step前强制回顾
 3. **星耀处理规范**：空宫处理规范（借星规则、minorStars归属）
 4. **输出风格**：三模式（iztro/倪师/综合）+双层（专业+通俗），含完整示例
 5. **文件优先输出**：所有完整内容写入文件，对话中只输出摘要+文件路径。Q&A超过20行追加写入问答记录.md
@@ -282,7 +287,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] 体系切换操作说明（HTML界面+文本交互）
 - [x] 亮度映射修正（得→平，非庙旺）
 - [x] 紫府同宫格修正（限申宫）
-- [x] 快捷指令体系（\money \health \love \career \year \dash \flow \month \question \switch \help）
+- [x] 快捷指令体系（\money \health \love \career \year \dash \flow \month \question \deep \switch \help）
 - [x] 输出文件夹规范（ziwei-output/{日期时分}_{出生信息}/分类存放，含大限/流年/流月子目录，时间戳精确到分钟避免覆盖）
 - [x] 完成后提示语模板（含文件位置和快捷指令说明）
 - [x] 大限/流年/流月选择指引（\dash \flow \month，从出生到终老完整列表）
@@ -370,6 +375,40 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] CLAUDE.md项目指引：确保Claude Code能发现和触发skill
 - [x] .claude/skills目录：CC环境下skill自动可用
 - [x] PROJECT_CONTEXT.md / README.md / package.json 同步更新
+
+### v2.5.1 新增（输出策略与隔离）
+
+- [x] 文件优先输出策略：所有完整内容写入文件，对话只输出摘要+路径
+- [x] CC兼容性：确保Claude Code环境下skill可发现和触发
+- [x] 输出隔离规则：ziwei-output/只写目录，.md/.html禁止回读分析
+- [x] 同步输出隔离规则到PROJECT_CONTEXT.md和CLAUDE.md
+- [x] 输出目录命名统一使用日期_HHmm格式
+
+### v2.6.0 新增（写作质量与仓库重构）
+
+- [x] 三条写作铁律：禁止错误归因/绝对论断/滥用"不是…而是…"
+- [x] 写作质量审查制：滥用句式规则从黑名单制改为审查制
+- [x] 全面审查修复16处问题表述（绝对论断/宿命感/滥用句式/过度泛化）
+- [x] 二轮审查修复16处问题
+- [x] 全面同步写作质量规范到所有skills文件
+- [x] TOC H2/H3两级折叠 + 问答记录增量规范
+- [x] 合并远程仓库 + 解决.gitignore冲突
+- [x] 从仓库中移除.DS_Store
+
+### v2.6.1 新增（仓库清理）
+
+- [x] 从仓库中移除所有历史 ziwei-output/ 文件（52个文件）
+
+### v2.7.0 新增（\question修正 + \deep深度提问）
+
+- [x] \question语义修正：AI向用户提问，非自问自答
+- [x] 固化 \question 5段输出格式规范，禁止自问自答和提前写文件
+- [x] 拆分 \question 为两个独立指令，新增 \deep 深度递进提问
+- [x] \deep 重构融合苏格拉底六步法+心理咨询技术
+- [x] \deep 新增前置话题菜单（8大维度：自我认知/情感亲密/事业使命/财富欲望/家庭根源/健康身体/社交人际/灵性命运）
+- [x] \deep 融合三大专业体系（动机性访谈OARS+叙事治疗外化+苏格拉底6方向）
+- [x] \deep 自然对话6原则 + 禁止行为12条
+- [x] 交叉校验修复：同步 \deep 描述与 shortcuts.md 行数
 
 ---
 

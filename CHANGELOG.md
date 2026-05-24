@@ -2,6 +2,118 @@
 
 本文件记录项目的所有重要变更。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)。
 
+## [2.7.0] - 2026-05-25
+
+### Added
+
+- **`\deep` 深度提问快捷指令**（SKILL.md + shortcuts.md）：拆分原 `\question` 为两个独立指令，新增 `\deep` 苏格拉底式引导内省
+- **`\deep` 前置话题菜单**：8大维度（自我认知/情感亲密/事业使命/财富欲望/家庭根源/健康身体/社交人际/灵性命运），用户自选探索方向
+- **`\deep` 三大专业体系融合**：
+  - 动机性访谈(MI) OARS模型：Open questions/Affirmations/Reflections/Summaries，反射比提问更重要
+  - 叙事治疗外化对话：把"问题"和"人"分开，每颗星=一个"部分"
+  - 苏格拉底提问法6个递进方向（理查德·保罗）：按需取用，非固定步骤
+- **`\deep` 自然对话6原则**：先接住再追问/命盘轻轻点/允许跑题/用故事不用概念/外化问题/每3-4轮总结
+- **`\deep` 禁止行为12条**：含星曜当标签贴人、命盘硬塞等
+- SKILL.md 快捷指令表格新增 `\deep` 行
+- shortcuts.md 从~88行扩充至~215行（含 `\question` 完整规范 + `\deep` 完整规范）
+
+### Changed
+
+- `\question` 语义修正：AI向用户提问，非自问自答
+- 固化 `\question` 5段输出格式规范（🎲随机提问 + 💫命盘线索 + 🪞反思引导 + 🎯行动建议 + 📝记录提示），禁止自问自答和提前写文件
+- `\deep` 从5层递进表格→苏格拉底六步法→融合三大专业体系，去掉固定输出模板，改为自然流动
+- SKILL.md 文件优先策略第4条更新为同时提及 `\question` 和 `\deep`
+
+### Fixed
+
+- `\question` 在不同AI间表现不一致：通过固化5段输出格式+禁止行为清单+正确工作流解决
+- `\deep` 对话死板：通过融合三大专业体系+去掉固定输出模板+自然对话原则解决
+- 交叉校验修复：同步 `\deep` 描述与 shortcuts.md 行数
+
+## [2.6.1] - 2026-05-24
+
+### Changed
+
+- 从仓库中移除所有历史 ziwei-output/ 文件（52个文件），通过 .gitignore 排除输出目录
+
+## [2.6.0] - 2026-05-23
+
+### Added
+
+- **三条写作铁律**（SKILL.md铁律速查卡新增第6/7/8条）：禁止错误归因、禁止绝对论断、禁止滥用"不是…而是…"
+- **写作质量审查制**：滥用句式规则从黑名单制改为审查制，逐条检查是否恰当
+- **TOC H2/H3两级折叠**：HTML目录支持二级和三级标题折叠
+- **问答记录增量规范**：Q&A追问追加写入问答记录.md的格式规范
+
+### Changed
+
+- 全面审查修复16处问题表述（绝对论断/宿命感/滥用句式/过度泛化）
+- 二轮审查修复16处问题
+- 全面同步写作质量规范到所有skills文件（SKILL.md + shortcuts.md + report-template.md）
+- 合并远程仓库 + 解决.gitignore冲突
+
+### Fixed
+
+- 从仓库中移除.DS_Store
+
+## [2.5.1] - 2026-05-22
+
+### Added
+
+- **文件优先输出策略**（SKILL.md）：所有完整内容写入文件，对话只输出摘要+文件路径。Q&A超过20行追加写入问答记录.md
+- **CC兼容性**：确保Claude Code环境下skill可发现和触发
+- **输出隔离规则**（SKILL.md）：ziwei-output/是只写目录，.md/.html禁止回读用于分析，只读chart-data.json
+
+### Changed
+
+- 同步输出隔离规则到PROJECT_CONTEXT.md和CLAUDE.md
+- 输出目录命名统一使用日期_HHmm格式，精确到分钟防覆盖
+
+## [2.5.0] - 2026-05-22
+
+### Added
+
+- **md2html.js模块化重构**：3955行→420行薄编排层，拆出lib/styles.js(2066行)+lib/interaction.js(1004行)
+- **铁律速查卡**（SKILL.md）：5→8条最高频违反铁律，每个Step前强制回顾
+- **内嵌检查点**（SKILL.md）：Step 1~5每个Step前增加🔍检查点提示
+- **验证反馈闭环脚本** validate-and-fix.js（整合3个验证+结构化JSON修正建议）
+- **章节级验证器** section-validator.js（10种章节类型，输出fixSuggestions）
+- **分段生成辅助器** generate-section.js（数据切片+模板片段+验证命令）
+- **本地预览服务器** preview.js（静态文件服务+--watch自动刷新+路径安全检查）
+- **Web Cache预填充**：14主星核心断语（从sources/ziwei-doushu仓库实际提取）
+- **内容差异化指引**（report-template.md）：6条差异化原则+跨宫去重检查
+- **快捷指令文件输出**：\question等也生成MD文件保存
+- **CLAUDE.md项目指引**：确保Claude Code能发现和触发skill
+- **.claude/skills目录**：CC环境下skill自动可用
+
+### Changed
+
+- SKILL.md Step 6脚本验证从4项扩展为6项（新增validate-and-fix.js+section-validator.js）
+- 删除空壳lib/theme.js，功能由lib/styles.js替代
+- PROJECT_CONTEXT.md / README.md / package.json 同步更新
+
+## [2.3.0] - 2026-05-22
+
+### Added
+
+- **排盘脚本封装** scripts/astro.js（封装iztro bySolar，命令行输出JSON+持久化）
+- **排盘结果持久化** chart-data.json（快捷指令复用排盘数据，无需重新排盘）
+- **结构化索引** references/index.json（14主星×12宫×46格局×十天干四化完整索引）
+- **排盘准确性校验** scripts/verify-astro.js（7项数据级校验：星曜/四化/空宫/身宫/来因宫/五行局/命宫）
+- **增强 validate-report.js**（16项→24项检查：子节完整性/飞四化48条/来源标注密度/倪师断语/行数/讨好倾向扩展/附录）
+- **MD格式规范检查** scripts/lint-md.js（10项检查：标题层级/表格/章节/空行/列表/引用/HTML残留/四化标记/来源标注/多余空行）
+- **自动化评测** scripts/run-evals.js（6个eval用例自动检查）
+- **网页搜索缓存机制** references/web-cache/（避免重复搜索）
+- **知识库版本追踪** sources/versions.json + scripts/update-sources.sh
+- **Skill独立使用优化**：降级模式→精简模式（排盘不受影响，验证脚本可用）
+- **同步脚本** scripts/sync-skills.sh（.trae目录版本同步）
+- **package.json脚本命令**（astro/md2html/validate/lint/eval/sync/update）
+
+### Changed
+
+- SKILL.md更新：排盘持久化、12步核查流程、搜索缓存、参考文件索引扩充
+- PROJECT_CONTEXT.md文件结构更新
+
 ## [2.4.1] - 2026-05-22
 
 ### Added
