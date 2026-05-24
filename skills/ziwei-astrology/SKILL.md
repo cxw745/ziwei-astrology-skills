@@ -363,7 +363,7 @@ HTML界面体系切换：工具栏按钮或键盘1/2/3切换，正文内容实�
 | `\money` | 财运详解 | `\health` | 健康详解 |
 | `\love` | 感情详解 | `\career` | 事业详解 |
 | `\match` | 合盘分析 | `\year` | 流年运势 |
-| `\question` | 随机提问（每轮独立） | `\deep` | 深度提问（递进内省） |
+| `\question` | 随机提问（每轮独立） | `\deep` | 深度提问（苏格拉底式引导内省） |
 | `\switch` | 切换体系 | `\dash` | 大限选择 |
 | `\dash N` | 第N大限详解 | `\flow` | 流年选择 |
 | `\month` | 流月选择 | `\month YYYY-MM` | 指定月详解 |
@@ -633,7 +633,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `references/classics-excerpts.md` | 古籍关键段落摘录（骨髓赋等） | ~100 |
 | `references/star-palace-matrix.md` | 14主星×12宫速查表 | ~50 |
 | `references/report-template.md` | 报告模板+专项模板+输出规范 | ~800 |
-| `references/shortcuts.md` | 快捷指令详细指引 | ~88 |
+| `references/shortcuts.md` | 快捷指令详细指引 | ~215 |
 | `references/source-repos.md` | 源仓库本地文件索引+引用标注格式 | ~168 |
 | `references/nihai-medicine.md` | 倪师人纪地纪健康断语（疾厄宫联动） | ~400 |
 | `references/fallback-guide.md` | Skill独立使用降级策略 | ~60 |
