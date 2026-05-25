@@ -4,9 +4,9 @@ description: >
   紫微斗数排盘与命盘详析。当用户提供出生日期时辰性别请求排盘、算命、命理解读、
   合盘、流年运势、择日时触发。触发词：排盘、紫微斗数、算命、命盘、命理、运势、
   流年、大限、夫妻宫、事业运、财运、合盘、倪海厦、天纪、择日、桃花、姻缘、
-  考运、健康运、贵人。即使用户只说"帮我看看命""算一卦"也应触发。
+  考运、健康运、贵人、友情、朋友、友谊。即使用户只说"帮我看看命""算一卦"也应触发。
   首次输出完整报告后可继续追问。快捷指令：\money \health \love \career
-  \year \dash \flow \month \question \deep \switch \help。
+  \year \dash \flow \month \question \deep \match \friend \switch \help。
 ---
 
 # 紫微斗数排盘与命盘详析
@@ -90,7 +90,7 @@ Skill 运行时需定位 sources/ 目录以执行回源验证。按以下优先�
 
 1. **完整报告必须写入文件**：命盘详析、专项解读、合盘分析、大限详解、流年详解、流月详解等所有长内容（>50行），必须写入 `ziwei-output/` 目录下的 .md 和 .html 文件
 2. **对话中只输出摘要**：对话中最多输出5行摘要（命主信息+核心发现+文件路径），禁止在对话中输出完整报告正文
-3. **快捷指令也必须写文件**：`\money` `\health` `\love` `\career` `\year` `\dash N` `\flow YYYY` `\month YYYY-MM` 的完整解读写入文件，对话中只输出3行摘要
+3. **快捷指令也必须写文件**：`\money` `\health` `\love` `\career` `\year` `\dash N` `\flow YYYY` `\month YYYY-MM` `\match` `\friend` 的完整解读写入文件，对话中只输出3行摘要
 4. **Q&A记录管理**：用户自由追问的回答，如果超过20行，必须追加写入该命盘的 `问答记录.md` 文件，对话中只输出简要回答。`\question` 和 `\deep` 指令特殊规则：提问阶段纯对话输出（不写文件），用户回答后，再将完整Q&A轮追加写入 `问答记录.md`
 5. **验前事校验例外**：Step 2.5 的验前事3-5条预测在对话中输出（需要用户即时反馈），不写文件
 
@@ -125,7 +125,7 @@ Skill 运行时需定位 sources/ 目录以执行回源验证。按以下优先�
 📄 完整报告：{文件绝对路径}
 🌐 HTML版本：{文件绝对路径}
 
-快捷指令：\money \health \love \career \year \dash \flow \month \question \deep \switch \help
+快捷指令：\money \health \love \career \year \dash \flow \month \question \deep \match \friend \switch \help
 ```
 
 **专项解读完成后**：
@@ -437,6 +437,7 @@ ziwei-output/{日期_HHmm}_{出生信息}/
 ├── 流月/
 │   └── {YYYY}年{MM}月.md / .html
 ├── 合盘_{乙方信息}.md / .html
+├── 友情_{乙方信息}.md / .html
 └── 问答记录.md / .html
 ```
 
@@ -489,7 +490,8 @@ HTML界面体系切换：工具栏按钮或键盘1/2/3切换，正文内容实�
 |------|------|------|------|
 | `\money` | 财运详解 | `\health` | 健康详解 |
 | `\love` | 感情详解 | `\career` | 事业详解 |
-| `\match` | 合盘分析 | `\year` | 流年运势 |
+| `\match` | 合盘分析（婚配） | `\friend` | 友情合盘 |
+| `\year` | 流年运势 | `\month` | 流月选择 |
 | `\question` | 随机提问（每轮独立） | `\deep` | 深度提问（苏格拉底式引导内省） |
 | `\switch` | 切换体系 | `\dash` | 大限选择 |
 | `\dash N` | 第N大限详解 | `\flow` | 流年选择 |
@@ -498,6 +500,7 @@ HTML界面体系切换：工具栏按钮或键盘1/2/3切换，正文内容实�
 - 首次排盘前使用快捷指令，先提示用户提供出生信息
 - 所有快捷指令均继承盲审原则和Q&A正反双审规则：分析只基于排盘数据，判断性问题必须同时列出支持和制约数据
 - `\match` 需提供另一半的出生日期+时辰+性别（允许同性恋），基于倪师合盘五步法分析
+- `\friend` 需提供朋友的出生日期+时辰+性别，基于友情合盘六步法分析
 - `\dash` 列出所有大限并标注当前所在大限
 - `\flow` 默认显示当前年龄±10年，`\flow all` 显示完整列表
 - `\month` 需先确定流年（默认当年）
@@ -528,7 +531,8 @@ node scripts/md2html.js <input.md> [output.html]
 | 模块 | 触发条件 | 输出 |
 |------|---------|------|
 | 单人排盘 | 出生日期+时辰+性别 | 完整十一章节报告 |
-| 合盘分析 | `\match` + 另一半出生信息 | 合盘五步法+五星匹配度 |
+| 合盘分析（婚配） | `\match` + 另一半出生信息 | 合盘五步法+五星匹配度 |
+| 友情合盘 | `\friend` + 朋友出生信息 | 友情六步法+友情五星评级 |
 | 流年解读 | 特定年份 | 四化+宫位交互+四维运势 |
 | 择日择时 | 结婚/搬家/开业等 | 推荐吉日+理由+局限性 |
 | 继续提问 | 基于已排命盘追问 | 复用数据不重新排盘 |
@@ -542,6 +546,15 @@ node scripts/md2html.js <input.md> [output.html]
 4. 判断天作之合/次级良配/凶兆组合
 5. 给出五星匹配度评级
 6. 生成合盘报告（MD+HTML双格式），保存到 `ziwei-output/{日期_HHmm}_{甲方信息}_合盘_{乙方信息}/`
+
+`\friend` 友情合盘流程：
+1. 用户输入 `\friend` 后，提示提供朋友的出生日期、时辰、性别
+2. 分别为双方排盘（调用 iztro `bySolar`）
+3. 按友情合盘六步法分析：①评估双方命格基础 ②对方命宫落入法（核心步骤） ③兄弟宫+仆役宫互参 ④四化飞化互参（友情侧重） ⑤贵人星与煞星分析 ⑥大限同步分析
+4. 判断友情缘分类型：莫逆之交/知己/益友/泛交/损友
+5. 给出友情五星评级
+6. 如对方命宫落入甲方夫妻宫，必须包含"越界风险"专项提醒
+7. 生成友情合盘报告（MD+HTML双格式），保存到 `ziwei-output/{日期_HHmm}_{甲方信息}_友情_{乙方信息}/`
 
 ## 知识准备与补充策略
 
@@ -643,7 +656,7 @@ node scripts/astro.js "YYYY-M-D" hourIndex gender [outputDir]
 node scripts/astro.js "2002-4-5" 7 男 ziwei-output/2026-05-22_1430_2002年04月05日午时男
 ```
 
-快捷指令（\money \health \love \career \dash \flow \month）**必须**读取 `ziwei-output/{日期_HHmm}_{出生信息}/chart-data.json` 复用排盘数据，禁止重新排盘。若 chart-data.json 不存在，需提示用户重新排盘。
+快捷指令（\money \health \love \career \dash \flow \month \match \friend）**必须**读取 `ziwei-output/{日期_HHmm}_{出生信息}/chart-data.json` 复用排盘数据，禁止重新排盘。若 chart-data.json 不存在，需提示用户重新排盘。
 
 降级方案：若 astro.js 执行失败，回退到 iztro 直接调用：
 ```typescript
@@ -669,7 +682,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 
 **数据隔离声明**：分析阶段（Step 3-4）所有断语只能基于 `chart-data.json` 和 `references/` 推导。对话中用户透露的背景信息（职业、经历、关切等）在分析阶段禁止使用。Q&A阶段（Step 5）可参考用户背景理解问题，但结论仍必须基于排盘数据，且必须执行正反双审（详见 `references/qa-rules.md`）。
 
-**强制数据回调**：每个Step开始前，必须重新读取 `chart-data.json`，不要凭对话记忆分析。长对话中上下文漂移会导致记忆失真——强制重读文件确保每个步骤基于精确数据。快捷指令（\money \health \love \career \dash \flow \month）同样必须先读取 `chart-data.json` 再分析。
+**强制数据回调**：每个Step开始前，必须重新读取 `chart-data.json`，不要凭对话记忆分析。长对话中上下文漂移会导致记忆失真——强制重读文件确保每个步骤基于精确数据。快捷指令（\money \health \love \career \dash \flow \month \match \friend）同样必须先读取 `chart-data.json` 再分析。
 
 **核心关切只影响排版，不影响内容**：用户关心事业→事业部分先写、写详细，但不能因此把所有星曜都解读成"支持事业"。分析结论只由排盘数据决定，用户关切只决定呈现顺序和篇幅分配。
 
@@ -755,7 +768,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `references/sihua-rules.md` | 四化对照表 | ~72 |
 | `references/patterns.md` | 格局识别规则（46个格局） | ~350 |
 | `references/palace-interpretation.md` | 十二宫解读 | ~218 |
-| `references/heming-knowledge.md` | 倪师合盘断语 | ~141 |
+| `references/heming-knowledge.md` | 倪师合盘断语（婚配+友情） | ~340 |
 | `references/nihai-quotes.md` | 倪师天纪断语（各宫位/四化/面相/堪舆） | ~120 |
 | `references/classics-excerpts.md` | 古籍关键段落摘录（骨髓赋等） | ~100 |
 | `references/star-palace-matrix.md` | 14主星×12宫速查表 | ~50 |

@@ -2,6 +2,33 @@
 
 本文件记录项目的所有重要变更。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)。
 
+## [2.8.0] - 2026-05-25
+
+### Added
+
+- **`\friend` 友情合盘快捷指令**（SKILL.md + shortcuts.md）：与 `\match` 婚配合盘并行，独立分析两人友情缘分
+- **友情合盘六步法**（heming-knowledge.md）：①评估双方命格基础 ②对方命宫落入法（核心步骤） ③兄弟宫+仆役宫互参 ④四化飞化互参（友情侧重） ⑤贵人星与煞星分析 ⑥大限同步分析
+- **对方命宫落入法**（heming-knowledge.md）：12宫位完整对照表，看对方命宫主星落入你命盘哪个宫位，决定对方在你生命中的角色
+- **友情双宫联参原则**（heming-knowledge.md）：「看友情，兄弟宫看深交，仆役宫看广交，两者联参方全」
+- **十四主星在兄弟宫/仆役宫断语**（heming-knowledge.md）：28条断语（14主星×2宫位），含倪师原话
+- **友情缘分类型**（heming-knowledge.md）：8种类型（莫逆之交/灵魂知己/事业搭档/过命交情/贵人朋友/越界暧昧/消耗型/表面风光）
+- **友情相位兼容性**（heming-knowledge.md）：11组命宫组合的友情兼容度评级
+- **友情合盘与婚配合盘核心差异对照表**（heming-knowledge.md）：10个维度的差异对比
+- **左辅右弼友情意义**（heming-knowledge.md）：5种配置的友情含义
+- **友情合盘报告模板**（report-template.md）：9章节完整结构，含越界风险专项提醒
+- **友情评级标准**（shortcuts.md）：莫逆之交★★★★★ → 损友★（5级）
+- SKILL.md 触发词新增：友情、朋友、友谊
+- SKILL.md 快捷指令表格新增 `\friend` 行
+- SKILL.md 功能模块新增"友情合盘"
+- SKILL.md `\friend` 友情合盘7步流程
+
+### Changed
+
+- `\match` 快捷指令标题改为"合盘分析（婚配）"，与 `\friend` 友情合盘区分
+- heming-knowledge.md 目录分为"婚配合盘"和"友情合盘"两大板块
+- heming-knowledge.md 行数从~141行扩充至~340行
+- SKILL.md 参考文件索引更新 heming-knowledge.md 行数
+
 ## [2.7.0] - 2026-05-25
 
 ### Added

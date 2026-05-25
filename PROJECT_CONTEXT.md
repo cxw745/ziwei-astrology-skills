@@ -23,7 +23,7 @@
 | 亮度分级 | 三级制（庙旺/平/陷） | 倪师体系简化，iztro 七级映射到三级 |
 | 亮度映射 | 庙旺→庙旺，得利平→平，不陷→陷 | iztro七级到倪师三级的映射规则 |
 | 输出风格 | 双层：专业解读+通俗解析 | 覆盖零基础到专业用户 |
-| 功能模块 | 4个：单人排盘/合盘/流年/择日 | 用户需求全覆盖 |
+| 功能模块 | 5个：单人排盘/合盘（婚配）/友情合盘/流年/择日 | 用户需求全覆盖 |
 | Skill规范 | 遵循 Anthropic skill-creator 方法论 | SKILL.md<500行，渐进式披露references |
 | 盲审原则 | 8条，分析阶段只看排盘数据 | 灵感来源：vedic-astro-skills blind-audit，对抗确认偏误和圆场本能 |
 | 验前事校验 | Step 2.5，排盘后报告前的可信度守门员 | 灵感来源：vedic-astro-skills past-validation |
@@ -43,10 +43,16 @@
 - 输入：出生日期+时辰+性别
 - 输出：完整十一章节命盘报告（MD+HTML双格式）
 
-### 模块B：合盘分析
+### 模块B：合盘分析（婚配）
 - 输入：两人出生信息
 - 输出：合盘五步法分析+五星匹配度评级
 - 核心：倪师"看婚姻必须同时看福德宫"
+
+### 模块B2：友情合盘
+- 输入：两人出生信息
+- 输出：友情六步法分析+友情五星评级
+- 核心：对方命宫落入法+兄弟宫仆役宫互参
+- 与婚配合盘宫位侧重完全不同
 
 ### 模块C：流年专项解读
 - 输入：出生信息+特定年份
@@ -287,7 +293,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] 体系切换操作说明（HTML界面+文本交互）
 - [x] 亮度映射修正（得→平，非庙旺）
 - [x] 紫府同宫格修正（限申宫）
-- [x] 快捷指令体系（\money \health \love \career \year \dash \flow \month \question \deep \switch \help）
+- [x] 快捷指令体系（\money \health \love \career \year \dash \flow \month \question \deep \match \friend \switch \help）
 - [x] 输出文件夹规范（ziwei-output/{日期时分}_{出生信息}/分类存放，含大限/流年/流月子目录，时间戳精确到分钟避免覆盖）
 - [x] 完成后提示语模板（含文件位置和快捷指令说明）
 - [x] 大限/流年/流月选择指引（\dash \flow \month，从出生到终老完整列表）
@@ -409,6 +415,22 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] \deep 融合三大专业体系（动机性访谈OARS+叙事治疗外化+苏格拉底6方向）
 - [x] \deep 自然对话6原则 + 禁止行为12条
 - [x] 交叉校验修复：同步 \deep 描述与 shortcuts.md 行数
+
+### v2.8.0 新增（\friend 友情合盘）
+
+- [x] `\friend` 友情合盘快捷指令（与 `\match` 婚配合盘并行）
+- [x] 友情合盘六步法（对方命宫落入法+兄弟宫仆役宫互参+贵人煞星分析）
+- [x] 对方命宫落入法12宫位对照表
+- [x] 友情双宫联参原则（兄弟宫看深交+仆役宫看广交）
+- [x] 十四主星在兄弟宫/仆役宫断语（28条）
+- [x] 友情缘分类型（8种：莫逆之交→消耗型）
+- [x] 友情相位兼容性（11组命宫组合）
+- [x] 左辅右弼友情意义（5种配置）
+- [x] 友情合盘与婚配合盘核心差异对照表（10维度）
+- [x] 友情合盘报告模板（9章节+越界风险专项）
+- [x] 友情评级标准（莫逆之交★★★★★→损友★）
+- [x] heming-knowledge.md 扩充（~141行→~340行）
+- [x] SKILL.md + shortcuts.md + report-template.md + CHANGELOG.md + PROJECT_CONTEXT.md 同步更新
 
 ---
 
