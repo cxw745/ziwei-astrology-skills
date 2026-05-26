@@ -333,6 +333,16 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] 新增validate-report.js自动化验证脚本（16项自检清单自动检查）
 - [x] SKILL.md参考文件索引更新（12→14个references）
 
+### v3.0.1 优化（反推时辰 skill 细化）
+
+- [x] 第1轮时段选择优化：固定6档时段多选，替代模糊的"大致时间范围"
+- [x] 时段选择必须展示完整13时辰对照表给用户
+- [x] 所有轮次输出模板固定化（"固定输出格式"，必须原样输出）
+- [x] 第2轮对比表列头含时间范围，身宫/化禄/化忌格式细化
+- [x] 第3轮事件验证表列头含时间范围，每事件后必须输出累计得分
+- [x] 第4轮结论必须列出所有候选时辰及每个被排除时辰的排除原因
+- [x] 同步更新 calibration-protocol.md 时段选择规则
+
 ### v3.0.0 新增（反推时辰独立 skill）
 
 - [x] 新增 `skills/time-calibration/` 独立 skill（与 ziwei-astrology 物理隔离）
