@@ -88,6 +88,7 @@
 mkdir -p ~/.claude/skills
 git clone https://github.com/cxw745/ziwei-astrology-skills.git /tmp/ziwei-skill
 cp -r /tmp/ziwei-skill/skills/ziwei-astrology ~/.claude/skills/ziwei-astrology
+cp -r /tmp/ziwei-skill/skills/time-calibration ~/.claude/skills/time-calibration
 ```
 
 ### Trae
@@ -96,6 +97,7 @@ cp -r /tmp/ziwei-skill/skills/ziwei-astrology ~/.claude/skills/ziwei-astrology
 mkdir -p .trae/skills
 git clone https://github.com/cxw745/ziwei-astrology-skills.git /tmp/ziwei-skill
 cp -r /tmp/ziwei-skill/skills/ziwei-astrology .trae/skills/ziwei-astrology
+cp -r /tmp/ziwei-skill/skills/time-calibration .trae/skills/time-calibration
 ```
 
 ### Cursor
@@ -104,6 +106,7 @@ cp -r /tmp/ziwei-skill/skills/ziwei-astrology .trae/skills/ziwei-astrology
 mkdir -p .cursor/skills
 git clone https://github.com/cxw745/ziwei-astrology-skills.git /tmp/ziwei-skill
 cp -r /tmp/ziwei-skill/skills/ziwei-astrology .cursor/skills/ziwei-astrology
+cp -r /tmp/ziwei-skill/skills/time-calibration .cursor/skills/time-calibration
 ```
 
 ### Codex (OpenAI)
@@ -112,11 +115,12 @@ cp -r /tmp/ziwei-skill/skills/ziwei-astrology .cursor/skills/ziwei-astrology
 mkdir -p .codex/skills
 git clone https://github.com/cxw745/ziwei-astrology-skills.git /tmp/ziwei-skill
 cp -r /tmp/ziwei-skill/skills/ziwei-astrology .codex/skills/ziwei-astrology
+cp -r /tmp/ziwei-skill/skills/time-calibration .codex/skills/time-calibration
 ```
 
 ### 通用方式
 
-将 `skills/ziwei-astrology/` 目录复制到你所用 AI 工具的 skills 目录下即可。核心文件是 `SKILL.md`，AI 工具会自动识别 frontmatter 中的 `name` 和 `description` 来决定何时触发。
+将 `skills/ziwei-astrology/` 和 `skills/time-calibration/` 目录复制到你所用 AI 工具的 skills 目录下即可。核心文件是各目录下的 `SKILL.md`，AI 工具会自动识别 frontmatter 中的 `name` 和 `description` 来决定何时触发。
 
 ## 目录结构
 
@@ -133,43 +137,52 @@ ziwei-astrology-skills/
 ├── ziwei-output/                    # 排盘输出目录（与skills同级）
 │   └── {日期时分}_{出生信息}/
 └── skills/
-    └── ziwei-astrology/
-        ├── SKILL.md                  # 核心指令文件
+    ├── ziwei-astrology/
+    │   ├── SKILL.md                  # 核心指令文件
+    │   ├── scripts/
+    │   │   ├── md2html.js            # MD转HTML脚本（模块化薄编排层）
+    │   │   ├── validate-report.js    # 报告结构验证脚本（24项检查）
+    │   │   ├── validate-and-fix.js   # 验证反馈闭环脚本（整合3个验证+修正建议）
+    │   │   ├── section-validator.js  # 章节级验证器（10种章节类型）
+    │   │   ├── generate-section.js   # 分段生成辅助器（数据切片+模板片段）
+    │   │   ├── preview.js            # 本地预览服务器（支持--watch自动刷新）
+    │   │   └── lib/                  # 模块化拆分
+    │   │       ├── parser.js         # Markdown解析
+    │   │       ├── chart.js          # 排盘图渲染
+    │   │       ├── styles.js         # CSS样式（明暗主题+排盘图+响应式+打印）
+    │   │       ├── interaction.js    # 客户端交互JS（体系切换+拖拽缩放等）
+    │   │       └── toc.js            # 目录生成
+    │   ├── examples/
+    │   │   ├── 命盘详析_1999年9月9日巳时男.md
+    │   │   └── 命盘详析_1999年9月9日巳时男.html
+    │   └── references/
+    │       ├── time-mapping.md
+    │       ├── star-rules.md
+    │       ├── sihua-rules.md
+    │       ├── patterns.md
+    │       ├── palace-interpretation.md
+    │       ├── heming-knowledge.md
+    │       ├── nihai-quotes.md
+    │       ├── nihai-medicine.md      # 倪师健康断语
+    │       ├── fallback-guide.md     # 独立使用降级策略
+    │       ├── validation-protocol.md # 验前事校验协议
+    │       ├── period-constraints.md  # 大限/流年硬约束规则
+    │       ├── star-constraints.md    # 星曜联合判定约束
+    │       ├── qa-rules.md           # Q&A正反双审规则
+    │       ├── classics-excerpts.md
+    │       ├── star-palace-matrix.md
+    │       ├── report-template.md
+    │       ├── shortcuts.md
+    │       └── source-repos.md
+    └── time-calibration/              # 反推时辰独立 skill
+        ├── SKILL.md                   # 反推时辰核心指令（4轮渐进对话+事件验证）
         ├── scripts/
-        │   ├── md2html.js            # MD转HTML脚本（模块化薄编排层）
-        │   ├── validate-report.js    # 报告结构验证脚本（24项检查）
-        │   ├── validate-and-fix.js   # 验证反馈闭环脚本（整合3个验证+修正建议）
-        │   ├── section-validator.js  # 章节级验证器（10种章节类型）
-        │   ├── generate-section.js   # 分段生成辅助器（数据切片+模板片段）
-        │   ├── preview.js            # 本地预览服务器（支持--watch自动刷新）
-        │   └── lib/                  # 模块化拆分
-        │       ├── parser.js         # Markdown解析
-        │       ├── chart.js          # 排盘图渲染
-        │       ├── styles.js         # CSS样式（明暗主题+排盘图+响应式+打印）
-        │       ├── interaction.js    # 客户端交互JS（体系切换+拖拽缩放等）
-        │       └── toc.js            # 目录生成
-        ├── examples/
-        │   ├── 命盘详析_1999年9月9日巳时男.md
-        │   └── 命盘详析_1999年9月9日巳时男.html
+        │   └── astro.js              # 排盘脚本（独立副本）
         └── references/
-            ├── time-mapping.md
-            ├── star-rules.md
-            ├── sihua-rules.md
-            ├── patterns.md
-            ├── palace-interpretation.md
-            ├── heming-knowledge.md
-            ├── nihai-quotes.md
-            ├── nihai-medicine.md      # 倪师健康断语
-            ├── fallback-guide.md     # 独立使用降级策略
-            ├── validation-protocol.md # 验前事校验协议
-            ├── period-constraints.md  # 大限/流年硬约束规则
-            ├── star-constraints.md    # 星曜联合判定约束
-            ├── qa-rules.md           # Q&A正反双审规则
-            ├── classics-excerpts.md
-            ├── star-palace-matrix.md
-            ├── report-template.md
-            ├── shortcuts.md
-            └── source-repos.md
+            ├── calibration-protocol.md  # 反推时辰完整协议
+            ├── event-palace-mapping.md  # 事件类型与宫位映射（5领域详细提问）
+            ├── comparison-strategy.md   # 多时辰对比策略（14主星多角度描述表）
+            └── time-mapping.md         # 时辰映射表
 ```
 
 ## 三模式解读

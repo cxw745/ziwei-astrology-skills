@@ -2,6 +2,36 @@
 
 本文件记录项目的所有重要变更。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)。
 
+## [3.0.0] - 2026-05-27
+
+### Added
+
+- **反推时辰独立 skill**（`skills/time-calibration/`）：与 ziwei-astrology 物理隔离，独立排盘引擎和依赖
+- **4轮渐进式对话**：基础信息+行为问卷 → 排盘对比 → 深度事件验证 → 结论+盘外验证
+- **行为模式问卷**：5道具体行为问题，请用户回忆小时候（12岁前）的行为模式，更接近天命本底
+- **深度事件验证**：5领域详细提问（感情/事业/家庭/健康/社交），每个领域3-5个具体问题
+- **14主星多角度描述参考表**（`comparison-strategy.md`）：做事风格/社交方式/情绪特点/正面/踩坑，避免刻板标签
+- **事件宫位映射表**（`event-palace-mapping.md`）：5领域×5-6个问题×验证逻辑，含四化方向与事件性质对应
+- **反推时辰完整协议**（`calibration-protocol.md`）：流程+评分+性格随大限变化处理+特殊情况
+
+### Changed
+
+- **核心原则重构**（基于实测复盘）：
+  - 事件验证是唯一可靠的排除依据，性格自述不可用于排除
+  - 所有候选时辰必须全程参与评分，不跳过
+  - 性格描述多角度+区分天命本底与大限影响
+  - 矛盾权重(-2)高于弱匹配(+1)
+  - 去掉身体特征（主观性太强不可靠）
+  - 提问要具体，不要抽象标签
+- `ziwei-astrology/references/validation-protocol.md`：时辰校准流程从内嵌改为指向独立 time-calibration skill
+- `PROJECT_CONTEXT.md`：新增反推时辰设计决策、文件结构更新、v3.0.0 完成事项
+- `CLAUDE.md`：新增反推时辰 skill 触发说明和关键路径
+- `README.md`：新增反推时辰功能说明和触发示例
+
+### Removed
+
+- `skills/time-calibration/references/body-signs-reference.md`：身体特征参考（主观性太强，"你觉得圆他觉得不圆"）
+
 ## [2.9.0] - 2026-05-27
 
 ### Added
