@@ -161,7 +161,7 @@ function validateAllOutputs(outputDir) {
 
 const args = process.argv.slice(2);
 if (args.length === 0) {
-  const defaultDir = path.join(__dirname, '..', '..', '..', 'ziwei-output');
+  const defaultDir = process.env.ZIWEI_OUTPUT_DIR || path.join(__dirname, '..', '..', '..', 'ziwei-output');
   validateAllOutputs(defaultDir);
 } else if (args.length === 1) {
   if (fs.statSync(args[0]).isDirectory()) {

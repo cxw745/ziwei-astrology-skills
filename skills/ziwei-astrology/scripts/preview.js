@@ -222,7 +222,7 @@ function startWatchMode(mdPath, htmlPath, server, opts) {
 
 function main() {
   var opts = parseArgs(process.argv);
-  var outputDir = path.join(__dirname, '..', '..', '..', 'ziwei-output');
+  var outputDir = process.env.ZIWEI_OUTPUT_DIR || path.join(__dirname, '..', '..', '..', 'ziwei-output');
 
   var resolved = resolvePreviewFile(opts, outputDir);
 
