@@ -335,6 +335,17 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] 新增validate-report.js自动化验证脚本（16项自检清单自动检查）
 - [x] SKILL.md参考文件索引更新（12→14个references）
 
+### v3.0.3 优化（盘外验证体系升级）
+
+- [x] 盘外验证从"2-3条断语"升级为"5-7条多维度断语"
+- [x] 新增3类断语类型：事实断语/倾向断语/事件断语
+- [x] 新增5维度覆盖要求：家庭背景/身体特征/人际模式/财运特征/关键年份
+- [x] 新增断语评分机制（完全吻合+2/部分吻合+1/不吻合-1/无法判断0）
+- [x] 新增次优时辰盘外验证（置信度低或中时必须执行）
+- [x] 新增降级规则（≥2条不吻合或事实断语全未命中→降级）
+- [x] SKILL.md 第4轮输出模板升级为表格化断语列表+盘外验证得分+次优时辰对比
+- [x] CHANGELOG.md / PROJECT_CONTEXT.md 同步更新
+
 ### v3.0.2 优化（反推时辰真太阳时集成）
 
 - [x] 新增 `scripts/solar-time.js` 真太阳时换算脚本（城市经度库+calcTrueSolarBranch函数）
