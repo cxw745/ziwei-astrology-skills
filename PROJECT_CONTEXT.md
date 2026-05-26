@@ -35,6 +35,7 @@
 | \question | 随机提问，5段格式，无上下文 | 固化格式防止不同AI表现不一致 |
 | \deep | 苏格拉底式引导内省，三大专业体系融合 | MI OARS+叙事治疗外化+苏格拉底6方向 |
 | 反推时辰 | 独立 skill，与排盘分析物理隔离 | 盲审原则隔离：反推过程允许反向验证，但信息不带入排盘分析 |
+| 反推时辰真太阳时 | 默认使用真太阳时，基于出生地经度换算 | 中国西部地区偏移大（成都-64min/乌鲁木齐-130min），可能差1-2个时辰 |
 
 ---
 
@@ -160,10 +161,11 @@ ziwei-astrology-skills/
     │       ├── source-repos.md        # 源仓库本地文件索引+引用标注格式
     │       └── web-cache/             # 网页搜索缓存目录
     └── time-calibration/              # 反推时辰独立 skill（与排盘分析物理隔离）
-        ├── SKILL.md                   # 反推时辰核心指令（4轮渐进对话+事件验证）
+        ├── SKILL.md                   # 反推时辰核心指令（4轮渐进对话+时段多选+真太阳时换算+事件验证）
         ├── package.json               # 独立依赖（iztro）
         ├── scripts/
-        │   └── astro.js              # 排盘脚本（独立副本）
+        │   ├── astro.js              # 排盘脚本（独立副本）
+        │   └── solar-time.js         # 真太阳时换算脚本（城市经度库+时辰换算）
         └── references/
             ├── calibration-protocol.md  # 反推时辰完整协议
             ├── event-palace-mapping.md  # 事件类型与宫位映射（5领域详细提问）
@@ -332,6 +334,17 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] md2html.js模块化拆分（parser/chart/theme/toc四个模块）
 - [x] 新增validate-report.js自动化验证脚本（16项自检清单自动检查）
 - [x] SKILL.md参考文件索引更新（12→14个references）
+
+### v3.0.2 优化（反推时辰真太阳时集成）
+
+- [x] 新增 `scripts/solar-time.js` 真太阳时换算脚本（城市经度库+calcTrueSolarBranch函数）
+- [x] SKILL.md 新增真太阳时换算命令文档
+- [x] SKILL.md 第1轮新增出生地收集+真太阳时换算步骤
+- [x] calibration-protocol.md 出生地点从可选改为必须收集
+- [x] calibration-protocol.md 新增 2.4 真太阳时换算步骤
+- [x] calibration-protocol.md 4.2 真太阳时规则从"默认不使用"改为"默认使用"
+- [x] calibration-protocol.md 常见陷阱新增"忽略真太阳时换算"
+- [x] README.md / CHANGELOG.md / PROJECT_CONTEXT.md / CLAUDE.md 同步更新
 
 ### v3.0.1 优化（反推时辰 skill 细化）
 

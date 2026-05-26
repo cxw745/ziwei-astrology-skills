@@ -38,7 +38,7 @@ skills/time-calibration/SKILL.md
 | `skills/ziwei-astrology/scripts/` | 排盘/验证/转换脚本 |
 | `skills/ziwei-astrology/references/` | 知识库参考文件 |
 | `skills/time-calibration/SKILL.md` | 反推时辰核心指令文件 |
-| `skills/time-calibration/scripts/` | 反推时辰排盘脚本（独立副本） |
+| `skills/time-calibration/scripts/` | 反推时辰排盘脚本+真太阳时换算脚本（独立副本） |
 | `skills/time-calibration/references/` | 反推时辰参考文件 |
 | `sources/iztro/` | iztro 排盘引擎源码 |
 | `sources/ziwei-doushu/` | 倪海厦知识库源码 |
