@@ -4,7 +4,7 @@
  */
 import { astro } from 'iztro';
 import { Solar } from 'lunar-javascript';
-import type { BirthInfo, LunarInfo, Star, Palace, DaXian, DaXianSiHua, ZiweiChart } from './types';
+import type { BirthInfo, LunarInfo, Star, Palace, DaXian, DaXianSiHua, ZiweiChart, HoroscopeData, HoroscopeScopeData, HoroscopeDecadalData, HoroscopeAgeData, HoroscopeStarData, ShenShaData, StarBrightness } from './types';
 import { BRANCHES, STEMS } from './constants';
 // 飞星派工具仅供导出，不再在排盘时调用（倪师《天纪 03》：四化星永远固定不动）
 // import { detectSelfSihua, getSiHuaByStem } from './sihua';
@@ -55,6 +55,15 @@ function parseWuxingJu(name: string): number {
   if (name.includes('六')) return 6;
   return 3;
 }
+function calcTrueSolarTimeOffset(longitude: number): number {
+  return Math.round((longitude - 120) * 4);
+}
+function mapBrightnessName(b?: string): string {
+  if (!b) return '平';
+  if (b === '庙' || b === '旺') return b;
+  if (b === '陷' || b === '不') return b;
+  return b;
+}
 // ─── 主函数：生成命盘 ────────────────────────────────────────────
 export function generateChart(birthInfo: BirthInfo): ZiweiChart {
   const { year, month, day, hour, gender } = birthInfo;
@@ -62,11 +71,15 @@ export function generateChart(birthInfo: BirthInfo): ZiweiChart {
   const solarDate = `${year}-${month}-${day}`;
   const iztroGender = gender === 'male' ? '男' : '女';
   const astrolabe = astro.bySolar(solarDate, hour, iztroGender, true, 'zh-CN');
+  // ── 真太阳时偏移 ──
+  let trueSolarTimeOffset: number | undefined;
+  if (birthInfo.longitude != null) {
+    trueSolarTimeOffset = calcTrueSolarTimeOffset(birthInfo.longitude);
+  }
   // ── 组装十二宫 ──
   const palaces: Palace[] = astrolabe.palaces.map(p => {
     const branch = BRANCHES.indexOf(p.earthlyBranch as string);
     const stem   = STEMS.indexOf(p.heavenlyStem as string);
-    // 合并所有星：主星 + 次星 + 杂耀
     const allStars: Star[] = [
       ...(p.majorStars ?? []).map(s => ({
         name:       s.name as string,
@@ -86,6 +99,24 @@ export function generateChart(birthInfo: BirthInfo): ZiweiChart {
       })),
     ];
     const range = p.decadal?.range;
+    const shenSha: ShenShaData | undefined = (p.changsheng12 || p.boshi12 || p.jiangqian12 || p.suiqian12)
+      ? {
+          changsheng12: (p.changsheng12 as string) ?? '',
+          boshi12: (p.boshi12 as string) ?? '',
+          jiangqian12: (p.jiangqian12 as string) ?? '',
+          suiqian12: (p.suiqian12 as string) ?? '',
+        }
+      : undefined;
+    const starBrightness: StarBrightness[] = [
+      ...(p.majorStars ?? []),
+      ...(p.minorStars ?? []),
+    ]
+      .filter(s => s.brightness)
+      .map(s => ({
+        starName: s.name as string,
+        brightness: mapBrightness(s.brightness as string),
+        brightnessName: mapBrightnessName(s.brightness as string),
+      }));
     return {
       branch:        branch >= 0 ? branch : 0,
       stem:          stem >= 0 ? stem : 0,
@@ -95,6 +126,8 @@ export function generateChart(birthInfo: BirthInfo): ZiweiChart {
       isMingGong:    p.name === '命宫',
       isShenGong:    p.isBodyPalace ?? false,
       isCurrentDaXian: false,
+      shenSha,
+      starBrightness: starBrightness.length > 0 ? starBrightness : undefined,
     };
   });
   // ── 当前年龄 & 大限 ──
@@ -144,6 +177,47 @@ export function generateChart(birthInfo: BirthInfo): ZiweiChart {
   );
   // ── 农历信息 ──
   const lunarInfo = getLunarInfo(year, month, day);
+  // ── 运限数据（大限/小限/流年/流月/流日/流时）──
+  let horoscopeData: HoroscopeData | undefined;
+  try {
+    const horo = astrolabe.horoscope(new Date(), hour);
+    const mapHoroscopeStars = (stars: any[][] | undefined): HoroscopeStarData[][] => {
+      if (!stars) return [];
+      return stars.map(palaceStars =>
+        palaceStars.map(s => ({
+          name: s.name as string,
+          type: s.type as string ?? '',
+          scope: s.scope as string ?? '',
+        })),
+      );
+    };
+    const mapScopeData = (item: any): HoroscopeScopeData => ({
+      index: item.index as number,
+      heavenlyStem: item.heavenlyStem as string,
+      earthlyBranch: item.earthlyBranch as string,
+      palaceNames: [...(item.palaceNames as string[])],
+      mutagen: [...(item.mutagen as string[])],
+      stars: mapHoroscopeStars(item.stars),
+    });
+    horoscopeData = {
+      decadal: {
+        ...mapScopeData(horo.decadal),
+        range: (horo.decadal as any).range as [number, number],
+      },
+      age: {
+        index: horo.age.index as number,
+        nominalAge: horo.age.nominalAge as number,
+        heavenlyStem: horo.age.heavenlyStem as string,
+        earthlyBranch: horo.age.earthlyBranch as string,
+      },
+      yearly: mapScopeData(horo.yearly),
+      monthly: mapScopeData(horo.monthly),
+      daily: mapScopeData(horo.daily),
+      hourly: mapScopeData(horo.hourly),
+    };
+  } catch {
+    horoscopeData = undefined;
+  }
   return {
     birthInfo,
     lunarInfo,
@@ -156,5 +230,8 @@ export function generateChart(birthInfo: BirthInfo): ZiweiChart {
     daXians,
     currentAge,
     currentDaXianIndex,
+    horoscope: horoscopeData,
+    timezone: birthInfo.timezone,
+    trueSolarTimeOffset,
   };
 }

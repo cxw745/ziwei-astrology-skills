@@ -8,6 +8,7 @@ export interface BirthInfo {
   province?: string;   // 出生省份
   city?: string;       // 出生城市
   longitude?: number;  // 出生地经度（用于真太阳时校正）
+  timezone?: string;   // 时区标识（如 'Asia/Shanghai'）
 }
 export interface LunarInfo {
   lunarYear: number;
@@ -28,6 +29,19 @@ export interface SelfSihuaMark {
   siHua: SiHua;       // 禄/权/科/忌
   starName: string;   // 自化的星
 }
+export interface ShenShaData {
+  changsheng12: string;
+  boshi12: string;
+  jiangqian12: string;
+  suiqian12: string;
+}
+
+export interface StarBrightness {
+  starName: string;
+  brightness: 'bright' | 'normal' | 'dim';
+  brightnessName: string;
+}
+
 export interface Palace {
   branch: number;      // 0-11 (地支索引)
   stem: number;        // 0-9 (天干索引)
@@ -49,6 +63,10 @@ export interface Palace {
   borrowedFromName?: string;
   /** 若为空宫，借到的对宫主星名列表（结构化数据，文案层不再需要从文本反查） */
   borrowedStars?: string[];
+  /** 神煞数据 */
+  shenSha?: ShenShaData;
+  /** 星曜亮度 */
+  starBrightness?: StarBrightness[];
 }
 export interface DaXianSiHua {
   stemIndex: number;
@@ -67,6 +85,41 @@ export interface DaXian {
   stemName?: string;
   siHua?: DaXianSiHua;   // 该大限四化（基于宫干）
 }
+export interface HoroscopeStarData {
+  name: string;
+  type: string;
+  scope: string;
+}
+
+export interface HoroscopeScopeData {
+  index: number;
+  heavenlyStem: string;
+  earthlyBranch: string;
+  palaceNames: string[];
+  mutagen: string[];
+  stars: HoroscopeStarData[][];
+}
+
+export interface HoroscopeDecadalData extends HoroscopeScopeData {
+  range: [number, number];
+}
+
+export interface HoroscopeAgeData {
+  index: number;
+  nominalAge: number;
+  heavenlyStem: string;
+  earthlyBranch: string;
+}
+
+export interface HoroscopeData {
+  decadal: HoroscopeDecadalData;
+  age: HoroscopeAgeData;
+  yearly: HoroscopeScopeData;
+  monthly: HoroscopeScopeData;
+  daily: HoroscopeScopeData;
+  hourly: HoroscopeScopeData;
+}
+
 export interface ZiweiChart {
   birthInfo: BirthInfo;
   lunarInfo: LunarInfo;
@@ -79,4 +132,7 @@ export interface ZiweiChart {
   daXians: DaXian[];
   currentAge: number;
   currentDaXianIndex: number;
+  horoscope?: HoroscopeData;
+  timezone?: string;
+  trueSolarTimeOffset?: number;
 }

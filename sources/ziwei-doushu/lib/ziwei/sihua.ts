@@ -84,7 +84,7 @@ export function getLiuYueStemIndex(yearStem: number, month: number): number {
   };
   const yinStem = startStemOfYin[yearStem] ?? 0;
   // 从寅（正月）到目标月（month 取 1-12）
-  return (yinStem + ((month - 1) % 12) + 10) % 10;
+  return (yinStem + (month - 1)) % 10;
 }
 export function getLiuYueSiHua(yearStem: number, month: number): {
   stemIndex: number;
@@ -92,6 +92,43 @@ export function getLiuYueSiHua(yearStem: number, month: number): {
   transforms: Record<SiHua, string>;
 } {
   const stemIndex = getLiuYueStemIndex(yearStem, month);
+  return {
+    stemIndex,
+    stemName: STEMS[stemIndex] ?? '',
+    transforms: getSiHuaByStem(stemIndex),
+  };
+}
+// ─── 5b) 流日四化 ─────────────────────────────────────────────
+export function getLiuRiSiHua(dayStemIndex: number): {
+  stemIndex: number;
+  stemName: string;
+  transforms: Record<SiHua, string>;
+} {
+  return {
+    stemIndex: dayStemIndex,
+    stemName: STEMS[dayStemIndex] ?? '',
+    transforms: getSiHuaByStem(dayStemIndex),
+  };
+}
+// ─── 5c) 流时四化（五鼠遁） ──────────────────────────────────
+export function getLiuShiStemIndex(dayStem: number, hourBranch: number): number {
+  const startStemOfZi: Record<number, number> = {
+    0: 0, 5: 0,
+    1: 2, 6: 2,
+    2: 4, 7: 4,
+    3: 6, 8: 6,
+    4: 8, 9: 8,
+  };
+  const ziStem = startStemOfZi[dayStem] ?? 0;
+  return (ziStem + hourBranch) % 10;
+}
+
+export function getLiuShiSiHua(dayStem: number, hourBranch: number): {
+  stemIndex: number;
+  stemName: string;
+  transforms: Record<SiHua, string>;
+} {
+  const stemIndex = getLiuShiStemIndex(dayStem, hourBranch);
   return {
     stemIndex,
     stemName: STEMS[stemIndex] ?? '',
@@ -166,6 +203,8 @@ export interface SiHuaOverlay {
   daXian?: SiHua;    // 大限
   liuNian?: SiHua;   // 流年
   liuYue?: SiHua;    // 流月
+  liuRi?: SiHua;     // 流日
+  liuShi?: SiHua;    // 流时
 }
 export function buildOverlayForStar(
   starName: string,
@@ -173,11 +212,15 @@ export function buildOverlayForStar(
   daXianMap?: Record<string, SiHua>,
   liuNianMap?: Record<string, SiHua>,
   liuYueMap?: Record<string, SiHua>,
+  liuRiMap?: Record<string, SiHua>,
+  liuShiMap?: Record<string, SiHua>,
 ): SiHuaOverlay {
   return {
     native: nativeMap[starName],
     daXian: daXianMap?.[starName],
     liuNian: liuNianMap?.[starName],
     liuYue: liuYueMap?.[starName],
+    liuRi: liuRiMap?.[starName],
+    liuShi: liuShiMap?.[starName],
   };
 }
