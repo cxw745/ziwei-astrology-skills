@@ -34,6 +34,7 @@
 | 输出隔离 | ziwei-output/只写，.md/.html禁止回读分析 | 防止旧报告锚定新分析 |
 | \question | 随机提问，5段格式，无上下文 | 固化格式防止不同AI表现不一致 |
 | \deep | 苏格拉底式引导内省，三大专业体系融合 | MI OARS+叙事治疗外化+苏格拉底6方向 |
+| 反推时辰 | 独立 skill，与排盘分析物理隔离 | 盲审原则隔离：反推过程允许反向验证，但信息不带入排盘分析 |
 
 ---
 
@@ -114,50 +115,60 @@ ziwei-astrology-skills/
 │       ├── 命盘详析.md / .html
 │       └── {专项解读}.md / .html
 └── skills/
-    └── ziwei-astrology/
-        ├── SKILL.md                   # 核心指令文件（含铁律速查卡+内嵌检查点+来源标注+知识准备+网页搜索策略+降级方案）
+    ├── ziwei-astrology/
+    │   ├── SKILL.md                   # 核心指令文件（含铁律速查卡+内嵌检查点+来源标注+知识准备+网页搜索策略+降级方案）
+    │   ├── scripts/
+    │   │   ├── astro.js              # 排盘脚本（封装iztro bySolar）
+    │   │   ├── md2html.js             # MD转HTML脚本（模块化薄编排层，~420行）
+    │   │   ├── validate-report.js     # 报告结构验证脚本（24项检查）
+    │   │   ├── validate-html.js       # HTML完整性验证脚本
+    │   │   ├── verify-astro.js        # 排盘准确性校验脚本
+    │   │   ├── lint-md.js             # MD格式规范检查脚本（10项检查）
+    │   │   ├── validate-and-fix.js    # 验证反馈闭环脚本（整合3个验证+修正建议）
+    │   │   ├── section-validator.js   # 章节级验证器（10种章节类型）
+    │   │   ├── generate-section.js    # 分段生成辅助器（数据切片+模板片段）
+    │   │   ├── preview.js             # 本地预览服务器（支持--watch自动刷新）
+    │   │   ├── run-evals.js           # 自动化评测脚本
+    │   │   └── lib/                   # md2html模块化拆分
+    │   │       ├── parser.js          # Markdown解析逻辑
+    │   │       ├── chart.js           # 排盘图渲染逻辑
+    │   │       ├── styles.js          # CSS样式定义（含明暗主题+排盘图+响应式+打印）
+    │   │       ├── interaction.js     # 客户端交互JS（排盘图渲染+体系切换+拖拽缩放等）
+    │   │       └── toc.js             # 目录生成逻辑
+    │   ├── examples/
+    │   │   ├── 命盘详析_1999年9月9日巳时男.md
+    │   │   └── 命盘详析_1999年9月9日巳时男.html
+    │   └── references/                # 渐进式披露参考文档（18个+索引+缓存）
+    │       ├── index.json             # 结构化索引（14主星×12宫×46格局×十天干四化）
+    │       ├── time-mapping.md
+    │       ├── star-rules.md
+    │       ├── sihua-rules.md
+    │       ├── patterns.md            # 格局识别规则（46个格局）
+    │       ├── palace-interpretation.md
+    │       ├── heming-knowledge.md
+    │       ├── nihai-quotes.md        # 倪师天纪断语（三维结构：星曜×宫位×四化）
+    │       ├── classics-excerpts.md   # 古典完整原文（骨髓赋/全集/全书）
+    │       ├── star-palace-matrix.md  # 14主星×12宫深度断语（含庙旺/四化/煞星三维）
+    │       ├── nihai-medicine.md      # 倪师人纪地纪健康断语（疾厄宫联动）
+    │       ├── fallback-guide.md      # Skill独立使用精简模式指南
+    │       ├── validation-protocol.md # 验前事校验协议（灵感来源：vedic-astro-skills）
+    │       ├── period-constraints.md  # 大限/流年硬约束规则（灵感来源：vedic-astro-skills）
+    │       ├── star-constraints.md    # 星曜联合判定约束（灵感来源：vedic-astro-skills）
+    │       ├── qa-rules.md            # Q&A正反双审规则（灵感来源：vedic-astro-skills）
+    │       ├── report-template.md     # 含24项自检清单+分级制
+    │       ├── shortcuts.md
+    │       ├── source-repos.md        # 源仓库本地文件索引+引用标注格式
+    │       └── web-cache/             # 网页搜索缓存目录
+    └── time-calibration/              # 反推时辰独立 skill（与排盘分析物理隔离）
+        ├── SKILL.md                   # 反推时辰核心指令（4轮渐进对话+事件验证）
+        ├── package.json               # 独立依赖（iztro）
         ├── scripts/
-        │   ├── astro.js              # 排盘脚本（封装iztro bySolar）
-        │   ├── md2html.js             # MD转HTML脚本（模块化薄编排层，~420行）
-        │   ├── validate-report.js     # 报告结构验证脚本（24项检查）
-        │   ├── validate-html.js       # HTML完整性验证脚本
-        │   ├── verify-astro.js        # 排盘准确性校验脚本
-        │   ├── lint-md.js             # MD格式规范检查脚本（10项检查）
-        │   ├── validate-and-fix.js    # 验证反馈闭环脚本（整合3个验证+修正建议）
-        │   ├── section-validator.js   # 章节级验证器（10种章节类型）
-        │   ├── generate-section.js    # 分段生成辅助器（数据切片+模板片段）
-        │   ├── preview.js             # 本地预览服务器（支持--watch自动刷新）
-        │   ├── run-evals.js           # 自动化评测脚本
-        │   └── lib/                   # md2html模块化拆分
-        │       ├── parser.js          # Markdown解析逻辑
-        │       ├── chart.js           # 排盘图渲染逻辑
-        │       ├── styles.js          # CSS样式定义（含明暗主题+排盘图+响应式+打印）
-        │       ├── interaction.js     # 客户端交互JS（排盘图渲染+体系切换+拖拽缩放等）
-        │       └── toc.js             # 目录生成逻辑
-        ├── examples/
-        │   ├── 命盘详析_1999年9月9日巳时男.md
-        │   └── 命盘详析_1999年9月9日巳时男.html
-        └── references/                # 渐进式披露参考文档（18个+索引+缓存）
-            ├── index.json             # 结构化索引（14主星×12宫×46格局×十天干四化）
-            ├── time-mapping.md
-            ├── star-rules.md
-            ├── sihua-rules.md
-            ├── patterns.md            # 格局识别规则（46个格局）
-            ├── palace-interpretation.md
-            ├── heming-knowledge.md
-            ├── nihai-quotes.md        # 倪师天纪断语（三维结构：星曜×宫位×四化）
-            ├── classics-excerpts.md   # 古典完整原文（骨髓赋/全集/全书）
-            ├── star-palace-matrix.md  # 14主星×12宫深度断语（含庙旺/四化/煞星三维）
-            ├── nihai-medicine.md      # 倪师人纪地纪健康断语（疾厄宫联动）
-            ├── fallback-guide.md      # Skill独立使用精简模式指南
-            ├── validation-protocol.md # 验前事校验协议（灵感来源：vedic-astro-skills）
-            ├── period-constraints.md  # 大限/流年硬约束规则（灵感来源：vedic-astro-skills）
-            ├── star-constraints.md    # 星曜联合判定约束（灵感来源：vedic-astro-skills）
-            ├── qa-rules.md            # Q&A正反双审规则（灵感来源：vedic-astro-skills）
-            ├── report-template.md     # 含24项自检清单+分级制
-            ├── shortcuts.md
-            ├── source-repos.md        # 源仓库本地文件索引+引用标注格式
-            └── web-cache/             # 网页搜索缓存目录
+        │   └── astro.js              # 排盘脚本（独立副本）
+        └── references/
+            ├── calibration-protocol.md  # 反推时辰完整协议
+            ├── event-palace-mapping.md  # 事件类型与宫位映射（5领域详细提问）
+            ├── comparison-strategy.md   # 多时辰对比策略（14主星多角度描述表）
+            └── time-mapping.md         # 时辰映射表
 ```
 
 ---
@@ -321,6 +332,21 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 - [x] md2html.js模块化拆分（parser/chart/theme/toc四个模块）
 - [x] 新增validate-report.js自动化验证脚本（16项自检清单自动检查）
 - [x] SKILL.md参考文件索引更新（12→14个references）
+
+### v3.0.0 新增（反推时辰独立 skill）
+
+- [x] 新增 `skills/time-calibration/` 独立 skill（与 ziwei-astrology 物理隔离）
+- [x] 4轮渐进式对话：基础信息+行为问卷 → 排盘对比 → 深度事件验证 → 结论+盘外验证
+- [x] 事件验证是唯一可靠的排除依据，性格自述不可用于排除
+- [x] 所有候选时辰必须全程参与评分，不跳过
+- [x] 行为模式问卷问小时候（12岁前），更接近天命本底
+- [x] 性格描述多角度+区分天命本底与大限影响
+- [x] 矛盾权重(-2)高于弱匹配(+1)
+- [x] 去掉身体特征（主观性太强不可靠）
+- [x] 5领域详细事件提问（感情/事业/家庭/健康/社交）
+- [x] 14主星多角度描述参考表（做事风格/社交方式/情绪特点/正面/踩坑）
+- [x] ziwei-astrology/validation-protocol.md 时辰校准流程指向独立 skill
+- [x] PROJECT_CONTEXT.md / CLAUDE.md / README.md / CHANGELOG.md 同步更新
 
 ### v2.2.0 新增
 

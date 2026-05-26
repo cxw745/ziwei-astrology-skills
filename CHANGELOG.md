@@ -2,6 +2,33 @@
 
 本文件记录项目的所有重要变更。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)。
 
+## [2.9.0] - 2026-05-27
+
+### Added
+
+- **飞星分析系统**（`flying-star.ts`）：宫干四化计算（48条飞化关系）、自化检测增强（含倪师体系自化性质描述）、飞化链追踪（最多4层递归）、飞化落宫分析、三方四正飞化汇总
+- **格局判断引擎**（`patterns-engine.ts`）：46种吉凶格局自动识别（上格8/中格9/助力格6/恶格8/基础格10/补充格5），含评分机制（-100~+100）、双星组合分析、破格条件检测
+- **运限系统补全**（`algorithm.ts` + `types.ts`）：流日/流时宫位推算和四化、每层运限的流耀星（运魁/运钺/流昌/流曲等）、完整 HoroscopeData 类型定义
+- **神煞系统补全**（`algorithm.ts`）：长生12神、博士12神、岁前12神、将前12神，数据存储在宫位 `shenSha` 字段
+- **星曜亮度体系**（`constants.ts`）：十四主星12宫亮度表（庙旺/平/陷），数据存储在宫位 `starBrightness` 字段
+- **时区支持**（`algorithm.ts` + `types.ts`）：基于出生地经度的真太阳时校正（东经120°基准，每度4分钟偏移）、显式时区参数
+- **流日/流时四化**（`sihua.ts`）：`getLiuRiSiHua()`、`getLiuShiStemIndex()`（五鼠遁）、`getLiuShiSiHua()`
+- **新快捷指令**（SKILL.md）：`\fly` 飞星分析、`\pattern` 格局判断、`\brightness` 星曜亮度、`\shensha` 神煞系统
+
+### Changed
+
+- `sihua.ts`：修复 `getLiuYueStemIndex` 公式（移除多余的 `+10`），五虎遁计算更准确
+- `constants.ts`：`STAR_BRIGHTNESS` 从6颗主星扩充至14颗主星完整亮度表
+- `types.ts`：`BirthInfo` 增加 `timezone` 字段；`Palace` 增加 `shenSha` 和 `starBrightness` 字段；`ZiweiChart` 增加 `horoscope`、`timezone`、`trueSolarTimeOffset` 字段
+- `sihua-rules.md`：新增飞星分析系统章节、流月/流日/流时四化章节、四化叠加规则更新为6层
+- `star-rules.md`：新增岁前12神和将前12神说明
+- `README.md`：功能特性列表更新，增加飞星/格局/运限/神煞/亮度/真太阳时等新功能
+- `SKILL.md`：快捷指令表格新增4个指令、功能模块表新增4个模块、description更新
+
+### Fixed
+
+- `sihua.ts`：`getLiuYueStemIndex` 公式 `(yinStem + ((month - 1) % 12) + 10) % 10` 修正为 `(yinStem + (month - 1)) % 10`，消除五虎遁推算偏差
+
 ## [2.8.0] - 2026-05-25
 
 ### Added

@@ -4,9 +4,11 @@
 
 ## 项目概述
 
-紫微斗数排盘与命盘详析 AI Skill，融合 iztro 排盘引擎与倪海厦《天纪》知识库。
+紫微斗数排盘与命盘详析 AI Skill，融合 iztro 排盘引擎与倪海厦《天纪》知识库。另含独立反推时辰 skill，帮助不知道出生时辰的用户确定时辰。
 
 ## Skill 触发
+
+### 排盘分析
 
 当用户请求排盘、算命、命理解读、合盘、流年运势、择日等，**必须**读取并遵循 Skill 定义文件：
 
@@ -16,13 +18,28 @@ skills/ziwei-astrology/SKILL.md
 
 触发词：排盘、紫微斗数、算命、命盘、命理、运势、流年、大限、夫妻宫、事业运、财运、合盘、倪海厦、天纪、择日、桃花、姻缘、考运、健康运、贵人。即使用户只说"帮我看看命""算一卦"也应触发。快捷指令：\money \health \love \career \year \dash \flow \month \question \deep \switch \help
 
+### 反推时辰
+
+当用户不知道出生时辰、时辰不确定、需要反推时辰时，**必须**读取并遵循 Skill 定义文件：
+
+```
+skills/time-calibration/SKILL.md
+```
+
+触发词：反推时辰、不知道时辰、不确定几点生、时辰校准、校正时辰、推断时辰、找时辰。即使用户只说"我不知道自己几点生的""我忘了出生时间"也应触发。
+
+**⚠️ 重要**：反推时辰与排盘分析是两个独立 skill，必须在独立对话中分别使用。反推过程中用户透露的人生经历不应被带入排盘分析。
+
 ## 关键路径
 
 | 路径 | 用途 |
 |------|------|
-| `skills/ziwei-astrology/SKILL.md` | 核心指令文件（必须首先读取） |
+| `skills/ziwei-astrology/SKILL.md` | 排盘分析核心指令文件（必须首先读取） |
 | `skills/ziwei-astrology/scripts/` | 排盘/验证/转换脚本 |
 | `skills/ziwei-astrology/references/` | 知识库参考文件 |
+| `skills/time-calibration/SKILL.md` | 反推时辰核心指令文件 |
+| `skills/time-calibration/scripts/` | 反推时辰排盘脚本（独立副本） |
+| `skills/time-calibration/references/` | 反推时辰参考文件 |
 | `sources/iztro/` | iztro 排盘引擎源码 |
 | `sources/ziwei-doushu/` | 倪海厦知识库源码 |
 | `ziwei-output/` | 排盘输出目录 |

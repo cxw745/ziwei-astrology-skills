@@ -1,6 +1,6 @@
 # ziwei-astrology-skills
 
-紫微斗数排盘与命盘详析 AI Skill —— 融合 [iztro](https://github.com/SylarLong/iztro) 排盘引擎与 [ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu) 倪海厦《天纪》知识库，支持三模式解读切换和快捷指令。
+紫微斗数排盘与命盘详析 AI Skill —— 融合 [iztro](https://github.com/SylarLong/iztro) 排盘引擎与 [ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu) 倪海厦《天纪》知识库，支持三模式解读切换和快捷指令。另含独立反推时辰 skill，帮助不知道出生时辰的用户确定时辰。
 
 ## 功能
 
@@ -18,6 +18,7 @@
 - **星曜亮度** — 十四主星12宫亮度表（庙旺/平/陷）
 - **真太阳时** — 基于出生地经度的真太阳时校正，显式时区支持
 - **验前事校验** — 排盘后推导可证伪断语，校准命盘可信度（灵感来源：vedic-astro-skills）
+- **反推时辰** — 不知道出生时辰？通过4轮渐进对话+事件验证帮你确定（独立 skill，与排盘分析物理隔离）
 - **盲审原则** — 分析阶段只看排盘数据，禁止反向推导和确认偏误（灵感来源：vedic-astro-skills）
 - **大限硬约束** — 可计算判定条件+禁止美化凶象+格局激活验证（灵感来源：vedic-astro-skills）
 - **写作质量铁律** — 禁止错误归因/绝对论断/滥用句式，审查制逐条检查
@@ -45,6 +46,7 @@
 - "2026年我事业运怎么样？"
 - "我打算明年结婚，哪个月比较好？"
 - "帮我看看命"
+- "我不知道自己几点出生的" / "帮我反推时辰"
 
 排盘完成后可使用快捷指令深入探索：
 

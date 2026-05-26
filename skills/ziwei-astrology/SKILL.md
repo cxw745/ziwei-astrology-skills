@@ -6,7 +6,8 @@ description: >
   流年、大限、夫妻宫、事业运、财运、合盘、倪海厦、天纪、择日、桃花、姻缘、
   考运、健康运、贵人、友情、朋友、友谊。即使用户只说"帮我看看命""算一卦"也应触发。
   首次输出完整报告后可继续追问。快捷指令：\money \health \love \career
-  \year \dash \flow \month \question \deep \match \friend \switch \help。
+  \year \dash \flow \month \question \deep \match \friend \switch \fly \pattern
+  \brightness \shensha \help。
 ---
 
 # 紫微斗数排盘与命盘详析
@@ -496,6 +497,8 @@ HTML界面体系切换：工具栏按钮或键盘1/2/3切换，正文内容实�
 | `\switch` | 切换体系 | `\dash` | 大限选择 |
 | `\dash N` | 第N大限详解 | `\flow` | 流年选择 |
 | `\month` | 流月选择 | `\month YYYY-MM` | 指定月详解 |
+| `\fly` | 飞星分析（宫干四化+自化+飞化链） | `\pattern` | 格局判断（46格局自动识别） |
+| `\brightness` | 星曜亮度详表 | `\shensha` | 神煞系统（长生/博士/岁前/将前12神） |
 
 - 首次排盘前使用快捷指令，先提示用户提供出生信息
 - 所有快捷指令均继承盲审原则和Q&A正反双审规则：分析只基于排盘数据，判断性问题必须同时列出支持和制约数据
@@ -534,6 +537,10 @@ node scripts/md2html.js <input.md> [output.html]
 | 合盘分析（婚配） | `\match` + 另一半出生信息 | 合盘五步法+五星匹配度 |
 | 友情合盘 | `\friend` + 朋友出生信息 | 友情六步法+友情五星评级 |
 | 流年解读 | 特定年份 | 四化+宫位交互+四维运势 |
+| 飞星分析 | `\fly` | 宫干四化+自化+飞化链+三方四正飞化 |
+| 格局判断 | `\pattern` | 46格局自动识别+评分+吉凶分类 |
+| 星曜亮度 | `\brightness` | 十四主星12宫亮度详表 |
+| 神煞系统 | `\shensha` | 长生/博士/岁前/将前12神详解 |
 | 择日择时 | 结婚/搬家/开业等 | 推荐吉日+理由+局限性 |
 | 继续提问 | 基于已排命盘追问 | 复用数据不重新排盘 |
 
