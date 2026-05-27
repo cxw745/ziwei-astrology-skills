@@ -2,6 +2,22 @@
 
 本文件记录项目的所有重要变更。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)。
 
+## [3.1.0] - 2026-05-27
+
+### Added
+
+- **ziwei-astrology astro.js 功能对齐**：从 time-calibration 版本移植 `--year` 流年数据、`soulPalaceInfo`、`bodyPalaceInfo`、`getCurrentDecadal`、`getYearlyData` 等增强功能，两个 skill 的排盘脚本功能完全对齐
+- **time-calibration output-schema.md**：新增排盘输出数据结构文档，描述所有字段类型和含义
+- **sync-skills.sh 同步 time-calibration**：同步脚本从仅同步 ziwei-astrology 扩展为同时同步两个 skill
+
+### Changed
+
+- **astro.js 代码风格统一**：`var` 全部改为 `const/let`，与现代 JS 风格一致
+- **astro.js 防御性增强**：`extractStarArray` 增加空值保护、`getPalaceFlyingMutagens` 使用 clone 避免污染原始对象、`getOriginalPalace` 返回值升级为 `{ name, index }` 对象
+- **toc.js 消除重复代码**：`slugify`/`escapeHtml` 改为从 parser.js 导入，不再重复定义
+- **chart.js 移除死代码**：删除从未使用的 `generateChartHtml` 函数
+- **package.json 版本号同步**：2.5.0 → 3.1.0，与 CHANGELOG 一致
+
 ## [3.0.3] - 2026-05-27
 
 ### Changed

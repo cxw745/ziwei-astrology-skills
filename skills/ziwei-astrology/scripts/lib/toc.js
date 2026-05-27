@@ -1,30 +1,15 @@
-function slugify(text) {
-  return text
-    .replace(/^[#\s]+/, '')
-    .replace(/[（()）\[\]·、：:，,。.！!？?\s★]+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
-    .replace(/"/g, '');
-}
-
-function escapeHtml(str) {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
+const { slugify, escapeHtml } = require('./parser');
 
 function generateToc(md) {
-  var lines = md.split('\n');
-  var items = [];
-  var inH1Group = false;
-  var inH2Group = false;
-  var inH3Group = false;
-  var idCounters = {};
+  const lines = md.split('\n');
+  const items = [];
+  let inH1Group = false;
+  let inH2Group = false;
+  let inH3Group = false;
+  const idCounters = {};
 
   function uniqueId(text) {
-    var base = slugify(text);
+    const base = slugify(text);
     if (!idCounters[base]) {
       idCounters[base] = 1;
       return base;
@@ -62,14 +47,14 @@ function generateToc(md) {
       + '</button>';
   }
 
-  for (var i = 0; i < lines.length; i++) {
-    var line = lines[i];
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
 
-    var h1 = line.match(/^#\s+(.+)/);
+    const h1 = line.match(/^#\s+(.+)/);
     if (h1) {
       closeH1Group();
-      var text = h1[1].trim();
-      var id = uniqueId(text);
+      const text = h1[1].trim();
+      const id = uniqueId(text);
       if (text.indexOf('第') >= 0 && text.indexOf('大限') >= 0) {
         items.push('<li class="toc-item toc-h1-group"><a class="toc-link toc-h1" href="#' + id + '">' + escapeHtml(text) + '</a><ul class="toc-sub-list">');
         inH1Group = true;
@@ -79,15 +64,15 @@ function generateToc(md) {
       continue;
     }
 
-    var h2 = line.match(/^##\s+(.+)/);
+    const h2 = line.match(/^##\s+(.+)/);
     if (h2) {
       closeH2Group();
       if (inH1Group) {
         items.push('</ul></li>');
         inH1Group = false;
       }
-      var text = h2[1].trim();
-      var id = uniqueId(text);
+      const text = h2[1].trim();
+      const id = uniqueId(text);
       items.push('<li class="toc-item toc-group toc-group-h2">');
       items.push('<div class="toc-group-header">');
       items.push('<a class="toc-link toc-h2" href="#' + id + '">' + escapeHtml(text) + '</a>');
@@ -98,11 +83,11 @@ function generateToc(md) {
       continue;
     }
 
-    var h3 = line.match(/^###\s+(.+)/);
+    const h3 = line.match(/^###\s+(.+)/);
     if (h3) {
       closeH3Group();
-      var text = h3[1].trim();
-      var id = uniqueId(text);
+      const text = h3[1].trim();
+      const id = uniqueId(text);
       items.push('<li class="toc-item toc-group toc-group-h3">');
       items.push('<div class="toc-group-header">');
       items.push('<a class="toc-link toc-h3" href="#' + id + '">' + escapeHtml(text) + '</a>');
@@ -113,26 +98,26 @@ function generateToc(md) {
       continue;
     }
 
-    var h4 = line.match(/^####\s+(.+)/);
+    const h4 = line.match(/^####\s+(.+)/);
     if (h4) {
-      var text = h4[1].trim();
-      var id = uniqueId(text);
+      const text = h4[1].trim();
+      const id = uniqueId(text);
       items.push('<li class="toc-item"><a class="toc-link toc-h4" href="#' + id + '">' + escapeHtml(text) + '</a></li>');
       continue;
     }
 
-    var h5 = line.match(/^#####\s+(.+)/);
+    const h5 = line.match(/^#####\s+(.+)/);
     if (h5) {
-      var text = h5[1].trim();
-      var id = uniqueId(text);
+      const text = h5[1].trim();
+      const id = uniqueId(text);
       items.push('<li class="toc-item"><a class="toc-link toc-h5" href="#' + id + '">' + escapeHtml(text) + '</a></li>');
       continue;
     }
 
-    var h6 = line.match(/^######\s+(.+)/);
+    const h6 = line.match(/^######\s+(.+)/);
     if (h6) {
-      var text = h6[1].trim();
-      var id = uniqueId(text);
+      const text = h6[1].trim();
+      const id = uniqueId(text);
       items.push('<li class="toc-item"><a class="toc-link toc-h6" href="#' + id + '">' + escapeHtml(text) + '</a></li>');
     }
   }

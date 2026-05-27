@@ -1,6 +1,6 @@
 {
   "name": "ziwei-astrology-skills",
-  "version": "2.5.0",
+  "version": "3.1.0",
   "description": "紫微斗数排盘与命盘详析 AI Skill —— 融合 [iztro](https://github.com/SylarLong/iztro) 排盘引擎与 [ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu) 倪海厦《天纪》知识库，支持三模式解读切换和快捷指令。",
   "main": "index.js",
   "scripts": {
