@@ -126,7 +126,13 @@ Skill 运行时需定位 sources/ 目录以执行回源验证。按以下优先�
 📄 完整报告：{文件绝对路径}
 🌐 HTML版本：{文件绝对路径}
 
-快捷指令：\money \health \love \career \year \dash \flow \month \question \deep \match \friend \switch \help
+快捷指令：\money \health \love \career \year \dash \flow \month \question \deep \match \friend \switch \fly \pattern \brightness \shensha \help
+
+💡 新功能提示：
+- `\fly` → 想知道"哪个宫位在影响我的财运/事业/感情？"——飞星分析追踪能量流向
+- `\pattern` → 想知道"我有没有特殊格局？"——自动识别46种吉凶格局
+- `\brightness` → 想知道"某颗星在我盘上力量有多强？"——十四主星亮度全览
+- `\shensha` → 想看更细的辅助神煞——长生/博士/岁前/将前12神分布
 ```
 
 **专项解读完成后**：
@@ -497,8 +503,8 @@ HTML界面体系切换：工具栏按钮或键盘1/2/3切换，正文内容实�
 | `\switch` | 切换体系 | `\dash` | 大限选择 |
 | `\dash N` | 第N大限详解 | `\flow` | 流年选择 |
 | `\month` | 流月选择 | `\month YYYY-MM` | 指定月详解 |
-| `\fly` | 飞星分析（宫干四化+自化+飞化链） | `\pattern` | 格局判断（46格局自动识别） |
-| `\brightness` | 星曜亮度详表 | `\shensha` | 神煞系统（长生/博士/岁前/将前12神） |
+| `\fly` | 飞星分析：谁在影响谁？宫位间能量流向 | `\pattern` | 格局判断：你的命盘有什么"名局"？评分解读 |
+| `\brightness` | 星曜亮度：每颗星在你盘上力量有多强 | `\shensha` | 神煞系统：长生/博士/岁前/将前12神详解 |
 
 - 首次排盘前使用快捷指令，先提示用户提供出生信息
 - 所有快捷指令均继承盲审原则和Q&A正反双审规则：分析只基于排盘数据，判断性问题必须同时列出支持和制约数据
@@ -507,6 +513,10 @@ HTML界面体系切换：工具栏按钮或键盘1/2/3切换，正文内容实�
 - `\dash` 列出所有大限并标注当前所在大限
 - `\flow` 默认显示当前年龄±10年，`\flow all` 显示完整列表
 - `\month` 需先确定流年（默认当年）
+- `\fly` 排盘后任何时刻均可使用。输出8章节：宫干四化总表、自化检测、飞化链追踪、飞化落宫分析、三方四正飞化汇总、关键飞化解读、大限飞化联动、综合总结
+- `\pattern` 排盘后任何时刻均可使用。输出5章节：上格/中格命盘亮点、助力格局、恶格/凶格预警、格局总分与综合评价、建议
+- `\brightness` 排盘后任何时刻均可使用。输出按宫位或按星曜（二选一），含亮度指标对力量强弱的影响
+- `\shensha` 排盘后任何时刻均可使用。输出四组神煞逐宫分布+各组神煞的意义解读
 - 详细指引见 `references/shortcuts.md`
 
 ## 输出文件规范
@@ -562,6 +572,36 @@ node scripts/md2html.js <input.md> [output.html]
 5. 给出友情五星评级
 6. 如对方命宫落入甲方夫妻宫，必须包含"越界风险"专项提醒
 7. 生成友情合盘报告（MD+HTML双格式），保存到 `ziwei-output/{日期_HHmm}_{甲方信息}_友情_{乙方信息}/`
+
+`\fly` 飞星分析流程：
+1. 用户输入 `\fly` 后，直接从 `chart-data.json` 读取排盘数据
+2. 调用 `flying-star.ts` 的 5 个核心函数计算：宫干四化总表、自化检测、飞化链追踪、飞化落宫分析、三方四正飞化汇总
+3. 结合当前大限叠加分析，突出最重要的3-5条飞化关系
+4. 输出8章节完整报告（MD+HTML双格式），保存到 `ziwei-output/{日期_HHmm}_{出生信息}/`
+5. 对话输出3行摘要：核心发现（如"命宫化禄入财帛，财源顺遂；但财帛宫自化禄，存不住"）
+
+`\pattern` 格局判断流程：
+1. 用户输入 `\pattern` 后，直接从 `chart-data.json` 读取排盘数据
+2. 调用 `patterns-engine.ts` 的 `analyzePatterns` 函数，扫描46个格局
+3. 按类别（上格/中格/助力格/恶格/基础格/补充格）整理匹配结果
+4. 计算总评分，判断命盘整体格局强弱
+5. 输出5章节完整报告（MD+HTML双格式），保存到 `ziwei-output/{日期_HHmm}_{出生信息}/`
+6. 对话输出3行摘要：格局亮点+风险+总评分
+
+`\brightness` 星曜亮度流程：
+1. 用户输入 `\brightness` 后，直接从 `chart-data.json` 读取排盘数据
+2. 提取每个宫位主星的亮度数据（从 `starBrightness` 字段或 `constants.ts` 亮度表）
+3. 按宫位或按星曜整理，列出每颗星的庙旺平陷状态
+4. 解读亮度对各宫位的影响（庙旺→力量强，落陷→力量弱）
+5. 输出完整报告（MD+HTML双格式），保存到 `ziwei-output/{日期_HHmm}_{出生信息}/`
+6. 对话输出3行摘要：全盘亮度概览+最亮宫位+最暗宫位
+
+`\shensha` 神煞系统流程：
+1. 用户输入 `\shensha` 后，直接从 `chart-data.json` 读取排盘数据
+2. 提取每组神煞（长生12神/博士12神/岁前12神/将前12神）的逐宫分布
+3. 结合当前大限解读长生阶段的意义
+4. 输出4章节完整报告（MD+HTML双格式），保存到 `ziwei-output/{日期_HHmm}_{出生信息}/`
+5. 对话输出3行摘要：各组神煞的核心发现
 
 ## 知识准备与补充策略
 
@@ -780,7 +820,7 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `references/classics-excerpts.md` | 古籍关键段落摘录（骨髓赋等） | ~100 |
 | `references/star-palace-matrix.md` | 14主星×12宫速查表 | ~50 |
 | `references/report-template.md` | 报告模板+专项模板+输出规范 | ~800 |
-| `references/shortcuts.md` | 快捷指令详细指引 | ~215 |
+| `references/shortcuts.md` | 快捷指令详细指引 | ~310 |
 | `references/source-repos.md` | 源仓库本地文件索引+引用标注格式 | ~168 |
 | `references/nihai-medicine.md` | 倪师人纪地纪健康断语（疾厄宫联动） | ~400 |
 | `references/fallback-guide.md` | Skill独立使用降级策略 | ~60 |
@@ -803,7 +843,9 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | `scripts/run-evals.js` | 自动化评测脚本 | ~200 |
 | `examples/` | 示例命盘 | - |
 | `sources/iztro/` | iztro排盘引擎源码（事实索引） | ~7300行 |
-| `sources/ziwei-doushu/` | 倪海厦知识库源码（事实索引） | ~12900行 |
+| `sources/ziwei-doushu/lib/ziwei/flying-star.ts` | 飞星分析源码（宫干四化/自化/飞化链） | ~200 |
+| `sources/ziwei-doushu/lib/ziwei/patterns-engine.ts` | 格局判断引擎源码（46格局/评分） | ~600 |
+| `sources/ziwei-doushu/` | 倪海厦知识库源码（含constants/sihua/algorithm等） | ~13200行 |
 
 ## 正反对比示例
 
