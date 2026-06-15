@@ -9,8 +9,87 @@ const { markdownToHtml, extractTitle, escapeHtml } = require('./lib/parser');
 const { extractChartData } = require('./lib/chart');
 const { generateToc } = require('./lib/toc');
 
+function waitForFile(filePath, maxWaitMs) {
+  var start = Date.now();
+  var lastSize = 0;
+  var stableCount = 0;
+  while (Date.now() - start < maxWaitMs) {
+    try {
+      var stat = fs.statSync(filePath);
+      if (stat.size > 0) {
+        if (stat.size === lastSize) {
+          stableCount++;
+          if (stableCount >= 3) return true;
+        } else {
+          stableCount = 0;
+          lastSize = stat.size;
+        }
+      }
+    } catch(e) {}
+    var waited = Date.now() - start;
+    if (waited < 500) {
+      require('child_process').spawnSync('sleep', ['0.1']);
+    } else {
+      break;
+    }
+  }
+  return lastSize > 0 && stableCount >= 2;
+}
+
+function validateMdContent(mdContent, mdFilePath) {
+  var issues = [];
+  var h2Count = (mdContent.match(/^## /gm) || []).length;
+  if (h2Count < 8) {
+    issues.push('MD has only ' + h2Count + ' H2 sections, expected 10+ - file may be truncated');
+  }
+  if (!mdContent.includes('自检清单') && mdContent.includes('## 十一、附录')) {
+    issues.push('MD has 十一、附录 but missing 自检清单 - file may be truncated');
+  }
+  var lastLine = mdContent.trim().split('\n').pop() || '';
+  if (lastLine.trim() === '' || lastLine.trim().startsWith('|')) {
+    issues.push('MD ends abruptly (last line: "' + lastLine.trim().substring(0, 50) + '") - file may be truncated');
+  }
+  if (!mdContent.includes('生成日期')) {
+    issues.push('MD missing footer (生成日期) - file may be truncated');
+  }
+  return issues;
+}
+
+function validateHtmlOutput(htmlContent, mdContent) {
+  var issues = [];
+  var mdH2Count = (mdContent.match(/^## /gm) || []).length;
+  var htmlH2Count = (htmlContent.match(/<h2/g) || []).length;
+  if (htmlH2Count < mdH2Count) {
+    issues.push('HTML has ' + htmlH2Count + ' H2 sections but MD has ' + mdH2Count + ' - HTML is truncated');
+  }
+  if (!htmlContent.includes('</body>') || !htmlContent.includes('</html>')) {
+    issues.push('HTML missing closing tags - file is truncated');
+  }
+  if (mdContent.includes('自检清单') && !htmlContent.includes('自检清单')) {
+    issues.push('HTML missing 自检清单 - HTML is truncated');
+  }
+  var mdH3Count = (mdContent.match(/^### /gm) || []).length;
+  var htmlH3Count = (htmlContent.match(/<h3/g) || []).length;
+  if (htmlH3Count < mdH3Count - 3) {
+    issues.push('HTML has ' + htmlH3Count + ' H3 sections but MD has ' + mdH3Count + ' - significant content loss');
+  }
+  return issues;
+}
+
 function convertMdToHtml(mdFilePath, outputFilePath) {
-  const mdContent = fs.readFileSync(mdFilePath, 'utf-8');
+  if (!waitForFile(mdFilePath, 3000)) {
+    console.error('⚠️ MD file not stable after 3s, proceeding anyway...');
+  }
+
+  var mdContent = fs.readFileSync(mdFilePath, 'utf-8');
+
+  var mdIssues = validateMdContent(mdContent, mdFilePath);
+  if (mdIssues.length > 0) {
+    console.error('⚠️ MD content validation warnings:');
+    mdIssues.forEach(function(issue) { console.error('   - ' + issue); });
+    console.error('   The MD file may be incomplete. Proceeding with conversion...');
+  }
+
   const fileName = path.basename(mdFilePath, '.md');
   const mdDir = path.dirname(mdFilePath);
   var externalChartData = null;
@@ -31,9 +110,35 @@ function convertMdToHtml(mdFilePath, outputFilePath) {
       } catch(e) {}
     }
   }
-  const htmlContent = generateHtml(mdContent, fileName, externalChartData);
+
+  var maxRetries = 3;
+  var htmlContent;
+  for (var attempt = 1; attempt <= maxRetries; attempt++) {
+    htmlContent = generateHtml(mdContent, fileName, externalChartData);
+    var htmlIssues = validateHtmlOutput(htmlContent, mdContent);
+    if (htmlIssues.length === 0) {
+      break;
+    }
+    console.error('⚠️ HTML validation attempt ' + attempt + '/' + maxRetries + ' found issues:');
+    htmlIssues.forEach(function(issue) { console.error('   - ' + issue); });
+    if (attempt < maxRetries) {
+      console.error('   Retrying conversion...');
+    }
+  }
+
   fs.writeFileSync(outputFilePath, htmlContent, 'utf-8');
+
+  var finalHtml = fs.readFileSync(outputFilePath, 'utf-8');
+  var finalIssues = validateHtmlOutput(finalHtml, mdContent);
+  if (finalIssues.length > 0) {
+    console.error('❌ Final HTML validation FAILED:');
+    finalIssues.forEach(function(issue) { console.error('   - ' + issue); });
+    process.exit(1);
+  }
+
   console.log('Generated: ' + outputFilePath);
+  console.log('  MD: ' + mdContent.split('\n').length + ' lines, ' + mdContent.length + ' chars');
+  console.log('  HTML: ' + finalHtml.length + ' chars, ' + (finalHtml.match(/<h2/g) || []).length + ' H2 sections');
 }
 
 function normalizeChartData(data) {

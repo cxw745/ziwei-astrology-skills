@@ -815,13 +815,19 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 9. **排盘准确性校验（必须）**：运行 `node scripts/verify-astro.js <chart-data.json> <report.md>` 对比排盘数据与报告内容，确保星曜位置、四化、空宫、身宫、来因宫、五行局、命宫位置均一致。**未通过则必须修正报告后重新验证**
 10. **报告结构验证（必须）**：运行 `node scripts/validate-report.js <report.md>` 检查24项结构完整性。**未通过则必须补全缺失章节后重新验证**
 11. **MD格式规范检查（必须）**：运行 `node scripts/lint-md.js <report.md>` 检查10项格式规范。**未通过则必须修正格式后重新验证**
-12. **HTML完整性验证（必须）**：MD写入磁盘后，运行 `node scripts/md2html.js <input.md> [output.html]` 生成HTML，然后运行 `node scripts/validate-html.js <output_dir>` 验证HTML与MD内容对应完整，重点检查：
+12. **HTML完整性验证（必须）**：MD写入磁盘后，**必须等待1-2秒确保文件完全落盘**，再运行 `node scripts/md2html.js <input.md> [output.html]` 生成HTML。md2html.js 已内置以下防护机制：
+    - **文件落盘等待**：自动等待 MD 文件大小稳定后再读取（最多3秒）
+    - **MD内容校验**：检查 H2 章节数量、页脚完整性，发现截断会发出警告
+    - **HTML输出校验**：对比 MD/HTML 的 H2/H3 数量，发现截断会自动重试（最多3次）
+    - **写入后回读验证**：HTML 写入后重新读取验证，失败则 exit(1)
+    - 转换后仍需运行 `node scripts/validate-html.js <output_dir>` 做完整验证，重点检查：
     - 十一章节全部存在于HTML中（一~十一）
     - 十二宫分论6.1~6.12全部存在于HTML中
     - HTML H2/H3数量与MD一致（差异≤2为正常）
     - HTML包含闭合标签`</body></html>`
     - MD中的自检清单、页脚声明在HTML中也存在
     - **若验证失败，必须重新运行md2html.js生成HTML后再次验证**
+    - **⚠️ 常见截断原因**：AI 用 Write 工具写入 MD 后立即运行 md2html.js，文件系统缓存尚未刷盘。建议在 Write 和 md2html.js 之间至少间隔1秒
 13. **验证反馈闭环（推荐）**：运行 `node scripts/validate-and-fix.js <chart-data.json> <report.md> [--json]` 整合所有验证结果并生成结构化修正建议。`--json` 输出可程序化解析的JSON，便于自动修正
 14. **章节级验证（推荐）**：对关键章节运行 `node scripts/section-validator.js <section-type> <section-content>` 验证单个章节质量，支持 basic-info / palace-table / sihua / palace-detail / pattern / minggong / dashan / liunian / advice / appendix 等类型
 
@@ -985,5 +991,5 @@ const result = astro.bySolar('YYYY-M-D', hourIndex, gender, true, 'zh-CN');
 | 🔴高 | **省略命宫总论** | 命宫必须独立成章，包含6个子节 |
 | 🟡中 | **输出写入skills目录** | 必须写入 ziwei-output/ |
 | 🟡中 | **完成后遗漏提示语** | 必须附加文件位置和快捷指令 |
-| 🟡中 | **HTML截断** | MD写入后必须等文件完全落盘再运行md2html.js转换；转换后必须运行validate-html.js验证 |
+| 🟡中 | **HTML截断** | MD写入后必须等文件完全落盘再运行md2html.js转换（脚本已内置等待+校验+重试）；转换后必须运行validate-html.js验证 |
 | 🟢低 | **流月缺少流年上下文** | 不可孤立分析单月 |

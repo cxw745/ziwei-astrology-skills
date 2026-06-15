@@ -90,12 +90,12 @@ function markdownToHtmlInner(md) {
 
     if (line.startsWith('\`\`\`')) {
       if (inCodeBlock) {
-        html += '<pre><code>' + escapeHtml(codeContent.trim()) + '</code></pre>';
+        html += '<pre><code>' + escapeHtml(codeContent.trim()) + '</code></pre>\n';
         codeContent = '';
         inCodeBlock = false;
       } else {
-        if (inTable) { html += buildTable(tableHeaders, tableRows); inTable = false; tableHeaders = []; tableRows = []; }
-        if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
+        if (inTable) { html += buildTable(tableHeaders, tableRows) + '\n'; inTable = false; tableHeaders = []; tableRows = []; }
+        if (inList) { html += listType === 'ul' ? '</ul>\n' : '</ol>\n'; inList = false; }
         inCodeBlock = true;
       }
       continue;
@@ -115,7 +115,7 @@ function markdownToHtmlInner(md) {
       }
       continue;
     } else if (inTable) {
-      html += buildTable(tableHeaders, tableRows);
+      html += buildTable(tableHeaders, tableRows) + '\n';
       inTable = false;
       tableHeaders = [];
       tableRows = [];
@@ -134,25 +134,25 @@ function markdownToHtmlInner(md) {
 
         if (level === 2) {
           if (inSection) {
-            html += '</div></div>';
+            html += '</div></div>\n';
           }
-          html += '<div class="section-wrapper" data-section-id="' + id + '">';
+          html += '<div class="section-wrapper" data-section-id="' + id + '">\n';
           html += '<h2 id="' + id + '"><span>' + content + '</span>';
           html += '<button class="section-toggle" onclick="toggleSection(\'' + id + '\')" aria-label="折叠/展开">';
           html += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
-          html += '</button></h2>';
-          html += '<div class="section-content" id="section-' + id + '">';
+          html += '</button></h2>\n';
+          html += '<div class="section-content" id="section-' + id + '">\n';
           inSection = true;
         } else if (level === 3) {
-          html += '<h3 id="' + id + '">' + content + '</h3>';
+          html += '\n<h3 id="' + id + '">' + content + '</h3>\n';
         } else if (level === 4) {
-          html += '<h4 id="' + id + '">' + content + '</h4>';
+          html += '\n<h4 id="' + id + '">' + content + '</h4>\n';
         } else if (level === 5) {
-          html += '<h5 id="' + id + '">' + content + '</h5>';
+          html += '\n<h5 id="' + id + '">' + content + '</h5>\n';
         } else if (level === 6) {
-          html += '<h6 id="' + id + '">' + content + '</h6>';
+          html += '\n<h6 id="' + id + '">' + content + '</h6>\n';
         } else {
-          html += '<h1 id="' + id + '">' + content + '</h1>';
+          html += '<h1 id="' + id + '">' + content + '</h1>\n';
         }
       }
       continue;
@@ -166,7 +166,7 @@ function markdownToHtmlInner(md) {
       if (text.indexOf('倪师') >= 0 || text.indexOf('天纪') >= 0) {
         bqClass = ' class="blockquote nishi-quote"';
       }
-      html += '<blockquote' + bqClass + '>' + inlineFormat(text) + '</blockquote>';
+      html += '<blockquote' + bqClass + '>' + inlineFormat(text) + '</blockquote>\n';
       continue;
     }
 
@@ -178,14 +178,14 @@ function markdownToHtmlInner(md) {
       if (text.indexOf('倪师') >= 0 || text.indexOf('天纪') >= 0) {
         bqClass = ' class="blockquote nishi-quote"';
       }
-      html += '<blockquote' + bqClass + '>' + inlineFormat(text) + '</blockquote>';
+      html += '<blockquote' + bqClass + '>' + inlineFormat(text) + '</blockquote>\n';
       continue;
     }
 
     if (line.match(/^---+/)) {
       if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
       if (inTable) { html += buildTable(tableHeaders, tableRows); inTable = false; tableHeaders = []; tableRows = []; }
-      html += '<hr>';
+      html += '<hr>\n';
       continue;
     }
 
@@ -239,11 +239,11 @@ function markdownToHtmlInner(md) {
     html += '<p>' + inlineFormat(line.trim()) + '</p>';
   }
 
-  if (inTable) { html += buildTable(tableHeaders, tableRows); }
-  if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; }
-  if (inCodeBlock) { html += '<pre><code>' + escapeHtml(codeContent.trim()) + '</code></pre>'; }
-  if (inInterpretation) { html += '</div><!-- /interp-block -->'; }
-  if (inSection) { html += '</div></div>'; }
+  if (inTable) { html += buildTable(tableHeaders, tableRows) + '\n'; }
+  if (inList) { html += listType === 'ul' ? '</ul>\n' : '</ol>\n'; }
+  if (inCodeBlock) { html += '<pre><code>' + escapeHtml(codeContent.trim()) + '</code></pre>\n'; }
+  if (inInterpretation) { html += '</div><!-- /interp-block -->\n'; }
+  if (inSection) { html += '</div></div>\n'; }
 
   return html;
 }
